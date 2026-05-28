@@ -1,1 +1,48 @@
+# ── Datos ──────────────────────────────────────────────────────────────────
 data/raw/
+
+# ── QGIS ───────────────────────────────────────────────────────────────────
+# Archivos auxiliares generados automáticamente junto a cada .qgz/.qgs
+*.qgd
+# Backups automáticos de QGIS
+*.qgz.bak
+*.qgs.bak
+*.qgs~
+~$*.qgs
+# Lock file cuando el proyecto está abierto
+*.qgs.lock
+# Caché de teselas y miniaturas
+.qgis_thumbnails/
+# Base de datos de autenticación local
+qgis_auth.db
+
+# ── Python ─────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+# Entornos virtuales
+.venv/
+venv/
+env/
+# Jupyter: checkpoints y archivos temporales
+.ipynb_checkpoints/
+# Artefactos de build/distribución
+dist/
+build/
+*.egg-info/
+# Variables de entorno
+.env
+.env.*
+
+# ── Go (Apimetro) ──────────────────────────────────────────────────────────
+# Binarios compilados (sin extensión en Linux, con .exe en Windows)
+apimetro
+apimetro.exe
+# Caché de build local de Go
+/vendor/
+
+# ── Sistema operativo / IDE ────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
