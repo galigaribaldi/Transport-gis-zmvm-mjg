@@ -15,7 +15,7 @@
 | 1 | `mapa02_cobertura_sur.png` | s02 frame 2.2 | **LISTO** |
 | 2 | `mapa_red_esquematica.png` | s04 frame 4.3b | **LISTO** |
 | 3 | `mapa_calor_df.png` | s04 frame 4.10 | **LISTO** |
-| 4 | `mapa04_nodos_criticos.png` | plan original s04 | **PENDIENTE** |
+| 4 | `mapa04_nodos_criticos.png` | plan original s04 | **LISTO** |
 
 > Los frames de la presentación ya tienen placeholders con TikZ en su lugar.
 > Cuando el mapa esté listo, sustituir la caja TikZ por `\includegraphics{img/<archivo>}`.
