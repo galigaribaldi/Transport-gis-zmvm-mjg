@@ -12,9 +12,9 @@
 | # | Archivo destino | Usado en | Estado |
 |---|-----------------|----------|--------|
 | 0 | `maps/exports/pdf/Mapa_Transporte_Publico.pdf` | — (no va al Coloquio) | **LISTO** |
-| 1 | `mapa02_cobertura_sur.png` | s02 frame 2.2 | **PENDIENTE** |
-| 2 | `mapa_red_esquematica.png` | s04 frame 4.3b | **PENDIENTE** |
-| 3 | `mapa_calor_df.png` | s04 frame 4.10 | **PENDIENTE** |
+| 1 | `mapa02_cobertura_sur.png` | s02 frame 2.2 | **LISTO** |
+| 2 | `mapa_red_esquematica.png` | s04 frame 4.3b | **LISTO** |
+| 3 | `mapa_calor_df.png` | s04 frame 4.10 | **LISTO** |
 | 4 | `mapa04_nodos_criticos.png` | plan original s04 | **PENDIENTE** |
 
 > Los frames de la presentación ya tienen placeholders con TikZ en su lugar.
