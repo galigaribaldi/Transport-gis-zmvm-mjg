@@ -41,6 +41,13 @@ apimetro.exe
 # Caché de build local de Go
 /vendor/
 
+# ── Tableau ────────────────────────────────────────────────────────────────
+# Workbooks empaquetados (incluyen datos — demasiado grandes para git)
+*.twbx
+# Extracts binarios generados por tableau_fetcher.py
+*.hyper
+*.tde
+
 # ── Sistema operativo / IDE ────────────────────────────────────────────────
 .DS_Store
 Thumbs.db
