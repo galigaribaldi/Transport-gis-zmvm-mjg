@@ -6,12 +6,13 @@ Módulo de dashboards estadísticos interactivos para la tesis **"Transportes An
 
 ## División de responsabilidades
 
-| Herramienta | Fuente de datos | Produce |
-|-------------|----------------|---------|
+| Herramienta | Fuente de datos | Qué produce |
+|-------------|----------------|-------------|
 | **QGIS** | `.gpkg` en `data/processed/` | Mapas cartográficos (PDF/PNG para tesis y coloquio) |
-| **Tableau** | API VFTModel + Apimetro (HTTP directo) | Dashboards estadísticos interactivos |
+| **Tableau** | API VFTModel + Apimetro directamente vía WDC | Dashboards estadísticos interactivos |
 
-Tableau **no consume `.gpkg`**. El script `scripts/tableau_fetcher.py` llama directamente a los mismos endpoints que `vft_fetcher.py`, pero descarta la geometría y escribe extracts `.hyper` con solo los atributos tabulares.
+Tableau **no consume `.gpkg`** ni requiere scripts Python intermedios.
+La conexión es nativa a través de **Web Data Connectors (WDC)** que llaman directamente a las APIs.
 
 ---
 
@@ -19,11 +20,18 @@ Tableau **no consume `.gpkg`**. El script `scripts/tableau_fetcher.py` llama dir
 
 ```
 tableau/
-  workbooks/        ← .twb (XML, git-tracked) — un archivo por tema/indicador
-  datasources/      ← .tds definiciones de conexión (XML, git-tracked)
-  extracts/         ← .hyper (binario, gitignored) — generados por scripts/tableau_fetcher.py
+  connectors/         ← WDC: archivos HTML+JS (git-tracked)
+    vftmodel_wdc.html   ← conecta a VFTModel (localhost:8000)
+    apimetro_wdc.html   ← conecta a Apimetro (localhost:8080)
+  workbooks/          ← .twb (XML, git-tracked)
+  datasources/        ← .tds definiciones de conexión (XML, git-tracked)
+  extracts/           ← .hyper (gitignored, opcionales para performance)
+  exports/
+    pdf/              ← PDFs exportados desde Tableau (git-tracked)
+    img/              ← PNGs exportados (git-tracked)
+    web/              ← URLs Tableau Public o snippets de embed (git-tracked)
   scripts/
-    tableau_fetcher.py  ← extrae datos de VFTModel y Apimetro → .hyper
+    export_tabcmd.sh  ← automatización de exports con tabcmd
   README.md
 ```
 
@@ -32,19 +40,51 @@ tableau/
 ## Flujo de datos
 
 ```
-VFTModel API (localhost:8000)
+VFTModel (FastAPI · localhost:8000)
     │
-    ├─► vft_fetcher.py          →  .gpkg  →  QGIS  →  mapas
-    │   (geometry + attributes)
-    │
-    └─► tableau_fetcher.py      →  .hyper  →  Tableau  →  dashboards
-        (properties only, sin geometría)
-
-Apimetro (localhost:8080)
-    │
-    └─► tableau_fetcher.py      →  .hyper  →  Tableau
-        (estadísticas de red por línea / estación)
+    └─► vftmodel_wdc.html  ──┐
+                              ├─►  Tableau Desktop  ──►  .twb workbooks
+Apimetro (Gin · localhost:8080) │                         │
+    │                          │                          ▼
+    └─► apimetro_wdc.html  ──┘                      exports/
+                                                     pdf/ · img/ · web/
 ```
+
+El WDC corre en el browser embebido de Tableau Desktop (Chromium).
+Llama a las APIs, descarta la geometría de los GeoJSON, y entrega las `properties`
+como filas de tablas planas directamente a Tableau.
+
+---
+
+## Cómo conectar Tableau a las APIs
+
+### Prerrequisitos
+
+1. **Apimetro corriendo**: `cd ../apimetro && go run cmd/main.go`
+   — ya tiene CORS habilitado (`AllowOrigins: ["*"]`).
+
+2. **VFTModel corriendo**: `cd ../VFTModel && uvicorn src.api.main:app --reload`
+   — **requiere CORS habilitado** (ver nota abajo).
+
+3. **Tableau Desktop** instalado (versión 2020.4+ para soporte de WDC 2.0).
+
+> **Nota VFTModel CORS**: el `main.py` de VFTModel no incluye `CORSMiddleware`.
+> El browser embebido de Tableau bloqueará las llamadas si no está habilitado.
+> Antes de conectar, agregar en `VFTModel/src/api/main.py`:
+> ```python
+> from fastapi.middleware.cors import CORSMiddleware
+> app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["GET"])
+> ```
+
+### Pasos en Tableau Desktop
+
+1. Abrir Tableau Desktop → **Conectar** → **Más...** → **Conector de datos web**
+2. Ingresar la ruta al archivo WDC:
+   - VFTModel: `file:///ruta/al/repo/tableau/connectors/vftmodel_wdc.html`
+   - Apimetro: `file:///ruta/al/repo/tableau/connectors/apimetro_wdc.html`
+3. En el formulario del WDC, ingresar la URL base y seleccionar las tablas a cargar.
+4. Hacer clic en **Obtener datos** — Tableau descarga y tabulariza la respuesta.
+5. Opcionalmente extraer a `.hyper` para trabajo sin conexión.
 
 ---
 
@@ -52,54 +92,28 @@ Apimetro (localhost:8080)
 
 Convención de nombre: `<proyecto>_viz<##>_<descripcion>.twb`
 
-| Archivo | Indicador | Endpoints fuente |
-|---------|-----------|-----------------|
-| `col2026-2_viz01_cobertura.twb` | Cobertura por alcaldía (%) | VFTModel `/coverage` |
-| `col2026-2_viz02_factor_desviacion.twb` | Factor de Desviación por alcaldía y distribución | VFTModel `/detour` |
-| `col2026-2_viz03_fuerza_capilar.twb` | Ranking de nodos por Fuerza Capilar | VFTModel `/capillary` |
-| `col2026-2_viz04_red_apimetro.twb` | Estadísticas por sistema (líneas, estaciones, cobertura) | Apimetro `localhost:8080` |
+| Archivo | Indicador | WDC fuente |
+|---------|-----------|-----------|
+| `col2026-2_viz01_cobertura.twb` | Cobertura por alcaldía (%) | `vftmodel_wdc.html` → `/coverage` |
+| `col2026-2_viz02_factor_desviacion.twb` | Distribución del Factor de Desviación | `vftmodel_wdc.html` → `/detour` |
+| `col2026-2_viz03_fuerza_capilar.twb` | Ranking de nodos por Fuerza Capilar | `vftmodel_wdc.html` → `/capillary` |
+| `col2026-2_viz04_red_apimetro.twb` | Estadísticas por sistema de transporte | `apimetro_wdc.html` → `/movilidad` |
 
 ---
 
-## Requisitos
+## Exports
 
-```
-pip install pantab requests pandas
-```
+Los dashboards se exportan en tres formatos para publicación en el repositorio:
 
-| Paquete | Uso |
-|---------|-----|
-| `pantab` | Escribe/lee archivos `.hyper` desde pandas DataFrames |
-| `requests` | Llamadas HTTP a VFTModel y Apimetro |
-| `pandas` | Transforma la respuesta GeoJSON a DataFrame tabular |
+| Formato | Directorio | Método |
+|---------|------------|--------|
+| PDF | `exports/pdf/` | Tableau Desktop: Archivo → Exportar como PDF |
+| Imagen (PNG) | `exports/img/` | Tableau Desktop: Archivo → Exportar como imagen |
+| Web | `exports/web/` | Tableau Public (URL) o snippet de embed HTML |
 
----
+Convención de nombre de exports: `<proyecto>_viz<##>_<descripcion>.<ext>`
 
-## Generar los extracts
-
+Para automatizar con `tabcmd`:
 ```bash
-# Activar el mismo entorno virtual del repo
-source .venv/bin/activate
-
-# Regenerar todos los extracts
-python tableau/scripts/tableau_fetcher.py --mode live
-
-# Regenerar solo un indicador
-python tableau/scripts/tableau_fetcher.py --mode live --indicador cobertura
-
-# Usar caché existente (no llama a las APIs)
-python tableau/scripts/tableau_fetcher.py --mode cached
+bash tableau/scripts/export_tabcmd.sh
 ```
-
-Los archivos `.hyper` se escriben en `tableau/extracts/`. Son gitignored — cada analista los regenera localmente con el comando anterior.
-
----
-
-## Abrir un workbook
-
-1. Generar los extracts con el comando de arriba.
-2. Abrir Tableau Desktop.
-3. Abrir `tableau/workbooks/<archivo>.twb`.
-4. Si Tableau pide reubicar el extract, apuntarlo a `tableau/extracts/<nombre>.hyper`.
-
-Los `.twb` usan rutas relativas a `../extracts/` — si abres Tableau desde la raíz del repo no debería pedir reubicación.

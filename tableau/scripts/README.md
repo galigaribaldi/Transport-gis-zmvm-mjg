@@ -1,56 +1,49 @@
 # tableau/scripts/
 
-Scripts Python que extraen datos de VFTModel y Apimetro y los convierten a extracts `.hyper`.
+Scripts de automatización de exports. No contienen lógica de conexión a APIs
+(eso lo hacen los WDC en `../connectors/`).
 
-## tableau_fetcher.py
+---
 
-Análogo a `analysis/scripts/vft_fetcher.py` pero orientado a Tableau:
-- Llama a los mismos endpoints de VFTModel y a Apimetro.
-- Descarta la geometría (no es necesaria para dashboards estadísticos).
-- Convierte las `properties` de cada GeoJSON feature a filas de un DataFrame.
-- Escribe el resultado como extract `.hyper` usando `pantab`.
+## export_tabcmd.sh
 
-### Diferencia clave con vft_fetcher.py
+Exporta en lote los workbooks publicados en Tableau Server o Tableau Public
+usando la herramienta de línea de comandos `tabcmd`.
 
-| Script | Conserva geometría | Salida | Consume |
-|--------|--------------------|--------|---------|
-| `vft_fetcher.py` | Sí | `.gpkg` | QGIS |
-| `tableau_fetcher.py` | No | `.hyper` | Tableau |
+`tabcmd` es la CLI oficial de Tableau para automatizar exports sin abrir Tableau Desktop.
+Disponible como parte de Tableau Server o como descarga separada.
 
-### Dependencias
+### Instalación de tabcmd
 
-```
-pip install pantab requests pandas
+```bash
+# macOS con Homebrew
+brew install tabcmd   # si está disponible
+# o descargar el instalador desde:
+# https://www.tableau.com/support/releases/tabcmd
 ```
 
 ### Uso
 
 ```bash
-# Todos los extracts
-python tableau/scripts/tableau_fetcher.py --mode live
+# Exportar todos los dashboards definidos en el script
+bash tableau/scripts/export_tabcmd.sh
 
-# Un indicador específico
-python tableau/scripts/tableau_fetcher.py --mode live --indicador cobertura
-python tableau/scripts/tableau_fetcher.py --mode live --indicador detour
-python tableau/scripts/tableau_fetcher.py --mode live --indicador capillary
-python tableau/scripts/tableau_fetcher.py --mode live --indicador apimetro
-
-# Generar también CSV de inspección
-python tableau/scripts/tableau_fetcher.py --mode live --formato hyper+csv
-
-# URLs personalizadas
-python tableau/scripts/tableau_fetcher.py --mode live \
-    --vftmodel-url http://localhost:8000 \
-    --apimetro-url http://localhost:8080
+# El script hace login, exporta cada workbook y desconecta
+# Requiere variables de entorno configuradas en .env.local:
+#   TABLEAU_SERVER=https://public.tableau.com
+#   TABLEAU_USER=tu_usuario
+#   TABLEAU_PASSWORD=tu_password (o usar token)
 ```
 
-### Argumentos
+### Qué exporta el script
 
-| Argumento | Default | Descripción |
-|-----------|---------|-------------|
-| `--mode` | `live` | `live` llama a las APIs; `cached` no hace llamadas HTTP |
-| `--indicador` | `all` | `cobertura`, `detour`, `capillary`, `apimetro`, o `all` |
-| `--formato` | `hyper` | `hyper`, `csv`, o `hyper+csv` |
-| `--vftmodel-url` | `http://localhost:8000` | URL base de VFTModel |
-| `--apimetro-url` | `http://localhost:8080` | URL base de Apimetro |
-| `--output-dir` | `tableau/extracts/` | Directorio de salida para los extracts |
+| Workbook | PDF destino | PNG destino |
+|----------|-------------|-------------|
+| `col2026-2_viz01_cobertura` | `exports/pdf/col2026-2_viz01_cobertura.pdf` | `exports/img/col2026-2_viz01_cobertura.png` |
+| `col2026-2_viz02_factor_desviacion` | `exports/pdf/col2026-2_viz02_factor_desviacion.pdf` | `exports/img/col2026-2_viz02_factor_desviacion.png` |
+| `col2026-2_viz03_fuerza_capilar` | `exports/pdf/col2026-2_viz03_fuerza_capilar.pdf` | `exports/img/col2026-2_viz03_fuerza_capilar.png` |
+| `col2026-2_viz04_red_apimetro` | `exports/pdf/col2026-2_viz04_red_apimetro.pdf` | `exports/img/col2026-2_viz04_red_apimetro.png` |
+
+---
+
+> Para exports manuales desde Tableau Desktop, ver `../exports/README.md`.

@@ -47,6 +47,9 @@ apimetro.exe
 # Extracts binarios generados por tableau_fetcher.py
 *.hyper
 *.tde
+# Archivos temporales y de recuperación que Tableau crea mientras el workbook está abierto
+*.twbr
+.~*.twb*
 
 # ── Sistema operativo / IDE ────────────────────────────────────────────────
 .DS_Store
