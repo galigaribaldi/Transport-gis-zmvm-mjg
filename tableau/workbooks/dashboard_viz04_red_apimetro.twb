@@ -258,7 +258,7 @@
       <connection class='federated'>
         <named-connections>
           <named-connection caption='Apimetro — http://localhost:8080' name='webdata-direct.1f3wkks07jb0ay163cagp1ijytrb'>
-            <connection APIVersion='' authType='none' authentication='no' channel='http' class='webdata-direct' connectionData='{&quot;baseUrl&quot;:&quot;http://localhost:8080&quot;,&quot;tables&quot;:{&quot;afluencia_linea&quot;:true,&quot;afluencia_estacion&quot;:true,&quot;estaciones&quot;:true}}' connectionName='Apimetro — http://localhost:8080' filename='apimetro_wdc.html' increment-key='' path='/connectors/' port='5050' scriptVersion='' secondary_whitelist='' server='localhost' urlQuery='' username='' usernameAlias='' />
+            <connection APIVersion='' authType='none' authentication='no' channel='http' class='webdata-direct' connectionData='{&quot;baseUrl&quot;:&quot;http://localhost:8080&quot;,&quot;tables&quot;:{&quot;afluencia_linea&quot;:true,&quot;afluencia_estacion&quot;:true,&quot;estaciones&quot;:true}}' connectionName='Apimetro — http://localhost:8080' filename='apimetro_wdc.html' increment-key='' path='/connectors/apimetro/' port='5050' scriptVersion='' secondary_whitelist='' server='localhost' urlQuery='' username='' usernameAlias='' />
           </named-connection>
         </named-connections>
         <relation type='collection'>
