@@ -51,6 +51,10 @@ apimetro.exe
 *.twbr
 .~*.twb*
 
+# ── utils/ ─────────────────────────────────────────────────────────────────
+# Datos intermedios generados desde notebooks de VFTModel — no pertenecen al repo
+utils/data/*.json
+
 # ── Sistema operativo / IDE ────────────────────────────────────────────────
 .DS_Store
 Thumbs.db
