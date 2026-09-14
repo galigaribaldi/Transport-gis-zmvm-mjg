@@ -1,0 +1,2297 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20262.26.0819.2015                               -->
+<workbook _.fcp.WorkbookFingerprinting.true...author-id='4be471f022a5799db1e6da2a782c7f53b8e096a8373021603d999f513794eeee' _.fcp.WorkbookFingerprinting.true...creator-author-id='3d9893fd3219a4dd27e5a7045c47a3d837585f35a13e4d4e1eb492f778ca3974' _.fcp.WorkbookFingerprinting.true...creator-license-type='paid' _.fcp.WorkbookFingerprinting.true...creator-machine-id='4be471f022a5799db1e6da2a782c7f53b8e096a8373021603d999f513794eeee' _.fcp.WorkbookFingerprinting.true...license-type='paid' _.fcp.WorkbookFingerprinting.true...machine-id='4be471f022a5799db1e6da2a782c7f53b8e096a8373021603d999f513794eeee' original-version='18.1' source-build='2026.2.2 (20262.26.0819.2015)' source-platform='mac' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <AccessibleZoneTabOrder />
+    <AnimationOnByDefault />
+    <AutoCreateAndUpdateDSDPhoneLayouts />
+    <MarkAnimation />
+    <ObjectModelEncapsulateLegacy />
+    <ObjectModelExtractV2 />
+    <ObjectModelTableType />
+    <SchemaViewerObjectModel />
+    <SetMembershipControl />
+    <SheetIdentifierTracking />
+    <SpatialFileLayer />
+    <VConnDownstreamExtractsWithWarnings />
+    <WindowsPersistSimpleIdentifiers />
+    <_.fcp.WorkbookFingerprinting.true...WorkbookFingerprinting />
+    <WorksheetBackgroundTransparency />
+  </document-format-change-manifest>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource hasconnection='false' inline='true' name='Parameters' version='18.1'>
+      <aliases enabled='yes' />
+      <column alias='Ocultar' caption='Mostrar Etiquetas' datatype='boolean' name='[Parameter 2860969990729728]' param-domain-type='list' role='measure' type='nominal' value='false'>
+        <calculation class='tableau' formula='false' />
+        <aliases>
+          <alias key='false' value='Ocultar' />
+          <alias key='true' value='Mostrar' />
+        </aliases>
+        <members>
+          <member alias='Mostrar' value='true' />
+          <member alias='Ocultar' value='false' />
+        </members>
+      </column>
+    </datasource>
+    <datasource caption='poligonos' inline='true' name='federated.1evcajh10kq7ca1gz4c701ag5vnt' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='poligonos' name='ogrdirect.18km7ci0mefynz10rltru0fkbz0c'>
+            <connection class='ogrdirect' directory='/Users/hcabrera/Documents/Personal_Documents/Transport-gis-zmvm-mjg/tableau/exports/geo' filename='poligonos.geojson' password='' server='' tablename='' />
+          </named-connection>
+        </named-connections>
+        <relation connection='ogrdirect.18km7ci0mefynz10rltru0fkbz0c' name='poligonos.geojson' table='[poligonos.geojson]' type='table'>
+          <columns>
+            <column datatype='string' name='cvegeo' ordinal='0' />
+            <column datatype='string' name='entidad' ordinal='1' />
+            <column datatype='string' name='nivel' ordinal='2' />
+            <column datatype='string' name='nombre' ordinal='3' />
+            <column datatype='string' name='tipo_entidad' ordinal='4' />
+            <column datatype='spatial' name='Geometry' ordinal='5' />
+          </columns>
+        </relation>
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>cvegeo</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[cvegeo]</local-name>
+            <parent-name>[poligonos.geojson]</parent-name>
+            <remote-alias>cvegeo</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[poligonos.geojson_AA2AD8E9B651419794F9DD363559EC78]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>entidad</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[entidad]</local-name>
+            <parent-name>[poligonos.geojson]</parent-name>
+            <remote-alias>entidad</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[poligonos.geojson_AA2AD8E9B651419794F9DD363559EC78]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>nivel</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[nivel]</local-name>
+            <parent-name>[poligonos.geojson]</parent-name>
+            <remote-alias>nivel</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[poligonos.geojson_AA2AD8E9B651419794F9DD363559EC78]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>nombre</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[nombre]</local-name>
+            <parent-name>[poligonos.geojson]</parent-name>
+            <remote-alias>nombre</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[poligonos.geojson_AA2AD8E9B651419794F9DD363559EC78]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>tipo_entidad</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[tipo_entidad]</local-name>
+            <parent-name>[poligonos.geojson]</parent-name>
+            <remote-alias>tipo_entidad</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[poligonos.geojson_AA2AD8E9B651419794F9DD363559EC78]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Geometry</remote-name>
+            <remote-type>8</remote-type>
+            <local-name>[Geometry]</local-name>
+            <parent-name>[poligonos.geojson]</parent-name>
+            <remote-alias>Geometry</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>spatial</local-type>
+            <aggregation>Collect</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[poligonos.geojson_AA2AD8E9B651419794F9DD363559EC78]</object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='poligonos.geojson' datatype='table' name='[__tableau_internal_object_id__].[poligonos.geojson_AA2AD8E9B651419794F9DD363559EC78]' role='measure' type='quantitative' />
+      <column caption='Cvegeo' datatype='string' name='[cvegeo]' role='dimension' type='nominal' />
+      <column caption='Entidad' datatype='string' name='[entidad]' role='dimension' type='nominal' />
+      <column caption='Nivel' datatype='string' name='[nivel]' role='dimension' type='nominal' />
+      <column caption='Nombre' datatype='string' name='[nombre]' role='dimension' type='nominal' />
+      <column caption='Tipo Entidad' datatype='string' name='[tipo_entidad]' role='dimension' type='nominal' />
+      <layout dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+      </semantic-values>
+      <object-graph>
+        <objects>
+          <object caption='poligonos.geojson' id='poligonos.geojson_AA2AD8E9B651419794F9DD363559EC78'>
+            <properties context=''>
+              <relation connection='ogrdirect.18km7ci0mefynz10rltru0fkbz0c' name='poligonos.geojson' table='[poligonos.geojson]' type='table'>
+                <columns>
+                  <column datatype='string' name='cvegeo' ordinal='0' />
+                  <column datatype='string' name='entidad' ordinal='1' />
+                  <column datatype='string' name='nivel' ordinal='2' />
+                  <column datatype='string' name='nombre' ordinal='3' />
+                  <column datatype='string' name='tipo_entidad' ordinal='4' />
+                  <column datatype='spatial' name='Geometry' ordinal='5' />
+                </columns>
+              </relation>
+            </properties>
+          </object>
+        </objects>
+      </object-graph>
+    </datasource>
+    <datasource caption='demanda_alcaldia' inline='true' name='federated.15e637w1vcksuu1gbaegm13mz1iq' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='demanda_alcaldia' name='textscan.0o59ttv0fkxvut147rjas0rk1x2e'>
+            <connection class='textscan' directory='/Users/hcabrera/Documents/Personal_Documents/Transport-gis-zmvm-mjg/tableau/exports/data' filename='demanda_alcaldia.csv' password='' server='' />
+          </named-connection>
+        </named-connections>
+        <relation connection='textscan.0o59ttv0fkxvut147rjas0rk1x2e' name='demanda_alcaldia.csv' table='[demanda_alcaldia#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='en' separator=','>
+            <column datatype='string' name='Alcaldia_Municipio' ordinal='0' />
+            <column datatype='integer' name='Total_Afluencia' ordinal='1' />
+          </columns>
+        </relation>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[demanda_alcaldia.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_GB&quot;</attribute>
+              <attribute datatype='string' name='currency'>&quot;¤&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Alcaldia_Municipio</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Alcaldia_Municipio]</local-name>
+            <parent-name>[demanda_alcaldia.csv]</parent-name>
+            <remote-alias>Alcaldia_Municipio</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <object-id>[demanda_alcaldia.csv_335FBEADC55D44789EA5E5AA6C85B019]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Total_Afluencia</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Total_Afluencia]</local-name>
+            <parent-name>[demanda_alcaldia.csv]</parent-name>
+            <remote-alias>Total_Afluencia</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[demanda_alcaldia.csv_335FBEADC55D44789EA5E5AA6C85B019]</object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='Alcaldia Municipio' datatype='string' name='[Alcaldia_Municipio]' role='dimension' type='nominal' />
+      <column caption='Total Afluencia' datatype='integer' name='[Total_Afluencia]' role='measure' type='quantitative' />
+      <column caption='demanda_alcaldia.csv' datatype='table' name='[__tableau_internal_object_id__].[demanda_alcaldia.csv_335FBEADC55D44789EA5E5AA6C85B019]' role='measure' type='quantitative' />
+      <layout dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+      </semantic-values>
+      <object-graph>
+        <objects>
+          <object caption='demanda_alcaldia.csv' id='demanda_alcaldia.csv_335FBEADC55D44789EA5E5AA6C85B019'>
+            <properties context=''>
+              <relation connection='textscan.0o59ttv0fkxvut147rjas0rk1x2e' name='demanda_alcaldia.csv' table='[demanda_alcaldia#csv]' type='table'>
+                <columns character-set='UTF-8' header='yes' locale='en' separator=','>
+                  <column datatype='string' name='Alcaldia_Municipio' ordinal='0' />
+                  <column datatype='integer' name='Total_Afluencia' ordinal='1' />
+                </columns>
+              </relation>
+            </properties>
+          </object>
+        </objects>
+      </object-graph>
+    </datasource>
+    <datasource caption='Apimetro — http://localhost:8080' inline='true' name='federated.0wd8lb114dajru19as24b0h5ivhj' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='Apimetro — http://localhost:8080' name='webdata-direct.1f3wkks07jb0ay163cagp1ijytrb'>
+            <connection APIVersion='' authType='none' authentication='no' channel='http' class='webdata-direct' connectionData='{&quot;baseUrl&quot;:&quot;http://localhost:8080&quot;,&quot;tables&quot;:{&quot;afluencia_linea&quot;:true,&quot;afluencia_estacion&quot;:true,&quot;estaciones&quot;:true}}' connectionName='Apimetro — http://localhost:8080' filename='apimetro_wdc.html' increment-key='' path='/connectors/' port='5050' scriptVersion='' secondary_whitelist='' server='localhost' urlQuery='' username='' usernameAlias='' />
+          </named-connection>
+        </named-connections>
+        <relation type='collection'>
+          <relation connection='webdata-direct.1f3wkks07jb0ay163cagp1ijytrb' name='Afluencia mensual por estación (Metro CDMX)' table='[afluencia_estacion]' type='table' />
+          <relation connection='webdata-direct.1f3wkks07jb0ay163cagp1ijytrb' name='Afluencia mensual por línea' table='[afluencia_linea]' type='table' />
+          <relation connection='webdata-direct.1f3wkks07jb0ay163cagp1ijytrb' name='Estaciones — puntos geográficos' table='[estaciones]' type='table' />
+        </relation>
+        <cols>
+          <map key='[afluencia (Afluencia mensual por línea)]' value='[Afluencia mensual por línea].[afluencia]' />
+          <map key='[afluencia]' value='[Afluencia mensual por estación (Metro CDMX)].[afluencia]' />
+          <map key='[alcaldia_municipio]' value='[Estaciones — puntos geográficos].[alcaldia_municipio]' />
+          <map key='[anio (Afluencia mensual por línea)]' value='[Afluencia mensual por línea].[anio]' />
+          <map key='[anio]' value='[Afluencia mensual por estación (Metro CDMX)].[anio]' />
+          <map key='[es_cetram]' value='[Estaciones — puntos geográficos].[es_cetram]' />
+          <map key='[estacion_id]' value='[Afluencia mensual por estación (Metro CDMX)].[estacion_id]' />
+          <map key='[fuente (Afluencia mensual por línea)]' value='[Afluencia mensual por línea].[fuente]' />
+          <map key='[fuente]' value='[Afluencia mensual por estación (Metro CDMX)].[fuente]' />
+          <map key='[jerarquia_transporte]' value='[Estaciones — puntos geográficos].[jerarquia_transporte]' />
+          <map key='[lat]' value='[Estaciones — puntos geográficos].[lat]' />
+          <map key='[linea_id (Afluencia mensual por línea)]' value='[Afluencia mensual por línea].[linea_id]' />
+          <map key='[linea_id (Estaciones — puntos geográficos)]' value='[Estaciones — puntos geográficos].[linea_id]' />
+          <map key='[linea_id]' value='[Afluencia mensual por estación (Metro CDMX)].[linea_id]' />
+          <map key='[lon]' value='[Estaciones — puntos geográficos].[lon]' />
+          <map key='[mes (Afluencia mensual por línea)]' value='[Afluencia mensual por línea].[mes]' />
+          <map key='[mes]' value='[Afluencia mensual por estación (Metro CDMX)].[mes]' />
+          <map key='[mes_num (Afluencia mensual por línea)]' value='[Afluencia mensual por línea].[mes_num]' />
+          <map key='[mes_num]' value='[Afluencia mensual por estación (Metro CDMX)].[mes_num]' />
+          <map key='[nombre]' value='[Estaciones — puntos geográficos].[nombre]' />
+          <map key='[nombre_estacion]' value='[Afluencia mensual por estación (Metro CDMX)].[nombre_estacion]' />
+          <map key='[nombre_linea (Afluencia mensual por línea)]' value='[Afluencia mensual por línea].[nombre_linea]' />
+          <map key='[nombre_linea]' value='[Afluencia mensual por estación (Metro CDMX)].[nombre_linea]' />
+          <map key='[num_comercial (Afluencia mensual por línea)]' value='[Afluencia mensual por línea].[num_comercial]' />
+          <map key='[num_comercial (Estaciones — puntos geográficos)]' value='[Estaciones — puntos geográficos].[num_comercial]' />
+          <map key='[num_comercial]' value='[Afluencia mensual por estación (Metro CDMX)].[num_comercial]' />
+          <map key='[sistema (Estaciones — puntos geográficos)]' value='[Estaciones — puntos geográficos].[sistema]' />
+          <map key='[sistema]' value='[Afluencia mensual por línea].[sistema]' />
+          <map key='[tipo]' value='[Estaciones — puntos geográficos].[tipo]' />
+        </cols>
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>estacion_id</remote-name>
+            <remote-type>-1</remote-type>
+            <local-name>[estacion_id]</local-name>
+            <parent-name>[Afluencia mensual por estación (Metro CDMX)]</parent-name>
+            <remote-alias>ID Estación</remote-alias>
+            <ordinal>0</ordinal>
+            <caption>ID Estación</caption>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='RemoteTypeName'>&quot;int&quot;</attribute>
+              <attribute datatype='boolean' name='filterable_column'>false</attribute>
+            </attributes>
+            <object-id>[afluencia_estacion_63BA86D00D6B4453836BD4F248349935]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>nombre_estacion</remote-name>
+            <remote-type>-1</remote-type>
+            <local-name>[nombre_estacion]</local-name>
+            <parent-name>[Afluencia mensual por estación (Metro CDMX)]</parent-name>
+            <remote-alias>Estación</remote-alias>
+            <ordinal>1</ordinal>
+            <caption>Estación</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='RemoteTypeName'>&quot;string&quot;</attribute>
+              <attribute datatype='boolean' name='filterable_column'>false</attribute>
+            </attributes>
+            <object-id>[afluencia_estacion_63BA86D00D6B4453836BD4F248349935]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>linea_id</remote-name>
+            <remote-type>-1</remote-type>
+            <local-name>[linea_id]</local-name>
+            <parent-name>[Afluencia mensual por estación (Metro CDMX)]</parent-name>
+            <remote-alias>ID Línea</remote-alias>
+            <ordinal>2</ordinal>
+            <caption>ID Línea</caption>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='RemoteTypeName'>&quot;int&quot;</attribute>
+              <attribute datatype='boolean' name='filterable_column'>false</attribute>
+            </attributes>
+            <object-id>[afluencia_estacion_63BA86D00D6B4453836BD4F248349935]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>num_comercial</remote-name>
+            <remote-type>-1</remote-type>
+            <local-name>[num_comercial]</local-name>
+            <parent-name>[Afluencia mensual por estación (Metro CDMX)]</parent-name>
+            <remote-alias>Línea</remote-alias>
+            <ordinal>3</ordinal>
+            <caption>Línea</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='RemoteTypeName'>&quot;string&quot;</attribute>
+              <attribute datatype='boolean' name='filterable_column'>false</attribute>
+            </attributes>
+            <object-id>[afluencia_estacion_63BA86D00D6B4453836BD4F248349935]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>nombre_linea</remote-name>
+            <remote-type>-1</remote-type>
+            <local-name>[nombre_linea]</local-name>
+            <parent-name>[Afluencia mensual por estación (Metro CDMX)]</parent-name>
+            <remote-alias>Nombre Línea</remote-alias>
+            <ordinal>4</ordinal>
+            <caption>Nombre Línea</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='RemoteTypeName'>&quot;string&quot;</attribute>
+              <attribute datatype='boolean' name='filterable_column'>false</attribute>
+            </attributes>
+            <object-id>[afluencia_estacion_63BA86D00D6B4453836BD4F248349935]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>anio</remote-name>
+            <remote-type>-1</remote-type>
+            <local-name>[anio]</local-name>
+            <parent-name>[Afluencia mensual por estación (Metro CDMX)]</parent-name>
+            <remote-alias>Año</remote-alias>
+            <ordinal>5</ordinal>
+            <caption>Año</caption>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='RemoteTypeName'>&quot;int&quot;</attribute>
+              <attribute datatype='boolean' name='filterable_column'>false</attribute>
+            </attributes>
+            <object-id>[afluencia_estacion_63BA86D00D6B4453836BD4F248349935]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>mes_num</remote-name>
+            <remote-type>-1</remote-type>
+            <local-name>[mes_num]</local-name>
+            <parent-name>[Afluencia mensual por estación (Metro CDMX)]</parent-name>
+            <remote-alias>Mes (número)</remote-alias>
+            <ordinal>6</ordinal>
+            <caption>Mes (número)</caption>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='RemoteTypeName'>&quot;int&quot;</attribute>
+              <attribute datatype='boolean' name='filterable_column'>false</attribute>
+            </attributes>
+            <object-id>[afluencia_estacion_63BA86D00D6B4453836BD4F248349935]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>mes</remote-name>
+            <remote-type>-1</remote-type>
+            <local-name>[mes]</local-name>
+            <parent-name>[Afluencia mensual por estación (Metro CDMX)]</parent-name>
+            <remote-alias>Mes</remote-alias>
+            <ordinal>7</ordinal>
+            <caption>Mes</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='RemoteTypeName'>&quot;string&quot;</attribute>
+              <attribute datatype='boolean' name='filterable_column'>false</attribute>
+            </attributes>
+            <object-id>[afluencia_estacion_63BA86D00D6B4453836BD4F248349935]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>afluencia</remote-name>
+            <remote-type>-1</remote-type>
+            <local-name>[afluencia]</local-name>
+            <parent-name>[Afluencia mensual por estación (Metro CDMX)]</parent-name>
+            <remote-alias>Afluencia</remote-alias>
+            <ordinal>8</ordinal>
+            <caption>Afluencia</caption>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='RemoteTypeName'>&quot;int&quot;</attribute>
+              <attribute datatype='boolean' name='filterable_column'>false</attribute>
+            </attributes>
+            <object-id>[afluencia_estacion_63BA86D00D6B4453836BD4F248349935]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>fuente</remote-name>
+            <remote-type>-1</remote-type>
+            <local-name>[fuente]</local-name>
+            <parent-name>[Afluencia mensual por estación (Metro CDMX)]</parent-name>
+            <remote-alias>Fuente</remote-alias>
+            <ordinal>9</ordinal>
+            <caption>Fuente</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='RemoteTypeName'>&quot;string&quot;</attribute>
+              <attribute datatype='boolean' name='filterable_column'>false</attribute>
+            </attributes>
+            <object-id>[afluencia_estacion_63BA86D00D6B4453836BD4F248349935]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>linea_id</remote-name>
+            <remote-type>-1</remote-type>
+            <local-name>[linea_id (Afluencia mensual por línea)]</local-name>
+            <parent-name>[Afluencia mensual por línea]</parent-name>
+            <remote-alias>ID Línea</remote-alias>
+            <ordinal>10</ordinal>
+            <caption>ID Línea</caption>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='RemoteTypeName'>&quot;int&quot;</attribute>
+              <attribute datatype='boolean' name='filterable_column'>false</attribute>
+            </attributes>
+            <object-id>[afluencia_linea_FE0F4E51E0D241508B517E84003962AB]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>sistema</remote-name>
+            <remote-type>-1</remote-type>
+            <local-name>[sistema]</local-name>
+            <parent-name>[Afluencia mensual por línea]</parent-name>
+            <remote-alias>Sistema</remote-alias>
+            <ordinal>11</ordinal>
+            <caption>Sistema</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='RemoteTypeName'>&quot;string&quot;</attribute>
+              <attribute datatype='boolean' name='filterable_column'>false</attribute>
+            </attributes>
+            <object-id>[afluencia_linea_FE0F4E51E0D241508B517E84003962AB]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>num_comercial</remote-name>
+            <remote-type>-1</remote-type>
+            <local-name>[num_comercial (Afluencia mensual por línea)]</local-name>
+            <parent-name>[Afluencia mensual por línea]</parent-name>
+            <remote-alias>Núm. Comercial</remote-alias>
+            <ordinal>12</ordinal>
+            <caption>Núm. Comercial</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='RemoteTypeName'>&quot;string&quot;</attribute>
+              <attribute datatype='boolean' name='filterable_column'>false</attribute>
+            </attributes>
+            <object-id>[afluencia_linea_FE0F4E51E0D241508B517E84003962AB]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>nombre_linea</remote-name>
+            <remote-type>-1</remote-type>
+            <local-name>[nombre_linea (Afluencia mensual por línea)]</local-name>
+            <parent-name>[Afluencia mensual por línea]</parent-name>
+            <remote-alias>Nombre Línea</remote-alias>
+            <ordinal>13</ordinal>
+            <caption>Nombre Línea</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='RemoteTypeName'>&quot;string&quot;</attribute>
+              <attribute datatype='boolean' name='filterable_column'>false</attribute>
+            </attributes>
+            <object-id>[afluencia_linea_FE0F4E51E0D241508B517E84003962AB]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>anio</remote-name>
+            <remote-type>-1</remote-type>
+            <local-name>[anio (Afluencia mensual por línea)]</local-name>
+            <parent-name>[Afluencia mensual por línea]</parent-name>
+            <remote-alias>Año</remote-alias>
+            <ordinal>14</ordinal>
+            <caption>Año</caption>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='RemoteTypeName'>&quot;int&quot;</attribute>
+              <attribute datatype='boolean' name='filterable_column'>false</attribute>
+            </attributes>
+            <object-id>[afluencia_linea_FE0F4E51E0D241508B517E84003962AB]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>mes_num</remote-name>
+            <remote-type>-1</remote-type>
+            <local-name>[mes_num (Afluencia mensual por línea)]</local-name>
+            <parent-name>[Afluencia mensual por línea]</parent-name>
+            <remote-alias>Mes (número)</remote-alias>
+            <ordinal>15</ordinal>
+            <caption>Mes (número)</caption>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='RemoteTypeName'>&quot;int&quot;</attribute>
+              <attribute datatype='boolean' name='filterable_column'>false</attribute>
+            </attributes>
+            <object-id>[afluencia_linea_FE0F4E51E0D241508B517E84003962AB]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>mes</remote-name>
+            <remote-type>-1</remote-type>
+            <local-name>[mes (Afluencia mensual por línea)]</local-name>
+            <parent-name>[Afluencia mensual por línea]</parent-name>
+            <remote-alias>Mes</remote-alias>
+            <ordinal>16</ordinal>
+            <caption>Mes</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='RemoteTypeName'>&quot;string&quot;</attribute>
+              <attribute datatype='boolean' name='filterable_column'>false</attribute>
+            </attributes>
+            <object-id>[afluencia_linea_FE0F4E51E0D241508B517E84003962AB]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>afluencia</remote-name>
+            <remote-type>-1</remote-type>
+            <local-name>[afluencia (Afluencia mensual por línea)]</local-name>
+            <parent-name>[Afluencia mensual por línea]</parent-name>
+            <remote-alias>Afluencia</remote-alias>
+            <ordinal>17</ordinal>
+            <caption>Afluencia</caption>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='RemoteTypeName'>&quot;int&quot;</attribute>
+              <attribute datatype='boolean' name='filterable_column'>false</attribute>
+            </attributes>
+            <object-id>[afluencia_linea_FE0F4E51E0D241508B517E84003962AB]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>fuente</remote-name>
+            <remote-type>-1</remote-type>
+            <local-name>[fuente (Afluencia mensual por línea)]</local-name>
+            <parent-name>[Afluencia mensual por línea]</parent-name>
+            <remote-alias>Fuente</remote-alias>
+            <ordinal>18</ordinal>
+            <caption>Fuente</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='RemoteTypeName'>&quot;string&quot;</attribute>
+              <attribute datatype='boolean' name='filterable_column'>false</attribute>
+            </attributes>
+            <object-id>[afluencia_linea_FE0F4E51E0D241508B517E84003962AB]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>nombre</remote-name>
+            <remote-type>-1</remote-type>
+            <local-name>[nombre]</local-name>
+            <parent-name>[Estaciones — puntos geográficos]</parent-name>
+            <remote-alias>Nombre</remote-alias>
+            <ordinal>19</ordinal>
+            <caption>Nombre</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='RemoteTypeName'>&quot;string&quot;</attribute>
+              <attribute datatype='boolean' name='filterable_column'>false</attribute>
+            </attributes>
+            <object-id>[estaciones_E439071FE14F4DE4AFAE291F6AD8C610]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>sistema</remote-name>
+            <remote-type>-1</remote-type>
+            <local-name>[sistema (Estaciones — puntos geográficos)]</local-name>
+            <parent-name>[Estaciones — puntos geográficos]</parent-name>
+            <remote-alias>Sistema</remote-alias>
+            <ordinal>20</ordinal>
+            <caption>Sistema</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='RemoteTypeName'>&quot;string&quot;</attribute>
+              <attribute datatype='boolean' name='filterable_column'>false</attribute>
+            </attributes>
+            <object-id>[estaciones_E439071FE14F4DE4AFAE291F6AD8C610]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>linea_id</remote-name>
+            <remote-type>-1</remote-type>
+            <local-name>[linea_id (Estaciones — puntos geográficos)]</local-name>
+            <parent-name>[Estaciones — puntos geográficos]</parent-name>
+            <remote-alias>ID Línea</remote-alias>
+            <ordinal>21</ordinal>
+            <caption>ID Línea</caption>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='RemoteTypeName'>&quot;int&quot;</attribute>
+              <attribute datatype='boolean' name='filterable_column'>false</attribute>
+            </attributes>
+            <object-id>[estaciones_E439071FE14F4DE4AFAE291F6AD8C610]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>num_comercial</remote-name>
+            <remote-type>-1</remote-type>
+            <local-name>[num_comercial (Estaciones — puntos geográficos)]</local-name>
+            <parent-name>[Estaciones — puntos geográficos]</parent-name>
+            <remote-alias>Línea</remote-alias>
+            <ordinal>22</ordinal>
+            <caption>Línea</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='RemoteTypeName'>&quot;string&quot;</attribute>
+              <attribute datatype='boolean' name='filterable_column'>false</attribute>
+            </attributes>
+            <object-id>[estaciones_E439071FE14F4DE4AFAE291F6AD8C610]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>tipo</remote-name>
+            <remote-type>-1</remote-type>
+            <local-name>[tipo]</local-name>
+            <parent-name>[Estaciones — puntos geográficos]</parent-name>
+            <remote-alias>Tipo</remote-alias>
+            <ordinal>23</ordinal>
+            <caption>Tipo</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='RemoteTypeName'>&quot;string&quot;</attribute>
+              <attribute datatype='boolean' name='filterable_column'>false</attribute>
+            </attributes>
+            <object-id>[estaciones_E439071FE14F4DE4AFAE291F6AD8C610]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>alcaldia_municipio</remote-name>
+            <remote-type>-1</remote-type>
+            <local-name>[alcaldia_municipio]</local-name>
+            <parent-name>[Estaciones — puntos geográficos]</parent-name>
+            <remote-alias>Alcaldía/Municipio</remote-alias>
+            <ordinal>24</ordinal>
+            <caption>Alcaldía/Municipio</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='RemoteTypeName'>&quot;string&quot;</attribute>
+              <attribute datatype='boolean' name='filterable_column'>false</attribute>
+            </attributes>
+            <object-id>[estaciones_E439071FE14F4DE4AFAE291F6AD8C610]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>jerarquia_transporte</remote-name>
+            <remote-type>-1</remote-type>
+            <local-name>[jerarquia_transporte]</local-name>
+            <parent-name>[Estaciones — puntos geográficos]</parent-name>
+            <remote-alias>Jerarquía Transporte</remote-alias>
+            <ordinal>25</ordinal>
+            <caption>Jerarquía Transporte</caption>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='RemoteTypeName'>&quot;string&quot;</attribute>
+              <attribute datatype='boolean' name='filterable_column'>false</attribute>
+            </attributes>
+            <object-id>[estaciones_E439071FE14F4DE4AFAE291F6AD8C610]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>es_cetram</remote-name>
+            <remote-type>-1</remote-type>
+            <local-name>[es_cetram]</local-name>
+            <parent-name>[Estaciones — puntos geográficos]</parent-name>
+            <remote-alias>Es CETRAM</remote-alias>
+            <ordinal>26</ordinal>
+            <caption>Es CETRAM</caption>
+            <local-type>boolean</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='RemoteTypeName'>&quot;bool&quot;</attribute>
+              <attribute datatype='boolean' name='filterable_column'>false</attribute>
+            </attributes>
+            <object-id>[estaciones_E439071FE14F4DE4AFAE291F6AD8C610]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>lat</remote-name>
+            <remote-type>-1</remote-type>
+            <local-name>[lat]</local-name>
+            <parent-name>[Estaciones — puntos geográficos]</parent-name>
+            <remote-alias>Latitud</remote-alias>
+            <ordinal>27</ordinal>
+            <caption>Latitud</caption>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='RemoteTypeName'>&quot;float&quot;</attribute>
+              <attribute datatype='boolean' name='filterable_column'>false</attribute>
+            </attributes>
+            <object-id>[estaciones_E439071FE14F4DE4AFAE291F6AD8C610]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>lon</remote-name>
+            <remote-type>-1</remote-type>
+            <local-name>[lon]</local-name>
+            <parent-name>[Estaciones — puntos geográficos]</parent-name>
+            <remote-alias>Longitud</remote-alias>
+            <ordinal>28</ordinal>
+            <caption>Longitud</caption>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='RemoteTypeName'>&quot;float&quot;</attribute>
+              <attribute datatype='boolean' name='filterable_column'>false</attribute>
+            </attributes>
+            <object-id>[estaciones_E439071FE14F4DE4AFAE291F6AD8C610]</object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='Measure Names' datatype='string' name='[:Measure Names]' role='dimension' type='nominal' />
+      <column caption='Label Condicional' datatype='integer' name='[Calculation_2860969991217153]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='IF [Parameters].[Parameter 2860969990729728] THEN [afluencia] ELSE NULL END' />
+      </column>
+      <column caption='Measure Values' datatype='real' name='[Multiple Values]' role='measure' type='quantitative' />
+      <column caption='Afluencia mensual por estación (Metro CDMX)' datatype='table' name='[__tableau_internal_object_id__].[afluencia_estacion_63BA86D00D6B4453836BD4F248349935]' role='measure' type='quantitative' />
+      <column caption='Afluencia mensual por línea' datatype='table' name='[__tableau_internal_object_id__].[afluencia_linea_FE0F4E51E0D241508B517E84003962AB]' role='measure' type='quantitative' />
+      <column caption='Estaciones — puntos geográficos' datatype='table' name='[__tableau_internal_object_id__].[estaciones_E439071FE14F4DE4AFAE291F6AD8C610]' role='measure' type='quantitative' />
+      <column caption='Afluencia (Afluencia mensual por línea)' datatype='integer' name='[afluencia (Afluencia mensual por línea)]' role='measure' type='quantitative' />
+      <column caption='Afluencia' datatype='integer' name='[afluencia]' role='measure' type='quantitative' />
+      <column caption='Alcaldía/Municipio' datatype='string' name='[alcaldia_municipio]' role='dimension' type='nominal' />
+      <column caption='Año (Afluencia mensual por línea)' datatype='integer' name='[anio (Afluencia mensual por línea)]' role='measure' type='quantitative' />
+      <column caption='Año' datatype='integer' name='[anio]' role='measure' type='quantitative' />
+      <column caption='Es CETRAM' datatype='boolean' name='[es_cetram]' role='dimension' type='nominal' />
+      <column caption='ID Estación' datatype='integer' name='[estacion_id]' role='dimension' type='ordinal' />
+      <column caption='Fuente (Afluencia mensual por línea)' datatype='string' name='[fuente (Afluencia mensual por línea)]' role='dimension' type='nominal' />
+      <column caption='Fuente' datatype='string' name='[fuente]' role='dimension' type='nominal' />
+      <column caption='Jerarquía Transporte' datatype='string' name='[jerarquia_transporte]' role='dimension' type='nominal' />
+      <column aggregation='Avg' caption='Latitud' datatype='real' name='[lat]' role='measure' semantic-role='[Geographical].[Latitude]' type='quantitative' />
+      <column caption='ID Línea (Afluencia mensual por línea)' datatype='integer' name='[linea_id (Afluencia mensual por línea)]' role='dimension' type='ordinal' />
+      <column caption='ID Línea (Estaciones — puntos geográficos)' datatype='integer' name='[linea_id (Estaciones — puntos geográficos)]' role='dimension' type='ordinal' />
+      <column caption='ID Línea' datatype='integer' name='[linea_id]' role='dimension' type='ordinal' />
+      <column aggregation='Avg' caption='Longitud' datatype='real' name='[lon]' role='measure' semantic-role='[Geographical].[Longitude]' type='quantitative' />
+      <column caption='Mes (Afluencia mensual por línea)' datatype='string' name='[mes (Afluencia mensual por línea)]' role='dimension' type='nominal' />
+      <column caption='Mes' datatype='string' name='[mes]' role='dimension' type='nominal' />
+      <column caption='Mes (número) (Afluencia mensual por línea)' datatype='integer' name='[mes_num (Afluencia mensual por línea)]' role='dimension' type='ordinal' />
+      <column caption='Mes (número)' datatype='integer' name='[mes_num]' role='dimension' type='ordinal' />
+      <column caption='Nombre' datatype='string' name='[nombre]' role='dimension' type='nominal' />
+      <column caption='Estación' datatype='string' name='[nombre_estacion]' role='dimension' type='nominal' />
+      <column caption='Nombre Línea (Afluencia mensual por línea)' datatype='string' name='[nombre_linea (Afluencia mensual por línea)]' role='dimension' type='nominal' />
+      <column caption='Nombre Línea' datatype='string' name='[nombre_linea]' role='dimension' type='nominal' />
+      <column caption='Núm. Comercial' datatype='string' name='[num_comercial (Afluencia mensual por línea)]' role='dimension' type='nominal' />
+      <column caption='Línea (Estaciones — puntos geográficos)' datatype='string' name='[num_comercial (Estaciones — puntos geográficos)]' role='dimension' type='nominal' />
+      <column caption='Línea' datatype='string' name='[num_comercial]' role='dimension' type='nominal'>
+        <aliases>
+          <alias key='&quot;1&quot;' value='Línea 1: Observatorio — Pantitlán' />
+          <alias key='&quot;2&quot;' value='Línea 2: Cuatro Caminos — Tasqueña' />
+          <alias key='&quot;3&quot;' value='Línea 3: Indios Verdes — Universidad' />
+          <alias key='&quot;4&quot;' value='Línea 4: Martín Carrera — Santa Anita' />
+          <alias key='&quot;5&quot;' value='Línea 5: Politécnico — Pantitlán' />
+          <alias key='&quot;6&quot;' value='Línea 6: El Rosario — Martín Carrera' />
+          <alias key='&quot;7&quot;' value='Línea 7: El Rosario — Barranca del Muerto' />
+          <alias key='&quot;8&quot;' value='Línea 8: Garibaldi — Constitución de 1917' />
+          <alias key='&quot;9&quot;' value='Línea 9: Tacubaya — Pantitlán' />
+          <alias key='&quot;A&quot;' value='Línea A: La Paz — Pantitlán' />
+          <alias key='&quot;B&quot;' value='Línea B: Ciudad Azteca — Buenavista' />
+          <alias key='&quot;L12&quot;' value='Línea 12: Mixcoac — Tláhuac' />
+        </aliases>
+      </column>
+      <column caption='Sistema (Estaciones — puntos geográficos)' datatype='string' name='[sistema (Estaciones — puntos geográficos)]' role='dimension' type='nominal' />
+      <column caption='Sistema' datatype='string' name='[sistema]' role='dimension' type='nominal' />
+      <column caption='Tipo' datatype='string' name='[tipo]' role='dimension' type='nominal' />
+      <column-instance column='[num_comercial (Afluencia mensual por línea)]' derivation='None' name='[none:num_comercial (Afluencia mensual por línea):nk]' pivot='key' type='nominal' />
+      <column-instance column='[num_comercial]' derivation='None' name='[none:num_comercial:nk]' pivot='key' type='nominal' />
+      <column-instance column='[sistema (Estaciones — puntos geográficos)]' derivation='None' name='[none:sistema (Estaciones — puntos geográficos):nk]' pivot='key' type='nominal' />
+      <extract count='-1' enabled='true' object-id='' units='records' user-specific='false'>
+        <connection access_mode='readonly' authentication='auth-none' author-locale='en_US' class='hyper' dbname='/Users/hcabrera/Documents/My Tableau Repository/Datasources/federated.0wd8lb114dajru19as24b0h5ivhj_0mligiq185p8i11a342ff0lgjw3x.hyper' default-settings='yes' schema='Extract' sslmode='' tablename='Extract' update-time='09/01/2026 06:29:58 PM' username='tableau_internal_user'>
+          <relation type='collection'>
+            <relation name='afluencia_estacion_63BA86D00D6B4453836BD4F248349935' table='[Extract].[afluencia_estacion_63BA86D00D6B4453836BD4F248349935]' type='table' />
+            <relation name='afluencia_linea_FE0F4E51E0D241508B517E84003962AB' table='[Extract].[afluencia_linea_FE0F4E51E0D241508B517E84003962AB]' type='table' />
+            <relation name='estaciones_E439071FE14F4DE4AFAE291F6AD8C610' table='[Extract].[estaciones_E439071FE14F4DE4AFAE291F6AD8C610]' type='table' />
+          </relation>
+          <cols>
+            <map key='[afluencia (Afluencia mensual por línea)]' value='[afluencia_linea_FE0F4E51E0D241508B517E84003962AB].[afluencia]' />
+            <map key='[afluencia]' value='[afluencia_estacion_63BA86D00D6B4453836BD4F248349935].[afluencia]' />
+            <map key='[alcaldia_municipio]' value='[estaciones_E439071FE14F4DE4AFAE291F6AD8C610].[alcaldia_municipio]' />
+            <map key='[anio (Afluencia mensual por línea)]' value='[afluencia_linea_FE0F4E51E0D241508B517E84003962AB].[anio]' />
+            <map key='[anio]' value='[afluencia_estacion_63BA86D00D6B4453836BD4F248349935].[anio]' />
+            <map key='[es_cetram]' value='[estaciones_E439071FE14F4DE4AFAE291F6AD8C610].[es_cetram]' />
+            <map key='[estacion_id]' value='[afluencia_estacion_63BA86D00D6B4453836BD4F248349935].[estacion_id]' />
+            <map key='[fuente (Afluencia mensual por línea)]' value='[afluencia_linea_FE0F4E51E0D241508B517E84003962AB].[fuente]' />
+            <map key='[fuente]' value='[afluencia_estacion_63BA86D00D6B4453836BD4F248349935].[fuente]' />
+            <map key='[jerarquia_transporte]' value='[estaciones_E439071FE14F4DE4AFAE291F6AD8C610].[jerarquia_transporte]' />
+            <map key='[lat]' value='[estaciones_E439071FE14F4DE4AFAE291F6AD8C610].[lat]' />
+            <map key='[linea_id (Afluencia mensual por línea)]' value='[afluencia_linea_FE0F4E51E0D241508B517E84003962AB].[linea_id]' />
+            <map key='[linea_id (Estaciones — puntos geográficos)]' value='[estaciones_E439071FE14F4DE4AFAE291F6AD8C610].[linea_id]' />
+            <map key='[linea_id]' value='[afluencia_estacion_63BA86D00D6B4453836BD4F248349935].[linea_id]' />
+            <map key='[lon]' value='[estaciones_E439071FE14F4DE4AFAE291F6AD8C610].[lon]' />
+            <map key='[mes (Afluencia mensual por línea)]' value='[afluencia_linea_FE0F4E51E0D241508B517E84003962AB].[mes]' />
+            <map key='[mes]' value='[afluencia_estacion_63BA86D00D6B4453836BD4F248349935].[mes]' />
+            <map key='[mes_num (Afluencia mensual por línea)]' value='[afluencia_linea_FE0F4E51E0D241508B517E84003962AB].[mes_num]' />
+            <map key='[mes_num]' value='[afluencia_estacion_63BA86D00D6B4453836BD4F248349935].[mes_num]' />
+            <map key='[nombre]' value='[estaciones_E439071FE14F4DE4AFAE291F6AD8C610].[nombre]' />
+            <map key='[nombre_estacion]' value='[afluencia_estacion_63BA86D00D6B4453836BD4F248349935].[nombre_estacion]' />
+            <map key='[nombre_linea (Afluencia mensual por línea)]' value='[afluencia_linea_FE0F4E51E0D241508B517E84003962AB].[nombre_linea]' />
+            <map key='[nombre_linea]' value='[afluencia_estacion_63BA86D00D6B4453836BD4F248349935].[nombre_linea]' />
+            <map key='[num_comercial (Afluencia mensual por línea)]' value='[afluencia_linea_FE0F4E51E0D241508B517E84003962AB].[num_comercial]' />
+            <map key='[num_comercial (Estaciones — puntos geográficos)]' value='[estaciones_E439071FE14F4DE4AFAE291F6AD8C610].[num_comercial]' />
+            <map key='[num_comercial]' value='[afluencia_estacion_63BA86D00D6B4453836BD4F248349935].[num_comercial]' />
+            <map key='[sistema (Estaciones — puntos geográficos)]' value='[estaciones_E439071FE14F4DE4AFAE291F6AD8C610].[sistema]' />
+            <map key='[sistema]' value='[afluencia_linea_FE0F4E51E0D241508B517E84003962AB].[sistema]' />
+            <map key='[tipo]' value='[estaciones_E439071FE14F4DE4AFAE291F6AD8C610].[tipo]' />
+          </cols>
+          <refresh>
+            <refresh-event add-from-file-path='Apimetro — http://localhost:8080' increment-value='%null%' refresh-type='create' rows-inserted='62276' timestamp-start='2026-09-01 18:29:58.379' />
+          </refresh>
+          <metadata-records>
+            <metadata-record class='column'>
+              <remote-name>estacion_id</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[estacion_id]</local-name>
+              <parent-name>[afluencia_estacion_63BA86D00D6B4453836BD4F248349935]</parent-name>
+              <remote-alias>estacion_id</remote-alias>
+              <ordinal>0</ordinal>
+              <family>Afluencia mensual por estación (Metro CDMX)</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>226</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[afluencia_estacion_63BA86D00D6B4453836BD4F248349935]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>nombre_estacion</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[nombre_estacion]</local-name>
+              <parent-name>[afluencia_estacion_63BA86D00D6B4453836BD4F248349935]</parent-name>
+              <remote-alias>nombre_estacion</remote-alias>
+              <ordinal>1</ordinal>
+              <family>Afluencia mensual por estación (Metro CDMX)</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>190</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LROOT' />
+              <object-id>[afluencia_estacion_63BA86D00D6B4453836BD4F248349935]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>linea_id</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[linea_id]</local-name>
+              <parent-name>[afluencia_estacion_63BA86D00D6B4453836BD4F248349935]</parent-name>
+              <remote-alias>linea_id</remote-alias>
+              <ordinal>2</ordinal>
+              <family>Afluencia mensual por estación (Metro CDMX)</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>12</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[afluencia_estacion_63BA86D00D6B4453836BD4F248349935]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>num_comercial</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[num_comercial]</local-name>
+              <parent-name>[afluencia_estacion_63BA86D00D6B4453836BD4F248349935]</parent-name>
+              <remote-alias>num_comercial</remote-alias>
+              <ordinal>3</ordinal>
+              <family>Afluencia mensual por estación (Metro CDMX)</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>12</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LROOT' />
+              <object-id>[afluencia_estacion_63BA86D00D6B4453836BD4F248349935]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>nombre_linea</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[nombre_linea]</local-name>
+              <parent-name>[afluencia_estacion_63BA86D00D6B4453836BD4F248349935]</parent-name>
+              <remote-alias>nombre_linea</remote-alias>
+              <ordinal>4</ordinal>
+              <family>Afluencia mensual por estación (Metro CDMX)</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>12</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LROOT' />
+              <object-id>[afluencia_estacion_63BA86D00D6B4453836BD4F248349935]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>anio</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[anio]</local-name>
+              <parent-name>[afluencia_estacion_63BA86D00D6B4453836BD4F248349935]</parent-name>
+              <remote-alias>anio</remote-alias>
+              <ordinal>5</ordinal>
+              <family>Afluencia mensual por estación (Metro CDMX)</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>17</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[afluencia_estacion_63BA86D00D6B4453836BD4F248349935]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>mes_num</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[mes_num]</local-name>
+              <parent-name>[afluencia_estacion_63BA86D00D6B4453836BD4F248349935]</parent-name>
+              <remote-alias>mes_num</remote-alias>
+              <ordinal>6</ordinal>
+              <family>Afluencia mensual por estación (Metro CDMX)</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>12</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[afluencia_estacion_63BA86D00D6B4453836BD4F248349935]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>mes</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[mes]</local-name>
+              <parent-name>[afluencia_estacion_63BA86D00D6B4453836BD4F248349935]</parent-name>
+              <remote-alias>mes</remote-alias>
+              <ordinal>7</ordinal>
+              <family>Afluencia mensual por estación (Metro CDMX)</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>12</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LROOT' />
+              <object-id>[afluencia_estacion_63BA86D00D6B4453836BD4F248349935]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>afluencia</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[afluencia]</local-name>
+              <parent-name>[afluencia_estacion_63BA86D00D6B4453836BD4F248349935]</parent-name>
+              <remote-alias>afluencia</remote-alias>
+              <ordinal>8</ordinal>
+              <family>Afluencia mensual por estación (Metro CDMX)</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>35446</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[afluencia_estacion_63BA86D00D6B4453836BD4F248349935]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>fuente</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[fuente]</local-name>
+              <parent-name>[afluencia_estacion_63BA86D00D6B4453836BD4F248349935]</parent-name>
+              <remote-alias>fuente</remote-alias>
+              <ordinal>9</ordinal>
+              <family>Afluencia mensual por estación (Metro CDMX)</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>1</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LROOT' />
+              <object-id>[afluencia_estacion_63BA86D00D6B4453836BD4F248349935]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>linea_id</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[linea_id (Afluencia mensual por línea)]</local-name>
+              <parent-name>[afluencia_linea_FE0F4E51E0D241508B517E84003962AB]</parent-name>
+              <remote-alias>linea_id</remote-alias>
+              <ordinal>10</ordinal>
+              <family>Afluencia mensual por línea</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>35</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[afluencia_linea_FE0F4E51E0D241508B517E84003962AB]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>sistema</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[sistema]</local-name>
+              <parent-name>[afluencia_linea_FE0F4E51E0D241508B517E84003962AB]</parent-name>
+              <remote-alias>sistema</remote-alias>
+              <ordinal>11</ordinal>
+              <family>Afluencia mensual por línea</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>5</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LROOT' />
+              <object-id>[afluencia_linea_FE0F4E51E0D241508B517E84003962AB]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>num_comercial</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[num_comercial (Afluencia mensual por línea)]</local-name>
+              <parent-name>[afluencia_linea_FE0F4E51E0D241508B517E84003962AB]</parent-name>
+              <remote-alias>num_comercial</remote-alias>
+              <ordinal>12</ordinal>
+              <family>Afluencia mensual por línea</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>15</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LROOT' />
+              <object-id>[afluencia_linea_FE0F4E51E0D241508B517E84003962AB]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>nombre_linea</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[nombre_linea (Afluencia mensual por línea)]</local-name>
+              <parent-name>[afluencia_linea_FE0F4E51E0D241508B517E84003962AB]</parent-name>
+              <remote-alias>nombre_linea</remote-alias>
+              <ordinal>13</ordinal>
+              <family>Afluencia mensual por línea</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>35</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LROOT' />
+              <object-id>[afluencia_linea_FE0F4E51E0D241508B517E84003962AB]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>anio</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[anio (Afluencia mensual por línea)]</local-name>
+              <parent-name>[afluencia_linea_FE0F4E51E0D241508B517E84003962AB]</parent-name>
+              <remote-alias>anio</remote-alias>
+              <ordinal>14</ordinal>
+              <family>Afluencia mensual por línea</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>7</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[afluencia_linea_FE0F4E51E0D241508B517E84003962AB]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>mes_num</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[mes_num (Afluencia mensual por línea)]</local-name>
+              <parent-name>[afluencia_linea_FE0F4E51E0D241508B517E84003962AB]</parent-name>
+              <remote-alias>mes_num</remote-alias>
+              <ordinal>15</ordinal>
+              <family>Afluencia mensual por línea</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>12</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[afluencia_linea_FE0F4E51E0D241508B517E84003962AB]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>mes</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[mes (Afluencia mensual por línea)]</local-name>
+              <parent-name>[afluencia_linea_FE0F4E51E0D241508B517E84003962AB]</parent-name>
+              <remote-alias>mes</remote-alias>
+              <ordinal>16</ordinal>
+              <family>Afluencia mensual por línea</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>12</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LROOT' />
+              <object-id>[afluencia_linea_FE0F4E51E0D241508B517E84003962AB]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>afluencia</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[afluencia (Afluencia mensual por línea)]</local-name>
+              <parent-name>[afluencia_linea_FE0F4E51E0D241508B517E84003962AB]</parent-name>
+              <remote-alias>afluencia</remote-alias>
+              <ordinal>17</ordinal>
+              <family>Afluencia mensual por línea</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>1165</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[afluencia_linea_FE0F4E51E0D241508B517E84003962AB]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>fuente</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[fuente (Afluencia mensual por línea)]</local-name>
+              <parent-name>[afluencia_linea_FE0F4E51E0D241508B517E84003962AB]</parent-name>
+              <remote-alias>fuente</remote-alias>
+              <ordinal>18</ordinal>
+              <family>Afluencia mensual por línea</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>4</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LROOT' />
+              <object-id>[afluencia_linea_FE0F4E51E0D241508B517E84003962AB]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>nombre</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[nombre]</local-name>
+              <parent-name>[estaciones_E439071FE14F4DE4AFAE291F6AD8C610]</parent-name>
+              <remote-alias>nombre</remote-alias>
+              <ordinal>19</ordinal>
+              <family>Estaciones — puntos geográficos</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>5581</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LROOT' />
+              <object-id>[estaciones_E439071FE14F4DE4AFAE291F6AD8C610]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>sistema</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[sistema (Estaciones — puntos geográficos)]</local-name>
+              <parent-name>[estaciones_E439071FE14F4DE4AFAE291F6AD8C610]</parent-name>
+              <remote-alias>sistema</remote-alias>
+              <ordinal>20</ordinal>
+              <family>Estaciones — puntos geográficos</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>16</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LROOT' />
+              <object-id>[estaciones_E439071FE14F4DE4AFAE291F6AD8C610]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>linea_id</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[linea_id (Estaciones — puntos geográficos)]</local-name>
+              <parent-name>[estaciones_E439071FE14F4DE4AFAE291F6AD8C610]</parent-name>
+              <remote-alias>linea_id</remote-alias>
+              <ordinal>21</ordinal>
+              <family>Estaciones — puntos geográficos</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>462</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[estaciones_E439071FE14F4DE4AFAE291F6AD8C610]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>num_comercial</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[num_comercial (Estaciones — puntos geográficos)]</local-name>
+              <parent-name>[estaciones_E439071FE14F4DE4AFAE291F6AD8C610]</parent-name>
+              <remote-alias>num_comercial</remote-alias>
+              <ordinal>22</ordinal>
+              <family>Estaciones — puntos geográficos</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>365</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LROOT' />
+              <object-id>[estaciones_E439071FE14F4DE4AFAE291F6AD8C610]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>tipo</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[tipo]</local-name>
+              <parent-name>[estaciones_E439071FE14F4DE4AFAE291F6AD8C610]</parent-name>
+              <remote-alias>tipo</remote-alias>
+              <ordinal>23</ordinal>
+              <family>Estaciones — puntos geográficos</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>5</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LROOT' />
+              <object-id>[estaciones_E439071FE14F4DE4AFAE291F6AD8C610]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>alcaldia_municipio</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[alcaldia_municipio]</local-name>
+              <parent-name>[estaciones_E439071FE14F4DE4AFAE291F6AD8C610]</parent-name>
+              <remote-alias>alcaldia_municipio</remote-alias>
+              <ordinal>24</ordinal>
+              <family>Estaciones — puntos geográficos</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>41</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LROOT' />
+              <object-id>[estaciones_E439071FE14F4DE4AFAE291F6AD8C610]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>jerarquia_transporte</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[jerarquia_transporte]</local-name>
+              <parent-name>[estaciones_E439071FE14F4DE4AFAE291F6AD8C610]</parent-name>
+              <remote-alias>jerarquia_transporte</remote-alias>
+              <ordinal>25</ordinal>
+              <family>Estaciones — puntos geográficos</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>4</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LROOT' />
+              <object-id>[estaciones_E439071FE14F4DE4AFAE291F6AD8C610]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>es_cetram</remote-name>
+              <remote-type>11</remote-type>
+              <local-name>[es_cetram]</local-name>
+              <parent-name>[estaciones_E439071FE14F4DE4AFAE291F6AD8C610]</parent-name>
+              <remote-alias>es_cetram</remote-alias>
+              <ordinal>26</ordinal>
+              <family>Estaciones — puntos geográficos</family>
+              <local-type>boolean</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>2</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[estaciones_E439071FE14F4DE4AFAE291F6AD8C610]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>lat</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[lat]</local-name>
+              <parent-name>[estaciones_E439071FE14F4DE4AFAE291F6AD8C610]</parent-name>
+              <remote-alias>lat</remote-alias>
+              <ordinal>27</ordinal>
+              <family>Estaciones — puntos geográficos</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>6265</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[estaciones_E439071FE14F4DE4AFAE291F6AD8C610]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>lon</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[lon]</local-name>
+              <parent-name>[estaciones_E439071FE14F4DE4AFAE291F6AD8C610]</parent-name>
+              <remote-alias>lon</remote-alias>
+              <ordinal>28</ordinal>
+              <family>Estaciones — puntos geográficos</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>6216</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[estaciones_E439071FE14F4DE4AFAE291F6AD8C610]</object-id>
+            </metadata-record>
+          </metadata-records>
+        </connection>
+      </extract>
+      <layout dim-ordering='alphabetic' measure-ordering='alphabetic' show-aliased-fields='true' show-structure='true' />
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[none:num_comercial (Afluencia mensual por línea):nk]' type='palette'>
+            <map to='#499894'>
+              <bucket>&quot;9&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;1&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;5&quot;</bucket>
+            </map>
+            <map to='#79706e'>
+              <bucket>&quot;A&quot;</bucket>
+            </map>
+            <map to='#86bcb6'>
+              <bucket>&quot;10&quot;</bucket>
+            </map>
+            <map to='#8cd17d'>
+              <bucket>&quot;6&quot;</bucket>
+            </map>
+            <map to='#a0cbe8'>
+              <bucket>&quot;2&quot;</bucket>
+            </map>
+            <map to='#b6992d'>
+              <bucket>&quot;7&quot;</bucket>
+            </map>
+            <map to='#bab0ac'>
+              <bucket>&quot;B&quot;</bucket>
+            </map>
+            <map to='#d37295'>
+              <bucket>&quot;L12&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;12&quot;</bucket>
+            </map>
+            <map to='#f1ce63'>
+              <bucket>&quot;8&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;3&quot;</bucket>
+            </map>
+            <map to='#ff9d9a'>
+              <bucket>&quot;13&quot;</bucket>
+            </map>
+            <map to='#ffbe7d'>
+              <bucket>&quot;4&quot;</bucket>
+            </map>
+          </encoding>
+          <encoding attr='color' field='[none:num_comercial:nk]' type='palette'>
+            <map to='#0052a5'>
+              <bucket>&quot;2&quot;</bucket>
+            </map>
+            <map to='#00703c'>
+              <bucket>&quot;8&quot;</bucket>
+            </map>
+            <map to='#00adef'>
+              <bucket>&quot;4&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>%null%</bucket>
+            </map>
+            <map to='#6f2585'>
+              <bucket>&quot;A&quot;</bucket>
+            </map>
+            <map to='#7b3f00'>
+              <bucket>&quot;9&quot;</bucket>
+            </map>
+            <map to='#8b0000'>
+              <bucket>&quot;B&quot;</bucket>
+            </map>
+            <map to='#a8a800'>
+              <bucket>&quot;3&quot;</bucket>
+            </map>
+            <map to='#c8a800'>
+              <bucket>&quot;L12&quot;</bucket>
+            </map>
+            <map to='#da291c'>
+              <bucket>&quot;6&quot;</bucket>
+            </map>
+            <map to='#e87722'>
+              <bucket>&quot;7&quot;</bucket>
+            </map>
+            <map to='#e91f8a'>
+              <bucket>&quot;1&quot;</bucket>
+            </map>
+            <map to='#f5c700'>
+              <bucket>&quot;5&quot;</bucket>
+            </map>
+          </encoding>
+          <encoding attr='color' field='[none:sistema (Estaciones — puntos geográficos):nk]' type='palette'>
+            <map to='#003087'>
+              <bucket>&quot;INTERURBANO&quot;</bucket>
+            </map>
+            <map to='#003087'>
+              <bucket>&quot;PUMABUS&quot;</bucket>
+            </map>
+            <map to='#006b3c'>
+              <bucket>&quot;TL&quot;</bucket>
+            </map>
+            <map to='#00703c'>
+              <bucket>&quot;RTP&quot;</bucket>
+            </map>
+            <map to='#009fe3'>
+              <bucket>&quot;CBB&quot;</bucket>
+            </map>
+            <map to='#404040'>
+              <bucket>&quot;SUB&quot;</bucket>
+            </map>
+            <map to='#808080'>
+              <bucket>&quot;CC&quot;</bucket>
+            </map>
+            <map to='#8b0000'>
+              <bucket>&quot;MEXIBÚS&quot;</bucket>
+            </map>
+            <map to='#cc0000'>
+              <bucket>&quot;MB&quot;</bucket>
+            </map>
+            <map to='#e86100'>
+              <bucket>&quot;METRO&quot;</bucket>
+            </map>
+            <map to='#ff6600'>
+              <bucket>&quot;MEXICABLE&quot;</bucket>
+            </map>
+            <map to='#ffcc00'>
+              <bucket>&quot;TROLE&quot;</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+      </semantic-values>
+      <datasource-dependencies datasource='Parameters'>
+        <column alias='Ocultar' caption='Mostrar Etiquetas' datatype='boolean' name='[Parameter 2860969990729728]' param-domain-type='list' role='measure' type='nominal' value='false'>
+          <calculation class='tableau' formula='false' />
+          <aliases>
+            <alias key='false' value='Ocultar' />
+            <alias key='true' value='Mostrar' />
+          </aliases>
+        </column>
+      </datasource-dependencies>
+      <object-graph>
+        <objects>
+          <object caption='Afluencia mensual por estación (Metro CDMX)' id='afluencia_estacion_63BA86D00D6B4453836BD4F248349935'>
+            <properties context=''>
+              <relation connection='webdata-direct.1f3wkks07jb0ay163cagp1ijytrb' name='Afluencia mensual por estación (Metro CDMX)' table='[afluencia_estacion]' type='table' />
+            </properties>
+            <properties context='extract'>
+              <relation name='afluencia_estacion_63BA86D00D6B4453836BD4F248349935' table='[Extract].[afluencia_estacion_63BA86D00D6B4453836BD4F248349935]' type='table' />
+            </properties>
+          </object>
+          <object caption='Afluencia mensual por línea' id='afluencia_linea_FE0F4E51E0D241508B517E84003962AB'>
+            <properties context=''>
+              <relation connection='webdata-direct.1f3wkks07jb0ay163cagp1ijytrb' name='Afluencia mensual por línea' table='[afluencia_linea]' type='table' />
+            </properties>
+            <properties context='extract'>
+              <relation name='afluencia_linea_FE0F4E51E0D241508B517E84003962AB' table='[Extract].[afluencia_linea_FE0F4E51E0D241508B517E84003962AB]' type='table' />
+            </properties>
+          </object>
+          <object caption='Estaciones — puntos geográficos' id='estaciones_E439071FE14F4DE4AFAE291F6AD8C610'>
+            <properties context=''>
+              <relation connection='webdata-direct.1f3wkks07jb0ay163cagp1ijytrb' name='Estaciones — puntos geográficos' table='[estaciones]' type='table' />
+            </properties>
+            <properties context='extract'>
+              <relation name='estaciones_E439071FE14F4DE4AFAE291F6AD8C610' table='[Extract].[estaciones_E439071FE14F4DE4AFAE291F6AD8C610]' type='table' />
+            </properties>
+          </object>
+        </objects>
+        <relationships>
+          <relationship>
+            <expression op='='>
+              <expression op='[linea_id]' />
+              <expression op='[afluencia (Afluencia mensual por línea)]' />
+            </expression>
+            <first-end-point object-id='afluencia_estacion_63BA86D00D6B4453836BD4F248349935' />
+            <second-end-point object-id='afluencia_linea_FE0F4E51E0D241508B517E84003962AB' />
+          </relationship>
+          <relationship>
+            <expression op='='>
+              <expression op='[linea_id (Afluencia mensual por línea)]' />
+              <expression op='[linea_id (Estaciones — puntos geográficos)]' />
+            </expression>
+            <first-end-point object-id='afluencia_linea_FE0F4E51E0D241508B517E84003962AB' />
+            <second-end-point object-id='estaciones_E439071FE14F4DE4AFAE291F6AD8C610' />
+          </relationship>
+        </relationships>
+      </object-graph>
+    </datasource>
+    <datasource caption='lineas' inline='true' name='federated.1mqhmy31aqrcs51g15xk20refwvl' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='lineas' name='ogrdirect.0sauk601f239j1115emm51v6ko6f'>
+            <connection class='ogrdirect' directory='/Users/hcabrera/Documents/Personal_Documents/Transport-gis-zmvm-mjg/tableau/exports/geo' filename='lineas.geojson' password='' server='' tablename='' />
+          </named-connection>
+        </named-connections>
+        <relation connection='ogrdirect.0sauk601f239j1115emm51v6ko6f' name='lineas.geojson' table='[lineas.geojson]' type='table'>
+          <columns>
+            <column datatype='integer' name='capacidad_vehiculo' ordinal='0' />
+            <column datatype='string' name='color_esp' ordinal='1' />
+            <column datatype='string' name='derecho_de_via' ordinal='2' />
+            <column datatype='real' name='distancia_metros' ordinal='3' />
+            <column datatype='real' name='frecuencia_minutos' ordinal='4' />
+            <column datatype='string' name='fuente' ordinal='5' />
+            <column datatype='string' name='jerarquia_transporte' ordinal='6' />
+            <column datatype='integer' name='linea_id' ordinal='7' />
+            <column datatype='string' name='nombre_linea' ordinal='8' />
+            <column datatype='string' name='nombre_ramal' ordinal='9' />
+            <column datatype='integer' name='sentido' ordinal='10' />
+            <column datatype='string' name='sistema' ordinal='11' />
+            <column datatype='real' name='tam_km' ordinal='12' />
+            <column datatype='string' name='tipo_entidad' ordinal='13' />
+            <column datatype='real' name='velocidad_promedio_kmh' ordinal='14' />
+            <column datatype='spatial' name='Geometry' ordinal='15' />
+          </columns>
+        </relation>
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>capacidad_vehiculo</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[capacidad_vehiculo]</local-name>
+            <parent-name>[lineas.geojson]</parent-name>
+            <remote-alias>capacidad_vehiculo</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[lineas.geojson_176348C512AA43DF9301D885993A58AF]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>color_esp</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[color_esp]</local-name>
+            <parent-name>[lineas.geojson]</parent-name>
+            <remote-alias>color_esp</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[lineas.geojson_176348C512AA43DF9301D885993A58AF]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>derecho_de_via</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[derecho_de_via]</local-name>
+            <parent-name>[lineas.geojson]</parent-name>
+            <remote-alias>derecho_de_via</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[lineas.geojson_176348C512AA43DF9301D885993A58AF]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>distancia_metros</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[distancia_metros]</local-name>
+            <parent-name>[lineas.geojson]</parent-name>
+            <remote-alias>distancia_metros</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[lineas.geojson_176348C512AA43DF9301D885993A58AF]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>frecuencia_minutos</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[frecuencia_minutos]</local-name>
+            <parent-name>[lineas.geojson]</parent-name>
+            <remote-alias>frecuencia_minutos</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[lineas.geojson_176348C512AA43DF9301D885993A58AF]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>fuente</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[fuente]</local-name>
+            <parent-name>[lineas.geojson]</parent-name>
+            <remote-alias>fuente</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[lineas.geojson_176348C512AA43DF9301D885993A58AF]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>jerarquia_transporte</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[jerarquia_transporte]</local-name>
+            <parent-name>[lineas.geojson]</parent-name>
+            <remote-alias>jerarquia_transporte</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[lineas.geojson_176348C512AA43DF9301D885993A58AF]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>linea_id</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[linea_id]</local-name>
+            <parent-name>[lineas.geojson]</parent-name>
+            <remote-alias>linea_id</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[lineas.geojson_176348C512AA43DF9301D885993A58AF]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>nombre_linea</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[nombre_linea]</local-name>
+            <parent-name>[lineas.geojson]</parent-name>
+            <remote-alias>nombre_linea</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[lineas.geojson_176348C512AA43DF9301D885993A58AF]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>nombre_ramal</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[nombre_ramal]</local-name>
+            <parent-name>[lineas.geojson]</parent-name>
+            <remote-alias>nombre_ramal</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[lineas.geojson_176348C512AA43DF9301D885993A58AF]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>sentido</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[sentido]</local-name>
+            <parent-name>[lineas.geojson]</parent-name>
+            <remote-alias>sentido</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[lineas.geojson_176348C512AA43DF9301D885993A58AF]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>sistema</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[sistema]</local-name>
+            <parent-name>[lineas.geojson]</parent-name>
+            <remote-alias>sistema</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[lineas.geojson_176348C512AA43DF9301D885993A58AF]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>tam_km</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[tam_km]</local-name>
+            <parent-name>[lineas.geojson]</parent-name>
+            <remote-alias>tam_km</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[lineas.geojson_176348C512AA43DF9301D885993A58AF]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>tipo_entidad</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[tipo_entidad]</local-name>
+            <parent-name>[lineas.geojson]</parent-name>
+            <remote-alias>tipo_entidad</remote-alias>
+            <ordinal>13</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[lineas.geojson_176348C512AA43DF9301D885993A58AF]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>velocidad_promedio_kmh</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[velocidad_promedio_kmh]</local-name>
+            <parent-name>[lineas.geojson]</parent-name>
+            <remote-alias>velocidad_promedio_kmh</remote-alias>
+            <ordinal>14</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[lineas.geojson_176348C512AA43DF9301D885993A58AF]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Geometry</remote-name>
+            <remote-type>8</remote-type>
+            <local-name>[Geometry]</local-name>
+            <parent-name>[lineas.geojson]</parent-name>
+            <remote-alias>Geometry</remote-alias>
+            <ordinal>15</ordinal>
+            <local-type>spatial</local-type>
+            <aggregation>Collect</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[lineas.geojson_176348C512AA43DF9301D885993A58AF]</object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='lineas.geojson' datatype='table' name='[__tableau_internal_object_id__].[lineas.geojson_176348C512AA43DF9301D885993A58AF]' role='measure' type='quantitative' />
+      <column caption='Capacidad Vehiculo' datatype='integer' name='[capacidad_vehiculo]' role='measure' type='quantitative' />
+      <column caption='Color Esp' datatype='string' name='[color_esp]' role='dimension' type='nominal' />
+      <column caption='Derecho De Via' datatype='string' name='[derecho_de_via]' role='dimension' type='nominal' />
+      <column caption='Distancia Metros' datatype='real' name='[distancia_metros]' role='measure' type='quantitative' />
+      <column caption='Frecuencia Minutos' datatype='real' name='[frecuencia_minutos]' role='measure' type='quantitative' />
+      <column caption='Fuente' datatype='string' name='[fuente]' role='dimension' type='nominal' />
+      <column caption='Jerarquia Transporte' datatype='string' name='[jerarquia_transporte]' role='dimension' type='nominal'>
+        <aliases>
+          <alias key='&quot;masivo_mediano&quot;' value='Masivo Mediano' />
+          <alias key='&quot;masivo_pesado&quot;' value='Masivo Pesado' />
+          <alias key='&quot;superficie_baja&quot;' value='Superficie Baja' />
+          <alias key='&quot;superficie_convencional&quot;' value='Superficie Convencional' />
+        </aliases>
+      </column>
+      <column caption='Linea Id' datatype='integer' name='[linea_id]' role='dimension' type='ordinal' />
+      <column caption='Nombre Linea' datatype='string' name='[nombre_linea]' role='dimension' type='nominal' />
+      <column caption='Nombre Ramal' datatype='string' name='[nombre_ramal]' role='dimension' type='nominal' />
+      <column caption='Sentido' datatype='integer' name='[sentido]' role='measure' type='quantitative' />
+      <column caption='Sistema' datatype='string' name='[sistema]' role='dimension' type='nominal' />
+      <column caption='Tam Km' datatype='real' name='[tam_km]' role='measure' type='quantitative' />
+      <column caption='Tipo Entidad' datatype='string' name='[tipo_entidad]' role='dimension' type='nominal' />
+      <column caption='Velocidad Promedio Kmh' datatype='real' name='[velocidad_promedio_kmh]' role='measure' type='quantitative' />
+      <column-instance column='[jerarquia_transporte]' derivation='None' name='[none:jerarquia_transporte:nk]' pivot='key' type='nominal' />
+      <column-instance column='[sistema]' derivation='None' name='[none:sistema:nk]' pivot='key' type='nominal' />
+      <layout dim-ordering='alphabetic' measure-ordering='alphabetic' show-aliased-fields='true' show-structure='true' />
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[none:sistema:nk]' type='palette'>
+            <map to='#006b3c'>
+              <bucket>&quot;TL&quot;</bucket>
+            </map>
+            <map to='#00703c'>
+              <bucket>&quot;RTP&quot;</bucket>
+            </map>
+            <map to='#009fe3'>
+              <bucket>&quot;CBB&quot;</bucket>
+            </map>
+            <map to='#86bcb6'>
+              <bucket>&quot;SUB&quot;</bucket>
+            </map>
+            <map to='#8b0000'>
+              <bucket>&quot;MEXIBÚS&quot;</bucket>
+            </map>
+            <map to='#a001e8'>
+              <bucket>&quot;CC&quot;</bucket>
+            </map>
+            <map to='#c52713'>
+              <bucket>&quot;MEXICABLE&quot;</bucket>
+            </map>
+            <map to='#cc0000'>
+              <bucket>&quot;MB&quot;</bucket>
+            </map>
+            <map to='#e86100'>
+              <bucket>&quot;METRO&quot;</bucket>
+            </map>
+            <map to='#f1ce63'>
+              <bucket>&quot;PUMABUS&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;INTERURBANO&quot;</bucket>
+            </map>
+            <map to='#ffcc00'>
+              <bucket>&quot;TROLE&quot;</bucket>
+            </map>
+          </encoding>
+          <encoding attr='color' field='[none:jerarquia_transporte:nk]' type='palette'>
+            <map to='#4a90d9'>
+              <bucket>&quot;superficie_convencional&quot;</bucket>
+            </map>
+            <map to='#8b1a1a'>
+              <bucket>&quot;masivo_pesado&quot;</bucket>
+            </map>
+            <map to='#9e9e9e'>
+              <bucket>&quot;superficie_baja&quot;</bucket>
+            </map>
+            <map to='#e86100'>
+              <bucket>&quot;masivo_mediano&quot;</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+      </semantic-values>
+      <object-graph>
+        <objects>
+          <object caption='lineas.geojson' id='lineas.geojson_176348C512AA43DF9301D885993A58AF'>
+            <properties context=''>
+              <relation connection='ogrdirect.0sauk601f239j1115emm51v6ko6f' name='lineas.geojson' table='[lineas.geojson]' type='table'>
+                <columns>
+                  <column datatype='integer' name='capacidad_vehiculo' ordinal='0' />
+                  <column datatype='string' name='color_esp' ordinal='1' />
+                  <column datatype='string' name='derecho_de_via' ordinal='2' />
+                  <column datatype='real' name='distancia_metros' ordinal='3' />
+                  <column datatype='real' name='frecuencia_minutos' ordinal='4' />
+                  <column datatype='string' name='fuente' ordinal='5' />
+                  <column datatype='string' name='jerarquia_transporte' ordinal='6' />
+                  <column datatype='integer' name='linea_id' ordinal='7' />
+                  <column datatype='string' name='nombre_linea' ordinal='8' />
+                  <column datatype='string' name='nombre_ramal' ordinal='9' />
+                  <column datatype='integer' name='sentido' ordinal='10' />
+                  <column datatype='string' name='sistema' ordinal='11' />
+                  <column datatype='real' name='tam_km' ordinal='12' />
+                  <column datatype='string' name='tipo_entidad' ordinal='13' />
+                  <column datatype='real' name='velocidad_promedio_kmh' ordinal='14' />
+                  <column datatype='spatial' name='Geometry' ordinal='15' />
+                </columns>
+              </relation>
+            </properties>
+          </object>
+        </objects>
+      </object-graph>
+    </datasource>
+  </datasources>
+  <datasource-relationships>
+    <datasource-dependencies datasource='federated.0wd8lb114dajru19as24b0h5ivhj'>
+      <column caption='Alcaldía/Municipio' datatype='string' name='[alcaldia_municipio]' role='dimension' type='nominal' />
+      <column-instance column='[alcaldia_municipio]' derivation='None' name='[none:alcaldia_municipio:nk]' pivot='key' type='nominal' />
+    </datasource-dependencies>
+    <datasource-dependencies datasource='federated.1evcajh10kq7ca1gz4c701ag5vnt'>
+      <column caption='Nombre' datatype='string' name='[nombre]' role='dimension' type='nominal' />
+      <column-instance column='[nombre]' derivation='None' name='[none:nombre:nk]' pivot='key' type='nominal' />
+    </datasource-dependencies>
+    <datasource-relationship source='federated.1evcajh10kq7ca1gz4c701ag5vnt' target='federated.0wd8lb114dajru19as24b0h5ivhj'>
+      <column-mapping>
+        <map key='[federated.1evcajh10kq7ca1gz4c701ag5vnt].[none:nombre:nk]' value='[federated.0wd8lb114dajru19as24b0h5ivhj].[none:alcaldia_municipio:nk]' />
+      </column-mapping>
+    </datasource-relationship>
+  </datasource-relationships>
+  <dashboards>
+    <dashboard enable-sort-zone-taborder='true' name='Plantilla Dashboard Multigráfico'>
+      <style />
+      <size maxheight='794' maxwidth='1122' minheight='794' minwidth='1122' sizing-mode='fixed' />
+      <zones>
+        <zone h='100000' id='4' type-v2='layout-basic' w='100000' x='0' y='0'>
+          <zone forceUpdate='true' h='10957' id='5' type-v2='text' w='98574' x='713' y='1008'>
+            <formatted-text>
+              <run bold='true' fontalignment='1' fontcolor='#ffffff' fontname='Arial' fontsize='13'>Dashboard Resultados Apimetro</run>
+              <run fontalignment='1'>Æ&#10;</run>
+              <run bold='true' fontalignment='1' fontcolor='#ffffff' fontname='Arial' fontsize='7'>UNAM - FES Acatlán - Maestría en Urbanismo </run>
+            </formatted-text>
+            <zone-style>
+              <format attr='border-color' value='#000000' />
+              <format attr='border-style' value='none' />
+              <format attr='border-width' value='0' />
+              <format attr='margin' value='0' />
+              <format attr='background-color' value='#008250' />
+            </zone-style>
+          </zone>
+          <zone h='4030' id='12' type-v2='text' w='98574' x='713' y='94962'>
+            <formatted-text>
+              <run fontalignment='1' fontcolor='#191919' fontname='Arial' fontsize='6'>Fuente: INEGI - Portal de Datos Abiertos CDMX - Apimetro - Elaboración Propia 2025-2027</run>
+            </formatted-text>
+            <zone-style>
+              <format attr='border-color' value='#000000' />
+              <format attr='border-style' value='none' />
+              <format attr='border-width' value='0' />
+              <format attr='margin' value='4' />
+              <format attr='background-color' value='#f5f6f8' />
+            </zone-style>
+          </zone>
+          <zone h='82997' id='25' param='horz' type-v2='layout-flow' w='49287' x='713' y='11965'>
+            <zone h='82997' id='26' param='horz' type-v2='layout-flow' w='49287' x='713' y='11965' />
+          </zone>
+          <zone h='41499' id='27' param='vert' type-v2='layout-flow' w='49287' x='50000' y='11965' />
+          <zone h='41498' id='28' param='vert' type-v2='layout-flow' w='49287' x='50000' y='53464' />
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='8' />
+          </zone-style>
+        </zone>
+        <zone h='1008' id='8' type-v2='empty' w='98574' x='713' y='11461'>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='background-color' value='#ffba08' />
+          </zone-style>
+        </zone>
+      </zones>
+      <devicelayouts>
+        <devicelayout auto-generated='true' name='Phone'>
+          <size maxheight='700' minheight='700' sizing-mode='vscroll' />
+          <zones>
+            <zone h='100000' id='36' type-v2='layout-basic' w='100000' x='0' y='0'>
+              <zone h='97984' id='35' param='vert' type-v2='layout-flow' w='98574' x='713' y='1008'>
+                <zone forceUpdate='true' h='10957' id='5' type-v2='text' w='98574' x='713' y='1008'>
+                  <formatted-text>
+                    <run bold='true' fontalignment='1' fontcolor='#ffffff' fontname='Arial' fontsize='13'>Dashboard Resultados Apimetro</run>
+                    <run fontalignment='1'>Æ&#10;</run>
+                    <run bold='true' fontalignment='1' fontcolor='#ffffff' fontname='Arial' fontsize='7'>UNAM - FES Acatlán - Maestría en Urbanismo </run>
+                  </formatted-text>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                    <format attr='background-color' value='#008250' />
+                  </zone-style>
+                </zone>
+                <zone h='4030' id='12' type-v2='text' w='98574' x='713' y='94962'>
+                  <formatted-text>
+                    <run fontalignment='1' fontcolor='#191919' fontname='Arial' fontsize='6'>Fuente: INEGI - Portal de Datos Abiertos CDMX - Apimetro - Elaboración Propia 2025-2027</run>
+                  </formatted-text>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                    <format attr='background-color' value='#f5f6f8' />
+                  </zone-style>
+                </zone>
+              </zone>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='8' />
+              </zone-style>
+            </zone>
+          </zones>
+        </devicelayout>
+      </devicelayouts>
+      <simple-id uuid='{C92E696D-6EA0-445A-BC6C-4B1A19AFF267}' />
+    </dashboard>
+    <dashboard enable-sort-zone-taborder='true' name='Plantilla Dashboard Unigrafico'>
+      <style />
+      <size maxheight='794' maxwidth='1122' minheight='794' minwidth='1122' sizing-mode='fixed' />
+      <zones>
+        <zone h='100000' id='4' type-v2='layout-basic' w='100000' x='0' y='0'>
+          <zone forceUpdate='true' h='11335' id='5' type-v2='text' w='98574' x='713' y='1008'>
+            <formatted-text>
+              <run bold='true' fontalignment='1' fontcolor='#ffffff' fontname='Arial' fontsize='13'>Dashboard Resultados Apimetro</run>
+              <run fontalignment='1'>Æ&#10;</run>
+              <run bold='true' fontalignment='1' fontcolor='#ffffff' fontname='Arial' fontsize='7'>UNAM - FES Acatlán - Maestría en Urbanismo </run>
+            </formatted-text>
+            <zone-style>
+              <format attr='border-color' value='#000000' />
+              <format attr='border-style' value='none' />
+              <format attr='border-width' value='0' />
+              <format attr='margin' value='0' />
+              <format attr='background-color' value='#008250' />
+            </zone-style>
+          </zone>
+          <zone h='4030' id='12' type-v2='text' w='98574' x='713' y='94962'>
+            <formatted-text>
+              <run fontalignment='1' fontcolor='#191919' fontname='Arial' fontsize='6'>Fuente: INEGI - Portal de Datos Abiertos CDMX - Apimetro - Elaboración Propia 2025-2027</run>
+            </formatted-text>
+            <zone-style>
+              <format attr='border-color' value='#000000' />
+              <format attr='border-style' value='none' />
+              <format attr='border-width' value='0' />
+              <format attr='margin' value='4' />
+              <format attr='background-color' value='#f5f6f8' />
+            </zone-style>
+          </zone>
+          <zone h='82619' id='19' param='horz' type-v2='layout-flow' w='86185' x='713' y='12343' />
+          <zone h='82619' id='20' param='vert' type-v2='layout-flow' w='12389' x='86898' y='12343'>
+            <zone h='82619' id='22' param='horz' type-v2='layout-flow' w='12389' x='86898' y='12343' />
+          </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='8' />
+          </zone-style>
+        </zone>
+        <zone h='1008' id='8' type-v2='empty' w='98574' x='713' y='11461'>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='background-color' value='#ffba08' />
+          </zone-style>
+        </zone>
+      </zones>
+      <devicelayouts>
+        <devicelayout auto-generated='true' name='Phone'>
+          <size maxheight='700' minheight='700' sizing-mode='vscroll' />
+          <zones>
+            <zone h='100000' id='36' type-v2='layout-basic' w='100000' x='0' y='0'>
+              <zone h='97984' id='35' param='vert' type-v2='layout-flow' w='98574' x='713' y='1008'>
+                <zone forceUpdate='true' h='11335' id='5' type-v2='text' w='98574' x='713' y='1008'>
+                  <formatted-text>
+                    <run bold='true' fontalignment='1' fontcolor='#ffffff' fontname='Arial' fontsize='13'>Dashboard Resultados Apimetro</run>
+                    <run fontalignment='1'>Æ&#10;</run>
+                    <run bold='true' fontalignment='1' fontcolor='#ffffff' fontname='Arial' fontsize='7'>UNAM - FES Acatlán - Maestría en Urbanismo </run>
+                  </formatted-text>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                    <format attr='background-color' value='#008250' />
+                  </zone-style>
+                </zone>
+                <zone h='4030' id='12' type-v2='text' w='98574' x='713' y='94962'>
+                  <formatted-text>
+                    <run fontalignment='1' fontcolor='#191919' fontname='Arial' fontsize='6'>Fuente: INEGI - Portal de Datos Abiertos CDMX - Apimetro - Elaboración Propia 2025-2027</run>
+                  </formatted-text>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                    <format attr='background-color' value='#f5f6f8' />
+                  </zone-style>
+                </zone>
+              </zone>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='8' />
+              </zone-style>
+            </zone>
+          </zones>
+        </devicelayout>
+      </devicelayouts>
+      <simple-id uuid='{1D56E1B5-0B0A-4111-8698-4C37B5DF28FE}' />
+    </dashboard>
+  </dashboards>
+  <windows source-height='93'>
+    <window class='dashboard' maximized='true' name='Plantilla Dashboard Multigráfico'>
+      <viewpoints />
+      <active id='-1' />
+      <simple-id uuid='{1709FAF1-CC3D-4165-BA5A-7CCD53BAD00A}' />
+    </window>
+    <window class='dashboard' name='Plantilla Dashboard Unigrafico'>
+      <viewpoints />
+      <active id='-1' />
+      <simple-id uuid='{5737A422-6507-45B9-A442-63B464FD4549}' />
+    </window>
+  </windows>
+  <thumbnails>
+    <thumbnail height='384' name='Plantilla Dashboard Multigráfico' width='384'>
+      iVBORw0KGgoAAAANSUhEUgAAAYAAAAGACAYAAACkx7W/AAAACXBIWXMAAA7DAAAOwwHHb6hk
+      AAAWnUlEQVR4nO3dd3xV9f3H8fcduTeL7AFks5cBRJClyNSKiqCUWnFSq63jZ9WWTsX6sxXr
+      rKPVtv5sbaVWBQQHjkpZsgR+lISZCSGDJGTvcfsHcCUkPLTtz8Cvn9fzH3LHOd/vyYHzuufk
+      3uDw+Xw+AQDMcZ7pCQAAzgwCAABGEQAAMMp96h2Oh2afiXkAALoZZwAAYBQBAACjCAAAGEUA
+      AMAoAgAARhEAADCKAACAUQQAAIwiAABgFAEAAKMIAAAYRQAAwCgCAABGEQAAMIoAAF+ClPBY
+      LZ27UEvnLtSf59yrheNny+Pq9NvXT+vy/ufpiRk3dbjv6sHj9bMp8/9P5xkc4NXSuQvVJzLe
+      f9+l/c71z/31q7+rxVOvV7g3+N8aZ+H4OVowcpok6aKUYYoKCv3cZR6ffqOuGDD6Xx7z5hFT
+      9ebchZ871itX/pfGJgz4l8b4ottytiIAwJcgIjBEsweN1d6yw8quKNYPJlytBydd4388KihU
+      oZ5A/22Xw6nY4DC5HMf+SfaL6qWpqelyO10KCfBKkgbFJGhSylB5XQEKdAd0HM8bogCnq8N9
+      p47hkBTk9sh7PERh3mB5XQGaPWisIgM/O4j1jeypqWnpWndwj3YW5+m2URfrhxOv9j8eGRjS
+      YRyvK0AxQT06jPPZ18dujU0coOHxqUqNiNPH1/3UP57H5VZcSLicjs+WCnJ75HG5NSU1Xf2j
+      evvvjw7q4V9fV+OezOlw6P4L52nOoLG6Pn1yh7m5HM4OQcs4ckhVTfX+NffwBHX4+mQ9PEFy
+      H99Hp26LJIV5g/zb0tU+Odt88ZckAP5pL/3vX5VVUaT6libdff7l+uHHr+jdr9+viUmD5XG5
+      9ePVf9K7Wdv00fwH1dzWqiC3R1NeuV+SlBAWrZw7f61eoZG6fvnTkqQBUb2Vd9eLiggM1nXL
+      n9byfZv12lX3adaAMWppb9W9H76sX336XqcxNhbs00fzH1RtS6P+krlBDod084hpyq860uW8
+      G1qb9fruDQr1BOmmEVMU6PYo1BOoj+Y/qKGxSSqurdT0Py7SxOTB+uXF31BLe5sKqss18eUf
+      qOy+P2jem4/p70fylX/Xi+r/7Lf963106g1yOBzasuBRzXvzcS2du1Dt8qmysU4jX7xHM/uP
+      0m8vu13lDTUKcnskSUlhMXr3mp9ocEyijtRXae4bv1BaRFyncRtam/3jTE8bod6hkfr9ztX6
+      5rkz9NTmlRqbMEBrb3hYB44WaUB0bz29+W3d99HL+v6EOTpwtFC/vex2RQaGKDk8VnlVR9TS
+      1qYhsUl6eN3r+um6v+j5r9yq64dPVnNbq65d9oRuGj7Vvy1Pbl6pO0ZfqpigMN3w1tOaM3hc
+      h33y/KfvfTl/wf5NnAEA3eBQdZmig3rI6wrQnzPXad6bj2nDob2aljZcYxIGKNDt0QvbP9Bj
+      G99SaX31sYV80tBf3aVlezfp8uOXQlra2tT3mVv1623v68cXXK05g8bqkr4j1efZ27Rg5XN6
+      asbNig+J6DSGwyF53QG6dtmT+vW2Vbr13Is1c8l/a8HK57qcb1xwuHLvekF7vv2M9pcX6pEN
+      b2r+OZPUN7KnJv/hJzpSV6U7Rl+q6X2Gq6i2Qos/WaoXtr8v6bMzAP9r9ZNOCX60+o+SpHEv
+      fV+l9VW68/3f6J4PXlJKeKwGxSToJxd8VY9tXK7Bz9/hX+77E+aoqa1FoYuv0cr9W/XUjJu7
+      HPdkC0ZO06rsHXpi01saHJOoC5KHSHIowOXWN95+Tle9vljfGXuFoo+fQTjkOHYwL8zSmN99
+      T0Njk3X/miV69JNlumzAaA2KTtC3zrtEN771S73y99V6aNLXO2yLJLmdLg351Z1yOZ2d9smp
+      Z01nC84AgG4wIKq3DtccVaDbo/svmKfM0oOSfHI4pFd3rVHfiJ6aO3i80uNT/a9kC2uPqqa5
+      QUcbahV1/EBVWl+l+tZmZVcUa9bA8xUXEq6KxlodrCrVTk+gAlxuJYRFdxrjhPUHdys5PFYO
+      h0O5lSVqPOlV88mKais08Pnb9cG1DyglIk41zQ3HL9U4deeYmcqqKFJOZbGe3vK2Hrhwnu4a
+      PVO9ekRpW1G2fJJcTqc8roBO623ztUuSWtvbdFHKMH13/GwtyVgr6dhBODwwWDmVJapublBZ
+      fY0kKT4kQvvKDquxtVk7S/J0ab9zNef1xZ3G3VaULUmKDQ7TrIGj5XEF+MN567kz9OzWY6/C
+      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
+      FAEAAKMIAAAYRQAAwCgCAABGEQAAMIoAAIBRBAAAjCIAAGAUAQAAowgAABhFAADAKAIAAEYR
+      AAAwigAAgFEEAACMIgAAYBQBAACjCAAAGEUAAMAoAgAARhEAADCKAACAUQQAAIwiAABgFAEA
+      AKMIAAAYRQAAwCgCAABGEQAAMIoAAIBRBAAAjCIAAGAUAQAAowgAABhFAADAKAIAAEYRAAAw
+      igAAgFEEAACMIgAAYBQBAACjCAAAGEUAAMAoAgAARhEAADCKAACAUQQAAIwiAABgFAEAAKMI
+      AAAYRQAAwCgCAABGEQAAMIoAAIBRBAAAjCIAAGAUAQAAowgAABhFAADAKAIAAEYRAAAwigAA
+      gFEEAACMIgAAYBQBAACjCAAAGEUAAMAoAgAARhEAADCKAACAUQQAAIwiAABgFAEAAKMIAAAY
+      RQAAwCgCAABGEQAAMIoAAIBRBAAAjCIAAGAUAQAAowgAABhFAADAKAIAAEYRAAAwigAAgFEE
+      AACMIgAAYBQBAACjCAAAGEUAAMAoAgAARhEAADCKAACAUQQAAIwiAABgFAEAAKMIAAAYRQAA
+      wCgCAABGEQAAMIoAAIBRBAAAjCIAAGAUAQAAowgAABhFAADAKAIAAEYRAAAwigAAgFEEAACM
+      IgAAYBQBAACjCAAAGEUAAMAoAgAARhEAADCKAACAUQQAAIwiAABgFAEAAKMIAAAYRQAAwCgC
+      AABGEQAAMIoAAIBRBAAAjCIAAGAUAQAAowgAABhFAADAKAIAAEYRAAAwigAAgFEEAACMIgAA
+      YBQBAACjCAAAGEUAAMAoAgAARhEAADCKAACAUQQAAIwiAABgFAEAAKMIAAAYRQAAwCgCAABG
+      EQAAMIoAAIBRBAAAjCIAAGAUAQAAowgAABhFAADAKAIAAEYRAAAwigAAgFEEAACMIgAAYBQB
+      AACjCAAAGEUAAMAoAgAARhEAADCKAACAUQQAAIwiAABgFAEAAKMIAAAYRQAAwCgCAABGEQAA
+      MIoAAIBRBAAAjCIAAGAUAQAAowgAABhFAADAKAIAAEYRAAAwigAAgFEEAACMIgAAYBQBAACj
+      CAAAGEUAAMAoAgAARhEAADCKAACAUQQAAIwiAABgFAEAAKMIAAAYRQAAwCgCAABGEQAAMIoA
+      AIBRBAAAjCIAAGAUAQAAowgAABhFAADAKAIAAEYRAAAwigAAgFEEAACMIgAAYBQBAACjCAAA
+      GEUAAMAoAgAARhEAADCKAACAUQQAAIwiAABgFAEAAKMIAAAYRQAAwCgCAABGEQAAMIoAAIBR
+      BAAAjCIAAGAUAQAAowgAABhFAADAKAIAAEYRAAAwigAAgFEEAACMIgAAYBQBAACjCAAAGEUA
+      AMAoAgAARhEAADCKAACAUQQAAIwiAABgFAEAAKMIAAAYRQAAwCgCAABGEQAAMIoAAIBRBAAA
+      jCIAAGAUAQAAowgAABhFAADAKAIAAEYRAAAwigAAgFEEAACMIgAAYBQBAACjCAAAGEUAAMAo
+      AgAARrlP90B9Q1N3zgMA0M04AwAAowgAABhFAADAKNeiRYsWdfVAS2tbN08FOLvk5uboww8/
+      UH19gxISErp8TkNDgxoaGuT1ejvcv2/fPuXn56lXr17KyjqgjIxd2rp1iwIDvSoqKtL69euU
+      lJSk3Nw8xcTE+Jc7fLhAq1a9p/r6+g5jtrS0qKqqSkFBQZKkrKwDioqK7vS1JJWVlWnlyhWq
+      q6tTYmJil8ufatOmjUpISFROTraioqK6XKfX65XT2fk144nvU+/eCVrx1nIVFhYpLjZWuzMz
+      FR8fr82bN6m8rFwej0dHy8sVFhbWaezExCT/7VPHPqG6ulrt7e0KCAjochtqa2u1bNlS7d2z
+      Wx6v57Tfn9PJOnBAUdHR2rVrl+Lj4zs8tmLFW9qduVtpaWlyuzv/6PTUMWpra/XO22+rd+/e
+      2rJli1wulzIydqmstEzV1dVau3aNBgwYKJ/Pp3feeVshIcHKyc5RRWWFKioqtG3bNjU3NWnd
+      2jUKDApSZGTk587/X/EPUiWTAe7utW4AAAAASUVORK5CYII=
+    </thumbnail>
+    <thumbnail height='384' name='Plantilla Dashboard Unigrafico' width='384'>
+      iVBORw0KGgoAAAANSUhEUgAAAYAAAAGACAYAAACkx7W/AAAACXBIWXMAAA7DAAAOwwHHb6hk
+      AAAWM0lEQVR4nO3deXhU9b3H8c9ktmyE7IGEfQlEkK2CoFgUBNxwQa22BVSw1daltrXFttZi
+      vVWxbtTdq71eba0riyCiohg22RFJwpaFkJA9ZGVCMplM/whEQuDR216Bp9/365/Men6/kxPm
+      fc7kTHAEg8GgAADmhJzqCQAATg0CAABGEQAAMMp17A2OB646FfMAAJxkHAEAgFEEAACMIgAA
+      YBQBAACjCAAAGEUAAMAoAgAARhEAADCKAACAUQQAAIwiAABgFAEAAKMIAAAYRQAAwCgCAABG
+      EQDgW9Czc4LmXztb86+drTem/lKzz7lKHmeH/37jhKb0P0uPT7qp3W3XpJ2jB8dP+3+dZ7jb
+      q/nXzlafmKS22y7pN6Jt7m9f8yvNnTBDnb3h/9Y4s8+ZqlnDL5Qknd9zsGLDIr/2OY9NvFGX
+      p478l8ecOWyC3r129teO9dqVP9PolNR/aYxvui6nKwIAfAuiQyN01cDR2lmxXzlVJfrNudfo
+      /nHfb7s/NixSkZ7QtutOR4gSwqPkdLT+k+wX21UTeg2RK8SpCLdXkjQwPkXjeg6S1+lWqMvd
+      fjxvhNwhzna3HTuGQ1KYyyPv4RBFecPldbp11cDRign96kWsb0wXTeg9RKv27dC2kr269TuT
+      9dux17TdHxMa0W4cr9Ot+LBO7cb56nLrtdHdUjU0qZd6RSfq0+l/bBvP43QpMaKzQhxfPSvM
+      5ZHH6dL4XkPUPza57fa4sE5tyzveuEcLcTh033ev09SBozVjyAXt5uZ0hLQLWkZZgWoafW1L
+      7uQJa3f5aJ08YXId3kbHroskRXnD2tbleNvkdPPNd0kA/J/99YtPlF1VLJ+/UXedPUW//fQ1
+      Lf3BfRrbPU0ep0v3rvi7lmZv1vJp96sp0Kwwl0fjX7tPkpQSFafcO55X18gYzVg4T5KUGpus
+      vXe+qOjQcE1fOE8Ld63Xm1ffrStSR8nf0qxffvyKntv0QYcxPi/cpeXT7le9/5Deylwjh0Oa
+      OexC5deUHXfeDc1NejtrjSI9Ybpp2HiFujyK9IRq+bT7NSihu0rqqzXxb3M0tkea/jL5Zvlb
+      AiqsrdTYV36jirtf1XXvPqovy/KVf+eL6v/0T9uW+8iEG+RwOLRh1iO67t3HNP/a2WpRUNWH
+      Dmr4i7/Qpf2/o5cuu02VDXUKc3kkSd2j4rX0+79XWnw3lflqdO07f1bv6MQO4zY0N7WNM7H3
+      MCVHxuh/t63Qj0dM0pPrF2t0SqpW3vAn7TlQrNS4ZM1bv0R3L39F95w7VXsOFOmly25TTGiE
+      enRO0N6aMvkDAZ2R0F1/WvW2/rjqLT178S2aMfQCNQWa9cMFj+umoRPa1uWJ9Yt1+8hLFB8W
+      pRsWzdPUtDHttsmzmz74dn7A/k0cAQAnQUFtheLCOsnrdOuNzFW67t1HtaZgpy7sPVSjUlIV
+      6vLohS0f6dHPF6ncV9v6pKA06Lk7tWDnOk05/FaIPxBQ36du0fObP9S9512jqQNH66K+w9Xn
+      6Vs1a/EzenLSTCVFRHcYw+GQvC63frjgCT2/eZluGTFZl/7jvzRr8TPHnW9ieGfl3fmCdvz0
+      Ke2uLNLDa97VtDPHqW9MF13w6u9VdrBGt4+8RBP7DFVxfZXmrp2vF7Z8KOmrI4C2ffWjDgl+
+      t+JvkqQxf71H5b4a3fHhf+sXH/1VPTsnaGB8in5/3vf06OcLlfbs7W3Pu+fcqWoM+BU59/ta
+      vHujnpw087jjHm3W8Au1LGerHl+3SGnx3XRejzMkOeR2unTzkmd09dtz9fPRlyvu8BGEQ47W
+      F/OibI16+dcalNBD96X/Q4+sXaDLUkdqYFyKfnLWRbpx0V/02pcr9MC4H7RbF0lyhTh1xnN3
+      yBkS0mGbHHvUdLrgCAA4CVJjk7W/7oBCXR7dd951yizfJykoh0N6fXu6+kZ30bVp52hIUq+2
+      Pdmi+gOqa2rQgYZ6xR5+oSr31cjX3KScqhJdMeBsJUZ0VtWheu2rKdc2T6jcTpdSouI6jHHE
+      6n1Z6tE5QQ6HQ3nVpTp01F7z0YrrqzTg2dv00Q//oJ7Riaprajj8Vk2I7hh1qbKripVbXaJ5
+      G5boD9+9TneOvFRdO8Vqc3GOgpKcISHyON0dlhsItkiSmlsCOr/nYP3qnKv0j4yVklpfhDuH
+      hiu3ulS1TQ2q8NVJkpIiorWrYr8ONTdpW+leXdJvhKa+PbfDuJuLcyRJCeFRumLASHmc7rZw
+      3jJikp7e2LoXnlNVogMN9QpxOBR9zAtzTlWJapt8kqTdlUUaGJcip8OhxIhoSdLVaWPUFPBr
+      beHOdusiSblVpdp9oEiT+g7rsE1iwzqp6tDBb/bDchJxBAB8i+ZOmK53rvm17h5zpZ5Y/556
+      RieoT0yS1hTsVGJEtLxOt2YMuUCzhl+oF7Z8qNyqEsWHR0mSgsFgh+UNTuypRyfeqNtHXqKV
+      +ZlanrdNCeFRennK7Xr24lu0tSRXLcFghzGO8LcElFNVosLaCj05eZaevujHJ5x7fdMhTV84
+      Tz2i4vXQ+GlKz89UhMernRX7NbZ7mppbWvTg+GkanNhDc9cukNPhUGdvuMp9tfrR8Il66Di/
+      sG5s9kuSfjHmCo3rOUiFtRVtt3ldbqXnZ+qXo6/QYxNvUr+YLpKkpdmbdeXAs/Xw+On69TlX
+      af7Odccd94jpQ87XQX+j+jx1q3rO+5Fmf/Kqrk4bo7jw1vfqX7z0J3ps4o3aW13W4S2woILt
+      rh2xrTRPVYfqVX2oXt2j4tU5NKLdurR+b5sl6bjbJK+69ITf51PJOWfOnDlH33D/yjdP0VSA
+      /yz1TYdUerBGRXUH9MjaBXo9Y6VKD1arqO6AenRO0OsZK1Xuq9Uzm5aqttGnwYk9tSxnq57c
+      sFjNLQEV1lVqU3GOggpqd2WRssoLlJ6fIYfDoazyQt2X/rqK6qq0LHur+sd2UUb5Pt257CXl
+      VZd2GGPNvh2qafQpPT9TzS0BfZC9RT06x2tp9hZtL8/XyvxM1Tcdapv7/rpKfV64S1WH6rWt
+      bK+ivOF6M3O11u3frSGJPfVh7la9uOVjrdi7XZ084eoVnagn1r2n97M3a/W+HUruFKv3dm/U
+      zsr9St+boQZ/kzLL9mlLSa7qmhoU4nDoz2sXKikyWvk15food5vyqkr1yrZPFeUNV0VDrd7M
+      XK2tpXlavHujdlXuV7/YLpq/c50eXjNfK/I7jntEv5iuWrx7o1YXtK5zZlmBmlsCagkGdfmA
+      UXpi/WK1BIO666OXDx9lBLW6YIfKfTXaWpKrvdXlagz49Vl+pnz+JhXUVmht4U4t3r1JA+KS
+      lVddqj+tekclB6vb1mXF3u3aW12mrSV5qvDVddgmvhMcaZ1qjuAxuxmOB646VXMBgG/N6JQB
+      +nzmw4p4+Hr5/I2nejqnBd4CAmDCttI8DXnhLjX4T8+98VOBAACnsUcmzGj7+rNRl2lSn2H6
+      zblXy+t067azLtHMYRMU7Y3QqhseVEJ4lFbd8GCHD219t8cgvXn13Xp80kzddfYUvTzldj1w
+      /g90eepI/e3Ku/SrMVe2PfbIMo/HFeLU9YPG6udnX66Y0EhNO3PcCc/Dl1o/t/D+9feqT3SS
+      lk+7/2vXdfqZ49ou3zR0vKK93+zMmYFxKZo5bILOTknV1IGjJUlnJvbU9844t93jGpqbtL0s
+      X0EF1atzoi7uN+IbLf8/GWcBAaextPjubV89TreuHzRWudWlcjudurjfCLmdTi3evUmpccn6
+      7dhrlBqXLLfTJYckj9OtxoBfceGdFCKH1hXu0tjuafL5G5VbVao+MV3kCnGqrqlBUuuHp44s
+      852stXp5yu3aX3dAG4r2aOrA0VpdsEOzhl2otYU7NaJrH03uO1xdImM0OiVVgWCLHl+3SOv3
+      75HX6VZToFmdPGE6K7mf7hh1qfpEJ2l8rzN1y4jJWrJnky7pP0KNzc3aULRH53VP0xtZq3Xv
+      ed9TalyKUuOSVdvoU35NuW4ZMVkLdq3TG5mr9dD4aeodnaTXM1bqhiEXyBXi1BVvPaRIT6i6
+      R8WrqO6AukTGaN3MuVq1L0ujkvvr+kFj9fzmDzVr2IVasGudbh4+UT5/o17c8pH6x3bVnaMu
+      06aibFU21Gl4lz6KcHvlCnHqmY1LdfPwicqs2Kc/rnzrFP4EfLs4AgBOY26nU/1iuspx+FzO
+      5zZ/qKsHjtGkPsMUExqhmNBInd9rsNLzM3TrdyYrPT9DUuupky9Nua3tPPeNxdlamZ8pSXp/
+      zyatLshScyCgl7/4RDcNbd3jn3jUMmcMvUCFdZVanrdNgxN7qCnQrMaAX1+U5skfaFa/mC5q
+      bPYrLb6bgpLezFyt3tFJcjpC9NKU25Qa1/oJ3vT8DE07c5w2l+RqYHyKGgJNGt0tVQPiusnr
+      cssfaFaoy6OkiGhllu9TU8CvR9YuULQ3ou3xRz4NfEGvM1XVUK/e0UnaULRHTYfPuvH5G9Wj
+      c4J6RSeqwd+ooroDWrBzvT7fv0tNgWad1bVv23KqDx3UZ/kZ6hWdqChvuErrq3R+z0GKC+uk
+      V79cobKDNfK3NGt87yF6fssyndst7aRt61OBIwDgNDYn/Q3NHD5B9698Q3FhnbRqX5bC3R75
+      WwKa+vbDcoe4dFZyP/3PF59qed6XKqipkM/fKJ+/UdMXPilJ2lFeoLyqUpUcrNYH2Vt0dkqq
+      hiT10qJdGzRjyPm677PXJbWeh39kmWcktB55xIZFKn1vhg4k9dLW4jzFhXVSVnmB8mvKFR0a
+      oZyqUjkk7agolNMRokCwpW3c5MhYPbVxqZblbFXNIZ8KaisU4Q7Vl2X52lyco0BLizYWZSul
+      U6zS8zMV6nKruL5K+2sr9VbWGuXXlLc9XpLu+eQ1jek2QIt3b1SXyBjlVrWeWplVUagtxTmK
+      D4/SvPVLVN90SAW1FSo7WKPdlUXKKNsnf0tAX5bla2dFoQrrKhVoaZHH6dLgxB5av3+Psipa
+      12nJno2KcIcqPT9TPznrIt372d9P8hY/uTgLCACM4i0gADCKAACAUQQAAIwiAABgFAEAAKMI
+      AAAYRQAAwCgCAABGEQAAMIoAAIBRBAAAjOrwx+D+0C37VMwDAHCSdfhjcPo47BRNBQBwMvEW
+      EAAYRQAAwKiO/yFMn9+dgmkAAE62jr8DAACYwFtAAGAUAQAAowgAABhFAADAKAIAAEYRAAAw
+      igAAgFEEAACMIgAAYBQBAACjCAAAGEUAAMAoAgAARhEAADCKAACAUQQAAIwiAABgFAEAAKMI
+      AAAYRQAAwCgCAABGEQAAMIoAAIBRBAAAjCIAAGAUAQAAowgAABhFAADAKAIAAEYRAAAwigAA
+      gFEEAACMIgAAYBQBAACjCAAAGEUAAMAoAgAARhEAADCKAACAUQQAAIwiAABgFAEAAKMIAAAY
+      RQAAwCgCAABGEQAAMIoAAIBRBAAAjCIAAGAUAQAAowgAABhFAADAKAIAAEYRAAAwigAAgFEE
+      AACMIgAAYBQBAACjCAAAGEUAAMAoAgAARhEAADCKAACAUQQAAIwiAABgFAEAAKMIAAAYRQAA
+      wCgCAABGEQAAMIoAAIBRBAAAjCIAAGAUAQAAowgAABhFAADAKAIAAEYRAAAwigAAgFEEAACM
+      IgAAYBQBAACjCAAAGEUAAMAoAgAARhEAADCKAACAUQQAAIwiAABgFAEAAKMIAAAYRQAAwCgC
+      AABGEQAAMIoAAIBRBAAAjCIAAGAUAQAAowgAABhFAADAKAIAAEYRAAAwigAAgFEEAACMIgAA
+      YBQBAACjCAAAGEUAAMAoAgAARhEAADCKAACAUQQAAIwiAABgFAEAAKMIAAAYRQAAwCgCAABG
+      EQAAMIoAAIBRBAAAjCIAAGAUAQAAowgAABhFAADAKAIAAEYRAAAwigAAgFEEAACMIgAAYBQB
+      AACjCAAAGEUAAMAoAgAARhEAADCKAACAUQQAAIwiAABgFAEAAKMIAAAYRQAAwCgCAABGEQAA
+      MIoAAIBRBAAAjCIAAGAUAQAAowgAABhFAADAKAIAAEYRAAAwigAAgFEEAACMIgAAYBQBAACj
+      CAAAGEUAAMAoAgAARhEAADCKAACAUQQAAIwiAABgFAEAAKMIAAAYRQAAwCgCAABGEQAAMIoA
+      AIBRBAAAjCIAAGAUAQAAowgAABhFAADAKAIAAEYRAAAwigAAgFEEAACMIgAAYBQBAACjCAAA
+      GEUAAMAoAgAARhEAADCKAACAUQQAAIwiAABgFAEAAKMIAAAYRQAAwCgCAABGEQAAMIoAAIBR
+      BAAAjCIAAGAUAQAAowgAABhFAADAKAIAAEYRAAAwigAAgFEEAACMIgAAYBQBAACjCAAAGEUA
+      AMAoAgAARhEAADCKAACAUQQAAIwiAABgFAEAAKMIAAAYRQAAwCgCAABGEQAAMIoAAIBRBAAA
+      jCIAAGAUAQAAowgAABhFAADAKAIAAEYRAAAwigAAgFEEAACMIgAAYBQBAACjCAAAGEUAAMAo
+      AgAARhEAADCKAACAUQQAAIwiAABgFAEAAKMIAAAYRQAAwCgCAABGEQAAMIoAAIBRBAAAjCIA
+      AGAUAQAAowgAABhFAADAKAIAAEYRAAAwigAAgFEEAACMIgAAYBQBAACjCAAAGEUAAMAoAgAA
+      RhEAADCKAACAUQQAAIwiAABgFAEAAKMIAAAYRQAAwCgCAABGEQAAMIoAAIBRBAAAjCIAAGAU
+      AQAAowgAABhFAADAKAIAAEYRAAAwigAAgFEEAACMIgAAYBQBAACjCAAAGEUAAMAoAgAARhEA
+      ADCKAACAUQQAAIwiAABgFAEAAKMIAAAYRQAAwCgCAABGEQAAMIoAAIBRBAAAjCIAAGAUAQAA
+      owgAABhFAADAKAIAAEYRAAAwigAAgFEEAACMIgAAYBQBAACjCAAAGEUAAMAoAgAARhEAADCK
+      AACAUQQAAIwiAABgFAEAAKMIAAAYRQAAwCgCAABGEQAAMIoAAIBRBAAAjCIAAGAUAQAAowgA
+      ABhFAADAKAIAAEYRAAAwigAAgFEEAACMIgAAYBQBAACjCAAAGEUAAMAoAgAARhEAADCKAACA
+      UQQAAIxynegOX0PjyZwHAOAk4wgAAIwiAABgFAEAAKOcc+bMmXO8O/zNgZM8FeD0kpeXq48/
+      /kg+X4NSUlKO+5iGhgY1NDTI6/W2u33Xrl3Kz9+rrl27Kjt7jzIytmvjxg0KDfWquLhYq1ev
+      Uvfu3ZWXt1fx8fFtz9u/v1DLln0gn8/Xbky/36+amhqFhYVJkrKz9yg2Nq7DZUmqqKjQ4sXv
+      6eDBg+rWrdtxn3+sdes+V0pKN+Xm5ig2Nva4y/R6vQoJ6bjPeOT7lJycovcWLVRRUbESExKU
+      lZmppKQkrV+/TpUVlfJ4PDpQWamoqKgOY3fr1r3t+rFjH1FbW6uWlha53e7jrkN9fb0WLJiv
+      nTuy5PF6Tvj9OZHsPXsUGxen7du3Kykpqd197723SFmZWerdu7dcro6/Oj12jPr6er2/ZImS
+      k5O1YcMGOZ1OZWRsV0V5hWpra7VyZbpSUwcoGAzq/feXKCIiXLk5uaqqrlJVVZU2b96spsZG
+      rVqZrtCwMMXExHzt/P8V/wSnAmNDHwIHZgAAAABJRU5ErkJggg==
+    </thumbnail>
+  </thumbnails>
+</workbook>

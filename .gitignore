@@ -41,6 +41,20 @@ apimetro.exe
 # Caché de build local de Go
 /vendor/
 
+# ── Tableau ────────────────────────────────────────────────────────────────
+# Workbooks empaquetados (incluyen datos — demasiado grandes para git)
+*.twbx
+# Extracts binarios generados por tableau_fetcher.py
+*.hyper
+*.tde
+# Archivos temporales y de recuperación que Tableau crea mientras el workbook está abierto
+*.twbr
+.~*.twb*
+
+# ── utils/ ─────────────────────────────────────────────────────────────────
+# Datos intermedios generados desde notebooks de VFTModel — no pertenecen al repo
+utils/data/*.json
+
 # ── Sistema operativo / IDE ────────────────────────────────────────────────
 .DS_Store
 Thumbs.db
