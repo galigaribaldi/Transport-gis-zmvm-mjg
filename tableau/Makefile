@@ -3,12 +3,26 @@
 # Transportes Anillares y su importancia en la CDMX y ZMVM
 #
 # Uso típico:
-#   make check       → verificar que los servicios estén activos
-#   make warmup      → calentar el grafo de VFTModel (primera vez del día)
-#   make warmup-all  → calentar TODOS los endpoints antes de crear extractos
-#   make serve       → levantar servidor HTTP para los WDC (dejar corriendo)
+#   make check             → verificar que los servicios estén activos
+#   make warmup            → calentar el grafo de VFTModel (primera vez del día)
+#   make warmup-all        → calentar TODOS los endpoints antes de crear extractos
+#   make serve             → levantar servidor HTTP para los WDC (dejar corriendo)
+#
+# Exportaciones (análisis comparativo):
+#   make export-baseline   → exportar GeoJSONs del baseline (:8000)
+#   make export-mb         → exportar GeoJSONs + GPKG del escenario MB (:8001)
+#   make export-metro      → exportar GeoJSONs + GPKG del escenario METRO (:8002)
+#   make export-all        → exportar los 3 escenarios en secuencia
+#   make run-mb            → warmup-mb + export-mb  (flujo completo)
+#   make run-metro         → warmup-metro + export-metro
 
-.PHONY: serve check warmup warmup-all warmup-baseline warmup-mb warmup-metro warmup-scenarios
+PYTHON  ?= ../.venv/bin/python
+EXPORTS  = ../utils/generate_exports.py
+
+.PHONY: serve check warmup warmup-all \
+        warmup-baseline warmup-mb warmup-metro warmup-scenarios \
+        export-baseline export-mb export-metro export-all \
+        run-baseline run-mb run-metro
 
 # ── Servidor HTTP para WDC ────────────────────────────────────────────────────
 # Sirve todos los conectores desde tableau/ en localhost:5050
@@ -127,3 +141,30 @@ warmup-scenarios:
 	@$(MAKE) warmup-mb
 	@$(MAKE) warmup-metro
 	@echo "Los 3 escenarios están en caché. Ejecutar generate_exports.py para cada uno."
+
+# ── Exportar GeoJSONs y GPKGs por escenario ──────────────────────────────────
+# Requiere que el escenario ya esté caliente (make warmup-<escenario>).
+# Los escenarios MB y METRO también generan data/processed/scenarios/VFTOutput_*.gpkg.
+
+export-baseline:
+	$(PYTHON) $(EXPORTS) --url http://localhost:8000 --scenario baseline
+
+export-mb:
+	$(PYTHON) $(EXPORTS) --url http://localhost:8001 --scenario scenario_mb
+
+export-metro:
+	$(PYTHON) $(EXPORTS) --url http://localhost:8002 --scenario scenario_metro
+
+export-all:
+	@$(MAKE) export-baseline
+	@$(MAKE) export-mb
+	@$(MAKE) export-metro
+
+# ── Flujo completo por escenario (warmup + export) ───────────────────────────
+# Un solo comando para regenerar un escenario desde cero (~15-20 min).
+
+run-baseline: warmup-baseline export-baseline
+
+run-mb: warmup-mb export-mb
+
+run-metro: warmup-metro export-metro
