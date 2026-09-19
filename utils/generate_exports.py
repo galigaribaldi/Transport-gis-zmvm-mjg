@@ -163,7 +163,7 @@ if __name__ == "__main__":
     )
     args = parser.parse_args()
 
-    client = VFTClient(base_url=args.url)
+    client = VFTClient(base_url=args.url, timeout=600.0)
     geo_dir = _geo_dir(args.scenario)
 
     if not args.only_linestrings:
