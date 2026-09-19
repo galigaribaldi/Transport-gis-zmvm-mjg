@@ -8,7 +8,7 @@
 #   make warmup-all  → calentar TODOS los endpoints antes de crear extractos
 #   make serve       → levantar servidor HTTP para los WDC (dejar corriendo)
 
-.PHONY: serve check warmup warmup-all
+.PHONY: serve check warmup warmup-all warmup-baseline warmup-mb warmup-metro warmup-scenarios
 
 # ── Servidor HTTP para WDC ────────────────────────────────────────────────────
 # Sirve todos los conectores desde tableau/ en localhost:5050
@@ -79,3 +79,51 @@ warmup-all:
 		| python3 -c "import sys,json; d=json.load(sys.stdin); print('        OK —', len(d.get('features',[])), 'rutas O-D')" 2>/dev/null \
 		|| echo "        ERROR: timeout o fallo en DF."
 	@echo "Listo. Todos los endpoints en caché — ahora abre Tableau y crea el extracto."
+
+# ── Warmups por escenario (para análisis comparativo) ────────────────────────
+# Calentar un escenario individual antes de correr generate_exports.py.
+# warmup-scenarios calienta los 3 en secuencia (~45 min en total).
+
+_warmup-port:
+	@echo "  [1/4] build-auto..."
+	@curl -s --max-time 60 \
+		"http://localhost:$(PORT)/api/v1/network/build-auto?mode=REALISTIC_INTEGRATION&tolerance_m=85" \
+		| python3 -c "import sys,json; d=json.load(sys.stdin); print('        OK —', d.get('nodos','?'), 'nodos')" 2>/dev/null \
+		|| { echo "        ERROR: VFTModel :$(PORT) no responde."; exit 1; }
+	@echo "  [2/4] average-travel-time (T) — 2-5 min..."
+	@curl -s --max-time 360 \
+		"http://localhost:$(PORT)/api/v1/network/topological/average-travel-time" \
+		| python3 -c "import sys,json; d=json.load(sys.stdin).get('data',{}); print('        OK — T =', d.get('T_average_travel_time_minutes','?'), 'min')" 2>/dev/null \
+		|| echo "        ERROR: timeout en T."
+	@echo "  [3/4] betweenness (B) — 5-8 min..."
+	@curl -s --max-time 600 \
+		"http://localhost:$(PORT)/api/v1/network/geolayers/betweenness?layer=b_puntos&limit=2000" \
+		| python3 -c "import sys,json; d=json.load(sys.stdin); print('        OK —', d.get('metadata',{}).get('n_features','?'), 'nodos')" 2>/dev/null \
+		|| echo "        ERROR: timeout en B."
+	@echo "  [4/4] detour-factor (DF) — 30-60 s..."
+	@curl -s --max-time 120 \
+		"http://localhost:$(PORT)/api/v1/network/geolayers/detour?layer=df_puntos&sample_size=100&seed=42" \
+		| python3 -c "import sys,json; d=json.load(sys.stdin); print('        OK —', len(d.get('features',[])), 'rutas O-D')" 2>/dev/null \
+		|| echo "        ERROR: timeout en DF."
+
+warmup-baseline:
+	@echo "── Baseline (:8000) ──────────────────────────────────────────"
+	@$(MAKE) _warmup-port PORT=8000
+	@echo "Baseline listo."
+
+warmup-mb:
+	@echo "── Escenario MB (:8001) ──────────────────────────────────────"
+	@$(MAKE) _warmup-port PORT=8001
+	@echo "Escenario MB listo."
+
+warmup-metro:
+	@echo "── Escenario METRO (:8002) ───────────────────────────────────"
+	@$(MAKE) _warmup-port PORT=8002
+	@echo "Escenario METRO listo."
+
+warmup-scenarios:
+	@echo "Calentando los 3 escenarios en secuencia (~45 min total)..."
+	@$(MAKE) warmup-baseline
+	@$(MAKE) warmup-mb
+	@$(MAKE) warmup-metro
+	@echo "Los 3 escenarios están en caché. Ejecutar generate_exports.py para cada uno."
