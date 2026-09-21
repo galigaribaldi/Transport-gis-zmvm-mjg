@@ -1,4 +1,4 @@
 escenario,escenario_label,nodos,nodos_delta,T_min
 baseline,Baseline,11115,0,108.9169
-scenario_mb,MB (BRT),11209,94,108.528
-scenario_metro,METRO,11209,94,108.9563
+scenario_mb,MB (BRT),11209,94,104.7385
+scenario_metro,METRO,11209,94,98.1217

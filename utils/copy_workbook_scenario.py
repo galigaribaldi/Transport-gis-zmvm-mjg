@@ -83,10 +83,11 @@ def copy_apimetro(scenario: str) -> Path:
 
     content = src.read_text(encoding="utf-8")
 
-    # WDC Apimetro: cambiar puerto
+    # WDC Apimetro: cambiar puerto en connectionData Y en el caption/nombre visible
     content = content.replace("localhost:8080&quot;", f"localhost:{port}&quot;")
+    content = content.replace("localhost:8080", f"localhost:{port}")
 
-    # GeoJSONs estáticos (lineas.geojson, poligonos.geojson)
+    # GeoJSONs estáticos (lineas.geojson refleja la red del escenario)
     content = _replace_geo_dir(content, scenario)
 
     out.write_text(content, encoding="utf-8")
