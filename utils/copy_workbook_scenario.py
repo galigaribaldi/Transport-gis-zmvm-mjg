@@ -110,7 +110,11 @@ if __name__ == "__main__":
     copy_apimetro(scenario)
     print()
 
-    geo_dir = f"tableau/exports/geo/{scenario}/"
+    geo_dir = REPO_ROOT / "tableau" / "exports" / "geo" / scenario
     apimetro_port = APIMETRO_PORTS[scenario]
-    print(f"⚠️  Pendiente: generar lineas.geojson y poligonos.geojson en {geo_dir}")
-    print(f"   Desde Apimetro :{apimetro_port} — ver utils/export_apimetro_geo.py")
+    missing = [f for f in ("lineas.geojson", "poligonos.geojson") if not (geo_dir / f).exists()]
+    if missing:
+        print(f"⚠️  Pendiente en {geo_dir.relative_to(REPO_ROOT)}/: {', '.join(missing)}")
+        print(f"   Ejecutar: make export-lineas-{scenario.replace('scenario_', '')}  (Apimetro :{apimetro_port})")
+    else:
+        print(f"✅  GeoJSONs Apimetro ya presentes en tableau/exports/geo/{scenario}/")
