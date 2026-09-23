@@ -13,11 +13,13 @@
 #   make guide     → guía descriptiva del flujo completo
 #   make verify    → verificación integral (todos los pasos)
 
-PYTHON   ?= .venv/bin/python
-EXPORTS   = utils/generate_exports.py
-COPY_WB   = utils/copy_workbook_scenario.py
-GEO_DIR   = tableau/exports/geo
-WB_DIR    = tableau/workbooks
+PYTHON      ?= .venv/bin/python
+EXPORTS      = utils/generate_exports.py
+COPY_WB      = utils/copy_workbook_scenario.py
+GARIBELT_CSV = utils/export_garibelt_csv.py
+GEO_DIR      = tableau/exports/geo
+WB_DIR       = tableau/workbooks
+GARIBELT_DIR = tableau/exports/data/garibelt
 
 .PHONY: all help guide \
         check \
@@ -26,6 +28,8 @@ WB_DIR    = tableau/workbooks
         _warmup-port \
         export-all export-baseline export-mb export-metro \
         export-lineas export-lineas-baseline export-lineas-mb export-lineas-metro \
+        export-garibelt-csv-all \
+        export-garibelt-csv-baseline export-garibelt-csv-mb export-garibelt-csv-metro \
         workbooks serve \
         verify verify-step-1 verify-step-2 verify-step-3 verify-step-4 verify-step-5
 
@@ -111,6 +115,11 @@ _warmup-port:
 		"http://localhost:$(PORT)/api/v1/network/geolayers/detour?layer=df_puntos&sample_size=100&seed=42" \
 		| python3 -c "import sys,json; d=json.load(sys.stdin); print('        OK —', len(d.get('features',[])), 'rutas O-D')" 2>/dev/null \
 		|| echo "        WARN: timeout en DF."
+	@echo "  [5/5] network-profile (Garibelt) — 1-2 min si T y B están en caché..."
+	@curl -s --max-time 300 \
+		"http://localhost:$(PORT)/api/v1/network/topological/network-profile" \
+		| python3 -c "import sys,json; d=json.load(sys.stdin).get('data',{}); dims=d.get('dimensions',[]); print('        OK —', len(dims), 'dimensiones Garibelt compiladas')" 2>/dev/null \
+		|| echo "        WARN: timeout en network-profile (perfil_nodos no disponible hasta próximo warmup)."
 
 warmup-baseline:
 	@echo "── Calentando Baseline (:8000) ──────────────────────────────"
@@ -137,7 +146,7 @@ warmup-scenarios: warmup-mb warmup-metro
 warmup-all:
 	@echo ""
 	@echo "══════════════════════════════════════════════════════════"
-	@echo "  PASO 2 — Calentando los 3 escenarios (~45 min total)"
+	@echo "  PASO 2 — Calentando los 3 escenarios (~55 min total)"
 	@echo "══════════════════════════════════════════════════════════"
 	@$(MAKE) warmup-baseline
 	@$(MAKE) warmup-mb
@@ -148,8 +157,9 @@ warmup-all:
 verify-step-2:
 	@echo ""
 	@echo "══════════════════════════════════════════════════════════"
-	@echo "  PASO 2 — Verificando caché de grafos (T por escenario)"
+	@echo "  PASO 2 — Verificando caché de grafos (T + Garibelt)"
 	@echo "══════════════════════════════════════════════════════════"
+	@echo "  T por escenario:"
 	@curl -s --max-time 10 \
 		"http://localhost:8000/api/v1/network/topological/average-travel-time" \
 		| python3 -c "import sys,json; d=json.load(sys.stdin).get('data',{}); t=d.get('T_average_travel_time_minutes'); print('    Baseline  :8000  T =', t, 'min  ✓' if t else '  ✗ sin caché')" 2>/dev/null \
@@ -162,6 +172,19 @@ verify-step-2:
 		"http://localhost:8002/api/v1/network/topological/average-travel-time" \
 		| python3 -c "import sys,json; d=json.load(sys.stdin).get('data',{}); t=d.get('T_average_travel_time_minutes'); print('    METRO     :8002  T =', t, 'min  ✓' if t else '  ✗ sin caché')" 2>/dev/null \
 		|| echo "    METRO     :8002  ✗ inactivo o sin caché"
+	@echo "  ProfileCache Garibelt (network-profile):"
+	@curl -s --max-time 5 \
+		"http://localhost:8000/api/v1/network/topological/network-profile" \
+		| python3 -c "import sys,json; d=json.load(sys.stdin).get('data',{}); n=len(d.get('dimensions',[])); print('    Baseline  :8000  Garibelt =', n, 'dims  ✓' if n==5 else '  ✗ sin caché')" 2>/dev/null \
+		|| echo "    Baseline  :8000  Garibelt ✗  →  make warmup-baseline"
+	@curl -s --max-time 5 \
+		"http://localhost:8001/api/v1/network/topological/network-profile" \
+		| python3 -c "import sys,json; d=json.load(sys.stdin).get('data',{}); n=len(d.get('dimensions',[])); print('    MB        :8001  Garibelt =', n, 'dims  ✓' if n==5 else '  ✗ sin caché')" 2>/dev/null \
+		|| echo "    MB        :8001  Garibelt ✗  →  make warmup-mb"
+	@curl -s --max-time 5 \
+		"http://localhost:8002/api/v1/network/topological/network-profile" \
+		| python3 -c "import sys,json; d=json.load(sys.stdin).get('data',{}); n=len(d.get('dimensions',[])); print('    METRO     :8002  Garibelt =', n, 'dims  ✓' if n==5 else '  ✗ sin caché')" 2>/dev/null \
+		|| echo "    METRO     :8002  Garibelt ✗  →  make warmup-metro"
 	@echo ""
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -220,6 +243,30 @@ export-lineas-metro:
 
 export-lineas: export-lineas-baseline export-lineas-mb export-lineas-metro
 
+# ── CSVs Garibelt para Tableau (Paso 3 — requiere warmup activo para --include-api) ──
+# Lee GeoJSONs ya generados en disco + llama /network-profile para el perfil escalar.
+# Prerequisito: make warmup-all (ProfileCache debe estar activo).
+
+export-garibelt-csv-baseline:
+	@echo "── CSVs Garibelt Baseline ────────────────────────────────"
+	$(PYTHON) $(GARIBELT_CSV) --scenario baseline --include-api
+
+export-garibelt-csv-mb:
+	@echo "── CSVs Garibelt MB ──────────────────────────────────────"
+	$(PYTHON) $(GARIBELT_CSV) --scenario scenario_mb --include-api
+
+export-garibelt-csv-metro:
+	@echo "── CSVs Garibelt METRO ───────────────────────────────────"
+	$(PYTHON) $(GARIBELT_CSV) --scenario scenario_metro --include-api
+
+export-garibelt-csv-all:
+	@echo ""
+	@echo "── Exportando CSVs Garibelt (3 escenarios) ───────────────"
+	@$(MAKE) export-garibelt-csv-baseline
+	@$(MAKE) export-garibelt-csv-mb
+	@$(MAKE) export-garibelt-csv-metro
+	@echo ""
+
 export-all:
 	@echo ""
 	@echo "══════════════════════════════════════════════════════════"
@@ -232,6 +279,8 @@ export-all:
 	@echo "  Exportando GeoJSONs Apimetro (lineas + polígonos)..."
 	@$(MAKE) export-lineas
 	@echo ""
+	@echo "  Exportando CSVs Garibelt para Tableau..."
+	@$(MAKE) export-garibelt-csv-all
 
 verify-step-3:
 	@echo ""
@@ -252,6 +301,18 @@ verify-step-3:
 	@python3 -c "import json; d=json.load(open('$(GEO_DIR)/lineas.geojson')); n=len(d['features']); ok='✓' if n==668 else '?'; print(f'    baseline/lineas.geojson         {n} features {ok}')" 2>/dev/null || echo "    baseline/lineas.geojson          ✗ no existe"
 	@python3 -c "import json; d=json.load(open('$(GEO_DIR)/scenario_mb/lineas.geojson')); n=len(d['features']); ok='✓' if n==676 else '✗ esperado 676'; print(f'    scenario_mb/lineas.geojson      {n} features {ok}')" 2>/dev/null || echo "    scenario_mb/lineas.geojson       ✗ no existe"
 	@python3 -c "import json; d=json.load(open('$(GEO_DIR)/scenario_metro/lineas.geojson')); n=len(d['features']); ok='✓' if n==676 else '✗ esperado 676'; print(f'    scenario_metro/lineas.geojson   {n} features {ok}')" 2>/dev/null || echo "    scenario_metro/lineas.geojson    ✗ no existe"
+	@echo "  CSVs Garibelt ($(GARIBELT_DIR)/):"
+	@for s in baseline scenario_mb scenario_metro; do \
+		for csv in b_ranking fc_distribucion df_distribucion cobertura_alcaldias garibelt_perfil; do \
+			f="$(GARIBELT_DIR)/$${csv}_$${s}.csv"; \
+			if [ -f "$$f" ]; then \
+				rows=$$(tail -n +2 "$$f" | wc -l | tr -d ' '); \
+				echo "    $${csv}_$${s}.csv   $$rows filas ✓"; \
+			else \
+				echo "    $${csv}_$${s}.csv   ✗ no existe"; \
+			fi \
+		done \
+	done
 	@echo ""
 
 # ══════════════════════════════════════════════════════════════════════════════

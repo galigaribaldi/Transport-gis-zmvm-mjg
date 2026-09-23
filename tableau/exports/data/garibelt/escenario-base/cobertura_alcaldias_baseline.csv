@@ -1,0 +1,142 @@
+escenario,escenario_label,id,nombre,area_total_km2,area_cubierta_km2,cobertura_pct,cobertura_deficit,categoria_cobertura
+baseline,Baseline,Benito Juárez,Benito Juárez,26.68,26.68,100.0,0.0,alta
+baseline,Baseline,Cuauhtémoc,Cuauhtémoc,32.5,32.5,100.0,0.0,alta
+baseline,Baseline,Iztacalco,Iztacalco,23.08,23.08,100.0,0.0,alta
+baseline,Baseline,Miguel Hidalgo,Miguel Hidalgo,46.39,46.21,99.62,0.38,alta
+baseline,Baseline,Azcapotzalco,Azcapotzalco,33.5,33.34,99.52,0.48,alta
+baseline,Baseline,Coyoacán,Coyoacán,53.88,53.07,98.49,1.51,alta
+baseline,Baseline,Gustavo A. Madero,Gustavo A. Madero,87.84,82.27,93.66,6.34,alta
+baseline,Baseline,Iztapalapa,Iztapalapa,113.07,103.91,91.9,8.1,alta
+baseline,Baseline,Venustiano Carranza,Venustiano Carranza,33.84,30.92,91.37,8.63,alta
+baseline,Baseline,Álvaro Obregón,Álvaro Obregón,95.82,69.02,72.03,27.97,alta
+baseline,Baseline,Xochimilco,Xochimilco,114.03,71.55,62.75,37.25,alta
+baseline,Baseline,Tlalnepantla de Baz,Tlalnepantla de Baz,83.7,45.15,53.94,46.06,media
+baseline,Baseline,Cuajimalpa de Morelos,Cuajimalpa de Morelos,71.1,37.12,52.2,47.8,media
+baseline,Baseline,Tláhuac,Tláhuac,85.78,43.85,51.12,48.88,media
+baseline,Baseline,Ecatepec de Morelos,Ecatepec de Morelos,156.26,71.03,45.46,54.54,media
+baseline,Baseline,Nezahualcóyotl,Nezahualcóyotl,63.4,25.23,39.79,60.21,media
+baseline,Baseline,Tlalpan,Tlalpan,314.25,94.31,30.01,69.99,media
+baseline,Baseline,La Magdalena Contreras,La Magdalena Contreras,63.37,16.33,25.76,74.24,baja
+baseline,Baseline,Chimalhuacán,Chimalhuacán,55.02,13.53,24.59,75.41,baja
+baseline,Baseline,Coacalco de Berriozábal,Coacalco de Berriozábal,34.98,8.25,23.58,76.42,baja
+baseline,Baseline,Tultitlán,Tultitlán,70.75,14.81,20.94,79.06,baja
+baseline,Baseline,La Paz,La Paz,36.97,6.94,18.77,81.23,baja
+baseline,Baseline,Tecámac,Tecámac,154.47,20.97,13.58,86.42,baja
+baseline,Baseline,Naucalpan de Juárez,Naucalpan de Juárez,157.04,21.14,13.46,86.54,baja
+baseline,Baseline,Milpa Alta,Milpa Alta,298.01,35.0,11.75,88.25,baja
+baseline,Baseline,Valle de Chalco Solidaridad,Valle de Chalco Solidaridad,46.86,4.84,10.33,89.67,baja
+baseline,Baseline,Chicoloapan,Chicoloapan,41.92,2.0,4.77,95.23,baja
+baseline,Baseline,Cuautitlán,Cuautitlán,47.02,2.01,4.27,95.73,baja
+baseline,Baseline,Huixquilucan,Huixquilucan,141.69,5.82,4.11,95.89,baja
+baseline,Baseline,Metepec,Metepec,67.45,2.28,3.37,96.63,baja
+baseline,Baseline,Zumpango,Zumpango,244.75,6.88,2.81,97.19,baja
+baseline,Baseline,Cuautitlán Izcalli,Cuautitlán Izcalli,103.89,1.9,1.83,98.17,baja
+baseline,Baseline,Lerma,Lerma,230.87,2.0,0.87,99.13,baja
+baseline,Baseline,Toluca,Toluca,426.86,3.49,0.82,99.18,baja
+baseline,Baseline,Chalco,Chalco,229.64,0.6,0.26,99.74,baja
+baseline,Baseline,Atenco,Atenco,92.35,0.1,0.11,99.89,baja
+baseline,Baseline,San Mateo Atenco,San Mateo Atenco,21.13,0.02,0.11,99.89,baja
+baseline,Baseline,Zinacantepec,Zinacantepec,313.93,0.24,0.08,99.92,baja
+baseline,Baseline,Ixtapaluca,Ixtapaluca,318.27,0.11,0.03,99.97,baja
+baseline,Baseline,Tepotzotlán,Tepotzotlán,209.08,0.0,0,100.0,baja
+baseline,Baseline,Tepetlaoxtoc,Tepetlaoxtoc,171.04,0.0,0,100.0,baja
+baseline,Baseline,Teotihuacán,Teotihuacán,82.98,0.0,0,100.0,baja
+baseline,Baseline,Tepetlixpa,Tepetlixpa,47.82,0.0,0,100.0,baja
+baseline,Baseline,Teoloyucan,Teoloyucan,31.23,0.0,0,100.0,baja
+baseline,Baseline,Tequixquiac,Tequixquiac,96.42,0.0,0,100.0,baja
+baseline,Baseline,Tenango del Valle,Tenango del Valle,211.08,0.0,0,100.0,baja
+baseline,Baseline,Chiautla,Chiautla,20.07,0.0,0,100.0,baja
+baseline,Baseline,Tenango del Aire,Tenango del Aire,38.0,0.0,0,100.0,baja
+baseline,Baseline,Tenancingo,Tenancingo,164.27,0.0,0,100.0,baja
+baseline,Baseline,Temoaya,Temoaya,191.26,0.0,0,100.0,baja
+baseline,Baseline,Temascaltepec,Temascaltepec,559.0,0.0,0,100.0,baja
+baseline,Baseline,Temascalcingo,Temascalcingo,349.67,0.0,0,100.0,baja
+baseline,Baseline,Temascalapa,Temascalapa,177.31,0.0,0,100.0,baja
+baseline,Baseline,Temamatla,Temamatla,29.3,0.0,0,100.0,baja
+baseline,Baseline,Tejupilco,Tejupilco,641.95,0.0,0,100.0,baja
+baseline,Baseline,Amecameca,Amecameca,172.9,0.0,0,100.0,baja
+baseline,Baseline,Sultepec,Sultepec,563.37,0.0,0,100.0,baja
+baseline,Baseline,Soyaniquilpan de Juárez,Soyaniquilpan de Juárez,140.41,0.0,0,100.0,baja
+baseline,Baseline,Santo Tomás,Santo Tomás,121.2,0.0,0,100.0,baja
+baseline,Baseline,Texcaltitlán,Texcaltitlán,143.94,0.0,0,100.0,baja
+baseline,Baseline,Tlalmanalco,Tlalmanalco,158.58,0.0,0,100.0,baja
+baseline,Baseline,Texcalyacac,Texcalyacac,25.43,0.0,0,100.0,baja
+baseline,Baseline,Texcoco,Texcoco,422.49,0.01,0,100.0,baja
+baseline,Baseline,Zumpahuacán,Zumpahuacán,199.34,0.0,0,100.0,baja
+baseline,Baseline,Zacualpan,Zacualpan,304.9,0.0,0,100.0,baja
+baseline,Baseline,Zacazonapan,Zacazonapan,66.67,0.0,0,100.0,baja
+baseline,Baseline,Xonacatlán,Xonacatlán,33.25,0.0,0,100.0,baja
+baseline,Baseline,Aculco,Aculco,464.52,0.0,0,100.0,baja
+baseline,Baseline,Xalatlaco,Xalatlaco,110.43,0.0,0,100.0,baja
+baseline,Baseline,Villa del Carbón,Villa del Carbón,331.24,0.0,0,100.0,baja
+baseline,Baseline,Villa de Allende,Villa de Allende,311.61,0.0,0,100.0,baja
+baseline,Baseline,Villa Victoria,Villa Victoria,424.27,0.0,0,100.0,baja
+baseline,Baseline,Villa Guerrero,Villa Guerrero,225.94,0.0,0,100.0,baja
+baseline,Baseline,Almoloya de Alquisiras,Almoloya de Alquisiras,165.78,0.0,0,100.0,baja
+baseline,Baseline,Valle de Bravo,Valle de Bravo,421.05,0.0,0,100.0,baja
+baseline,Baseline,Almoloya de Juárez,Almoloya de Juárez,478.22,0.0,0,100.0,baja
+baseline,Baseline,Tultepec,Tultepec,15.66,0.0,0,100.0,baja
+baseline,Baseline,Tonatico,Tonatico,90.69,0.0,0,100.0,baja
+baseline,Baseline,Tonanitla,Tonanitla,8.52,0.0,0,100.0,baja
+baseline,Baseline,Almoloya del Río,Almoloya del Río,9.46,0.0,0,100.0,baja
+baseline,Baseline,Tlatlaya,Tlatlaya,813.09,0.0,0,100.0,baja
+baseline,Baseline,Amanalco,Amanalco,219.8,0.0,0,100.0,baja
+baseline,Baseline,Amatepec,Amatepec,633.38,0.0,0,100.0,baja
+baseline,Baseline,Timilpan,Timilpan,176.96,0.0,0,100.0,baja
+baseline,Baseline,Tianguistenco,Tianguistenco,131.83,0.0,0,100.0,baja
+baseline,Baseline,Tezoyuca,Tezoyuca,11.03,0.0,0,100.0,baja
+baseline,Baseline,San Simón de Guerrero,San Simón de Guerrero,131.93,0.0,0,100.0,baja
+baseline,Baseline,Polotitlán,Polotitlán,132.69,0.0,0,100.0,baja
+baseline,Baseline,San Martín de las Pirámides,San Martín de las Pirámides,70.4,0.0,0,100.0,baja
+baseline,Baseline,Jiquipilco,Jiquipilco,277.29,0.0,0,100.0,baja
+baseline,Baseline,Jilotepec,Jilotepec,588.73,0.0,0,100.0,baja
+baseline,Baseline,Jaltenco,Jaltenco,4.45,0.0,0,100.0,baja
+baseline,Baseline,Atlacomulco,Atlacomulco,257.87,0.0,0,100.0,baja
+baseline,Baseline,Atlautla,Atlautla,163.26,0.0,0,100.0,baja
+baseline,Baseline,Ixtlahuaca,Ixtlahuaca,334.76,0.0,0,100.0,baja
+baseline,Baseline,Ixtapan del Oro,Ixtapan del Oro,84.22,0.0,0,100.0,baja
+baseline,Baseline,Ixtapan de la Sal,Ixtapan de la Sal,118.95,0.0,0,100.0,baja
+baseline,Baseline,Isidro Fabela,Isidro Fabela,79.68,0.0,0,100.0,baja
+baseline,Baseline,Hueypoxtla,Hueypoxtla,246.3,0.0,0,100.0,baja
+baseline,Baseline,Huehuetoca,Huehuetoca,161.71,0.0,0,100.0,baja
+baseline,Baseline,Axapusco,Axapusco,267.26,0.0,0,100.0,baja
+baseline,Baseline,El Oro,El Oro,145.86,0.0,0,100.0,baja
+baseline,Baseline,Ecatzingo,Ecatzingo,56.14,0.0,0,100.0,baja
+baseline,Baseline,Ayapango,Ayapango,50.83,0.0,0,100.0,baja
+baseline,Baseline,Donato Guerra,Donato Guerra,181.36,0.0,0,100.0,baja
+baseline,Baseline,Calimaya,Calimaya,104.26,0.0,0,100.0,baja
+baseline,Baseline,Capulhuac,Capulhuac,21.5,0.0,0,100.0,baja
+baseline,Baseline,Coyotepec,Coyotepec,12.44,0.0,0,100.0,baja
+baseline,Baseline,Cocotitlán,Cocotitlán,10.6,0.0,0,100.0,baja
+baseline,Baseline,Coatepec Harinas,Coatepec Harinas,286.12,0.0,0,100.0,baja
+baseline,Baseline,Chapa de Mota,Chapa de Mota,289.99,0.0,0,100.0,baja
+baseline,Baseline,Chapultepec,Chapultepec,11.51,0.0,0,100.0,baja
+baseline,Baseline,Chiconcuac,Chiconcuac,6.37,0.0,0,100.0,baja
+baseline,Baseline,Jilotzingo,Jilotzingo,116.13,0.0,0,100.0,baja
+baseline,Baseline,Jocotitlán,Jocotitlán,277.23,0.0,0,100.0,baja
+baseline,Baseline,San José del Rincón,San José del Rincón,487.58,0.0,0,100.0,baja
+baseline,Baseline,Joquicingo,Joquicingo,45.04,0.0,0,100.0,baja
+baseline,Baseline,San Felipe del Progreso,San Felipe del Progreso,369.01,0.0,0,100.0,baja
+baseline,Baseline,San Antonio la Isla,San Antonio la Isla,23.32,0.0,0,100.0,baja
+baseline,Baseline,Rayón,Rayón,22.94,0.0,0,100.0,baja
+baseline,Baseline,Papalotla,Papalotla,3.15,0.0,0,100.0,baja
+baseline,Baseline,Ozumba,Ozumba,48.43,0.0,0,100.0,baja
+baseline,Baseline,Otzolotepec,Otzolotepec,129.94,0.0,0,100.0,baja
+baseline,Baseline,Otzoloapan,Otzoloapan,153.33,0.0,0,100.0,baja
+baseline,Baseline,Otumba,Otumba,143.77,0.0,0,100.0,baja
+baseline,Baseline,Ocuilan,Ocuilan,434.34,0.0,0,100.0,baja
+baseline,Baseline,Ocoyoacac,Ocoyoacac,138.26,0.0,0,100.0,baja
+baseline,Baseline,Nopaltepec,Nopaltepec,87.27,0.0,0,100.0,baja
+baseline,Baseline,Nicolás Romero,Nicolás Romero,232.16,0.0,0,100.0,baja
+baseline,Baseline,Apaxco,Apaxco,79.91,0.0,0,100.0,baja
+baseline,Baseline,Nextlalpan,Nextlalpan,60.87,0.0,0,100.0,baja
+baseline,Baseline,Acolman,Acolman,87.08,0.0,0,100.0,baja
+baseline,Baseline,Morelos,Morelos,220.06,0.0,0,100.0,baja
+baseline,Baseline,Mexicaltzingo,Mexicaltzingo,11.74,0.0,0,100.0,baja
+baseline,Baseline,Melchor Ocampo,Melchor Ocampo,13.96,0.0,0,100.0,baja
+baseline,Baseline,Malinalco,Malinalco,217.99,0.0,0,100.0,baja
+baseline,Baseline,Luvianos,Luvianos,701.63,0.0,0,100.0,baja
+baseline,Baseline,Atizapán,Atizapán,8.46,0.0,0,100.0,baja
+baseline,Baseline,Atizapán de Zaragoza,Atizapán de Zaragoza,90.18,0.0,0,100.0,baja
+baseline,Baseline,Juchitepec,Juchitepec,141.09,0.0,0,100.0,baja
+baseline,Baseline,Acambay de Ruiz Castañeda,Acambay de Ruiz Castañeda,492.03,0.0,0,100.0,baja
