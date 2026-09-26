@@ -3,22 +3,44 @@ prepare_garibelt_layers.py — Genera GeoJSONs enriquecidos con clasificación
 Garibelt para consumo en QGIS (proyecto garibelt_red_actual.qgz).
 
 Capas generadas en data/processed/garibelt/:
-  fc_puntos_garibelt.geojson   — 10,537 nodos con fc_banda + fc_normalizado
-  cobertura_garibelt.geojson   — 141 demarcaciones con categoria_cobertura (copia enriquecida)
-  b_puntos_top.geojson         — top-50 nodos B(v) con clasificación visual
+  fc_puntos_garibelt[_<escenario>].geojson   — nodos con fc_banda + fc_normalizado
+  cobertura_garibelt[_<escenario>].geojson   — demarcaciones con categoria_cobertura
+  b_puntos_top[_<escenario>].geojson         — top-50 nodos B(v) con clasificación visual
 
 Uso:
-    python utils/prepare_garibelt_layers.py
+    python utils/prepare_garibelt_layers.py                   # baseline
+    python utils/prepare_garibelt_layers.py --scenario mb     # escenario MB
+    python utils/prepare_garibelt_layers.py --scenario metro  # escenario METRO
+    python utils/prepare_garibelt_layers.py --all             # los 3 escenarios
 """
 
+import argparse
 import json
-import shutil
 from pathlib import Path
+from collections import Counter
 
 REPO_ROOT = Path(__file__).parent.parent
 GEO_DIR   = REPO_ROOT / "tableau" / "exports" / "geo"
 CONN_DIR  = REPO_ROOT / "tableau" / "connectors" / "VFTModel" / "exports"
 OUT_DIR   = REPO_ROOT / "data" / "processed" / "garibelt"
+
+SCENARIOS = {
+    "baseline": {
+        "geo_dir":  GEO_DIR,
+        "conn_dir": CONN_DIR,
+        "suffix":   "",
+    },
+    "mb": {
+        "geo_dir":  GEO_DIR / "scenario_mb",
+        "conn_dir": CONN_DIR / "scenario_mb",
+        "suffix":   "_mb",
+    },
+    "metro": {
+        "geo_dir":  GEO_DIR / "scenario_metro",
+        "conn_dir": CONN_DIR / "scenario_metro",
+        "suffix":   "_metro",
+    },
+}
 
 GARIBELT_COLORS = {
     "critico":   "#C0392B",
@@ -49,9 +71,12 @@ def _write_geojson(path: Path, features: list, crs_epsg: int = 4326) -> None:
     print(f"  ✓ {path.relative_to(REPO_ROOT)}  ({len(features)} features)")
 
 
-def generate_fc_puntos() -> None:
-    """fc_puntos_garibelt.geojson — agrega fc_normalizado y fc_banda."""
-    src = GEO_DIR / "fc_puntos.geojson"
+def generate_fc_puntos(geo_dir: Path, suffix: str) -> None:
+    src = geo_dir / "fc_puntos.geojson"
+    if not src.exists():
+        print(f"  ✗ {src.relative_to(REPO_ROOT)} no existe — omitido")
+        return
+
     data = json.load(open(src, encoding="utf-8"))
     features = data["features"]
 
@@ -68,15 +93,9 @@ def generate_fc_puntos() -> None:
         p["fc_normalizado"] = fc_norm
         p["fc_banda"]       = banda
         p["banda_color"]    = GARIBELT_COLORS[banda]
-        out_features.append({
-            "type": "Feature",
-            "geometry": f["geometry"],
-            "properties": p,
-        })
+        out_features.append({"type": "Feature", "geometry": f["geometry"], "properties": p})
 
-    _write_geojson(OUT_DIR / "fc_puntos_garibelt.geojson", out_features)
-    # Resumen de bandas
-    from collections import Counter
+    _write_geojson(OUT_DIR / f"fc_puntos_garibelt{suffix}.geojson", out_features)
     bandas = Counter(f["properties"]["fc_banda"] for f in out_features)
     total = len(out_features)
     for b in ["critico", "debil", "aceptable", "idoneo"]:
@@ -84,36 +103,38 @@ def generate_fc_puntos() -> None:
         print(f"    {b}: {n} ({100*n/total:.1f}%)")
 
 
-def generate_cobertura() -> None:
-    """cobertura_garibelt.geojson — copia enriquecida con banda_color."""
-    src = CONN_DIR / "cobertura_por_alcaldia.geojson"
+def generate_cobertura(conn_dir: Path, suffix: str) -> None:
+    src = conn_dir / "cobertura_por_alcaldia.geojson"
+    if not src.exists():
+        print(f"  ✗ {src.relative_to(REPO_ROOT)} no existe — omitido")
+        return
+
     data = json.load(open(src, encoding="utf-8"))
-    out_features = []
     CAT_COLORS = {
-        "alta":   "#27AE60",
-        "media":  "#2980B9",
-        "baja":   "#E67E22",
+        "alta":          "#27AE60",
+        "media":         "#2980B9",
+        "baja":          "#E67E22",
         "sin_cobertura": "#C0392B",
     }
+    out_features = []
     for f in data["features"]:
         p = dict(f["properties"])
         cat = p.get("categoria_cobertura") or "sin_cobertura"
         p["banda_color"] = CAT_COLORS.get(cat, "#888888")
-        out_features.append({
-            "type": "Feature",
-            "geometry": f["geometry"],
-            "properties": p,
-        })
-    _write_geojson(OUT_DIR / "cobertura_garibelt.geojson", out_features)
+        out_features.append({"type": "Feature", "geometry": f["geometry"], "properties": p})
+
+    _write_geojson(OUT_DIR / f"cobertura_garibelt{suffix}.geojson", out_features)
 
 
-def generate_b_puntos_top() -> None:
-    """b_puntos_top.geojson — top-50 nodos B(v) únicos con clasificación visual."""
-    src = GEO_DIR / "b_puntos.geojson"
+def generate_b_puntos_top(geo_dir: Path, suffix: str) -> None:
+    src = geo_dir / "b_puntos.geojson"
+    if not src.exists():
+        print(f"  ✗ {src.relative_to(REPO_ROOT)} no existe — omitido")
+        return
+
     data = json.load(open(src, encoding="utf-8"))
     features = data["features"]
 
-    # Deduplicar por nombre+sistema, quedarse con el de mayor B
     seen: dict = {}
     for f in features:
         p = f["properties"]
@@ -126,48 +147,67 @@ def generate_b_puntos_top() -> None:
                  key=lambda f: f["properties"]["betweenness_centrality"],
                  reverse=True)[:50]
 
-    # Clasificación visual por cuartil del top-50
     b_max = top[0]["properties"]["betweenness_centrality"]
     out_features = []
     for rank, f in enumerate(top, start=1):
         p = dict(f["properties"])
         b = p["betweenness_centrality"]
-        b_norm = round(b / b_max, 4)  # normalizado respecto al máximo del top-50
+        b_norm = round(b / b_max, 4)
         if rank <= 5:
-            categoria = "top5"
-            color = "#C0392B"
+            categoria, color = "top5",    "#C0392B"
         elif rank <= 15:
-            categoria = "top6_15"
-            color = "#E67E22"
+            categoria, color = "top6_15", "#E67E22"
         else:
-            categoria = "top16_50"
-            color = "#2980B9"
+            categoria, color = "top16_50","#2980B9"
         p["rank"]          = rank
         p["b_normalizado"] = b_norm
         p["categoria_b"]   = categoria
         p["banda_color"]   = color
-        out_features.append({
-            "type": "Feature",
-            "geometry": f["geometry"],
-            "properties": p,
-        })
+        out_features.append({"type": "Feature", "geometry": f["geometry"], "properties": p})
 
-    _write_geojson(OUT_DIR / "b_puntos_top.geojson", out_features)
+    _write_geojson(OUT_DIR / f"b_puntos_top{suffix}.geojson", out_features)
     print(f"    top-5:    {', '.join(f['properties']['nombre'] for f in out_features[:5])}")
 
 
-if __name__ == "__main__":
-    OUT_DIR.mkdir(parents=True, exist_ok=True)
-    print("\n── Generando capas Garibelt para QGIS ──────────────────────────")
+def run_scenario(name: str) -> None:
+    cfg = SCENARIOS[name]
+    label = name.upper() if name != "baseline" else "Baseline"
+    print(f"\n── Generando capas Garibelt — {label} ──────────────────────────")
 
-    print("\n[1/3] fc_puntos_garibelt.geojson")
-    generate_fc_puntos()
+    print(f"\n[1/3] fc_puntos_garibelt{cfg['suffix']}.geojson")
+    generate_fc_puntos(cfg["geo_dir"], cfg["suffix"])
 
-    print("\n[2/3] cobertura_garibelt.geojson")
-    generate_cobertura()
+    print(f"\n[2/3] cobertura_garibelt{cfg['suffix']}.geojson")
+    generate_cobertura(cfg["conn_dir"], cfg["suffix"])
 
-    print("\n[3/3] b_puntos_top.geojson")
-    generate_b_puntos_top()
+    print(f"\n[3/3] b_puntos_top{cfg['suffix']}.geojson")
+    generate_b_puntos_top(cfg["geo_dir"], cfg["suffix"])
 
     print(f"\nSalida: {OUT_DIR.relative_to(REPO_ROOT)}/")
-    print("Listo para abrir en garibelt_red_actual.qgz\n")
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(
+        description="Genera GeoJSONs Garibelt para QGIS desde exports VFTModel."
+    )
+    group = parser.add_mutually_exclusive_group()
+    group.add_argument(
+        "--scenario", choices=["baseline", "mb", "metro"],
+        default="baseline",
+        help="Escenario a procesar (default: baseline)"
+    )
+    group.add_argument(
+        "--all", action="store_true",
+        help="Procesar los 3 escenarios en secuencia"
+    )
+    args = parser.parse_args()
+
+    OUT_DIR.mkdir(parents=True, exist_ok=True)
+
+    if args.all:
+        for s in ["baseline", "mb", "metro"]:
+            run_scenario(s)
+        print("\nListo — 3 escenarios generados.\n")
+    else:
+        run_scenario(args.scenario)
+        print(f"Listo para abrir en garibelt_red_actual.qgz\n")
