@@ -90,7 +90,7 @@ verify-step-1: check
 # Tiempos sin caché (primera llamada del día):
 #   build-auto:       < 1 min
 #   T (travel-time):  2-5 min
-#   B (betweenness):  5-8 min  ← el más lento con ~11 k nodos
+#   B (betweenness):  10-20 min  ← el más lento con ~11 k nodos
 #   DF (detour):      30-60 s
 
 # Helper interno — requiere PORT=XXXX, no llamar directamente
@@ -105,21 +105,21 @@ _warmup-port:
 		"http://localhost:$(PORT)/api/v1/network/topological/average-travel-time" \
 		| python3 -c "import sys,json; d=json.load(sys.stdin).get('data',{}); print('        OK — T =', d.get('T_average_travel_time_minutes','?'), 'min')" 2>/dev/null \
 		|| echo "        WARN: timeout o fallo en T."
-	@echo "  [3/4] betweenness-centrality (B) — puede tardar 5-8 min primera vez..."
-	@curl -s --max-time 600 \
+	@echo "  [3/4] betweenness-centrality (B) — puede tardar 10-20 min primera vez..."
+	@curl -s --max-time 1200 \
 		"http://localhost:$(PORT)/api/v1/network/geolayers/betweenness?layer=b_puntos&limit=2000" \
 		| python3 -c "import sys,json; d=json.load(sys.stdin); print('        OK —', d.get('metadata',{}).get('n_features','?'), 'nodos rankeados')" 2>/dev/null \
-		|| echo "        WARN: timeout en B (B(v) no en caché — el extracto Tableau puede tardar)."
+		|| echo "        WARN: timeout en B (B(v) no en caché — re-ejecutar warmup o aumentar timeout)."
 	@echo "  [4/4] detour-factor (DF) — puede tardar 30-60 s..."
 	@curl -s --max-time 120 \
 		"http://localhost:$(PORT)/api/v1/network/geolayers/detour?layer=df_puntos&sample_size=100&seed=42" \
 		| python3 -c "import sys,json; d=json.load(sys.stdin); print('        OK —', len(d.get('features',[])), 'rutas O-D')" 2>/dev/null \
 		|| echo "        WARN: timeout en DF."
-	@echo "  [5/5] network-profile (Garibelt) — 1-2 min si T y B están en caché..."
-	@curl -s --max-time 300 \
+	@echo "  [5/5] network-profile (Garibelt) — requiere T y B en caché, 1-5 min..."
+	@curl -s --max-time 600 \
 		"http://localhost:$(PORT)/api/v1/network/topological/network-profile" \
 		| python3 -c "import sys,json; d=json.load(sys.stdin).get('data',{}); dims=d.get('dimensions',[]); print('        OK —', len(dims), 'dimensiones Garibelt compiladas')" 2>/dev/null \
-		|| echo "        WARN: timeout en network-profile (perfil_nodos no disponible hasta próximo warmup)."
+		|| echo "        WARN: timeout en network-profile (verificar que B esté en caché con make verify-step-2)."
 
 warmup-baseline:
 	@echo "── Calentando Baseline (:8000) ──────────────────────────────"
@@ -428,7 +428,7 @@ help:
 	@echo "  make check              Verificar qué servidores están activos"
 	@echo "  make verify-step-1      (alias de check)"
 	@echo ""
-	@echo "PASO 2 — Calentar grafos  (~10 min/escenario, solo si no hay caché)"
+	@echo "PASO 2 — Calentar grafos  (~25 min/escenario primera vez, solo si no hay caché)"
 	@echo "  make warmup             Calentar solo baseline (:8000)"
 	@echo "  make warmup-all         Los 3 escenarios en secuencia (~45 min)"
 	@echo "  make warmup-baseline    Solo baseline (:8000)"
@@ -484,6 +484,7 @@ guide:
 	@echo "PASO 2 — CALENTAR GRAFOS  (primera sesión del día, ~45 min total)"
 	@echo "  $$ make warmup-all"
 	@echo "  Precarga T, B(v) y DF en memoria para los 3 escenarios."
+	@echo "  B(v) es el paso más lento: 10-20 min primera vez por escenario."
 	@echo "  Con caché activo todos los endpoints responden en <100 ms, lo que"
 	@echo "  evita timeouts al crear o refrescar extractos .hyper en Tableau."
 	@echo "  Para verificar: make verify-step-2"
