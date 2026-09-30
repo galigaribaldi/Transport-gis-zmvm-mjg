@@ -92,12 +92,15 @@ como filas de tablas planas directamente a Tableau.
 
 Convención de nombre: `<proyecto>_viz<##>_<descripcion>.twb`
 
-| Archivo | Indicador | WDC fuente |
-|---------|-----------|-----------|
-| `col2026-2_viz01_cobertura.twb` | Cobertura por alcaldía (%) | `vftmodel_wdc.html` → `/coverage` |
-| `col2026-2_viz02_factor_desviacion.twb` | Distribución del Factor de Desviación | `vftmodel_wdc.html` → `/detour` |
-| `col2026-2_viz03_fuerza_capilar.twb` | Ranking de nodos por Fuerza Capilar | `vftmodel_wdc.html` → `/capillary` |
-| `col2026-2_viz04_red_apimetro.twb` | Estadísticas por sistema de transporte | `apimetro_wdc.html` → `/movilidad` |
+| Archivo | Contenido | Fuente de datos |
+|---------|-----------|----------------|
+| `dashboard_viz04_red_apimetro.twb` | Estadísticas red Apimetro — baseline | `apimetro_wdc.html` / hyper |
+| `dashboard_viz04_red_apimetro_scenario_mb.twb` | Red Apimetro — Escenario MB | hyper MB |
+| `dashboard_viz04_red_apimetro_scenario_metro.twb` | Red Apimetro — Escenario METRO | hyper METRO |
+| `dashboard_viz04_red_vftmodel.twb` | Indicadores VFTModel — baseline | `vftmodel_wdc.html` / hyper |
+| `dashboard_viz04_red_vftmodel_scenario_mb.twb` | VFTModel — Escenario MB | hyper MB |
+| `dashboard_viz04_red_vftmodel_scenario_metro.twb` | VFTModel — Escenario METRO | hyper METRO |
+| `dashboard_viz05_garibelt_baseline.twb` | Clasificación Garibelt — baseline | CSVs `escenario-base/` |
 
 ---
 
@@ -117,3 +120,73 @@ Para automatizar con `tabcmd`:
 ```bash
 bash tableau/scripts/export_tabcmd.sh
 ```
+
+---
+
+## Estado de recursos — PDFs exportados
+
+Leyenda: ✅ generado · ⬜ pendiente · ➖ omitir
+
+### A · Apimetro — estadísticas de red
+
+Destino: `exports/pdf/Apimetro/`
+
+| Recurso | Estado |
+|---------|--------|
+| Dashboard_Apimetro_2026.pdf | ✅ |
+| Dashboard_Apimetro_2026_Red_ZMVM.pdf | ✅ |
+| Grafica_Apimetro_2026_Afluencia_Metro_Anual.pdf | ✅ |
+| Grafica_Apimetro_2026_Top_10_estaciones.pdf | ✅ |
+| Grafica_Dashboard_Apimetro_2026_Calidad_Servicio.pdf | ✅ |
+
+### B · VFTModel — indicadores baseline
+
+Destino: `exports/pdf/VFTModel/`
+
+| Recurso | Estado | Nota |
+|---------|--------|------|
+| Dashboard Centralidad Intermediación | ✅ | solo baseline |
+| Dashboard Factor Desviación | ✅ | solo baseline |
+| Dashboard Fuerza Capilar | ✅ | solo baseline |
+| Gráfica B(v) Nodos | ✅ | solo baseline |
+| Gráfica B(v) por sistema | ✅ | solo baseline |
+| Gráfica Cobertura alcaldía | ✅ | solo baseline |
+| Gráfica Cobertura sistema | ✅ | solo baseline |
+| Gráfica Factor Desviación | ✅ | solo baseline |
+| Gráfica Fuerza Capilar | ✅ | solo baseline |
+| Gráfica Tiempo Promedio | ✅ | solo baseline |
+| PDFs escenario MB | ➖ | cubierto por Garibelt (sección D) |
+| PDFs escenario METRO | ➖ | cubierto por Garibelt (sección D) |
+
+### C · Clasificación Garibelt — dashboards por escenario
+
+Destino: `exports/pdf/Clasificacion_Garibelt/{Red_Actual, MB_scenario, Metro_scenario, Comparativo_Base_MB_Metro}/`
+Workbook base: `dashboard_viz05_garibelt_baseline.twb`
+
+| Dashboard | Red Actual | Escenario MB | Escenario METRO |
+|-----------|-----------|-------------|----------------|
+| Dashboard KPI | ✅ | ⬜ | ⬜ |
+| Dashboard Clasificación (bandas) | ✅ | ⬜ | ⬜ |
+| Dashboard Espectro | ✅ | ⬜ | ⬜ |
+| Dashboard Betweenness | ✅ | ⬜ | ⬜ |
+
+Workbooks pendientes de crear: `dashboard_viz05_garibelt_mb.twb` · `dashboard_viz05_garibelt_metro.twb`
+
+### D · Comparativo entre escenarios (pendiente)
+
+Destino: `exports/pdf/Clasificacion_Garibelt/Comparativo_Base_MB_Metro/`
+Workbook pendiente: `dashboard_viz06_garibelt_comparativo.twb`
+
+| Dashboard comparativo | Estado | Prioridad |
+|-----------------------|--------|-----------|
+| ΔBanda Dominante (3 escenarios) | ⬜ | Alta |
+| ΔB(v) Baseline → MB → METRO | ⬜ | Alta |
+| ΔCobertura por alcaldía | ⬜ | Media |
+| KPI comparativo (tabla resumen) | ⬜ | Alta |
+
+---
+
+## Orden de trabajo recomendado
+
+1. **Sección C** — crear `dashboard_viz05_garibelt_mb.twb` y `_metro.twb`, exportar 8 dashboards
+2. **Sección D** — crear `dashboard_viz06_garibelt_comparativo.twb`, exportar comparativos
