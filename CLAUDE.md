@@ -68,3 +68,8 @@ Nombre: `<proyecto>_mapa<##>_<descripcion>.png`
 Los PNGs exportados desde QGIS van a dos destinos:
 1. `maps/exports/`
 2. El directorio `img/` de la presentación correspondiente en `Trabajos-Maestria-Urbanismo/`
+
+## Git
+
+- No agregar líneas `Co-Authored-By` ni ninguna atribución de Claude en los mensajes de commit.
+- Los comandos git se proporcionan como texto para que el usuario los ejecute — Claude no los corre directamente.
