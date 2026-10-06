@@ -12,6 +12,25 @@
 | `make export-all` | Ahora encadena: GeoJSONs VFTModel → líneas Apimetro → `export-layers` → `export-garibelt-layers` → CSVs Garibelt |
 | `make verify` | Referencias actualizadas: líneas 678/686, T 113.91 / 108.99 / 101.92 |
 
+## 1b. Datos comparativos — `make export-comparativo`
+
+Script nuevo `utils/compare_garibelt_scenarios.py`. Lee de disco, no llama a la API; corre al final de `export-all`.
+
+| Salida | Filas | Uso |
+|--------|-------|-----|
+| `data/processed/garibelt/comparativo/cambio_banda.geojson` | 22 nodos | QGIS: mapa de nodos que cambian de Banda Dominante (`cambio_mb`, `cambio_metro` = mejora / empeora / igual) |
+| `tableau/exports/data/garibelt/comparativo/kpi_comparativo.csv` | 15 | Perfil Garibelt × escenario (formato largo) |
+| `.../bv_comparativo.csv` | 11,209 | B(v), rango y Δ por nodo; `es_nodo_anillo` marca los 94 nodos nuevos |
+| `.../cobertura_comparativa.csv` | 141 | Cobertura × escenario y Δ; `cambia` marca las 7 demarcaciones |
+| `.../distribucion_bandas.csv` | 36 | Nodos por banda × dimensión (`banda_dominante`, `fc_banda`, `b_banda`) × escenario |
+| `.../transicion_bandas.csv` | 30 | Matriz Baseline → MB / Metro (incluye origen `nuevo`) |
+
+Hallazgos que salen de estos datos:
+- B(v): en Metro, 9 de los 10 y 40 de los 50 nodos con mayor B(v) son del anillo; en MB, 0 de los 50. Tacubaya −29.7 % en Metro.
+- Banda Dominante (nodos existentes): MB 4 crítico→débil y 6 débil→crítico; Metro 11 crítico→débil y 10 débil→crítico.
+- FC: 33 crítico→débil y 6 débil→aceptable, iguales en MB y Metro.
+- 505 nodos de Baseline no tienen B(v) (fuera del componente gigante).
+
 ## 2. Scripts corregidos
 
 | Script | Corrección |

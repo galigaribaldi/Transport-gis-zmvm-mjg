@@ -1,0 +1,16 @@
+escenario,escenario_label,dimension,indicador_fuente,valor_bruto,valor_normalizado,banda
+baseline,Red Actual,accesibilidad,C — Cobertura Espacial,4.4138,0.0552,critico
+baseline,Red Actual,conectividad_capilar,Cᵢ — Alimentación Capilar,7.0,0.25,debil
+baseline,Red Actual,eficiencia_ruta,DI — Índice de Ruta Directa,1.52,0.6533,aceptable
+baseline,Red Actual,fluidez_global,T — Tiempo de Viaje Promedio,113.9087,0.6957,aceptable
+baseline,Red Actual,centralidad_critica,B(v) — Centralidad de Intermediación,0.800656,0.1993,critico
+mb,Anillo MB,accesibilidad,C — Cobertura Espacial,4.4596,0.0557,critico
+mb,Anillo MB,conectividad_capilar,Cᵢ — Alimentación Capilar,7.0,0.25,debil
+mb,Anillo MB,eficiencia_ruta,DI — Índice de Ruta Directa,1.51,0.66,aceptable
+mb,Anillo MB,fluidez_global,T — Tiempo de Viaje Promedio,108.9857,0.7475,aceptable
+mb,Anillo MB,centralidad_critica,B(v) — Centralidad de Intermediación,0.801171,0.1988,critico
+metro,Anillo Metro,accesibilidad,C — Cobertura Espacial,4.4596,0.0557,critico
+metro,Anillo Metro,conectividad_capilar,Cᵢ — Alimentación Capilar,7.0,0.25,debil
+metro,Anillo Metro,eficiencia_ruta,DI — Índice de Ruta Directa,1.58,0.6133,aceptable
+metro,Anillo Metro,fluidez_global,T — Tiempo de Viaje Promedio,101.921,0.8219,idoneo
+metro,Anillo Metro,centralidad_critica,B(v) — Centralidad de Intermediación,0.813383,0.1866,critico

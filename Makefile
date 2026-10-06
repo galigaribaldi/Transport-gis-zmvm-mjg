@@ -29,7 +29,7 @@ GARIBELT_DIR = tableau/exports/data/garibelt
         _warmup-port \
         export-all export-baseline export-mb export-metro \
         export-lineas export-lineas-baseline export-lineas-mb export-lineas-metro \
-        export-garibelt-csv-all export-layers _export-port-layers export-garibelt-layers \
+        export-garibelt-csv-all export-layers _export-port-layers export-garibelt-layers export-comparativo \
         export-garibelt-csv-baseline export-garibelt-csv-mb export-garibelt-csv-metro \
         workbooks serve \
         verify verify-step-1 verify-step-2 verify-step-3 verify-step-4 verify-step-5
@@ -292,6 +292,11 @@ export-garibelt-layers:
 	@echo "── Capas Garibelt QGIS (3 escenarios) ────────────────────"
 	$(PYTHON) utils/prepare_garibelt_layers.py --all
 
+# Datos comparativos Base · MB · Metro (QGIS cambio_banda + CSVs Tableau) — lee de disco
+export-comparativo:
+	@echo "── Datos comparativos Garibelt ───────────────────────────"
+	$(PYTHON) utils/compare_garibelt_scenarios.py
+
 export-all:
 	@echo ""
 	@echo "══════════════════════════════════════════════════════════"
@@ -310,6 +315,8 @@ export-all:
 	@echo ""
 	@echo "  Exportando CSVs Garibelt para Tableau..."
 	@$(MAKE) export-garibelt-csv-all
+	@echo ""
+	@$(MAKE) export-comparativo
 
 verify-step-3:
 	@echo ""
@@ -476,6 +483,7 @@ help:
 	@echo "  make export-lineas      lineas.geojson + poligonos.geojson (3 Apimetro)"
 	@echo "  make export-layers      cobertura/df por demarcación (Tableau) + perfil_nodos (QGIS)"
 	@echo "  make export-garibelt-layers  fc/cobertura/b_puntos Garibelt para QGIS"
+	@echo "  make export-comparativo cambio_banda (QGIS) + CSVs comparativos (Tableau)"
 	@echo "  make verify-step-3      Contar features en todos los archivos"
 	@echo ""
 	@echo "PASO 4 — Archivos de trabajo"
