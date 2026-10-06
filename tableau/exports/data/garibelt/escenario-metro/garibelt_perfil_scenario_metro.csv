@@ -1,6 +1,6 @@
 escenario,escenario_label,dimension,indicador_fuente,valor_bruto,valor_normalizado,banda,metrica_descripcion
 scenario_metro,METRO,accesibilidad,C — Cobertura Espacial,4.4596,0.0557,critico,Cobertura peatonal 800 m ponderada por área: 4.5%
 scenario_metro,METRO,conectividad_capilar,Cᵢ — Alimentación Capilar,7.0,0.25,debil,Mediana grado nodal: 7.0 (escala Q1=6–Q3=10)
-scenario_metro,METRO,eficiencia_ruta,DI — Índice de Ruta Directa,1.47,0.6867,aceptable,Mediana Factor Desviación: 1.47 (1.0 = ruta directa perfecta)
-scenario_metro,METRO,fluidez_global,T — Tiempo de Viaje Promedio,98.1217,0.8619,idoneo,T promedio shortest-path: 98.1 min (ref. CDMX: 85.0 min)
-scenario_metro,METRO,centralidad_critica,B(v) — Centralidad de Intermediación,0.797717,0.2023,critico,"Gini de intermediación: 0.7977 (0 = distribuida, 1 = concentrada)"
+scenario_metro,METRO,eficiencia_ruta,DI — Índice de Ruta Directa,1.58,0.6133,aceptable,Mediana Factor Desviación: 1.58 (1.0 = ruta directa perfecta)
+scenario_metro,METRO,fluidez_global,T — Tiempo de Viaje Promedio,101.921,0.8219,idoneo,T promedio shortest-path: 101.9 min (ref. CDMX: 85.0 min)
+scenario_metro,METRO,centralidad_critica,B(v) — Centralidad de Intermediación,0.813383,0.1866,critico,"Gini de intermediación: 0.8134 (0 = distribuida, 1 = concentrada)"

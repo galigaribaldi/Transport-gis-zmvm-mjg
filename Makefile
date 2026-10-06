@@ -14,6 +14,7 @@
 #   make verify    → verificación integral (todos los pasos)
 
 PYTHON      ?= .venv/bin/python
+SHOW_C      ?=
 EXPORTS      = utils/generate_exports.py
 COPY_WB      = utils/copy_workbook_scenario.py
 GARIBELT_CSV = utils/export_garibelt_csv.py
@@ -28,7 +29,7 @@ GARIBELT_DIR = tableau/exports/data/garibelt
         _warmup-port \
         export-all export-baseline export-mb export-metro \
         export-lineas export-lineas-baseline export-lineas-mb export-lineas-metro \
-        export-garibelt-csv-all \
+        export-garibelt-csv-all export-layers _export-port-layers export-garibelt-layers \
         export-garibelt-csv-baseline export-garibelt-csv-mb export-garibelt-csv-metro \
         workbooks serve \
         verify verify-step-1 verify-step-2 verify-step-3 verify-step-4 verify-step-5
@@ -94,32 +95,18 @@ verify-step-1: check
 #   DF (detour):      30-60 s
 
 # Helper interno — requiere PORT=XXXX, no llamar directamente
+# network-profile calcula y cachea T + B(v) internamente (cambio VFTModel cobertura Oct-2026)
 _warmup-port:
-	@echo "  [1/4] build-auto..."
+	@echo "  [1/2] build-auto..."
 	@curl -s --max-time 60 \
 		"http://localhost:$(PORT)/api/v1/network/build-auto?mode=REALISTIC_INTEGRATION&tolerance_m=85" \
 		| python3 -c "import sys,json; d=json.load(sys.stdin); print('        OK —', d.get('nodos','?'), 'nodos,', d.get('aristas','?'), 'aristas')" 2>/dev/null \
 		|| { echo "        ERROR: VFTModel :$(PORT) no responde. Verificar con make check."; exit 1; }
-	@echo "  [2/4] average-travel-time (T) — puede tardar 2-5 min..."
-	@curl -s --max-time 360 \
-		"http://localhost:$(PORT)/api/v1/network/topological/average-travel-time" \
-		| python3 -c "import sys,json; d=json.load(sys.stdin).get('data',{}); print('        OK — T =', d.get('T_average_travel_time_minutes','?'), 'min')" 2>/dev/null \
-		|| echo "        WARN: timeout o fallo en T."
-	@echo "  [3/4] betweenness-centrality (B) — puede tardar 10-20 min primera vez..."
-	@curl -s --max-time 1200 \
-		"http://localhost:$(PORT)/api/v1/network/geolayers/betweenness?layer=b_puntos&limit=2000" \
-		| python3 -c "import sys,json; d=json.load(sys.stdin); print('        OK —', d.get('metadata',{}).get('n_features','?'), 'nodos rankeados')" 2>/dev/null \
-		|| echo "        WARN: timeout en B (B(v) no en caché — re-ejecutar warmup o aumentar timeout)."
-	@echo "  [4/4] detour-factor (DF) — puede tardar 30-60 s..."
-	@curl -s --max-time 120 \
-		"http://localhost:$(PORT)/api/v1/network/geolayers/detour?layer=df_puntos&sample_size=100&seed=42" \
-		| python3 -c "import sys,json; d=json.load(sys.stdin); print('        OK —', len(d.get('features',[])), 'rutas O-D')" 2>/dev/null \
-		|| echo "        WARN: timeout en DF."
-	@echo "  [5/5] network-profile (Garibelt) — requiere T y B en caché, 1-5 min..."
-	@curl -s --max-time 600 \
-		"http://localhost:$(PORT)/api/v1/network/topological/network-profile" \
-		| python3 -c "import sys,json; d=json.load(sys.stdin).get('data',{}); dims=d.get('dimensions',[]); print('        OK —', len(dims), 'dimensiones Garibelt compiladas')" 2>/dev/null \
-		|| echo "        WARN: timeout en network-profile (verificar que B esté en caché con make verify-step-2)."
+	@echo "  [2/2] network-profile (Garibelt) — calcula T + B(v) internamente, ~20 min primera vez..."
+	@curl -s --max-time 3600 \
+		"http://localhost:$(PORT)/api/v1/network/topological/network-profile?mode=REALISTIC_INTEGRATION&tolerance_m=85" \
+		| SHOW_C=$(SHOW_C) python3 -c "import sys,json,os; r=json.load(sys.stdin); d=r.get('data',{}); dims=d.get('dimensions',[]); cd=d.get('cobertura_dominios',{}) if os.getenv('SHOW_C') else {}; extra=' | C141='+str(cd.get('entidades',{}).get('valor_bruto','?'))+'% | C76='+str(cd.get('zmvm_76',{}).get('valor_bruto','?'))+'%' if cd else ''; print('        OK —', len(dims), 'dimensiones Garibelt compiladas'+extra)" 2>/dev/null \
+		|| echo "        WARN: timeout en network-profile."
 
 warmup-baseline:
 	@echo "── Calentando Baseline (:8000) ──────────────────────────────"
@@ -146,12 +133,21 @@ warmup-scenarios: warmup-mb warmup-metro
 warmup-all:
 	@echo ""
 	@echo "══════════════════════════════════════════════════════════"
-	@echo "  PASO 2 — Calentando los 3 escenarios (~55 min total)"
+	@echo "  PASO 2 — Calentando los 3 escenarios en paralelo (~20 min)"
 	@echo "══════════════════════════════════════════════════════════"
-	@$(MAKE) warmup-baseline
-	@$(MAKE) warmup-mb
-	@$(MAKE) warmup-metro
-	@echo "Los 3 escenarios están en caché."
+	@mkdir -p /tmp/vft_warmup && rm -f /tmp/vft_warmup/estado.log
+	@for p in 8000 8001 8002; do \
+	  ( \
+	    curl -s --max-time 3600 "localhost:$$p/api/v1/network/build-auto?mode=REALISTIC_INTEGRATION&tolerance_m=85" \
+	      > /tmp/vft_warmup/build_$$p.json; \
+	    curl -s --max-time 3600 "localhost:$$p/api/v1/network/topological/network-profile?mode=REALISTIC_INTEGRATION&tolerance_m=85" \
+	      > /tmp/vft_warmup/profile_$$p.json; \
+	    echo "$$p terminado $$(date +%T)" >> /tmp/vft_warmup/estado.log; \
+	  ) & \
+	done; \
+	wait
+	@echo "  Los 3 escenarios están en caché."
+	@echo "  Resultados en /tmp/vft_warmup/"
 	@echo ""
 
 verify-step-2:
@@ -267,6 +263,35 @@ export-garibelt-csv-all:
 	@$(MAKE) export-garibelt-csv-metro
 	@echo ""
 
+# ── Capas por demarcación (Spatial File Tableau) + perfil_nodos (QGIS) ──────
+# Helper interno — requiere PORT, CONN (dir conector) y PROC (dir data/processed/garibelt)
+VFT_Q = mode=REALISTIC_INTEGRATION&tolerance_m=85
+
+_export-port-layers:
+	@mkdir -p $(CONN) $(PROC)
+	@for l in cobertura_por_alcaldia cobertura_800m; do \
+		curl -sf --max-time 600 "http://localhost:$(PORT)/api/v1/network/geolayers/coverage?layer=$$l&radio_m=800&$(VFT_Q)" \
+			-o $(CONN)/$$l.geojson && echo "  ✓ $(CONN)/$$l.geojson" || echo "  ✗ $$l :$(PORT)"; \
+	done
+	@curl -sf --max-time 600 "http://localhost:$(PORT)/api/v1/network/geolayers/detour?layer=df_por_alcaldia&sample_size=100&seed=42&$(VFT_Q)" \
+		-o $(CONN)/df_por_alcaldia.geojson && echo "  ✓ $(CONN)/df_por_alcaldia.geojson" || echo "  ✗ df_por_alcaldia :$(PORT)"
+	@curl -sf --max-time 600 "http://localhost:$(PORT)/api/v1/network/geolayers/profile?layer=perfil_nodos&$(VFT_Q)" \
+		-o $(PROC)/perfil_nodos_$(TAG).geojson && echo "  ✓ $(PROC)/perfil_nodos_$(TAG).geojson" || echo "  ✗ perfil_nodos :$(PORT)"
+
+CONN_DIR = tableau/connectors/VFTModel/exports
+PROC_DIR = data/processed/garibelt
+
+export-layers:
+	@echo "── Capas por demarcación + perfil_nodos (3 escenarios) ───"
+	@$(MAKE) _export-port-layers PORT=8000 CONN=$(CONN_DIR)                PROC=$(PROC_DIR)                TAG=baseline
+	@$(MAKE) _export-port-layers PORT=8001 CONN=$(CONN_DIR)/scenario_mb    PROC=$(PROC_DIR)/scenario-mb    TAG=mb
+	@$(MAKE) _export-port-layers PORT=8002 CONN=$(CONN_DIR)/scenario_metro PROC=$(PROC_DIR)/scenario-metro TAG=metro
+
+# Capas Garibelt para QGIS (fc_puntos_garibelt, cobertura_garibelt, b_puntos_top) — lee de disco
+export-garibelt-layers:
+	@echo "── Capas Garibelt QGIS (3 escenarios) ────────────────────"
+	$(PYTHON) utils/prepare_garibelt_layers.py --all
+
 export-all:
 	@echo ""
 	@echo "══════════════════════════════════════════════════════════"
@@ -278,6 +303,10 @@ export-all:
 	@echo ""
 	@echo "  Exportando GeoJSONs Apimetro (lineas + polígonos)..."
 	@$(MAKE) export-lineas
+	@echo ""
+	@$(MAKE) export-layers
+	@echo ""
+	@$(MAKE) export-garibelt-layers
 	@echo ""
 	@echo "  Exportando CSVs Garibelt para Tableau..."
 	@$(MAKE) export-garibelt-csv-all
@@ -297,14 +326,15 @@ verify-step-3:
 	@python3 -c "import json; d=json.load(open('$(GEO_DIR)/scenario_metro/b_puntos.geojson')); print('    scenario_metro/b_puntos.geojson ', len(d['features']), 'features')" 2>/dev/null || echo "    scenario_metro/b_puntos.geojson  ✗ no existe"
 	@python3 -c "import json; d=json.load(open('$(GEO_DIR)/scenario_metro/df_puntos.geojson')); print('    scenario_metro/df_puntos.geojson', len(d['features']), 'features')" 2>/dev/null || echo "    scenario_metro/df_puntos.geojson ✗ no existe"
 	@python3 -c "import json; d=json.load(open('$(GEO_DIR)/scenario_metro/fc_puntos.geojson')); print('    scenario_metro/fc_puntos.geojson', len(d['features']), 'features')" 2>/dev/null || echo "    scenario_metro/fc_puntos.geojson ✗ no existe"
-	@echo "  GeoJSONs Apimetro (lineas — baseline:668, escenarios:676):"
-	@python3 -c "import json; d=json.load(open('$(GEO_DIR)/lineas.geojson')); n=len(d['features']); ok='✓' if n==668 else '?'; print(f'    baseline/lineas.geojson         {n} features {ok}')" 2>/dev/null || echo "    baseline/lineas.geojson          ✗ no existe"
-	@python3 -c "import json; d=json.load(open('$(GEO_DIR)/scenario_mb/lineas.geojson')); n=len(d['features']); ok='✓' if n==676 else '✗ esperado 676'; print(f'    scenario_mb/lineas.geojson      {n} features {ok}')" 2>/dev/null || echo "    scenario_mb/lineas.geojson       ✗ no existe"
-	@python3 -c "import json; d=json.load(open('$(GEO_DIR)/scenario_metro/lineas.geojson')); n=len(d['features']); ok='✓' if n==676 else '✗ esperado 676'; print(f'    scenario_metro/lineas.geojson   {n} features {ok}')" 2>/dev/null || echo "    scenario_metro/lineas.geojson    ✗ no existe"
+	@echo "  GeoJSONs Apimetro (lineas — baseline:678, escenarios:686):"
+	@python3 -c "import json; d=json.load(open('$(GEO_DIR)/lineas.geojson')); n=len(d['features']); ok='✓' if n==678 else '?'; print(f'    baseline/lineas.geojson         {n} features {ok}')" 2>/dev/null || echo "    baseline/lineas.geojson          ✗ no existe"
+	@python3 -c "import json; d=json.load(open('$(GEO_DIR)/scenario_mb/lineas.geojson')); n=len(d['features']); ok='✓' if n==686 else '✗ esperado 686'; print(f'    scenario_mb/lineas.geojson      {n} features {ok}')" 2>/dev/null || echo "    scenario_mb/lineas.geojson       ✗ no existe"
+	@python3 -c "import json; d=json.load(open('$(GEO_DIR)/scenario_metro/lineas.geojson')); n=len(d['features']); ok='✓' if n==686 else '✗ esperado 686'; print(f'    scenario_metro/lineas.geojson   {n} features {ok}')" 2>/dev/null || echo "    scenario_metro/lineas.geojson    ✗ no existe"
 	@echo "  CSVs Garibelt ($(GARIBELT_DIR)/):"
-	@for s in baseline scenario_mb scenario_metro; do \
+	@for sd in baseline:escenario-base scenario_mb:escenario-mb scenario_metro:escenario-metro; do \
+		s=$${sd%%:*}; d=$${sd##*:}; \
 		for csv in b_ranking fc_distribucion df_distribucion cobertura_alcaldias garibelt_perfil; do \
-			f="$(GARIBELT_DIR)/$${csv}_$${s}.csv"; \
+			f="$(GARIBELT_DIR)/$$d/$${csv}_$${s}.csv"; \
 			if [ -f "$$f" ]; then \
 				rows=$$(tail -n +2 "$$f" | wc -l | tr -d ' '); \
 				echo "    $${csv}_$${s}.csv   $$rows filas ✓"; \
@@ -402,12 +432,12 @@ verify-step-5:
 		| python3 -c "import sys,json; d=json.load(sys.stdin).get('data',{}); t=d.get('T_average_travel_time_minutes','?'); print('    METRO     :8002  T =', t, 'min')" 2>/dev/null \
 		|| echo "    METRO     :8002  ✗ inactivo o sin caché"
 	@echo "  Mejoras esperadas (vs CSV):"
-	@echo "    MB vs Baseline:    −4.18 min  (104.74 vs 108.92)"
-	@echo "    METRO vs Baseline: −10.80 min ( 98.12 vs 108.92)"
-	@echo "  Lineas Apimetro (baseline:668, escenarios con anillo:676):"
-	@python3 -c "import json; n=len(json.load(open('$(GEO_DIR)/lineas.geojson'))['features']); print('    baseline:      ', n, 'lineas', '✓' if n==668 else '✗')" 2>/dev/null || echo "    baseline lineas.geojson ✗ no existe"
-	@python3 -c "import json; n=len(json.load(open('$(GEO_DIR)/scenario_mb/lineas.geojson'))['features']); print('    scenario_mb:   ', n, 'lineas', '✓' if n==676 else '✗ (esperado 676)')" 2>/dev/null || echo "    scenario_mb lineas.geojson ✗ no existe"
-	@python3 -c "import json; n=len(json.load(open('$(GEO_DIR)/scenario_metro/lineas.geojson'))['features']); print('    scenario_metro:', n, 'lineas', '✓' if n==676 else '✗ (esperado 676)')" 2>/dev/null || echo "    scenario_metro lineas.geojson ✗ no existe"
+	@echo "    MB vs Baseline:    −4.92 min  (108.99 vs 113.91)"
+	@echo "    METRO vs Baseline: −11.99 min (101.92 vs 113.91)"
+	@echo "  Lineas Apimetro (baseline:678, escenarios con anillo:686):"
+	@python3 -c "import json; n=len(json.load(open('$(GEO_DIR)/lineas.geojson'))['features']); print('    baseline:      ', n, 'lineas', '✓' if n==678 else '✗')" 2>/dev/null || echo "    baseline lineas.geojson ✗ no existe"
+	@python3 -c "import json; n=len(json.load(open('$(GEO_DIR)/scenario_mb/lineas.geojson'))['features']); print('    scenario_mb:   ', n, 'lineas', '✓' if n==686 else '✗ (esperado 686)')" 2>/dev/null || echo "    scenario_mb lineas.geojson ✗ no existe"
+	@python3 -c "import json; n=len(json.load(open('$(GEO_DIR)/scenario_metro/lineas.geojson'))['features']); print('    scenario_metro:', n, 'lineas', '✓' if n==686 else '✗ (esperado 686)')" 2>/dev/null || echo "    scenario_metro lineas.geojson ✗ no existe"
 	@echo ""
 
 verify: verify-step-1 verify-step-2 verify-step-3 verify-step-4 verify-step-5
@@ -428,14 +458,15 @@ help:
 	@echo "  make check              Verificar qué servidores están activos"
 	@echo "  make verify-step-1      (alias de check)"
 	@echo ""
-	@echo "PASO 2 — Calentar grafos  (~25 min/escenario primera vez, solo si no hay caché)"
+	@echo "PASO 2 — Calentar grafos  (~20 min paralelo primera vez, solo si no hay caché)"
 	@echo "  make warmup             Calentar solo baseline (:8000)"
-	@echo "  make warmup-all         Los 3 escenarios en secuencia (~45 min)"
+	@echo "  make warmup-all         Los 3 escenarios en paralelo (~20 min)"
 	@echo "  make warmup-baseline    Solo baseline (:8000)"
 	@echo "  make warmup-mb          Solo escenario MB (:8001)"
 	@echo "  make warmup-metro       Solo escenario METRO (:8002)"
 	@echo "  make warmup-scenarios   MB + METRO (sin baseline)"
 	@echo "  make verify-step-2      Ver T actual de cada escenario"
+	@echo "  Flag: SHOW_C=1          Mostrar C₁₄₁ y C₇₆ en el log del warmup"
 	@echo ""
 	@echo "PASO 3 — Generar fuentes de datos"
 	@echo "  make export-all         GeoJSONs + GPKGs + lineas (3 escenarios)"
@@ -443,6 +474,8 @@ help:
 	@echo "  make export-mb          Solo VFTModel MB (:8001)"
 	@echo "  make export-metro       Solo VFTModel METRO (:8002)"
 	@echo "  make export-lineas      lineas.geojson + poligonos.geojson (3 Apimetro)"
+	@echo "  make export-layers      cobertura/df por demarcación (Tableau) + perfil_nodos (QGIS)"
+	@echo "  make export-garibelt-layers  fc/cobertura/b_puntos Garibelt para QGIS"
 	@echo "  make verify-step-3      Contar features en todos los archivos"
 	@echo ""
 	@echo "PASO 4 — Archivos de trabajo"
@@ -481,10 +514,10 @@ guide:
 	@echo "  Confirma qué instancias están activas. Si alguna falla, levantar"
 	@echo "  el servicio correspondiente antes de continuar."
 	@echo ""
-	@echo "PASO 2 — CALENTAR GRAFOS  (primera sesión del día, ~45 min total)"
+	@echo "PASO 2 — CALENTAR GRAFOS  (primera sesión del día, ~20 min paralelo)"
 	@echo "  $$ make warmup-all"
-	@echo "  Precarga T, B(v) y DF en memoria para los 3 escenarios."
-	@echo "  B(v) es el paso más lento: 10-20 min primera vez por escenario."
+	@echo "  Precarga T + B(v) en memoria para los 3 escenarios en paralelo."
+	@echo "  network-profile calcula T y B(v) internamente (~20 min primera vez)."
 	@echo "  Con caché activo todos los endpoints responden en <100 ms, lo que"
 	@echo "  evita timeouts al crear o refrescar extractos .hyper en Tableau."
 	@echo "  Para verificar: make verify-step-2"

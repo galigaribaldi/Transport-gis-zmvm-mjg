@@ -30,6 +30,7 @@ REPO_ROOT = Path(__file__).parent.parent
 GEO_DIR   = REPO_ROOT / "tableau" / "exports" / "geo"
 CONN_DIR  = REPO_ROOT / "tableau" / "connectors" / "VFTModel" / "exports"
 OUT_DIR   = REPO_ROOT / "tableau" / "exports" / "data" / "garibelt"
+SUBDIR    = {"baseline": "escenario-base", "scenario_mb": "escenario-mb", "scenario_metro": "escenario-metro"}
 
 VFT_PORTS = {
     "baseline":      8000,
@@ -76,7 +77,7 @@ def _load_features(path: Path) -> list:
 
 
 def _write_csv(path: Path, rows: list[dict], fieldnames: list[str]) -> None:
-    OUT_DIR.mkdir(parents=True, exist_ok=True)
+    path.parent.mkdir(parents=True, exist_ok=True)
     with open(path, "w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=fieldnames, extrasaction="ignore")
         writer.writeheader()
@@ -112,7 +113,7 @@ def export_b_ranking(scenario: str) -> None:
     rows.sort(key=lambda r: r["betweenness_centrality"] or 0, reverse=True)
     fields = ["escenario", "escenario_label", "id", "nombre", "sistema",
               "alcaldia_municipio", "es_cetram", "betweenness_centrality"]
-    _write_csv(OUT_DIR / f"b_ranking_{scenario}.csv", rows, fields)
+    _write_csv(OUT_DIR / SUBDIR[scenario] / f"b_ranking_{scenario}.csv", rows, fields)
 
 
 def export_fc_distribucion(scenario: str) -> None:
@@ -151,7 +152,7 @@ def export_fc_distribucion(scenario: str) -> None:
     fields = ["escenario", "escenario_label", "id", "nombre", "tipo_nodo",
               "sistemas", "sistemas_count", "cx_entrada", "cx_salida",
               "fc_total", "fc_normalizado", "fc_banda"]
-    _write_csv(OUT_DIR / f"fc_distribucion_{scenario}.csv", rows, fields)
+    _write_csv(OUT_DIR / SUBDIR[scenario] / f"fc_distribucion_{scenario}.csv", rows, fields)
 
 
 def export_df_distribucion(scenario: str) -> None:
@@ -182,7 +183,7 @@ def export_df_distribucion(scenario: str) -> None:
     fields = ["escenario", "escenario_label", "id", "origen", "destino",
               "factor_desviacion", "dist_red_km", "dist_recta_km",
               "sistemas", "categoria_df"]
-    _write_csv(OUT_DIR / f"df_distribucion_{scenario}.csv", rows, fields)
+    _write_csv(OUT_DIR / SUBDIR[scenario] / f"df_distribucion_{scenario}.csv", rows, fields)
 
 
 def export_cobertura_alcaldias(scenario: str) -> None:
@@ -213,7 +214,7 @@ def export_cobertura_alcaldias(scenario: str) -> None:
     fields = ["escenario", "escenario_label", "id", "nombre",
               "area_total_km2", "area_cubierta_km2",
               "cobertura_pct", "cobertura_deficit", "categoria_cobertura"]
-    _write_csv(OUT_DIR / f"cobertura_alcaldias_{scenario}.csv", rows, fields)
+    _write_csv(OUT_DIR / SUBDIR[scenario] / f"cobertura_alcaldias_{scenario}.csv", rows, fields)
 
 
 # ── Exportación desde API (requiere servidor y warmup activo) ─────────────────
@@ -250,7 +251,7 @@ def export_garibelt_perfil(scenario: str) -> None:
 
     fields = ["escenario", "escenario_label", "dimension", "indicador_fuente",
               "valor_bruto", "valor_normalizado", "banda", "metrica_descripcion"]
-    _write_csv(OUT_DIR / f"garibelt_perfil_{scenario}.csv", rows, fields)
+    _write_csv(OUT_DIR / SUBDIR[scenario] / f"garibelt_perfil_{scenario}.csv", rows, fields)
 
 
 # ── Main ──────────────────────────────────────────────────────────────────────

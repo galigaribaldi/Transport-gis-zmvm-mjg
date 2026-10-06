@@ -28,16 +28,19 @@ SCENARIOS = {
     "baseline": {
         "geo_dir":  GEO_DIR,
         "conn_dir": CONN_DIR,
+        "out_dir":  OUT_DIR,
         "suffix":   "",
     },
     "mb": {
         "geo_dir":  GEO_DIR / "scenario_mb",
         "conn_dir": CONN_DIR / "scenario_mb",
+        "out_dir":  OUT_DIR / "scenario-mb",
         "suffix":   "_mb",
     },
     "metro": {
         "geo_dir":  GEO_DIR / "scenario_metro",
         "conn_dir": CONN_DIR / "scenario_metro",
+        "out_dir":  OUT_DIR / "scenario-metro",
         "suffix":   "_metro",
     },
 }
@@ -71,7 +74,7 @@ def _write_geojson(path: Path, features: list, crs_epsg: int = 4326) -> None:
     print(f"  ✓ {path.relative_to(REPO_ROOT)}  ({len(features)} features)")
 
 
-def generate_fc_puntos(geo_dir: Path, suffix: str) -> None:
+def generate_fc_puntos(geo_dir: Path, suffix: str, out_dir: Path) -> None:
     src = geo_dir / "fc_puntos.geojson"
     if not src.exists():
         print(f"  ✗ {src.relative_to(REPO_ROOT)} no existe — omitido")
@@ -95,7 +98,7 @@ def generate_fc_puntos(geo_dir: Path, suffix: str) -> None:
         p["banda_color"]    = GARIBELT_COLORS[banda]
         out_features.append({"type": "Feature", "geometry": f["geometry"], "properties": p})
 
-    _write_geojson(OUT_DIR / f"fc_puntos_garibelt{suffix}.geojson", out_features)
+    _write_geojson(out_dir / f"fc_puntos_garibelt{suffix}.geojson", out_features)
     bandas = Counter(f["properties"]["fc_banda"] for f in out_features)
     total = len(out_features)
     for b in ["critico", "debil", "aceptable", "idoneo"]:
@@ -103,7 +106,7 @@ def generate_fc_puntos(geo_dir: Path, suffix: str) -> None:
         print(f"    {b}: {n} ({100*n/total:.1f}%)")
 
 
-def generate_cobertura(conn_dir: Path, suffix: str) -> None:
+def generate_cobertura(conn_dir: Path, suffix: str, out_dir: Path) -> None:
     src = conn_dir / "cobertura_por_alcaldia.geojson"
     if not src.exists():
         print(f"  ✗ {src.relative_to(REPO_ROOT)} no existe — omitido")
@@ -123,10 +126,10 @@ def generate_cobertura(conn_dir: Path, suffix: str) -> None:
         p["banda_color"] = CAT_COLORS.get(cat, "#888888")
         out_features.append({"type": "Feature", "geometry": f["geometry"], "properties": p})
 
-    _write_geojson(OUT_DIR / f"cobertura_garibelt{suffix}.geojson", out_features)
+    _write_geojson(out_dir / f"cobertura_garibelt{suffix}.geojson", out_features)
 
 
-def generate_b_puntos_top(geo_dir: Path, suffix: str) -> None:
+def generate_b_puntos_top(geo_dir: Path, suffix: str, out_dir: Path) -> None:
     src = geo_dir / "b_puntos.geojson"
     if not src.exists():
         print(f"  ✗ {src.relative_to(REPO_ROOT)} no existe — omitido")
@@ -165,25 +168,26 @@ def generate_b_puntos_top(geo_dir: Path, suffix: str) -> None:
         p["banda_color"]   = color
         out_features.append({"type": "Feature", "geometry": f["geometry"], "properties": p})
 
-    _write_geojson(OUT_DIR / f"b_puntos_top{suffix}.geojson", out_features)
+    _write_geojson(out_dir / f"b_puntos_top{suffix}.geojson", out_features)
     print(f"    top-5:    {', '.join(f['properties']['nombre'] for f in out_features[:5])}")
 
 
 def run_scenario(name: str) -> None:
     cfg = SCENARIOS[name]
+    cfg["out_dir"].mkdir(parents=True, exist_ok=True)
     label = name.upper() if name != "baseline" else "Baseline"
     print(f"\n── Generando capas Garibelt — {label} ──────────────────────────")
 
     print(f"\n[1/3] fc_puntos_garibelt{cfg['suffix']}.geojson")
-    generate_fc_puntos(cfg["geo_dir"], cfg["suffix"])
+    generate_fc_puntos(cfg["geo_dir"], cfg["suffix"], cfg["out_dir"])
 
     print(f"\n[2/3] cobertura_garibelt{cfg['suffix']}.geojson")
-    generate_cobertura(cfg["conn_dir"], cfg["suffix"])
+    generate_cobertura(cfg["conn_dir"], cfg["suffix"], cfg["out_dir"])
 
     print(f"\n[3/3] b_puntos_top{cfg['suffix']}.geojson")
-    generate_b_puntos_top(cfg["geo_dir"], cfg["suffix"])
+    generate_b_puntos_top(cfg["geo_dir"], cfg["suffix"], cfg["out_dir"])
 
-    print(f"\nSalida: {OUT_DIR.relative_to(REPO_ROOT)}/")
+    print(f"\nSalida: {cfg['out_dir'].relative_to(REPO_ROOT)}/")
 
 
 if __name__ == "__main__":

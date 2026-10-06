@@ -1,6 +1,6 @@
 escenario,escenario_label,dimension,indicador_fuente,valor_bruto,valor_normalizado,banda,metrica_descripcion
 baseline,Baseline,accesibilidad,C — Cobertura Espacial,4.4138,0.0552,critico,Cobertura peatonal 800 m ponderada por área: 4.4%
 baseline,Baseline,conectividad_capilar,Cᵢ — Alimentación Capilar,7.0,0.25,debil,Mediana grado nodal: 7.0 (escala Q1=6–Q3=10)
-baseline,Baseline,eficiencia_ruta,DI — Índice de Ruta Directa,1.43,0.7133,aceptable,Mediana Factor Desviación: 1.43 (1.0 = ruta directa perfecta)
-baseline,Baseline,fluidez_global,T — Tiempo de Viaje Promedio,108.9169,0.7482,aceptable,T promedio shortest-path: 108.9 min (ref. CDMX: 85.0 min)
-baseline,Baseline,centralidad_critica,B(v) — Centralidad de Intermediación,0.789137,0.2109,critico,"Gini de intermediación: 0.7891 (0 = distribuida, 1 = concentrada)"
+baseline,Baseline,eficiencia_ruta,DI — Índice de Ruta Directa,1.52,0.6533,aceptable,Mediana Factor Desviación: 1.52 (1.0 = ruta directa perfecta)
+baseline,Baseline,fluidez_global,T — Tiempo de Viaje Promedio,113.9087,0.6957,aceptable,T promedio shortest-path: 113.9 min (ref. CDMX: 85.0 min)
+baseline,Baseline,centralidad_critica,B(v) — Centralidad de Intermediación,0.800656,0.1993,critico,"Gini de intermediación: 0.8007 (0 = distribuida, 1 = concentrada)"
