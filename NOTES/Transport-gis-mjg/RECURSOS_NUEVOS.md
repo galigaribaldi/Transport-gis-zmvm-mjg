@@ -84,8 +84,8 @@ Reparto: **QGIS muestra dónde cambia · Tableau muestra cuánto cambia**.
 ### QGIS → `maps/exports/pdf/Clasificacion_Garibelt/Comparativo/`
 | Recurso | Descripción | Utilidad | Prioridad |
 |---------|-------------|----------|-----------|
-| Comparativo_Garibelt_Betweenness.pdf | 3 paneles Base · MB · Metro, Top 50 B(v) + anillo | La centralidad migra al anillo en Metro | Alta |
-| Comparativo_Garibelt_Cobertura.pdf | 2 paneles Base · Anillo (MB = Metro) | Ubica las ganancias de Nezahualcóyotl y Tlalnepantla | Media |
+| Comparativo_Garibelt_Betweenness.pdf ✅ 2026-10-07 | 2×2: Base · MB · Metro · ΔB(v) (`delta_bv`) | La centralidad migra al anillo en Metro | Alta |
+| Comparativo_Garibelt_Cobertura.pdf ✅ 2026-10-08 | 2 paneles Base · Anillo + achurado `cobertura_delta` (≥ 0.4 pts) | Ubica las ganancias de Nezahualcóyotl y Tlalnepantla | Media |
 | Comparativo_Garibelt_Cambio_Banda.pdf | 1 panel: solo nodos que cambian de Banda Dominante | Localiza los pocos nodos que mejoran o empeoran (requiere GeoJSON de diferencias por script) | Media |
 | Comparativo_Garibelt_Fuerza_Capilar.pdf | 3 paneles por banda FC | Anexo: la conectividad capilar casi no cambia | Baja |
 

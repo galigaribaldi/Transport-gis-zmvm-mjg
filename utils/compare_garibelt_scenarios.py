@@ -134,6 +134,35 @@ def cambio_banda_geojson(perfiles: dict) -> list:
     return feats
 
 
+def delta_bv_geojson(bv_df: pd.DataFrame, umbral: float = 0.01) -> list:
+    """Nodos con |ΔB(v) Metro − Base| ≥ umbral, más los nodos del anillo en el Top 50 de Metro."""
+    df = bv_df.copy()
+    df["delta_metro_plot"] = df["delta_metro"].fillna(df["bv_metro"])
+    sel = (df["delta_metro_plot"].abs() >= umbral) | (df["es_nodo_anillo"] & (df["rank_metro"] <= 50))
+    df = df[sel]
+    df["tipo_cambio"] = ["nodo_anillo" if a else "gana" if d > 0 else "pierde"
+                         for a, d in zip(df["es_nodo_anillo"], df["delta_metro_plot"])]
+    cols = ["id", "nombre", "sistema", "alcaldia_municipio", "bv_baseline", "bv_metro",
+            "rank_baseline", "rank_metro", "delta_metro_plot", "delta_metro_pct", "es_nodo_anillo", "tipo_cambio"]
+    return [{"type": "Feature",
+             "properties": {c: (None if pd.isna(r[c]) else r[c]) for c in cols},
+             "geometry": {"type": "Point", "coordinates": [r["lon"], r["lat"]]}}
+            for _, r in df.iterrows()]
+
+
+def cobertura_delta_geojson(cob_df: pd.DataFrame) -> list:
+    """Demarcaciones cuya cobertura cambia con el anillo (geometría de la capa MB)."""
+    src = LAYERS / "scenario-mb" / "cobertura_garibelt_mb.geojson"
+    geoms = {f["properties"]["nombre"]: f["geometry"] for f in json.load(open(src, encoding="utf-8"))["features"]}
+    df = cob_df[cob_df["cambia"]]
+    cols = ["nombre", "cob_baseline", "cob_mb", "delta_mb", "categoria_baseline", "categoria_mb", "area_total_km2"]
+    return [{"type": "Feature",
+             "properties": {**{c: r[c] for c in cols},
+                            "km2_ganados": round(r["area_total_km2"] * r["delta_mb"] / 100, 2)},
+             "geometry": geoms[r["nombre"]]}
+            for _, r in df.iterrows()]
+
+
 def main() -> None:
     OUT_QGIS.mkdir(parents=True, exist_ok=True)
     OUT_TAB.mkdir(parents=True, exist_ok=True)
@@ -151,11 +180,16 @@ def main() -> None:
         df.to_csv(path, index=False, encoding="utf-8")
         print(f"  ✓ {path.relative_to(REPO)}  ({len(df)} filas)")
 
-    feats = cambio_banda_geojson(perfiles)
-    path = OUT_QGIS / "cambio_banda.geojson"
-    with open(path, "w", encoding="utf-8") as f:
-        json.dump({"type": "FeatureCollection", "features": feats}, f, ensure_ascii=False)
-    print(f"  ✓ {path.relative_to(REPO)}  ({len(feats)} nodos con cambio de banda)")
+    capas = {
+        "cambio_banda": cambio_banda_geojson(perfiles),
+        "delta_bv": delta_bv_geojson(tablas["bv_comparativo"]),
+        "cobertura_delta": cobertura_delta_geojson(tablas["cobertura_comparativa"]),
+    }
+    for nombre, feats in capas.items():
+        path = OUT_QGIS / f"{nombre}.geojson"
+        with open(path, "w", encoding="utf-8") as f:
+            json.dump({"type": "FeatureCollection", "features": feats}, f, ensure_ascii=False)
+        print(f"  ✓ {path.relative_to(REPO)}  ({len(feats)} features)")
 
 
 if __name__ == "__main__":

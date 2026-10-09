@@ -96,16 +96,17 @@ Destino: `exports/pdf/Scenarios/{Propuesta_MB, Propuesta_Metro}/Indicadores_*/`
 | Fuerza Capilar por escenario | ➖ | ➖ | cubierto por sección B |
 | Factor Desviación por escenario | ⬜ | ⬜ | único no cubierto — opcional/anexo |
 
-### E · Comparativo entre escenarios — QGIS (pendiente)
+### E · Comparativo entre escenarios — QGIS
 
-Proyecto a crear: `garibelt_comparativo.qgz` (o layout dentro de uno existente)
+Proyecto: `garibelt_comparativo.qgz` · Destino: `exports/pdf/Clasificacion_Garibelt/Comparativo/`
+Capas comparativas: `data/processed/garibelt/comparativo/` (`make export-comparativo`)
 
-| Mapa | Estado | Prioridad |
-|------|--------|-----------|
-| ΔBanda Dominante (Baseline → MB) | ⬜ | Alta |
-| ΔBanda Dominante (Baseline → METRO) | ⬜ | Alta |
-| ΔB(v) Baseline → METRO | ⬜ | Alta |
-| ΔCobertura por alcaldía | ⬜ | Media |
+| Layout | PDF | Contenido | Estado |
+|--------|-----|-----------|--------|
+| Comparativo_Bv | `Comparativo_Garibelt_Betweenness.pdf` | 2×2: Red Actual · MB · Metro · ΔB(v) Metro − Base (1:270,000) | ✅ |
+| Comparativo_Cobertura | `Comparativo_Garibelt_Cobertura.pdf` | 2 paneles: Red Actual · Anillo + demarcaciones con aumento (1:400,000) | ✅ |
+| Comparativo_Cambio_Banda | `Comparativo_Garibelt_Cambio_Banda.pdf` | 1 panel: 22 nodos que cambian de Banda Dominante | ⬜ |
+| Comparativo_FC | `Comparativo_Garibelt_Fuerza_Capilar.pdf` | 2×2 por banda FC (anexo) | ⬜ |
 
 ---
 
