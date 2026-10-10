@@ -65,7 +65,7 @@ Estilos copiados de BaseLine con Copy Style → Paste Style:
 y=10  ┌──────────────────────────────────────────────────────────┐
       │ Título · subtítulo                                 20 mm │
 y=35  ├──────────────────┬──────────────────┬────────────────────┤
-      │ Red Actual 2026  │ Anillo MB (BRT)  │ Anillo Metro       │ 8 mm
+      │ Red Actual 2025  │ Anillo MB (BRT)  │ Anillo Metro       │ 8 mm
 y=43  │   MAPA 130×194   │   MAPA 130×194   │   MAPA 130×194     │
 y=237 ├──────────────────┴──────────┬───────┴────────────────────┤
       │ Simbología + norte + escala │ Descripción breve + fuente │ 45 mm
@@ -86,8 +86,8 @@ Reparto: **QGIS muestra dónde cambia · Tableau muestra cuánto cambia**.
 |---------|-------------|----------|-----------|
 | Comparativo_Garibelt_Betweenness.pdf ✅ 2026-10-07 | 2×2: Base · MB · Metro · ΔB(v) (`delta_bv`) | La centralidad migra al anillo en Metro | Alta |
 | Comparativo_Garibelt_Cobertura.pdf ✅ 2026-10-08 | 2 paneles Base · Anillo + achurado `cobertura_delta` (≥ 0.4 pts) | Ubica las ganancias de Nezahualcóyotl y Tlalnepantla | Media |
-| Comparativo_Garibelt_Cambio_Banda.pdf | 1 panel: solo nodos que cambian de Banda Dominante | Localiza los pocos nodos que mejoran o empeoran (requiere GeoJSON de diferencias por script) | Media |
-| Comparativo_Garibelt_Fuerza_Capilar.pdf | 3 paneles por banda FC | Anexo: la conectividad capilar casi no cambia | Baja |
+| Comparativo_Garibelt_Cambio_Banda.pdf ✅ 2026-10-10 | 2 paneles MB · Metro con `cambio_banda` (▲ mejora / ▼ empeora) | Mejoras en el Periférico, retrocesos en el eje de Tlalpan; nota sobre normalización relativa de B(v) (VFTModel #21) | Media |
+| ~~Comparativo_Garibelt_Fuerza_Capilar.pdf~~ ➖ | — | Omitido: la conectividad capilar casi no cambia | — |
 
 Omitido: Banda Dominante en 3 paneles (cambia < 25 de 11 k nodos; los paneles se verían iguales).
 

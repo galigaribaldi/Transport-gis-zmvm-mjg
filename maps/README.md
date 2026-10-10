@@ -105,8 +105,8 @@ Capas comparativas: `data/processed/garibelt/comparativo/` (`make export-compara
 |--------|-----|-----------|--------|
 | Comparativo_Bv | `Comparativo_Garibelt_Betweenness.pdf` | 2×2: Red Actual · MB · Metro · ΔB(v) Metro − Base (1:270,000) | ✅ |
 | Comparativo_Cobertura | `Comparativo_Garibelt_Cobertura.pdf` | 2 paneles: Red Actual · Anillo + demarcaciones con aumento (1:400,000) | ✅ |
-| Comparativo_Cambio_Banda | `Comparativo_Garibelt_Cambio_Banda.pdf` | 1 panel: 22 nodos que cambian de Banda Dominante | ⬜ |
-| Comparativo_FC | `Comparativo_Garibelt_Fuerza_Capilar.pdf` | 2×2 por banda FC (anexo) | ⬜ |
+| Comparativo_Cambio_Banda | `Comparativo_Garibelt_Cambio_Banda.pdf` | 2 paneles MB · Metro: nodos que cambian de Banda Dominante (1:180,000) | ✅ |
+| Comparativo_FC | — | FC casi no cambia entre escenarios; se omite | ➖ |
 
 ---
 
