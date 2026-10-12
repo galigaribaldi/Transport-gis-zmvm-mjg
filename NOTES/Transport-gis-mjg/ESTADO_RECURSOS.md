@@ -1,7 +1,9 @@
-# Estado de recursos — 2026-10-05
+# Estado de recursos — actualizado 2026-10-11
 
 Las capas y CSV se regeneraron el 2026-10-05 con `make export-all`, después de las correcciones de Apimetro (ACHECK-01…04) y VFTModel (#22 DI < 1, #23 SUB aislado, #26 dominio 76).
 Todo PDF exportado **antes** de esa fecha usa datos anteriores.
+
+**2026-10-11:** re-exportadas las 12 láminas de `Clasificacion_Garibelt/` (Red Actual, MB y Metro) con descripciones corregidas (umbrales FC, 141 ≠ ZMVM, "radio" en lugar de "isócrona", C en dominios 141 y 76).
 
 Leyenda: ✅ vigente · 🔁 volver a exportar (datos cambiaron) · 🔎 revisar (los datos casi no cambian; verificar texto o detalle)
 
@@ -11,9 +13,10 @@ Leyenda: ✅ vigente · 🔁 volver a exportar (datos cambiaron) · 🔎 revisar
 
 | Herramienta | PDFs totales | ✅ Vigentes | 🔎 Revisar | 🔁 Volver a exportar |
 |-------------|-------------|-------------|------------|----------------------|
-| QGIS | 23 | 4 | 7 | 12 |
+| QGIS (sin comparativos) | 23 | 13 | 7 | 3 |
+| QGIS comparativos | 3 | 2 | 1 (B(v), panel D) | 0 |
 | Tableau | 20 | 2 | 6 | 12 |
-| **Total** | **43** | **6** | **13** | **24** |
+| **Total** | **46** | **17** | **14** | **15** |
 
 ¿Por qué la cobertura sigue vigente? Los valores de C por demarcación no cambiaron (`cobertura_alcaldias_*.csv` idénticos). Cambiaron B(v), FC, DI, T y la Banda Dominante.
 
@@ -35,10 +38,17 @@ Leyenda: ✅ vigente · 🔁 volver a exportar (datos cambiaron) · 🔎 revisar
 ### Clasificacion_Garibelt/ (Red_actual · Scenario_MB · Scenario_Metro)
 | Mapa | Red Actual | MB | Metro |
 |------|-----------|----|-------|
-| Clasificacion_Banda_Dominante | 🔁 | 🔁 | 🔁 |
-| Clasificacion_Garibelt_Betweenness_Centrality | 🔁 | 🔁 | 🔁 |
-| Clasificacion_Garibelt_Fuerza_Capilar | 🔁 | 🔁 | 🔁 |
-| Clasificacion_Garibelt_Mapa_Cobertura | ✅ | ✅ | ✅ |
+| Clasificacion_Banda_Dominante | ✅ 10-11 | ✅ 10-11 | ✅ 10-11 |
+| Clasificacion_Garibelt_Betweenness_Centrality | ✅ 10-11 | ✅ 10-11 | ✅ 10-11 |
+| Clasificacion_Garibelt_Fuerza_Capilar | ✅ 10-11 | ✅ 10-11 | ✅ 10-11 |
+| Clasificacion_Garibelt_Mapa_Cobertura | ✅ 10-11 | ✅ 10-11 | ✅ 10-11 |
+
+### Clasificacion_Garibelt/Comparativo/
+| PDF | Estado | Pendiente |
+|-----|--------|-----------|
+| Comparativo_Garibelt_Betweenness | 🔎 | Panel D muestra también el Top 50 de B(v); re-exportar con el tema `Comp_Bv_Delta` corregido |
+| Comparativo_Garibelt_Cobertura | ✅ | Escala "1:400, 000" (espacio de más) |
+| Comparativo_Garibelt_Cambio_Banda | ✅ | Igualar tamaño de triángulos entre paneles (cosmético) |
 
 ### Scenarios/Propuesta_MB · Propuesta_Metro
 | PDF | Estado | Motivo |

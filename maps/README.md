@@ -57,11 +57,11 @@ Destino: `exports/pdf/Scenarios/Red_Actual/`
 |---------|---------|--------|
 | Transporte público ZMVM | `Base_Red_Actual/Mapa_Transporte_Publico.pdf` | ✅ |
 | Red esquemática | `Base_Red_Actual/Mapa_Red_Esquematica.pdf` | ✅ |
-| Betweenness centrality | `Indicadores_Red_Actual/Mapa_Betweenness.pdf` | ✅ |
+| Betweenness centrality | `Indicadores_Red_Actual/Mapa_Betweenness.pdf` | 🔁 datos previos a correcciones |
 | Cobertura mapa de calor | `Indicadores_Red_Actual/Mapa_Cobertura_Mapa_Calor.pdf` | ✅ |
 | Cobertura red total | `Indicadores_Red_Actual/Mapa_Cobertura_Red_Total.pdf` | ✅ |
-| Factor Desviación | `Indicadores_Red_Actual/Mapa_DF.pdf` | ✅ |
-| Fuerza Capilar | `Indicadores_Red_Actual/Mapa_Fuerza_Capilar.pdf` | ✅ |
+| Factor Desviación | `Indicadores_Red_Actual/Mapa_DF.pdf` | 🔁 datos previos a correcciones |
+| Fuerza Capilar | `Indicadores_Red_Actual/Mapa_Fuerza_Capilar.pdf` | 🔁 datos previos a correcciones |
 
 ### B · Clasificación Garibelt — mapas QGIS por escenario
 
@@ -70,15 +70,17 @@ Destino: `exports/pdf/Clasificacion_Garibelt/{Red_actual, Scenario_MB, Scenario_
 
 | Mapa | Red Actual | Escenario MB | Escenario METRO |
 |------|-----------|-------------|----------------|
-| Banda Dominante | ✅ | ⬜ | ⬜ |
-| Betweenness Centrality B(v) | ✅ | ⬜ | ⬜ |
-| Fuerza Capilar FC | ✅ | ⬜ | ⬜ |
-| Cobertura por alcaldía | ✅ | ⬜ | ⬜ |
+| Banda Dominante | ✅ | ✅ | ✅ |
+| Betweenness Centrality B(v) | ✅ | ✅ | ✅ |
+| Fuerza Capilar FC | ✅ | ✅ | ✅ |
+| Cobertura por alcaldía | ✅ | ✅ | ✅ |
+
+Las 12 láminas se re-exportaron el 2026-10-11 con los datos post correcciones (Apimetro ACHECK-01…04, VFTModel #22/#23/#26). Valores vigentes en `NOTES/Transport-gis-mjg/ESTADO_RECURSOS.md`.
 
 ### C · Propuesta Anillar — trazado y cuadrantes
 
 Proyectos: `garibelt_escenario_mb.qgz` · `garibelt_escenario_metro.qgz`
-Destino: `exports/pdf/Propuestas_Base_Scenarios/{Propuesta_MB, Propuesta_Metro}/`
+Destino: `exports/pdf/Scenarios/{Propuesta_MB, Propuesta_Metro}/Base_*/`
 
 | Mapa | Escenario MB | Escenario METRO |
 |------|-------------|----------------|
@@ -112,6 +114,7 @@ Capas comparativas: `data/processed/garibelt/comparativo/` (`make export-compara
 
 ## Orden de trabajo recomendado
 
-1. **Sección B** — 4 mapas Garibelt × MB + METRO = 8 PDFs (próximo paso)
-2. **Sección E** — comparativos (después de tener B completa)
-3. **Sección D** — solo Mapa_DF si se requiere en tesis (opcional)
+1. **Sección A** — re-exportar Mapa_Betweenness, Mapa_DF y Mapa_Fuerza_Capilar (datos previos a las correcciones) y actualizar branding (issues #1 y #2)
+2. **Sección E** — re-exportar Comparativo_Garibelt_Betweenness con el panel D corregido
+3. **Sección C** — revisar si las descripciones de Propuesta Anillar citan ΔT (vigentes: MB −4.92, Metro −11.99 min)
+4. **Sección D** — solo Mapa_DF por escenario si se requiere en tesis (opcional)
