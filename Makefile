@@ -275,6 +275,10 @@ _export-port-layers:
 	done
 	@curl -sf --max-time 600 "http://localhost:$(PORT)/api/v1/network/geolayers/detour?layer=df_por_alcaldia&sample_size=100&seed=42&$(VFT_Q)" \
 		-o $(CONN)/df_por_alcaldia.geojson && echo "  ✓ $(CONN)/df_por_alcaldia.geojson" || echo "  ✗ df_por_alcaldia :$(PORT)"
+	@curl -sf --max-time 600 "http://localhost:$(PORT)/api/v1/network/geolayers/detour?layer=df_puntos&sample_size=100&seed=42&$(VFT_Q)" \
+		-o $(CONN)/df_puntos.geojson && echo "  ✓ $(CONN)/df_puntos.geojson (misma muestra que df_por_alcaldia)" || echo "  ✗ df_puntos :$(PORT)"
+	@curl -sf --max-time 600 "http://localhost:$(PORT)/api/v1/network/geolayers/capillary?layer=fc_hubs&top_n=20&snap_tolerance_m=50&hub_tolerance_m=100&$(VFT_Q)" \
+		-o $(CONN)/fc_hubs.geojson && echo "  ✓ $(CONN)/fc_hubs.geojson" || echo "  ✗ fc_hubs :$(PORT)"
 	@curl -sf --max-time 600 "http://localhost:$(PORT)/api/v1/network/geolayers/profile?layer=perfil_nodos&$(VFT_Q)" \
 		-o $(PROC)/perfil_nodos_$(TAG).geojson && echo "  ✓ $(PROC)/perfil_nodos_$(TAG).geojson" || echo "  ✗ perfil_nodos :$(PORT)"
 

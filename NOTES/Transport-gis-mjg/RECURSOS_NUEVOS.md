@@ -7,7 +7,7 @@
 | `make warmup-all` | Calienta los 3 servidores VFTModel **en paralelo** (~20 min). Log en `/tmp/vft_warmup/` |
 | `_warmup-port` | 2 pasos: `build-auto` + `network-profile`, que calcula T y B(v) internamente |
 | `SHOW_C=1` | Flag opcional en `warmup-baseline/-mb/-metro`: imprime C₁₄₁ y C₇₆ (`cobertura_dominios`, #26) |
-| `make export-layers` | **Nuevo.** Descarga `cobertura_por_alcaldia`, `cobertura_800m`, `df_por_alcaldia` (Tableau) y `perfil_nodos` (QGIS) de los 3 escenarios, todos con CDMX + Edomex |
+| `make export-layers` | **Nuevo.** Descarga `cobertura_por_alcaldia`, `cobertura_800m`, `df_por_alcaldia`, `fc_hubs` (Top 20 macro-hubs) y `perfil_nodos` de los 3 escenarios, todos con CDMX + Edomex |
 | `make export-garibelt-layers` | **Nuevo.** Corre `prepare_garibelt_layers.py --all` |
 | `make export-all` | Ahora encadena: GeoJSONs VFTModel → líneas Apimetro → `export-layers` → `export-garibelt-layers` → CSVs Garibelt |
 | `make verify` | Referencias actualizadas: líneas 678/686, T 113.91 / 108.99 / 101.92 |

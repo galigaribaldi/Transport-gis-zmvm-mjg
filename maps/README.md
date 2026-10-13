@@ -57,11 +57,11 @@ Destino: `exports/pdf/Scenarios/Red_Actual/`
 |---------|---------|--------|
 | Transporte público ZMVM | `Base_Red_Actual/Mapa_Transporte_Publico.pdf` | ✅ |
 | Red esquemática | `Base_Red_Actual/Mapa_Red_Esquematica.pdf` | ✅ |
-| Betweenness centrality | `Indicadores_Red_Actual/Mapa_Betweenness.pdf` | 🔁 datos previos a correcciones |
+| Betweenness centrality | `Indicadores_Red_Actual/Mapa_Betweenness.pdf` | ✅ 2026-10-12 |
 | Cobertura mapa de calor | `Indicadores_Red_Actual/Mapa_Cobertura_Mapa_Calor.pdf` | ✅ |
 | Cobertura red total | `Indicadores_Red_Actual/Mapa_Cobertura_Red_Total.pdf` | ✅ |
-| Factor Desviación | `Indicadores_Red_Actual/Mapa_DF.pdf` | 🔁 datos previos a correcciones |
-| Fuerza Capilar | `Indicadores_Red_Actual/Mapa_Fuerza_Capilar.pdf` | 🔁 datos previos a correcciones |
+| Factor Desviación | `Indicadores_Red_Actual/Mapa_DF.pdf` | ✅ 2026-10-12 |
+| Fuerza Capilar | `Indicadores_Red_Actual/Mapa_Fuerza_Capilar.pdf` | ✅ 2026-10-12 |
 
 ### B · Clasificación Garibelt — mapas QGIS por escenario
 
@@ -112,9 +112,8 @@ Capas comparativas: `data/processed/garibelt/comparativo/` (`make export-compara
 
 ---
 
-## Orden de trabajo recomendado
+## Estado
 
-1. **Sección A** — re-exportar Mapa_Betweenness, Mapa_DF y Mapa_Fuerza_Capilar (datos previos a las correcciones) y actualizar branding (issues #1 y #2)
-2. **Sección E** — re-exportar Comparativo_Garibelt_Betweenness con el panel D corregido
-3. **Sección C** — revisar si las descripciones de Propuesta Anillar citan ΔT (vigentes: MB −4.92, Metro −11.99 min)
-4. **Sección D** — solo Mapa_DF por escenario si se requiere en tesis (opcional)
+**QGIS cerrado el 2026-10-12**: las 26 láminas usan los datos posteriores a las correcciones de Apimetro (ACHECK-01…04) y VFTModel (#22, #23, #26). Las láminas de Red Actual de `tesis-2026-2.qgz` leen ahora `tableau/exports/geo/` y `tableau/connectors/VFTModel/exports/` (b_puntos, df_puntos, df_por_alcaldia, fc_puntos, fc_hubs).
+
+Opcional: Mapa_DF por escenario (sección D).

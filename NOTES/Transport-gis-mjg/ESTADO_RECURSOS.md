@@ -1,7 +1,9 @@
-# Estado de recursos — actualizado 2026-10-11
+# Estado de recursos — actualizado 2026-10-12
 
 Las capas y CSV se regeneraron el 2026-10-05 con `make export-all`, después de las correcciones de Apimetro (ACHECK-01…04) y VFTModel (#22 DI < 1, #23 SUB aislado, #26 dominio 76).
 Todo PDF exportado **antes** de esa fecha usa datos anteriores.
+
+**2026-10-12: QGIS cerrado.** Re-exportadas Red Actual (Mapa_Betweenness, Mapa_DF, Mapa_Fuerza_Capilar, con fuentes apuntando a las capas vigentes), Comparativo B(v) (panel D corregido) y Propuesta Extendida MB/Metro (textos). Pendiente solo Tableau.
 
 **2026-10-11:** re-exportadas las 12 láminas de `Clasificacion_Garibelt/` (Red Actual, MB y Metro) con descripciones corregidas (umbrales FC, 141 ≠ ZMVM, "radio" en lugar de "isócrona", C en dominios 141 y 76).
 
@@ -13,10 +15,10 @@ Leyenda: ✅ vigente · 🔁 volver a exportar (datos cambiaron) · 🔎 revisar
 
 | Herramienta | PDFs totales | ✅ Vigentes | 🔎 Revisar | 🔁 Volver a exportar |
 |-------------|-------------|-------------|------------|----------------------|
-| QGIS (sin comparativos) | 23 | 13 | 7 | 3 |
-| QGIS comparativos | 3 | 2 | 1 (B(v), panel D) | 0 |
+| QGIS (sin comparativos) | 23 | 23 | 0 | 0 |
+| QGIS comparativos | 3 | 3 | 0 | 0 |
 | Tableau | 20 | 2 | 6 | 12 |
-| **Total** | **46** | **17** | **14** | **15** |
+| **Total** | **46** | **28** | **6** | **12** |
 
 ¿Por qué la cobertura sigue vigente? Los valores de C por demarcación no cambiaron (`cobertura_alcaldias_*.csv` idénticos). Cambiaron B(v), FC, DI, T y la Banda Dominante.
 
@@ -27,13 +29,13 @@ Leyenda: ✅ vigente · 🔁 volver a exportar (datos cambiaron) · 🔎 revisar
 ### Scenarios/Red_Actual/
 | PDF | Estado | Motivo |
 |-----|--------|--------|
-| Base_Red_Actual/Mapa_Transporte_Publico.pdf | 🔎 | SUB ahora en 12 tramos; el trazo se ve igual |
-| Base_Red_Actual/Mapa_Red_Esquematica.pdf | 🔎 | Igual que el anterior |
-| Indicadores_Red_Actual/Mapa_Betweenness.pdf | 🔁 | B(v) cambió (Mixcoac 0.173 → 0.192) |
-| Indicadores_Red_Actual/Mapa_Cobertura_Mapa_Calor.pdf | 🔎 | `cobertura_800m` baseline ahora incluye Edomex (antes solo CDMX) |
+| Base_Red_Actual/Mapa_Transporte_Publico.pdf  | ✅ | SUB ahora en 12 tramos; el trazo se ve igual |
+| Base_Red_Actual/Mapa_Red_Esquematica.pdf  | ✅ | Igual que el anterior |
+| Indicadores_Red_Actual/Mapa_Betweenness.pdf  | ✅ | B(v) cambió (Mixcoac 0.173 → 0.192) |
+| Indicadores_Red_Actual/Mapa_Cobertura_Mapa_Calor.pdf  | ✅ | `cobertura_800m` baseline ahora incluye Edomex (antes solo CDMX) |
 | Indicadores_Red_Actual/Mapa_Cobertura_Red_Total.pdf | ✅ | C sin cambio |
-| Indicadores_Red_Actual/Mapa_DF.pdf | 🔁 | DI cambió (#22: ya no hay DI < 1) |
-| Indicadores_Red_Actual/Mapa_Fuerza_Capilar.pdf | 🔁 | FC: 10,537 → 10,543 nodos |
+| Indicadores_Red_Actual/Mapa_DF.pdf  | ✅ | DI cambió (#22: ya no hay DI < 1) |
+| Indicadores_Red_Actual/Mapa_Fuerza_Capilar.pdf  | ✅ | FC: 10,537 → 10,543 nodos |
 
 ### Clasificacion_Garibelt/ (Red_actual · Scenario_MB · Scenario_Metro)
 | Mapa | Red Actual | MB | Metro |
@@ -46,15 +48,15 @@ Leyenda: ✅ vigente · 🔁 volver a exportar (datos cambiaron) · 🔎 revisar
 ### Clasificacion_Garibelt/Comparativo/
 | PDF | Estado | Pendiente |
 |-----|--------|-----------|
-| Comparativo_Garibelt_Betweenness | 🔎 | Panel D muestra también el Top 50 de B(v); re-exportar con el tema `Comp_Bv_Delta` corregido |
+| Comparativo_Garibelt_Betweenness | ✅ 10-12 | — |
 | Comparativo_Garibelt_Cobertura | ✅ | Escala "1:400, 000" (espacio de más) |
 | Comparativo_Garibelt_Cambio_Banda | ✅ | Igualar tamaño de triángulos entre paneles (cosmético) |
 
 ### Scenarios/Propuesta_MB · Propuesta_Metro
 | PDF | Estado | Motivo |
 |-----|--------|--------|
-| Propuesta_Base_Anillar_MB / _Metro | 🔎 | El trazado no cambia; revisar si la descripción cita T |
-| Propuesta_Anillar_Extendido_MB / _Metro | 🔎 | Igual; los ΔT cambiaron (MB −4.92, Metro −11.99 min) |
+| Propuesta_Base_Anillar_MB / _Metro  | ✅ | El trazado no cambia; revisar si la descripción cita T |
+| Propuesta_Anillar_Extendido_MB / _Metro  | ✅ | Igual; los ΔT cambiaron (MB −4.92, Metro −11.99 min) |
 
 ---
 
