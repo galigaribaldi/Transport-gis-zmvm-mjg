@@ -30,6 +30,7 @@ GARIBELT_DIR = tableau/exports/data/garibelt
         export-all export-baseline export-mb export-metro \
         export-lineas export-lineas-baseline export-lineas-mb export-lineas-metro \
         export-garibelt-csv-all export-layers _export-port-layers export-garibelt-layers export-comparativo \
+        export-rutas export-rutas-raw export-rutas-lineas \
         export-garibelt-csv-baseline export-garibelt-csv-mb export-garibelt-csv-metro \
         workbooks serve \
         verify verify-step-1 verify-step-2 verify-step-3 verify-step-4 verify-step-5
@@ -296,6 +297,25 @@ export-garibelt-layers:
 	@echo "── Capas Garibelt QGIS (3 escenarios) ────────────────────"
 	$(PYTHON) utils/prepare_garibelt_layers.py --all
 
+# ── Rutas O-D con geometría (Tableau: "DF — Rutas LineStrings") ─────────────
+# La API no devuelve la geometría de las rutas: export_routes_raw.py construye el grafo con el
+# código de VFTModel (su .venv, sin modificarlo), misma muestra que df_puntos (100 rutas, seed 42).
+# Requiere Apimetro del escenario (:8080 / :8083 / :8084). ~2 min por escenario.
+VFT_PY ?= ../VFTModel/.venv/bin/python
+ESC_RUTAS = baseline:baseline mb:scenario_mb metro:scenario_metro
+
+export-rutas-raw:
+	@echo "── Muestra de rutas O-D (3 escenarios) ───────────────────"
+	@for s in baseline mb metro; do $(VFT_PY) utils/export_routes_raw.py --scenario $$s 2>/dev/null | grep -E "──|Grafo:|✓|⚠" || echo "  ✗ $$s: Apimetro no disponible"; done
+
+export-rutas-lineas:
+	@echo "── LineStrings df_rutas_lineas (3 escenarios) ────────────"
+	@for e in $(ESC_RUTAS); do s=$${e%%:*}; sc=$${e##*:}; \
+		$(PYTHON) $(EXPORTS) --only-linestrings --scenario $$sc --linestrings utils/data/routes_raw_$$s.json | grep -E "✅|⚠|✗|rutas"; \
+	done
+
+export-rutas: export-rutas-raw export-rutas-lineas
+
 # Datos comparativos Base · MB · Metro (QGIS cambio_banda + CSVs Tableau) — lee de disco
 export-comparativo:
 	@echo "── Datos comparativos Garibelt ───────────────────────────"
@@ -306,6 +326,7 @@ export-all:
 	@echo "══════════════════════════════════════════════════════════"
 	@echo "  PASO 3 — Exportando fuentes de datos (3 escenarios)"
 	@echo "══════════════════════════════════════════════════════════"
+	@$(MAKE) export-rutas-raw
 	@$(MAKE) export-baseline
 	@$(MAKE) export-mb
 	@$(MAKE) export-metro
@@ -341,6 +362,8 @@ verify-step-3:
 	@python3 -c "import json; d=json.load(open('$(GEO_DIR)/lineas.geojson')); n=len(d['features']); ok='✓' if n==678 else '?'; print(f'    baseline/lineas.geojson         {n} features {ok}')" 2>/dev/null || echo "    baseline/lineas.geojson          ✗ no existe"
 	@python3 -c "import json; d=json.load(open('$(GEO_DIR)/scenario_mb/lineas.geojson')); n=len(d['features']); ok='✓' if n==686 else '✗ esperado 686'; print(f'    scenario_mb/lineas.geojson      {n} features {ok}')" 2>/dev/null || echo "    scenario_mb/lineas.geojson       ✗ no existe"
 	@python3 -c "import json; d=json.load(open('$(GEO_DIR)/scenario_metro/lineas.geojson')); n=len(d['features']); ok='✓' if n==686 else '✗ esperado 686'; print(f'    scenario_metro/lineas.geojson   {n} features {ok}')" 2>/dev/null || echo "    scenario_metro/lineas.geojson    ✗ no existe"
+	@echo "  Rutas O-D (df_rutas_lineas = misma muestra que df_puntos, DF ≥ 1):"
+	@python3 utils/verify_routes.py
 	@echo "  CSVs Garibelt ($(GARIBELT_DIR)/):"
 	@for sd in baseline:escenario-base scenario_mb:escenario-mb scenario_metro:escenario-metro; do \
 		s=$${sd%%:*}; d=$${sd##*:}; \
@@ -488,6 +511,7 @@ help:
 	@echo "  make export-layers      cobertura/df por demarcación (Tableau) + perfil_nodos (QGIS)"
 	@echo "  make export-garibelt-layers  fc/cobertura/b_puntos Garibelt para QGIS"
 	@echo "  make export-comparativo cambio_banda (QGIS) + CSVs comparativos (Tableau)"
+	@echo "  make export-rutas       rutas O-D con geometría (df_rutas_lineas, 3 escenarios)"
 	@echo "  make verify-step-3      Contar features en todos los archivos"
 	@echo ""
 	@echo "PASO 4 — Archivos de trabajo"

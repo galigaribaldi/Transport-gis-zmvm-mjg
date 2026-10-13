@@ -12,6 +12,25 @@
 | `make export-all` | Ahora encadena: GeoJSONs VFTModel → líneas Apimetro → `export-layers` → `export-garibelt-layers` → CSVs Garibelt |
 | `make verify` | Referencias actualizadas: líneas 678/686, T 113.91 / 108.99 / 101.92 |
 
+## 1a. Rutas O-D con geometría — `make export-rutas` (2026-10-13)
+
+La API de VFTModel no devuelve la geometría de las rutas. Antes se exportaba a mano desde `VFTModel/notebooks/04_Detaur_factor.ipynb`, y el archivo quedó con datos previos al fix #22 (DF mín. 0.97). Además, MB y Metro reutilizaban las rutas de la línea base.
+
+| Target / script | Qué hace |
+|-----------------|----------|
+| `utils/export_routes_raw.py` | Construye el grafo con el código de VFTModel (su `.venv`, sin modificarlo) y genera `utils/data/routes_raw_<escenario>.json` (100 rutas, seed 42; gitignored). Usa `APIMETRO_URL` :8080 / :8083 / :8084 |
+| `make export-rutas-raw` | Corre el script para los 3 escenarios (~2 min c/u) |
+| `make export-rutas-lineas` | `generate_exports.py --only-linestrings` → `tableau/exports/geo/{,scenario_mb/,scenario_metro/}df_rutas_lineas.geojson` |
+| `make export-rutas` | Los dos anteriores. `export-all` ya llama a `export-rutas-raw` al inicio |
+| `make export-layers` | Ahora también baja `df_puntos` (misma muestra) a `tableau/connectors/VFTModel/exports/<escenario>/` |
+| `make verify-step-3` | `utils/verify_routes.py`: DF ≥ 1 y 100/100 pares iguales a `df_puntos` por escenario |
+
+`generate_exports.py` usa por defecto `routes_raw_<escenario>.json`; si falta, omite las LineStrings en lugar de copiar las de otro escenario.
+
+Muestras vigentes (2026-10-13): Base DF 1.03–4.42 (media 1.701) · MB 1.01–13.41 (1.765) · Metro 1.01–18.28 (1.877).
+
+⚠ **Las muestras de MB y Metro no comparten pares con la línea base (0/100):** la semilla sortea sobre nodos distintos. Las diferencias de DF entre escenarios mezclan el efecto del anillo con el cambio de muestra. Los atípicos (p. ej. Granjas–Salomón → Tochitli: 2.05 km rectos, 37.4 km en Metro) se deben a que la ruta óptima es la más rápida, no la más corta.
+
 ## 1b. Datos comparativos — `make export-comparativo`
 
 Script nuevo `utils/compare_garibelt_scenarios.py`. Lee de disco, no llama a la API; corre al final de `export-all`.

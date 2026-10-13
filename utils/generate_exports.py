@@ -171,6 +171,12 @@ if __name__ == "__main__":
         if args.scenario != "baseline":
             _save_gpkg(gdfs, args.scenario)
 
-    run_camino_b(args.linestrings, geo_dir)
+    # Cada escenario usa su propia muestra (make export-rutas-raw); nunca la de otro escenario.
+    short = {"baseline": "baseline", "scenario_mb": "mb", "scenario_metro": "metro"}[args.scenario]
+    routes = args.linestrings or Path(__file__).parent / "data" / f"routes_raw_{short}.json"
+    if Path(routes).exists():
+        run_camino_b(str(routes), geo_dir)
+    else:
+        print(f"\n── Camino B omitido: falta {routes} → make export-rutas-raw")
 
     print("\nListo. Abre Tableau y reconecta las fuentes espaciales.")
