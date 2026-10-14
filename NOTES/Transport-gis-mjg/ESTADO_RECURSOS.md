@@ -1,7 +1,9 @@
-# Estado de recursos — actualizado 2026-10-12
+# Estado de recursos — actualizado 2026-10-13
 
 Las capas y CSV se regeneraron el 2026-10-05 con `make export-all`, después de las correcciones de Apimetro (ACHECK-01…04) y VFTModel (#22 DI < 1, #23 SUB aislado, #26 dominio 76).
 Todo PDF exportado **antes** de esa fecha usa datos anteriores.
+
+**2026-10-13: Tableau VFTModel migrado a CSV en disco.** `dashboard_viz04_red_vftmodel.twb` ya no usa el WDC ni extractos: las 4 fuentes WDC leen `wdc_*.csv` en Live y las fuentes GeoJSON también están en Live. Re-exportados los 10 PDF de `VFTModel/` (Dashboards y UniGrafica). Copias MB/Metro regeneradas con `make workbooks`.
 
 **2026-10-12: QGIS cerrado.** Re-exportadas Red Actual (Mapa_Betweenness, Mapa_DF, Mapa_Fuerza_Capilar, con fuentes apuntando a las capas vigentes), Comparativo B(v) (panel D corregido) y Propuesta Extendida MB/Metro (textos). Pendiente solo Tableau.
 
@@ -65,12 +67,12 @@ Leyenda: ✅ vigente · 🔁 volver a exportar (datos cambiaron) · 🔎 revisar
 | Carpeta | PDF | Estado | Motivo |
 |---------|-----|--------|--------|
 | Apimetro/ (5) + `dashboard_viz04_red_apimetro.pdf` | Dashboards y gráficas Apimetro | 🔎 | Cambió la velocidad de INTERURBANO (160 → 70) y TROLE L10 (25); revisar si aparecen |
-| VFTModel/Dashboards/ | Centralidad, Factor desviación, Fuerza Capilar | 🔁 | B(v), DI y FC cambiaron |
-| VFTModel/UniGrafica/ | B(v) nodos, B(v) sistema, Factor desviación, Fuerza capilar, Tiempo promedio | 🔁 | Ídem; T baseline 108.92 → 113.91 min |
-| VFTModel/UniGrafica/ | Cobertura alcaldía, Cobertura sistema | ✅ | C sin cambio |
+| VFTModel/Dashboards/ | Centralidad, Factor desviación, Fuerza Capilar | ✅ 10-13 | Re-exportados con datos vigentes |
+| VFTModel/UniGrafica/ | B(v) nodos, B(v) sistema, Factor desviación, Fuerza capilar, Tiempo promedio | ✅ 10-13 | T baseline 113.91 min; caption de T ahora dinámico |
+| VFTModel/UniGrafica/ | Cobertura alcaldía, Cobertura sistema | ✅ 10-13 | C sin cambio; re-exportados junto con el resto |
 | Clasificacion_Garibelt/Red_Actual/ | KPI, Clasificación, Espectro, Betweenness | 🔁 | DI, T y Gini cambiaron |
 
-Antes de exportar: abrir cada `.twb` y refrescar los extractos `.hyper`.
+Antes de exportar: VFTModel ya no necesita refrescar extractos (CSV en Live; basta `make export-all` y abrir el `.twb`). Apimetro y Garibelt: abrir cada `.twb` y refrescar los extractos `.hyper`.
 
 ---
 

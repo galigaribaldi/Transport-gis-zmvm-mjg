@@ -31,6 +31,22 @@ Muestras vigentes (2026-10-13): Base DF 1.03–4.42 (media 1.701) · MB 1.01–1
 
 ⚠ **Las muestras de MB y Metro no comparten pares con la línea base (0/100):** la semilla sortea sobre nodos distintos. Las diferencias de DF entre escenarios mezclan el efecto del anillo con el cambio de muestra. Los atípicos (p. ej. Granjas–Salomón → Tochitli: 2.05 km rectos, 37.4 km en Metro) se deben a que la ruta óptima es la más rápida, no la más corta.
 
+## 1a-bis. Tablas Tableau en disco — `make export-tableau-tablas` (2026-10-13)
+
+Sustituyen las 4 fuentes WDC de `dashboard_viz04_red_vftmodel.twb`. Así, actualizar Tableau es correr `make` y abrir el workbook, sin servidor :5050 ni refresco de extractos. Tableau Desktop no se puede refrescar desde línea de comandos en macOS: los archivos quedan listos y Tableau los lee al abrir.
+
+| Archivo (`tableau/connectors/VFTModel/exports[/<escenario>]/`) | Sustituye a la tabla WDC | Fuente |
+|---|---|---|
+| `wdc_fc_puntos.csv` | Fuerza Capilar — por nodo | `tableau/exports/geo/…/fc_puntos.geojson` |
+| `wdc_fc_hubs.csv` | Fuerza Capilar — macro-hubs | `connectors/…/fc_hubs.geojson` |
+| `wdc_df_puntos.csv` | Factor de Desviación — rutas O-D | `connectors/…/df_puntos.geojson` |
+| `wdc_t_escalar.csv` | Tiempo Promedio de Viaje (T) | API `/average-travel-time` (único que consulta la API) |
+
+- Las columnas son idénticas a `vft_wdc.html` (incluye `lat` y `lon`), así que *Replace Data Source* conserva las hojas.
+- `copy_workbook_scenario.py` ya redirige la carpeta `connectors/VFTModel/exports` a cada escenario.
+- **Migración hecha el 2026-10-13** en `dashboard_viz04_red_vftmodel.twb` (Replace Data Source + Replace References por campo; alias, colores y filtros restaurados). Todas sus fuentes están en Live. Los alias de Nombre Hub incluyen también los 3 hubs que solo existen en MB/Metro. El caption de T es dinámico (`T Promedio` y `Diferencia vs Ref (min)`), así cada copia muestra su propio valor.
+- `make tableau-check` imprime los valores que debe mostrar Tableau: T 113.91 / 108.99 / 101.92 · FC máx. Luis Murillo (41) · 1.er macro-hub Chimalcoyotl (130) · DF por escenario.
+
 ## 1b. Datos comparativos — `make export-comparativo`
 
 Script nuevo `utils/compare_garibelt_scenarios.py`. Lee de disco, no llama a la API; corre al final de `export-all`.

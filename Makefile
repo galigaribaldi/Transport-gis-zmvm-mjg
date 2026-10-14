@@ -30,7 +30,7 @@ GARIBELT_DIR = tableau/exports/data/garibelt
         export-all export-baseline export-mb export-metro \
         export-lineas export-lineas-baseline export-lineas-mb export-lineas-metro \
         export-garibelt-csv-all export-layers _export-port-layers export-garibelt-layers export-comparativo \
-        export-rutas export-rutas-raw export-rutas-lineas \
+        export-rutas export-rutas-raw export-rutas-lineas export-tableau-tablas tableau-check \
         export-garibelt-csv-baseline export-garibelt-csv-mb export-garibelt-csv-metro \
         workbooks serve \
         verify verify-step-1 verify-step-2 verify-step-3 verify-step-4 verify-step-5
@@ -316,6 +316,21 @@ export-rutas-lineas:
 
 export-rutas: export-rutas-raw export-rutas-lineas
 
+# ── Tablas Tableau en disco (sustituyen al WDC de VFTModel) ────────────────
+# Mismas columnas que vft_wdc.html (incl. lat/lon) → "Replace Data Source" sin romper hojas.
+# Lee los GeoJSON en disco; solo T consulta la API (:8000/:8001/:8002, ≤20 min si no hay caché).
+export-tableau-tablas:
+	@echo "── Tablas Tableau (wdc_*.csv, 3 escenarios) ──────────────"
+	$(PYTHON) utils/export_tableau_tables.py
+
+# Valores clave para comparar con los dashboards después de abrir/refrescar Tableau
+tableau-check:
+	@echo ""
+	@echo "── Valores esperados en Tableau ──────────────────────────"
+	@$(PYTHON) utils/export_tableau_tables.py --check
+	@echo ""
+	@echo "  Abre el .twb (o Data → Refresh) y compara: T, FC máx., 1.º macro-hub y DF."
+
 # Datos comparativos Base · MB · Metro (QGIS cambio_banda + CSVs Tableau) — lee de disco
 export-comparativo:
 	@echo "── Datos comparativos Garibelt ───────────────────────────"
@@ -342,6 +357,8 @@ export-all:
 	@$(MAKE) export-garibelt-csv-all
 	@echo ""
 	@$(MAKE) export-comparativo
+	@echo ""
+	@$(MAKE) export-tableau-tablas
 
 verify-step-3:
 	@echo ""
@@ -512,11 +529,13 @@ help:
 	@echo "  make export-garibelt-layers  fc/cobertura/b_puntos Garibelt para QGIS"
 	@echo "  make export-comparativo cambio_banda (QGIS) + CSVs comparativos (Tableau)"
 	@echo "  make export-rutas       rutas O-D con geometría (df_rutas_lineas, 3 escenarios)"
+	@echo "  make export-tableau-tablas  tablas wdc_*.csv para Tableau (FC, hubs, DF, T)"
 	@echo "  make verify-step-3      Contar features en todos los archivos"
 	@echo ""
 	@echo "PASO 4 — Archivos de trabajo"
 	@echo "  make workbooks          Generar TWBs de escenario (MB + METRO)"
-	@echo "  make serve              Levantar WDC server en :5050 (otra terminal)"
+	@echo "  make serve              Levantar WDC server en :5050 (solo Apimetro / migración)"
+	@echo "  make tableau-check      Valores esperados para comparar tras refrescar Tableau"
 	@echo "  make verify-step-4      Verificar TWBs y proyectos QGIS"
 	@echo ""
 	@echo "PASO 5 — Integridad"
