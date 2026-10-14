@@ -1482,9 +1482,6 @@
       <column aggregation='Avg' caption='Longitud' datatype='real' name='[lon (wdc_fc_hubs.csv)]' role='measure' semantic-role='[Geographical].[Longitude]' type='quantitative' />
       <column caption='Nombre Hub' datatype='string' name='[nombre (wdc_fc_hubs.csv)]' role='dimension' type='nominal'>
         <aliases>
-          <alias key='&quot;Alpes - Anillo  Periférico Sur - Barranca del Muerto - Anillo Periférico Sur - Barranca del Muerto - Av. Revolucion - Av. Revolución - Barranca del Muerto - Barranca del Muerto y Revolución - Barranca del Muerto y Tiburcio Sánchez - Barranca del Muerto/Periférico - Base Barranca del Muerto - José María Velazco y Sagredo - Miguel Ocaranza - Periferico - Periférico - Periférico - Barranca del Muerto - Sagredo y Plateros - Tiburcio Sanchez de la Barquera&quot;' value='Alpes · Periférico Sur' />
-          <alias key='&quot;Anillo Periferico Blvd. Adolfo Ruiz Cortines - Renato Leduc - Anillo Periférico Blvd. Adolfo Ruiz Cortines - Puente Estadio Azteca - Anillo Periférico Blvd. Adolfo Ruiz Cortines - Renato Leduc - Anillo Periférico Blvd. Adolfo Ruiz Cortines - Tlalpan - Anillo Periférico y Blvd. Adolfo Ruiz Cortines - Anillo Periférico y Blvd. Adolfo Ruíz Cortines - Huipulco - Periferico - Av. Pedregal - Periférico - Calz. de Tlalpan - Periférico - Huipulco - Periférico - Renato Leduc - Periférico - Tlalpan - Renato Leduc y Anillo Periférico - Tlalpan - Huipulco - Tlalpan - Periferico - Tlalpan y Periférico - Tlalpan y San Juan de Dios&quot;' value='Periférico - Ruiz Cortines' />
-          <alias key='&quot;Anillo Periférico Canal de Garay - Constitución de Apatzingan - Canal de San Juan y Revolución - Constitución de Apatzingan y Canal de San Juan - Constitución de Apatzingán - Constitución de Apatztingán - Periférico - Tepalcates - Sur 20 y Canal de San Juan&quot;' value='Canal de Garay · Iztapalapa' />
           <alias key='&quot;16 de Septiembre - Francisco Goytia - 5 de Mayo - Cam. A Nativitas y C. Heliotropo - Cam. a Nativitas y Av. 16 de Septiembre - Francisco Goitia - Francisco Goytia - 16 de Septiembre - Francisco Goytia - 5 de Mayo - Francisco Goytia - Deportivo - Francisco Goytia y Deportivo Xochimilco - Prolongación 16 de Septiembre - Prolongación 16 de Septiembre - Camino a Nativitas&quot;' value='16 de Septiembre · Centro' />
           <alias key='&quot;5 de Mayo - Buenavista - 5 de Mayo - Cuauhtémoc - 5 de Mayo - EnseNanza - 5 de Mayo - Niños Héroes - Autopista México-Cuernavaca - 5 de Mayo - Av. 5 de Mayo - Cerrada 5 de Mayo - Av. 5 de Mayo - EnseNanza - Av. 5 de Mayo - Niños Héroes - C. C. San Pedro Mártir por Carretera Federal - 5 de Mayo y Cuauhtémoc - Carretera México-Cuernavaca - 5 de Mayo - Tunel de San Pedro Puente Verde&quot;' value='Buenavista · Cuauhtémoc' />
           <alias key='&quot;Acapulco - Puebla - Agustín Melgar - Av. Chapultepec - Metro Chapultepec - Av. Chapultepec y Lejia - Av. Chapultepec y Sonora - Base Cetram Chapultepec - Base Metro Chapultepec - CETRAM Chapultepec - CETRAM Chapultepec (base) - Chapultepec - Chapultepec - Sonora - Cierre de Circuito Cetram Chapultepec - Circuito Interior - Metro Chapultepec - Circuito Interior y Agustín Melgar - Metro Chapultepec - Puebla - Tampico - Sobre Av. Chapultepec y Tampico - Sobre Av. Veracruz y Av. Chapultepec - Veracruz&quot;' value='Roma - Insurgentes · Cuauhtémoc' />
@@ -4094,9 +4091,6 @@ Deviación Promedio</run>
             <column aggregation='Avg' caption='Longitud' datatype='real' name='[lon (wdc_fc_hubs.csv)]' role='measure' semantic-role='[Geographical].[Longitude]' type='quantitative' />
             <column caption='Nombre Hub' datatype='string' name='[nombre (wdc_fc_hubs.csv)]' role='dimension' type='nominal'>
               <aliases>
-                <alias key='&quot;Alpes - Anillo  Periférico Sur - Barranca del Muerto - Anillo Periférico Sur - Barranca del Muerto - Av. Revolucion - Av. Revolución - Barranca del Muerto - Barranca del Muerto y Revolución - Barranca del Muerto y Tiburcio Sánchez - Barranca del Muerto/Periférico - Base Barranca del Muerto - José María Velazco y Sagredo - Miguel Ocaranza - Periferico - Periférico - Periférico - Barranca del Muerto - Sagredo y Plateros - Tiburcio Sanchez de la Barquera&quot;' value='Alpes · Periférico Sur' />
-                <alias key='&quot;Anillo Periferico Blvd. Adolfo Ruiz Cortines - Renato Leduc - Anillo Periférico Blvd. Adolfo Ruiz Cortines - Puente Estadio Azteca - Anillo Periférico Blvd. Adolfo Ruiz Cortines - Renato Leduc - Anillo Periférico Blvd. Adolfo Ruiz Cortines - Tlalpan - Anillo Periférico y Blvd. Adolfo Ruiz Cortines - Anillo Periférico y Blvd. Adolfo Ruíz Cortines - Huipulco - Periferico - Av. Pedregal - Periférico - Calz. de Tlalpan - Periférico - Huipulco - Periférico - Renato Leduc - Periférico - Tlalpan - Renato Leduc y Anillo Periférico - Tlalpan - Huipulco - Tlalpan - Periferico - Tlalpan y Periférico - Tlalpan y San Juan de Dios&quot;' value='Periférico - Ruiz Cortines' />
-                <alias key='&quot;Anillo Periférico Canal de Garay - Constitución de Apatzingan - Canal de San Juan y Revolución - Constitución de Apatzingan y Canal de San Juan - Constitución de Apatzingán - Constitución de Apatztingán - Periférico - Tepalcates - Sur 20 y Canal de San Juan&quot;' value='Canal de Garay · Iztapalapa' />
                 <alias key='&quot;16 de Septiembre - Francisco Goytia - 5 de Mayo - Cam. A Nativitas y C. Heliotropo - Cam. a Nativitas y Av. 16 de Septiembre - Francisco Goitia - Francisco Goytia - 16 de Septiembre - Francisco Goytia - 5 de Mayo - Francisco Goytia - Deportivo - Francisco Goytia y Deportivo Xochimilco - Prolongación 16 de Septiembre - Prolongación 16 de Septiembre - Camino a Nativitas&quot;' value='16 de Septiembre · Centro' />
                 <alias key='&quot;5 de Mayo - Buenavista - 5 de Mayo - Cuauhtémoc - 5 de Mayo - EnseNanza - 5 de Mayo - Niños Héroes - Autopista México-Cuernavaca - 5 de Mayo - Av. 5 de Mayo - Cerrada 5 de Mayo - Av. 5 de Mayo - EnseNanza - Av. 5 de Mayo - Niños Héroes - C. C. San Pedro Mártir por Carretera Federal - 5 de Mayo y Cuauhtémoc - Carretera México-Cuernavaca - 5 de Mayo - Tunel de San Pedro Puente Verde&quot;' value='Buenavista · Cuauhtémoc' />
                 <alias key='&quot;Acapulco - Puebla - Agustín Melgar - Av. Chapultepec - Metro Chapultepec - Av. Chapultepec y Lejia - Av. Chapultepec y Sonora - Base Cetram Chapultepec - Base Metro Chapultepec - CETRAM Chapultepec - CETRAM Chapultepec (base) - Chapultepec - Chapultepec - Sonora - Cierre de Circuito Cetram Chapultepec - Circuito Interior - Metro Chapultepec - Circuito Interior y Agustín Melgar - Metro Chapultepec - Puebla - Tampico - Sobre Av. Chapultepec y Tampico - Sobre Av. Veracruz y Av. Chapultepec - Veracruz&quot;' value='Roma - Insurgentes · Cuauhtémoc' />
@@ -4258,9 +4252,6 @@ Deviación Promedio</run>
             <column caption='FC Total' datatype='integer' name='[fc_total (wdc_fc_hubs.csv)]' role='measure' type='quantitative' />
             <column caption='Nombre Hub' datatype='string' name='[nombre (wdc_fc_hubs.csv)]' role='dimension' type='nominal'>
               <aliases>
-                <alias key='&quot;Alpes - Anillo  Periférico Sur - Barranca del Muerto - Anillo Periférico Sur - Barranca del Muerto - Av. Revolucion - Av. Revolución - Barranca del Muerto - Barranca del Muerto y Revolución - Barranca del Muerto y Tiburcio Sánchez - Barranca del Muerto/Periférico - Base Barranca del Muerto - José María Velazco y Sagredo - Miguel Ocaranza - Periferico - Periférico - Periférico - Barranca del Muerto - Sagredo y Plateros - Tiburcio Sanchez de la Barquera&quot;' value='Alpes · Periférico Sur' />
-                <alias key='&quot;Anillo Periferico Blvd. Adolfo Ruiz Cortines - Renato Leduc - Anillo Periférico Blvd. Adolfo Ruiz Cortines - Puente Estadio Azteca - Anillo Periférico Blvd. Adolfo Ruiz Cortines - Renato Leduc - Anillo Periférico Blvd. Adolfo Ruiz Cortines - Tlalpan - Anillo Periférico y Blvd. Adolfo Ruiz Cortines - Anillo Periférico y Blvd. Adolfo Ruíz Cortines - Huipulco - Periferico - Av. Pedregal - Periférico - Calz. de Tlalpan - Periférico - Huipulco - Periférico - Renato Leduc - Periférico - Tlalpan - Renato Leduc y Anillo Periférico - Tlalpan - Huipulco - Tlalpan - Periferico - Tlalpan y Periférico - Tlalpan y San Juan de Dios&quot;' value='Periférico - Ruiz Cortines' />
-                <alias key='&quot;Anillo Periférico Canal de Garay - Constitución de Apatzingan - Canal de San Juan y Revolución - Constitución de Apatzingan y Canal de San Juan - Constitución de Apatzingán - Constitución de Apatztingán - Periférico - Tepalcates - Sur 20 y Canal de San Juan&quot;' value='Canal de Garay · Iztapalapa' />
                 <alias key='&quot;16 de Septiembre - Francisco Goytia - 5 de Mayo - Cam. A Nativitas y C. Heliotropo - Cam. a Nativitas y Av. 16 de Septiembre - Francisco Goitia - Francisco Goytia - 16 de Septiembre - Francisco Goytia - 5 de Mayo - Francisco Goytia - Deportivo - Francisco Goytia y Deportivo Xochimilco - Prolongación 16 de Septiembre - Prolongación 16 de Septiembre - Camino a Nativitas&quot;' value='16 de Septiembre · Centro' />
                 <alias key='&quot;5 de Mayo - Buenavista - 5 de Mayo - Cuauhtémoc - 5 de Mayo - EnseNanza - 5 de Mayo - Niños Héroes - Autopista México-Cuernavaca - 5 de Mayo - Av. 5 de Mayo - Cerrada 5 de Mayo - Av. 5 de Mayo - EnseNanza - Av. 5 de Mayo - Niños Héroes - C. C. San Pedro Mártir por Carretera Federal - 5 de Mayo y Cuauhtémoc - Carretera México-Cuernavaca - 5 de Mayo - Tunel de San Pedro Puente Verde&quot;' value='Buenavista · Cuauhtémoc' />
                 <alias key='&quot;Acapulco - Puebla - Agustín Melgar - Av. Chapultepec - Metro Chapultepec - Av. Chapultepec y Lejia - Av. Chapultepec y Sonora - Base Cetram Chapultepec - Base Metro Chapultepec - CETRAM Chapultepec - CETRAM Chapultepec (base) - Chapultepec - Chapultepec - Sonora - Cierre de Circuito Cetram Chapultepec - Circuito Interior - Metro Chapultepec - Circuito Interior y Agustín Melgar - Metro Chapultepec - Puebla - Tampico - Sobre Av. Chapultepec y Tampico - Sobre Av. Veracruz y Av. Chapultepec - Veracruz&quot;' value='Roma - Insurgentes · Cuauhtémoc' />
@@ -4528,8 +4519,8 @@ Deviación Promedio</run>
           <layout-options export-center-horz='true' export-margin-bottom='0.19685' export-margin-left='0.19685' export-margin-right='0.19685' export-margin-top='0.19685' export-orientation='landscape' />
           <size maxheight='700' minheight='700' sizing-mode='vscroll' />
           <zones>
-            <zone h='100000' id='83' type-v2='layout-basic' w='100000' x='0' y='0'>
-              <zone h='97984' id='82' param='vert' type-v2='layout-flow' w='98574' x='713' y='1008'>
+            <zone h='100000' id='85' type-v2='layout-basic' w='100000' x='0' y='0'>
+              <zone h='97984' id='84' param='vert' type-v2='layout-flow' w='98574' x='713' y='1008'>
                 <zone forceUpdate='true' h='11335' id='5' type-v2='text' w='98574' x='713' y='1008'>
                   <formatted-text>
                     <run bold='true' fontalignment='1' fontcolor='#ffffff' fontname='Arial' fontsize='16'>Centralidad de Intermediación B(v) - Por sistema de Transporte</run>
@@ -4697,8 +4688,8 @@ Deviación Promedio</run>
           <layout-options export-center-horz='true' export-margin-bottom='0.19685' export-margin-left='0.19685' export-margin-right='0.19685' export-margin-top='0.19685' export-orientation='landscape' />
           <size maxheight='700' minheight='700' sizing-mode='vscroll' />
           <zones>
-            <zone h='100000' id='78' type-v2='layout-basic' w='100000' x='0' y='0'>
-              <zone h='97984' id='77' param='vert' type-v2='layout-flow' w='98574' x='713' y='1008'>
+            <zone h='100000' id='80' type-v2='layout-basic' w='100000' x='0' y='0'>
+              <zone h='97984' id='79' param='vert' type-v2='layout-flow' w='98574' x='713' y='1008'>
                 <zone forceUpdate='true' h='11335' id='5' type-v2='text' w='98574' x='713' y='1008'>
                   <formatted-text>
                     <run bold='true' fontalignment='1' fontcolor='#ffffff' fontname='Arial' fontsize='16'>Centralidad de Intermediación B(v) - Top 20 Nodos</run>
@@ -4872,8 +4863,8 @@ Deviación Promedio</run>
           <layout-options export-center-horz='true' export-margin-bottom='0.19685' export-margin-left='0.19685' export-margin-right='0.19685' export-margin-top='0.19685' export-orientation='landscape' />
           <size maxheight='700' minheight='700' sizing-mode='vscroll' />
           <zones>
-            <zone h='100000' id='85' type-v2='layout-basic' w='100000' x='0' y='0'>
-              <zone h='97984' id='84' param='vert' type-v2='layout-flow' w='98574' x='713' y='1008'>
+            <zone h='100000' id='87' type-v2='layout-basic' w='100000' x='0' y='0'>
+              <zone h='97984' id='86' param='vert' type-v2='layout-flow' w='98574' x='713' y='1008'>
                 <zone forceUpdate='true' h='11335' id='5' type-v2='text' w='98574' x='713' y='1008'>
                   <formatted-text>
                     <run bold='true' fontalignment='1' fontcolor='#ffffff' fontname='Arial' fontsize='16'>Cobertura Por Alcaldía</run>
@@ -5043,8 +5034,8 @@ Deviación Promedio</run>
           <layout-options export-center-horz='true' export-margin-bottom='0.19685' export-margin-left='0.19685' export-margin-right='0.19685' export-margin-top='0.19685' export-orientation='landscape' />
           <size maxheight='700' minheight='700' sizing-mode='vscroll' />
           <zones>
-            <zone h='100000' id='87' type-v2='layout-basic' w='100000' x='0' y='0'>
-              <zone h='97984' id='86' param='vert' type-v2='layout-flow' w='98574' x='713' y='1008'>
+            <zone h='100000' id='89' type-v2='layout-basic' w='100000' x='0' y='0'>
+              <zone h='97984' id='88' param='vert' type-v2='layout-flow' w='98574' x='713' y='1008'>
                 <zone forceUpdate='true' h='11335' id='5' type-v2='text' w='98574' x='713' y='1008'>
                   <formatted-text>
                     <run bold='true' fontalignment='1' fontcolor='#ffffff' fontname='Arial' fontsize='16'>Cobertura Por Sistema</run>
@@ -5215,8 +5206,8 @@ Deviación Promedio</run>
           <layout-options export-center-horz='true' export-margin-bottom='0.19685' export-margin-left='0.19685' export-margin-right='0.19685' export-margin-top='0.19685' export-orientation='landscape' />
           <size maxheight='1250' minheight='1250' sizing-mode='vscroll' />
           <zones>
-            <zone h='100000' id='100' type-v2='layout-basic' w='100000' x='0' y='0'>
-              <zone h='97984' id='99' param='vert' type-v2='layout-flow' w='98574' x='713' y='1008'>
+            <zone h='100000' id='102' type-v2='layout-basic' w='100000' x='0' y='0'>
+              <zone h='97984' id='101' param='vert' type-v2='layout-flow' w='98574' x='713' y='1008'>
                 <zone forceUpdate='true' h='10950' id='5' type-v2='text' w='98574' x='713' y='1008'>
                   <formatted-text>
                     <run bold='true' fontalignment='1' fontcolor='#ffffff' fontname='Arial' fontsize='16'>Dashboard Factor de Desviación</run>
@@ -5372,7 +5363,7 @@ Deviación Promedio</run>
                         </zone-style>
                       </zone>
                       <zone h='40299' id='88' name='Centralidad B — Por Sistema' show-title='false' w='41177' x='58110' y='54659'>
-                        <layout-cache cell-count-h='10' minwidth='192' non-cell-size-h='20' type-h='cell' type-w='scalable' />
+                        <layout-cache minwidth='192' type-h='cell' type-w='scalable' />
                         <zone-style>
                           <format attr='border-color' value='#000000' />
                           <format attr='border-style' value='none' />
@@ -5408,8 +5399,8 @@ Deviación Promedio</run>
           <layout-options export-center-horz='true' export-margin-bottom='0.19685' export-margin-left='0.19685' export-margin-right='0.19685' export-margin-top='0.19685' export-orientation='landscape' />
           <size maxheight='1100' minheight='1100' sizing-mode='vscroll' />
           <zones>
-            <zone h='100000' id='112' type-v2='layout-basic' w='100000' x='0' y='0'>
-              <zone h='97984' id='111' param='vert' type-v2='layout-flow' w='98574' x='713' y='1008'>
+            <zone h='100000' id='114' type-v2='layout-basic' w='100000' x='0' y='0'>
+              <zone h='97984' id='113' param='vert' type-v2='layout-flow' w='98574' x='713' y='1008'>
                 <zone forceUpdate='true' h='10947' id='5' type-v2='text' w='98574' x='713' y='1008'>
                   <formatted-text>
                     <run bold='true' fontalignment='1' fontcolor='#ffffff' fontname='Arial' fontsize='16'>Centralidad de Intermediación B(v)</run>
@@ -5455,7 +5446,7 @@ Deviación Promedio</run>
                   </zone-style>
                 </zone>
                 <zone fixed-size='280' h='40299' id='88' is-fixed='true' name='Centralidad B — Por Sistema' show-title='false' w='41177' x='58110' y='54659'>
-                  <layout-cache cell-count-h='10' minwidth='192' non-cell-size-h='20' type-h='cell' type-w='scalable' />
+                  <layout-cache minwidth='192' type-h='cell' type-w='scalable' />
                   <zone-style>
                     <format attr='border-color' value='#000000' />
                     <format attr='border-style' value='none' />
@@ -5607,8 +5598,8 @@ Deviación Promedio</run>
           <layout-options export-center-horz='true' export-margin-bottom='0.19685' export-margin-left='0.19685' export-margin-right='0.19685' export-margin-top='0.19685' export-orientation='landscape' />
           <size maxheight='1950' minheight='1950' sizing-mode='vscroll' />
           <zones>
-            <zone h='100000' id='83' type-v2='layout-basic' w='100000' x='0' y='0'>
-              <zone h='97984' id='82' param='vert' type-v2='layout-flow' w='98574' x='713' y='1008'>
+            <zone h='100000' id='85' type-v2='layout-basic' w='100000' x='0' y='0'>
+              <zone h='97984' id='84' param='vert' type-v2='layout-flow' w='98574' x='713' y='1008'>
                 <zone forceUpdate='true' h='10954' id='5' type-v2='text' w='98574' x='713' y='1008'>
                   <formatted-text>
                     <run bold='true' fontalignment='1' fontcolor='#ffffff' fontname='Arial' fontsize='16'>Dashboard Fuerza Capilar</run>
@@ -5846,8 +5837,8 @@ Deviación Promedio</run>
           <layout-options export-center-horz='true' export-margin-bottom='0.19685' export-margin-left='0.19685' export-margin-right='0.19685' export-margin-top='0.19685' export-orientation='landscape' />
           <size maxheight='700' minheight='700' sizing-mode='vscroll' />
           <zones>
-            <zone h='100000' id='78' type-v2='layout-basic' w='100000' x='0' y='0'>
-              <zone h='97984' id='77' param='vert' type-v2='layout-flow' w='98574' x='713' y='1008'>
+            <zone h='100000' id='80' type-v2='layout-basic' w='100000' x='0' y='0'>
+              <zone h='97984' id='79' param='vert' type-v2='layout-flow' w='98574' x='713' y='1008'>
                 <zone forceUpdate='true' h='11335' id='5' type-v2='text' w='98574' x='713' y='1008'>
                   <formatted-text>
                     <run bold='true' fontalignment='1' fontcolor='#ffffff' fontname='Arial' fontsize='16'>Factor de Desviación - Dispersión de Rutas usando Encuesta Origen - Destino</run>
@@ -6043,8 +6034,8 @@ Deviación Promedio</run>
           <layout-options export-center-horz='true' export-margin-bottom='0.19685' export-margin-left='0.19685' export-margin-right='0.19685' export-margin-top='0.19685' export-orientation='landscape' />
           <size maxheight='700' minheight='700' sizing-mode='vscroll' />
           <zones>
-            <zone h='100000' id='79' type-v2='layout-basic' w='100000' x='0' y='0'>
-              <zone h='97984' id='78' param='vert' type-v2='layout-flow' w='98574' x='713' y='1008'>
+            <zone h='100000' id='81' type-v2='layout-basic' w='100000' x='0' y='0'>
+              <zone h='97984' id='80' param='vert' type-v2='layout-flow' w='98574' x='713' y='1008'>
                 <zone forceUpdate='true' h='11335' id='5' type-v2='text' w='98574' x='713' y='1008'>
                   <formatted-text>
                     <run bold='true' fontalignment='1' fontcolor='#ffffff' fontname='Arial' fontsize='16'>Fuerza Capilar Total por Estaciones</run>
@@ -6233,8 +6224,8 @@ Deviación Promedio</run>
           <layout-options export-center-horz='true' export-margin-bottom='0.19685' export-margin-left='0.19685' export-margin-right='0.19685' export-margin-top='0.19685' export-orientation='landscape' />
           <size maxheight='700' minheight='700' sizing-mode='vscroll' />
           <zones>
-            <zone h='100000' id='58' type-v2='layout-basic' w='100000' x='0' y='0'>
-              <zone h='97984' id='57' param='vert' type-v2='layout-flow' w='98574' x='713' y='1008'>
+            <zone h='100000' id='60' type-v2='layout-basic' w='100000' x='0' y='0'>
+              <zone h='97984' id='59' param='vert' type-v2='layout-flow' w='98574' x='713' y='1008'>
                 <zone forceUpdate='true' h='11335' id='5' type-v2='text' w='98574' x='713' y='1008'>
                   <formatted-text>
                     <run bold='true' fontalignment='1' fontcolor='#ffffff' fontname='Arial' fontsize='13'>Tiempo Promedio de Viaje</run>
