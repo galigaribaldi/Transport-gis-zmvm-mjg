@@ -483,7 +483,7 @@
             <run>Æ&#10;</run>
             <run fontcolor='#000000' fontname='Tableau Bold'>-----------------------------------------------------------------------------------</run>
             <run>Æ&#10;</run>
-            <run fontcolor='#000000' fontname='Tableau Bold'>Fuente: VFTModel v1 — GTFS CDMX 2024.</run>
+            <run fontcolor='#000000' fontname='Tableau Bold'>Fuente: VFTModel v1 — GTFS CDMX 2025.</run>
             <run>Æ&#10;</run>
             <run fontcolor='#000000' fontname='Tableau Bold'>-----------------------------------------------------------------------------------</run>
           </formatted-text>
@@ -1045,7 +1045,7 @@
         <zone forceUpdate='true' h='10327' id='50' type-v2='text' w='16845' x='34046' y='30982'>
           <formatted-text>
             <run fontcolor='#000000' fontsize='8'>Gini de intermediación: </run>
-            <run bold='true' fontcolor='#000000' fontsize='8' underline='true'>0.7891 </run>
+            <run bold='true' fontcolor='#000000' fontsize='8' underline='true'>0.8007 </run>
             <run>Æ&#10;</run>
             <run fontcolor='#000000' fontsize='8'>(0 = distribuida, 1 = concentrada)</run>
           </formatted-text>
@@ -1053,7 +1053,7 @@
         <zone forceUpdate='true' h='8186' id='51' type-v2='text' w='16845' x='33868' y='47103'>
           <formatted-text>
             <run fontcolor='#000000' fontsize='8'>Mediana Factor Desviación: </run>
-            <run bold='true' fontcolor='#000000' fontsize='8' underline='true'>1.43</run>
+            <run bold='true' fontcolor='#000000' fontsize='8' underline='true'>1.52</run>
             <run fontcolor='#000000' fontsize='8'>Æ </run>
             <run>Æ&#10;</run>
             <run fontcolor='#000000' fontsize='8'>(1.0 = ruta directa perfecta)</run>
@@ -1070,7 +1070,7 @@
         <zone forceUpdate='true' h='8060' id='53' type-v2='text' w='13993' x='53387' y='76574'>
           <formatted-text>
             <run bold='true' fontcolor='#ffffff' fontsize='8'>T promedio shortest-path: </run>
-            <run bold='true' fontcolor='#ffffff' fontsize='8' underline='true'>108.9 min </run>
+            <run bold='true' fontcolor='#ffffff' fontsize='8' underline='true'>113.9 min </run>
             <run>Æ&#10;</run>
             <run bold='true' fontcolor='#ffffff' fontsize='8'>(ref. CDMX: 85.0 min)</run>
           </formatted-text>
@@ -1136,7 +1136,7 @@
                 <zone forceUpdate='true' h='10327' id='50' type-v2='text' w='16845' x='34046' y='30982'>
                   <formatted-text>
                     <run fontcolor='#000000' fontsize='8'>Gini de intermediación: </run>
-                    <run bold='true' fontcolor='#000000' fontsize='8' underline='true'>0.7891 </run>
+                    <run bold='true' fontcolor='#000000' fontsize='8' underline='true'>0.8007 </run>
                     <run>Æ&#10;</run>
                     <run fontcolor='#000000' fontsize='8'>(0 = distribuida, 1 = concentrada)</run>
                   </formatted-text>
@@ -1165,7 +1165,7 @@
                 <zone forceUpdate='true' h='8186' id='51' type-v2='text' w='16845' x='33868' y='47103'>
                   <formatted-text>
                     <run fontcolor='#000000' fontsize='8'>Mediana Factor Desviación: </run>
-                    <run bold='true' fontcolor='#000000' fontsize='8' underline='true'>1.43</run>
+                    <run bold='true' fontcolor='#000000' fontsize='8' underline='true'>1.52</run>
                     <run fontcolor='#000000' fontsize='8'>Æ </run>
                     <run>Æ&#10;</run>
                     <run fontcolor='#000000' fontsize='8'>(1.0 = ruta directa perfecta)</run>
@@ -1208,7 +1208,7 @@
                 <zone forceUpdate='true' h='8060' id='53' type-v2='text' w='13993' x='53387' y='76574'>
                   <formatted-text>
                     <run bold='true' fontcolor='#ffffff' fontsize='8'>T promedio shortest-path: </run>
-                    <run bold='true' fontcolor='#ffffff' fontsize='8' underline='true'>108.9 min </run>
+                    <run bold='true' fontcolor='#ffffff' fontsize='8' underline='true'>113.9 min </run>
                     <run>Æ&#10;</run>
                     <run bold='true' fontcolor='#ffffff' fontsize='8'>(ref. CDMX: 85.0 min)</run>
                   </formatted-text>
@@ -1311,7 +1311,7 @@
             </zone>
             <zone forceUpdate='true' h='13854' id='49' type-v2='text' w='12389' x='86898' y='29346'>
               <formatted-text>
-                <run fontcolor='#000000'>Indicadores sintéticos de la red de transporte ZMVM. T=108.9 min supera en 28% la referencia CDMX de 85 min. </run>
+                <run fontcolor='#000000'>Indicadores sintéticos de la red de transporte ZMVM. T=113.9 min supera en 34% la referencia CDMX de 85 min. </run>
                 <run>Æ&#10;</run>
               </formatted-text>
               <zone-style>
@@ -1353,7 +1353,7 @@
             </zone>
             <zone forceUpdate='true' h='11713' id='52' type-v2='text' w='12389' x='86898' y='74435'>
               <formatted-text>
-                <run fontcolor='#000000'>El Gini de intermediación de 0.789 indica alta concentración de flujos en pocos nodos.</run>
+                <run fontcolor='#000000'>El Gini de intermediación de 0.801 indica alta concentración de flujos en pocos nodos.</run>
               </formatted-text>
               <zone-style>
                 <format attr='border-color' value='#000000' />
@@ -1422,7 +1422,7 @@
                 </zone>
                 <zone forceUpdate='true' h='13854' id='49' type-v2='text' w='12389' x='86898' y='29346'>
                   <formatted-text>
-                    <run fontcolor='#000000'>Indicadores sintéticos de la red de transporte ZMVM. T=108.9 min supera en 28% la referencia CDMX de 85 min. </run>
+                    <run fontcolor='#000000'>Indicadores sintéticos de la red de transporte ZMVM. T=113.9 min supera en 34% la referencia CDMX de 85 min. </run>
                     <run>Æ&#10;</run>
                   </formatted-text>
                   <zone-style>
@@ -1448,7 +1448,7 @@
                 </zone>
                 <zone forceUpdate='true' h='11713' id='52' type-v2='text' w='12389' x='86898' y='74435'>
                   <formatted-text>
-                    <run fontcolor='#000000'>El Gini de intermediación de 0.789 indica alta concentración de flujos en pocos nodos.</run>
+                    <run fontcolor='#000000'>El Gini de intermediación de 0.801 indica alta concentración de flujos en pocos nodos.</run>
                   </formatted-text>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
@@ -1572,7 +1572,7 @@
             </zone>
             <zone forceUpdate='true' h='13854' id='52' type-v2='text' w='12389' x='86898' y='53276'>
               <formatted-text>
-                <run bold='true' fontcolor='#000000'>El Metro concentra los nodos más críticos, con Tacubaya (B=0.2179) dominando la jerarquía topológica. </run>
+                <run bold='true' fontcolor='#000000'>El Metro concentra los nodos más críticos, con Tacubaya (B=0.2232) dominando la jerarquía topológica. </run>
                 <run>Æ&#10;</run>
               </formatted-text>
               <zone-style>
@@ -1677,7 +1677,7 @@
                 </zone>
                 <zone forceUpdate='true' h='13854' id='52' type-v2='text' w='12389' x='86898' y='53276'>
                   <formatted-text>
-                    <run bold='true' fontcolor='#000000'>El Metro concentra los nodos más críticos, con Tacubaya (B=0.2179) dominando la jerarquía topológica. </run>
+                    <run bold='true' fontcolor='#000000'>El Metro concentra los nodos más críticos, con Tacubaya (B=0.2232) dominando la jerarquía topológica. </run>
                     <run>Æ&#10;</run>
                   </formatted-text>
                   <zone-style>
