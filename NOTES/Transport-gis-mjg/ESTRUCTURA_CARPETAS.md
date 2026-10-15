@@ -92,8 +92,8 @@ Transport-gis-zmvm-mjg/
     │       ├── VFTModel/{Dashboards, UniGrafica}/
     │       └── Clasificacion_Garibelt/
     │           ├── Red_Actual/
-    │           ├── MB_scenario/                  ← PENDIENTE
-    │           ├── Metro_scenario/               ← PENDIENTE
+    │           ├── MB_scenario/                  ← 4 PDF (10-14)
+    │           ├── Metro_scenario/               ← 4 PDF (10-14)
     │           └── Comparativo_Base_MB_Metro/    ← PENDIENTE
     └── extracts/                     ← .hyper (gitignored)
 ```

@@ -70,7 +70,10 @@ Leyenda: ✅ vigente · 🔁 volver a exportar (datos cambiaron) · 🔎 revisar
 | VFTModel/Dashboards/ | Centralidad, Factor desviación, Fuerza Capilar | ✅ 10-13 | Re-exportados con datos vigentes |
 | VFTModel/UniGrafica/ | B(v) nodos, B(v) sistema, Factor desviación, Fuerza capilar, Tiempo promedio | ✅ 10-13 | T baseline 113.91 min; caption de T ahora dinámico |
 | VFTModel/UniGrafica/ | Cobertura alcaldía, Cobertura sistema | ✅ 10-13 | C sin cambio; re-exportados junto con el resto |
-| Clasificacion_Garibelt/Red_Actual/ | KPI, Clasificación, Espectro, Betweenness | 🔁 | Textos fijos del .twb actualizados el 10-13 (Gini 0.8007, DI 1.52, T 113.9, +34 %, Tacubaya B=0.2232); falta re-exportar los 4 |
+| Clasificacion_Garibelt/Red_Actual/ | KPI, Clasificación, Espectro, Betweenness | ✅ 10-14 | Re-exportados con valores vigentes. Pendiente menor: comilla suelta al final de la nota de multimodales (Betweenness) |
+| Clasificacion_Garibelt/MB_scenario/ | KPI, Clasificación, Espectro, Betweenness (`_MB`) | ✅ 10-14 | `dashboard_viz05_garibelt_scenario_mb.twb` (copia a mano de la base, CSV `escenario-mb/`). Pendiente menor: título de Clasificación dice «Anillar MB»; comilla suelta en Betweenness |
+| Clasificacion_Garibelt/Metro_scenario/ | KPI, Clasificación, Espectro, Betweenness (`_Metro`) | ✅ 10-14 | `dashboard_viz05_garibelt_scenario_metro.twb` (CSV `escenario-metro/`), colores de Banda fijos. Pendiente menor: leyenda «idoneo» sin alias; comilla suelta en Betweenness. El ranking suma por nombre y oculta que 9 de los 10 nodos con mayor B(v) son del anillo |
+| Clasificacion_Garibelt/Comparativo_Base_MB_Metro/ | KPI, Betweenness, Cobertura, Bandas | ⏳ | `dashboard_viz06_garibelt_comparativo.twb` por diseñar (CSV `garibelt/comparativo/`) |
 
 Antes de exportar: VFTModel ya no necesita refrescar extractos (CSV en Live; basta `make export-all` y abrir el `.twb`). Apimetro y Garibelt: abrir cada `.twb` y refrescar los extractos `.hyper`.
 
