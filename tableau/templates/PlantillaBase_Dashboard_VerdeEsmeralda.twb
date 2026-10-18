@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8' ?>
 
-<!-- build 20262.26.0819.2015                               -->
-<workbook _.fcp.WorkbookFingerprinting.true...author-id='f31e5ac18438a7de5605e932d45c0999dea60c57ee6160fbb25db6843e949608' _.fcp.WorkbookFingerprinting.true...creator-author-id='3d9893fd3219a4dd27e5a7045c47a3d837585f35a13e4d4e1eb492f778ca3974' _.fcp.WorkbookFingerprinting.true...creator-license-type='paid' _.fcp.WorkbookFingerprinting.true...creator-machine-id='4be471f022a5799db1e6da2a782c7f53b8e096a8373021603d999f513794eeee' _.fcp.WorkbookFingerprinting.true...license-type='paid' _.fcp.WorkbookFingerprinting.true...machine-id='4be471f022a5799db1e6da2a782c7f53b8e096a8373021603d999f513794eeee' original-version='18.1' source-build='2026.2.2 (20262.26.0819.2015)' source-platform='mac' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+<!-- build 20262.26.0912.1023                               -->
+<workbook _.fcp.WorkbookFingerprinting.true...author-id='3d9893fd3219a4dd27e5a7045c47a3d837585f35a13e4d4e1eb492f778ca3974' _.fcp.WorkbookFingerprinting.true...creator-author-id='3d9893fd3219a4dd27e5a7045c47a3d837585f35a13e4d4e1eb492f778ca3974' _.fcp.WorkbookFingerprinting.true...creator-license-type='paid' _.fcp.WorkbookFingerprinting.true...creator-machine-id='4be471f022a5799db1e6da2a782c7f53b8e096a8373021603d999f513794eeee' _.fcp.WorkbookFingerprinting.true...license-type='paid' _.fcp.WorkbookFingerprinting.true...machine-id='71d6ee9893e128790e0466c36a36281d3b72ce5e0cf89f63e483b694bf3c8ebd' original-version='18.1' source-build='2026.2.3 (20262.26.0912.1023)' source-platform='mac' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
   <document-format-change-manifest>
     <AccessibleZoneTabOrder />
     <AnimationOnByDefault />
@@ -1938,8 +1938,8 @@
           <layout-options export-center-horz='true' export-margin-bottom='0.19685' export-margin-left='0.19685' export-margin-right='0.19685' export-margin-top='0.19685' export-orientation='landscape' />
           <size maxheight='700' minheight='700' sizing-mode='vscroll' />
           <zones>
-            <zone h='100000' id='62' type-v2='layout-basic' w='100000' x='0' y='0'>
-              <zone h='97984' id='61' param='vert' type-v2='layout-flow' w='98574' x='713' y='1008'>
+            <zone h='100000' id='66' type-v2='layout-basic' w='100000' x='0' y='0'>
+              <zone h='97984' id='65' param='vert' type-v2='layout-flow' w='98574' x='713' y='1008'>
                 <zone forceUpdate='true' h='10957' id='5' type-v2='text' w='98574' x='713' y='1008'>
                   <formatted-text>
                     <run bold='true' fontalignment='1' fontcolor='#ffffff' fontname='Arial' fontsize='13'>Dashboard Resultados Apimetro</run>
@@ -2038,8 +2038,8 @@
           <layout-options export-center-horz='true' export-margin-bottom='0.19685' export-margin-left='0.19685' export-margin-right='0.19685' export-margin-top='0.19685' export-orientation='landscape' />
           <size maxheight='700' minheight='700' sizing-mode='vscroll' />
           <zones>
-            <zone h='100000' id='60' type-v2='layout-basic' w='100000' x='0' y='0'>
-              <zone h='97984' id='59' param='vert' type-v2='layout-flow' w='98574' x='713' y='1008'>
+            <zone h='100000' id='64' type-v2='layout-basic' w='100000' x='0' y='0'>
+              <zone h='97984' id='63' param='vert' type-v2='layout-flow' w='98574' x='713' y='1008'>
                 <zone forceUpdate='true' h='11335' id='5' type-v2='text' w='98574' x='713' y='1008'>
                   <formatted-text>
                     <run bold='true' fontalignment='1' fontcolor='#ffffff' fontname='Arial' fontsize='13'>Dashboard Resultados Apimetro</run>
