@@ -2,6 +2,45 @@
 ## Comparativo 3 escenarios: Baseline / MB (BRT) / METRO
 **Fecha:** 2026-09-21 | **Estado:** Preliminar — sujeto a revisión metodológica
 
+> ## ⚠ Actualización 2026-10-17 — valores vigentes
+> Las tablas y la lectura de abajo son de la corrida del **2026-09-21**, anterior a las correcciones de Apimetro (ACHECK-01…04) y VFTModel (#22, #23, #26). Los valores vigentes salen de los CSV regenerados el 2026-10-05 (`escenario-*/`, `comparativo/`) y de `NOTES/VFTModel/RESULTADOS_RECORRIDA.md` §7.
+>
+> | Indicador | Red Actual | Anillo MB | Anillo Metro | Δ MB | Δ Metro |
+> |---|---|---|---|---|---|
+> | T promedio (min) | 113.91 | 108.99 | 101.92 | −4.92 | −11.99 |
+> | Nodos en red | 11,115 | 11,209 | 11,209 | +94 | +94 |
+> | Líneas Apimetro | 678 | 686 | 686 | +8 | +8 |
+> | Gini B(v) | 0.8007 | 0.8012 | 0.8134 | +0.06 % | +1.59 % |
+> | Tacubaya B(v) | 0.2232 | 0.2163 | 0.1569 | −3.1 % | −29.7 % |
+>
+> | Dimensión | Red Actual | Anillo MB | Anillo Metro |
+> |---|---|---|---|
+> | Accesibilidad C | crítico (0.0552) | crítico (0.0557) | crítico (0.0557) |
+> | Capilar Cᵢ | débil (0.250) | débil (0.250) | débil (0.250) |
+> | Eficiencia DI | aceptable (0.653) | aceptable (0.660) | aceptable (0.613) |
+> | **Fluidez T** | **aceptable (0.696)** | **aceptable (0.748)** | **idóneo (0.822)** |
+> | Centralidad B | crítico (0.199) | crítico (0.199) | crítico (0.187) |
+>
+> | DI, muestra de 200 pares (semilla 42) | Red Actual | Anillo MB | Anillo Metro |
+> |---|---|---|---|
+> | eficiente (DI < 1.3) | 19.5 % | 21.5 % | 17.0 % |
+> | DI > 2.0 | 19.5 % | 14.0 % | 17.0 % |
+> | DI máximo | 5.33 | 13.41 | 18.28 |
+>
+> | Top 5 B(v) por nodo | Red Actual | Anillo MB | Anillo Metro |
+> |---|---|---|---|
+> | #1 | Tacubaya 0.2232 | Tacubaya 0.2163 | Tacubaya 0.1569 |
+> | #2 | Mixcoac 0.1923 | Mixcoac 0.1839 | Periférico Oriente/Tláhuac 0.1550 (anillo) |
+> | #3 | Hidalgo 0.1515 | Hidalgo 0.1460 | Rómulo O'Farril 0.1310 (anillo) |
+> | #4 | Balderas 0.1430 | Balderas 0.1388 | Barranca del Muerto/Periférico 0.1284 (anillo) |
+> | #5 | Lázaro Cárdenas 0.1365 | Lázaro Cárdenas 0.1361 | Constitución de 1917/Periférico 0.1274 (anillo) |
+>
+> **Qué cambia en la lectura de abajo:**
+> - **MB ya no alcanza Idóneo en Fluidez.** Queda en 0.7475, a 0.0025 del umbral. Solo Metro cambia de banda (Aceptable → Idóneo). El Idóneo de la red actual reportado el 2026-10-03 por la mañana venía del error de distancias del Fix #22 y quedó revertido.
+> - **DI ya no muestra un retroceso claro en Metro.** Con la corrida vigente Metro tiene menos rutas eficientes (17.0 % frente a 19.5 %) pero también menos rutas con DI > 2.0 (17.0 % frente a 19.5 %). Las muestras de MB y Metro no comparten pares con la red actual, así que la diferencia mezcla el efecto del anillo con el cambio de muestra.
+> - **El desplazamiento de B(v) al anillo en Metro es más fuerte:** 9 de los 10 y 40 de los 50 nodos con mayor B(v) son estaciones del anillo (0 en MB). Tacubaya cae 29.7 %.
+> - **Cobertura C:** sin cambio con 141 demarcaciones. Con el dominio ZMVM de 76 vale 13.29 % (red actual) y 13.43 % (anillos), también Crítico.
+
 ---
 
 ## Datos base de referencia

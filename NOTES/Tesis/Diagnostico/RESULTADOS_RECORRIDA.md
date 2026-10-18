@@ -20,6 +20,8 @@
 | Gini B(v) — Centralidad | 0.7891 | 0.2110 | Crítico |
 
 Red: 11,115 nodos | 45,679 aristas totales  
+> ⚠ Corrección 2026-10-14: 45,679 aristas (25,197 + 20,482) son de la corrida del 2026-04-18 (NB00). La corrida 2026-09-02 tuvo 45,497 (25,015 + 20,482) según NB05. Vigente (§7): 45,517 (25,025 + 20,492).
+
 SCC gigante: 10,561 nodos (95.02%) | Aislados: 554
 
 ### Datos nuevos (post-correcciones Apimetro, 2026-10-03)
@@ -166,6 +168,8 @@ Distribución categórica:
 
 ### 6.1 Gini B(v) post Fix #22 (perfil Garibelt completo)
 
+> ⚠ Valores de la corrida intermedia (post #22, antes de #23). El Gini vigente es 0.8007 / 0.1993 (§7).
+
 | Métrica | Baseline | MB | METRO |
 |---------|----------|----|-------|
 | Gini B(v) previo | 0.7894 | 0.7886 | 0.7983 |
@@ -233,7 +237,7 @@ Distribución categórica:
 
 ### 8.3 Otros pendientes
 - [ ] Commit de `graph_builder.py` y `tests/test_detour.py`; comentarios de cierre en #22 y #23
-- [ ] Regenerar exportaciones Tableau (CSV en disco son anteriores a los fixes)
+- [x] ~~Regenerar exportaciones Tableau~~ — hecho: exportaciones del 2026-10-05 traen los valores de §7; Tableau migrado a CSV Live el 2026-10-13
 - [ ] Issue #21 (normalización B(v) en perfil_nodos) sigue abierto
 
 ### 8.4 Issues registrados (2026-10-04)
@@ -261,7 +265,7 @@ Lista construida con la delimitación SEDATU-CONAPO-INEGI (16 alcaldías + 59 mu
 | METRO | 4.4596% | 13.4260% | 0.0557 → 0.1678 | Crítico |
 
 - Área del dominio: 23,982 km² → 7,906 km². Área cubierta casi igual (1,058.5 → 1,050.5 km²).
-- CDMX sola: C = 53.5% (0.669, Aceptable). 42 de los 76 municipios tienen 0% (incluye Atizapán de Zaragoza, Nicolás Romero, Texcoco, Tizayuca): el dataset no tiene rutas de superficie del Estado de México.
+- CDMX sola: C = 53.5% (0.669, Aceptable). 42 de los 60 municipios (dominio 76 = 16 alcaldías + 60 municipios) tienen 0% (incluye Atizapán de Zaragoza, Nicolás Romero, Texcoco, Tizayuca): el dataset no tiene rutas de superficie del Estado de México.
 - Hallazgo lateral: consultar `entidad=México` en Apimetro devuelve 141 polígonos (coincide también con "Ciudad de México"). El default interno de `client_spatial.py` usaba "México".
 
 ### 9.1 Diseño acordado: opción 2 — C en ambos dominios en la misma respuesta (pendiente de aprobación)

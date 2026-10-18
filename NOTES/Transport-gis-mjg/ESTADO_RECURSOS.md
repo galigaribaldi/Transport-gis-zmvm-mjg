@@ -1,7 +1,11 @@
-# Estado de recursos — actualizado 2026-10-13
+# Estado de recursos — actualizado 2026-10-18
 
 Las capas y CSV se regeneraron el 2026-10-05 con `make export-all`, después de las correcciones de Apimetro (ACHECK-01…04) y VFTModel (#22 DI < 1, #23 SUB aislado, #26 dominio 76).
 Todo PDF exportado **antes** de esa fecha usa datos anteriores.
+
+**2026-10-18: comparativo de B(v) por nodo.** Exportados `Dashboard_Comparativo_Intermediacion_Bv` y `Unigrafica_Comparativo_Top_10_bv`; el comparativo queda completo (5 PDF).
+
+**2026-10-17: Tableau Garibelt por escenario y comparativo.** MB y Metro exportados (8 PDF, 10-14); comparativo con 3 PDF (10-16) y la unigráfica de Betweenness por nodo con hojas listas (falta dashboard). Pendiente: Top 10 B(v) por nodo en los 3 workbooks Garibelt y re-exportar Betweenness y Clasificación (6 PDF).
 
 **2026-10-13: Tableau VFTModel migrado a CSV en disco.** `dashboard_viz04_red_vftmodel.twb` ya no usa el WDC ni extractos: las 4 fuentes WDC leen `wdc_*.csv` en Live y las fuentes GeoJSON también están en Live. Re-exportados los 10 PDF de `VFTModel/` (Dashboards y UniGrafica). Copias MB/Metro regeneradas con `make workbooks`.
 
@@ -17,10 +21,10 @@ Leyenda: ✅ vigente · 🔁 volver a exportar (datos cambiaron) · 🔎 revisar
 
 | Herramienta | PDFs totales | ✅ Vigentes | 🔎 Revisar | 🔁 Volver a exportar |
 |-------------|-------------|-------------|------------|----------------------|
-| QGIS (sin comparativos) | 23 | 23 | 0 | 0 |
+| QGIS (sin comparativos) | 23 | 21 | 2 | 0 |
 | QGIS comparativos | 3 | 3 | 0 | 0 |
-| Tableau | 20 | 2 | 6 | 12 |
-| **Total** | **46** | **28** | **6** | **12** |
+| Tableau | 33 | 27 | 0 | 6 |
+| **Total** | **59** | **51** | **2** | **6** |
 
 ¿Por qué la cobertura sigue vigente? Los valores de C por demarcación no cambiaron (`cobertura_alcaldias_*.csv` idénticos). Cambiaron B(v), FC, DI, T y la Banda Dominante.
 
@@ -47,6 +51,10 @@ Leyenda: ✅ vigente · 🔁 volver a exportar (datos cambiaron) · 🔎 revisar
 | Clasificacion_Garibelt_Fuerza_Capilar | ✅ 10-11 | ✅ 10-11 | ✅ 10-11 |
 | Clasificacion_Garibelt_Mapa_Cobertura | ✅ 10-11 | ✅ 10-11 | ✅ 10-11 |
 
+#### 🔎 Revisar (hallazgos del 2026-10-14)
+- `garibelt_red_actual.qgz`, layout «Cobertura Garibelt»: el texto todavía dice «141 demarcaciones de la ZMVM», «isócronas» y «0.055». Confirmar qué quedó en el PDF exportado.
+- `Mapa_Cobertura_Mapa_Calor` (`tesis-2026-2.qgz`): PDF del 09-14 y capa `Cobertura800m.gpkg` del 09-17, anteriores a los datos del 10-05.
+
 ### Clasificacion_Garibelt/Comparativo/
 | PDF | Estado | Pendiente |
 |-----|--------|-----------|
@@ -70,10 +78,10 @@ Leyenda: ✅ vigente · 🔁 volver a exportar (datos cambiaron) · 🔎 revisar
 | VFTModel/Dashboards/ | Centralidad, Factor desviación, Fuerza Capilar | ✅ 10-13 | Re-exportados con datos vigentes |
 | VFTModel/UniGrafica/ | B(v) nodos, B(v) sistema, Factor desviación, Fuerza capilar, Tiempo promedio | ✅ 10-13 | T baseline 113.91 min; caption de T ahora dinámico |
 | VFTModel/UniGrafica/ | Cobertura alcaldía, Cobertura sistema | ✅ 10-13 | C sin cambio; re-exportados junto con el resto |
-| Clasificacion_Garibelt/Red_Actual/ | KPI, Clasificación, Espectro, Betweenness | ✅ 10-14 | Re-exportados con valores vigentes. Pendiente menor: comilla suelta al final de la nota de multimodales (Betweenness) |
-| Clasificacion_Garibelt/MB_scenario/ | KPI, Clasificación, Espectro, Betweenness (`_MB`) | ✅ 10-14 | `dashboard_viz05_garibelt_scenario_mb.twb` (copia a mano de la base, CSV `escenario-mb/`). Pendiente menor: título de Clasificación dice «Anillar MB»; comilla suelta en Betweenness |
-| Clasificacion_Garibelt/Metro_scenario/ | KPI, Clasificación, Espectro, Betweenness (`_Metro`) | ✅ 10-14 | `dashboard_viz05_garibelt_scenario_metro.twb` (CSV `escenario-metro/`), colores de Banda fijos. Pendiente menor: leyenda «idoneo» sin alias; comilla suelta en Betweenness. El ranking suma por nombre y oculta que 9 de los 10 nodos con mayor B(v) son del anillo |
-| Clasificacion_Garibelt/Comparativo_Base_MB_Metro/ | KPI, Betweenness, Cobertura, Bandas | ⏳ | `dashboard_viz06_garibelt_comparativo.twb` por diseñar (CSV `garibelt/comparativo/`) |
+| Clasificacion_Garibelt/Red_Actual/ | KPI, Clasificación, Espectro, Betweenness | ✅ 10-14 | Re-exportados con valores vigentes. Pendiente menor: comilla suelta al final de la nota de multimodales (Betweenness). 🔁 Betweenness y Clasificación: cambiar Top 10 a máximo por nodo y re-exportar |
+| Clasificacion_Garibelt/MB_scenario/ | KPI, Clasificación, Espectro, Betweenness (`_MB`) | ✅ 10-14 | `dashboard_viz05_garibelt_scenario_mb.twb` (copia a mano de la base, CSV `escenario-mb/`). Pendiente menor: título de Clasificación dice «Anillar MB»; comilla suelta en Betweenness. 🔁 Betweenness y Clasificación: cambiar Top 10 a máximo por nodo y re-exportar |
+| Clasificacion_Garibelt/Metro_scenario/ | KPI, Clasificación, Espectro, Betweenness (`_Metro`) | ✅ 10-14 | `dashboard_viz05_garibelt_scenario_metro.twb` (CSV `escenario-metro/`), colores de Banda fijos. Pendiente menor: leyenda «idoneo» sin alias; comilla suelta en Betweenness. El ranking suma por nombre y oculta que 9 de los 10 nodos con mayor B(v) son del anillo. 🔁 Betweenness y Clasificación: cambiar Top 10 a máximo por nodo y re-exportar |
+| Clasificacion_Garibelt/Comparativo_Base_MB_Metro/ | Dashboard_Comparativo_KPI, Unigrafica_Comparativo_Valor_Normalizado, Unigrafica_Comparativo_Extendido (10-16/18); Dashboard_Comparativo_Intermediacion_Bv, Unigrafica_Comparativo_Top_10_bv (10-18) | ✅ | `dashboard_viz05_garibelt_comparativo.twb` (kpi/bv_comparativo.csv). Metro: 9 de 10 y 40 de 50 nodos con mayor B(v) son del anillo; MB 0 |
 
 Antes de exportar: VFTModel ya no necesita refrescar extractos (CSV en Live; basta `make export-all` y abrir el `.twb`). Apimetro y Garibelt: abrir cada `.twb` y refrescar los extractos `.hyper`.
 
@@ -134,5 +142,6 @@ Hallazgo: en Metro, **4 de los 5 nodos con mayor B(v) están sobre el anillo**. 
 | Crítico | 11,045 | 11,138 | 11,125 |
 
 ### Cobertura por demarcación (sin cambio)
-- 101 de 141 demarcaciones con 0 %; MB y Metro idénticos.
+- 102 de 141 demarcaciones con 0 % en la red actual (Texcoco tiene 0.01 km² cubiertos) y 101 en MB y Metro, idénticos entre sí.
+- Dominio ZMVM de 76 demarcaciones: C = 13.29 % (red actual) y 13.43 % (MB y Metro); 42 de los 60 municipios con 0 %. Ver `NOTES/Tesis/Diagnostico/RESPUESTAS_PREGUNTAS_ISSUES.md` P2.
 - Cambios Baseline → Anillo: Nezahualcóyotl 39.79 → 48.64 % (+8.85), Tlalnepantla 53.94 → 58.85 % (+4.91), Ecatepec +0.40, Texcoco 0 → 0.13; Iztapalapa, Xochimilco y Naucalpan +0.01 a +0.03.

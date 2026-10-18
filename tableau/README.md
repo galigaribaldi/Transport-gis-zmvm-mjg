@@ -97,10 +97,13 @@ Convención de nombre: `<proyecto>_viz<##>_<descripcion>.twb`
 | `dashboard_viz04_red_apimetro.twb` | Estadísticas red Apimetro — baseline | `apimetro_wdc.html` / hyper |
 | `dashboard_viz04_red_apimetro_scenario_mb.twb` | Red Apimetro — Escenario MB | hyper MB |
 | `dashboard_viz04_red_apimetro_scenario_metro.twb` | Red Apimetro — Escenario METRO | hyper METRO |
-| `dashboard_viz04_red_vftmodel.twb` | Indicadores VFTModel — baseline | `vftmodel_wdc.html` / hyper |
-| `dashboard_viz04_red_vftmodel_scenario_mb.twb` | VFTModel — Escenario MB | hyper MB |
-| `dashboard_viz04_red_vftmodel_scenario_metro.twb` | VFTModel — Escenario METRO | hyper METRO |
-| `dashboard_viz05_garibelt_baseline.twb` | Clasificación Garibelt — baseline | CSVs `escenario-base/` |
+| `dashboard_viz04_red_vftmodel.twb` | Indicadores VFTModel — baseline | `connectors/VFTModel/exports/wdc_*.csv` + GeoJSON (Live, sin WDC ni extractos) |
+| `dashboard_viz04_red_vftmodel_scenario_mb.twb` | VFTModel — Escenario MB | ídem `exports/scenario_mb/` (`make workbooks`) |
+| `dashboard_viz04_red_vftmodel_scenario_metro.twb` | VFTModel — Escenario METRO | ídem `exports/scenario_metro/` (`make workbooks`) |
+| `dashboard_viz05_garibelt_baseline.twb` | Clasificación Garibelt — Red Actual | CSVs `garibelt/escenario-base/` (Live) |
+| `dashboard_viz05_garibelt_scenario_mb.twb` | Clasificación Garibelt — Anillo MB | CSVs `garibelt/escenario-mb/` (copia a mano, no `make`) |
+| `dashboard_viz05_garibelt_scenario_metro.twb` | Clasificación Garibelt — Anillo Metro | CSVs `garibelt/escenario-metro/` (copia a mano, no `make`) |
+| `dashboard_viz05_garibelt_comparativo.twb` | Comparativo Red Actual · MB · Metro | `garibelt/comparativo/kpi_comparativo.csv` y `bv_comparativo.csv` (Live) |
 
 ---
 
@@ -160,33 +163,36 @@ Destino: `exports/pdf/VFTModel/`
 
 ### C · Clasificación Garibelt — dashboards por escenario
 
-Destino: `exports/pdf/Clasificacion_Garibelt/{Red_Actual, MB_scenario, Metro_scenario, Comparativo_Base_MB_Metro}/`
-Workbook base: `dashboard_viz05_garibelt_baseline.twb`
+Destino: `exports/pdf/Clasificacion_Garibelt/{Red_Actual, MB_scenario, Metro_scenario}/`
+Workbooks: `dashboard_viz05_garibelt_baseline.twb`, `_scenario_mb.twb`, `_scenario_metro.twb` (textos fijos por escenario; ver `NOTES/Transport-gis-mjg/ESTADO_RECURSOS.md`)
 
 | Dashboard | Red Actual | Escenario MB | Escenario METRO |
 |-----------|-----------|-------------|----------------|
-| Dashboard KPI | ✅ | ⬜ | ⬜ |
-| Dashboard Clasificación (bandas) | ✅ | ⬜ | ⬜ |
-| Dashboard Espectro | ✅ | ⬜ | ⬜ |
-| Dashboard Betweenness | ✅ | ⬜ | ⬜ |
+| Dashboard KPI | ✅ | ✅ | ✅ |
+| Dashboard Clasificación (bandas) | 🔁 | 🔁 | 🔁 |
+| Dashboard Espectro | ✅ | ✅ | ✅ |
+| Dashboard Betweenness | 🔁 | 🔁 | 🔁 |
 
-Workbooks pendientes de crear: `dashboard_viz05_garibelt_mb.twb` · `dashboard_viz05_garibelt_metro.twb`
+🔁 = re-exportar tras cambiar el Top 10 de B(v) de suma por nombre a **máximo por nodo** (decisión 2026-10-16) y revisar las notas de nodo dominante y multimodales.
 
-### D · Comparativo entre escenarios (pendiente)
+### D · Comparativo entre escenarios
 
 Destino: `exports/pdf/Clasificacion_Garibelt/Comparativo_Base_MB_Metro/`
-Workbook pendiente: `dashboard_viz06_garibelt_comparativo.twb`
+Workbook: `dashboard_viz05_garibelt_comparativo.twb` (solo estadística; sin mapas ni cobertura)
 
-| Dashboard comparativo | Estado | Prioridad |
-|-----------------------|--------|-----------|
-| ΔBanda Dominante (3 escenarios) | ⬜ | Alta |
-| ΔB(v) Baseline → MB → METRO | ⬜ | Alta |
-| ΔCobertura por alcaldía | ⬜ | Media |
-| KPI comparativo (tabla resumen) | ⬜ | Alta |
+| Recurso | Hojas | Estado |
+|---------|-------|--------|
+| Dashboard_Comparativo_KPI.pdf | Valor normalizado por dimensión y escenario + Cambio frente a la Red Actual | ✅ |
+| Unigrafica_Comparativo_Valor_Normalizado.pdf | Valor normalizado por dimensión y escenario | ✅ |
+| Unigrafica_Comparativo_Extendido.pdf | Cambio frente a la Red Actual | ✅ |
+| Dashboard_Comparativo_Intermediacion_Bv.pdf | Top 10 B(v) por Nodo + Anillo en el Top | ✅ |
+| Unigrafica_Comparativo_Top_10_bv.pdf | Top 10 B(v) por Nodo | ✅ |
+| ΔBanda Dominante / ΔCobertura | — | ➖ omitidos (poco descriptivos; cobertura fuera del comparativo) |
+
+Colores por escenario: Red Actual `#6f2585`, Anillo MB `#c8102e`, Anillo Metro `#e5631a`. La banda va como texto, no como color.
 
 ---
 
 ## Orden de trabajo recomendado
 
-1. **Sección C** — crear `dashboard_viz05_garibelt_mb.twb` y `_metro.twb`, exportar 8 dashboards
-2. **Sección D** — crear `dashboard_viz06_garibelt_comparativo.twb`, exportar comparativos
+1. **Sección C** — Top 10 por nodo (Maximum) en los tres workbooks Garibelt, revisar notas y re-exportar 6 PDF (Betweenness y Clasificación).

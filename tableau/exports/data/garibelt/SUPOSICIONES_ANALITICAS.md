@@ -2,6 +2,22 @@
 ## Segunda Lectura Preliminar
 **Fecha:** 2026-09-24 | **Estado:** Preliminar — requiere verificación con literatura y datos externos
 
+> ## ⚠ Actualización 2026-10-17 — cifras vigentes por suposición
+> Las cifras de abajo son de la corrida del **2026-09-24**. Con los datos vigentes (CSV del 2026-10-05) cambian así; las suposiciones como hipótesis de trabajo siguen abiertas:
+>
+> | Suposición | Cifra del texto | Cifra vigente |
+> |---|---|---|
+> | S1 | ~95 nodos aceptable (fc 21–41); idóneo 0.0 % | 95 nodos aceptable (fc 22–31) y **5 idóneo** (0.05 %); crítico 84.96 %, débil 14.09 %, aceptable 0.90 % |
+> | S2 | 84.9 % de nodos en banda crítica | 84.96 % (8,957 de 10,543) |
+> | S3 | Periférico Oriente/Tláhuac 0.145 (#2), Rómulo O'Farril 0.122 (#4), Luis Cabrera 0.121 (#5) | 0.1550 (#2), 0.1310 (#3), 0.1236 (#6); en Metro 9 de los 10 nodos con mayor B(v) son del anillo |
+> | S4 | T 108.92 / 104.74 / 98.12; Metro −10.8 min (−9.9 %) | T 113.91 / 108.99 / 101.92; MB −4.92 min (−4.3 %), Metro −11.99 min (−10.5 %) |
+> | S5 | eficiente 30.5 → 24.5 %; DI > 2.0 22.5 → 29.0 %; máx 4.32 → 5.20 | eficiente 19.5 / 21.5 / 17.0 %; DI > 2.0 19.5 / 14.0 / 17.0 %; máx 5.33 / 13.41 / 18.28 (200 pares; muestras distintas por escenario) |
+> | S6 | C ≈ 0.055–0.056 | 0.0552 / 0.0557 / 0.0557 (141 demarcaciones); con ZMVM 76: 13.29 / 13.43 / 13.43 %, Crítico |
+> | S7 | Gini 0.789 → 0.798; Tacubaya −28.5 % (0.2179 → 0.1557) | Gini 0.8007 → 0.8134 (+1.6 %); Tacubaya −29.7 % (0.2232 → 0.1569) |
+>
+> Lectura que cambia: en S5 el «retroceso del DI en Metro» ya no es claro con los datos vigentes (Metro tiene menos rutas eficientes pero también menos rutas con DI > 2.0). El resto de las suposiciones conserva su sentido; S3 y S7 se refuerzan.
+
+
 ---
 
 ## Contexto metodológico
