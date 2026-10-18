@@ -558,7 +558,7 @@ Lo más cercano vigente es E₀ = 1/113.9087, junto con el B(v) vigente de esos 
 
 | Figura | Repo de cartografía | Copia en la tesis |
 |---|---|---|
-| Dashboard_Espectro_Red_Actual | **09-23, sin re-exportar** (Gini 0.7891, DI 1.43, T 108.9) | 09-23 |
+| Dashboard_Espectro_Red_Actual | 10-14 (Gini 0.8007, DI 1.52, T 113.9) | 09-23 |
 | Dashboard_KPI, _Clasificacion y _Betweenness (Red Actual) | 10-14 | 09-23 |
 | Mapas QGIS Clasificacion_Garibelt: Cobertura, Fuerza Capilar y Betweenness | 10-11 | 09-24 |
 
@@ -578,7 +578,7 @@ Los pies de figura de la tesis todavía dicen "Corrida: 2026-09-02", "2026-09-24
 | 5.3.4 | `NB04_mapa10_caso07.png` | ❌ no existe | 06-18 | caso 7: 43.13 km, DI 1.87 |
 | 5.5.1 | Fig. 5.15, T promedio | 10-13 | 09-16 | 113.91 frente a 85 |
 | 5.5.2 | B(v): nodos, sistema y dashboard | 10-13 | 09-11 / 09-15 | Tacubaya 0.3242 (suma por nombre) |
-| 5.6 | Dashboard Espectro | ❌ falta re-exportar | 09-23 | P10.1 |
+| 5.6 | Dashboard Espectro | 10-14 | 09-23 | P10.1 |
 | 5.6 | KPI, Clasificación y Betweenness Garibelt | 10-14 | 09-23 | P10.1 y P8 |
 | 5.6 | Mapas Garibelt (QGIS) | 10-11 | 09-24 | P10.1 |
 
