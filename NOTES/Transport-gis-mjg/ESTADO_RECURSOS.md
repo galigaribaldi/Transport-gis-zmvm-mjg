@@ -74,7 +74,7 @@ Leyenda: ✅ vigente · 🔁 volver a exportar (datos cambiaron) · 🔎 revisar
 
 | Carpeta | PDF | Estado | Motivo |
 |---------|-----|--------|--------|
-| Apimetro/ (5) + `dashboard_viz04_red_apimetro.pdf` | Dashboards y gráficas Apimetro | ✅ 10-13 | Solo cambiaba Calidad de Servicio (INTERURBANO 160 → 70, TROLE L10 25): re-exportada. El resto no cambia |
+| Apimetro/ (5) | Dashboards y gráficas Apimetro | ✅ 10-13 | Solo cambiaba Calidad de Servicio (INTERURBANO 160 → 70, TROLE L10 25): re-exportada. El resto no cambia |
 | VFTModel/Dashboards/ | Centralidad, Factor desviación, Fuerza Capilar | ✅ 10-13 | Re-exportados con datos vigentes |
 | VFTModel/UniGrafica/ | B(v) nodos, B(v) sistema, Factor desviación, Fuerza capilar, Tiempo promedio | ✅ 10-13 | T baseline 113.91 min; caption de T ahora dinámico |
 | VFTModel/UniGrafica/ | Cobertura alcaldía, Cobertura sistema | ✅ 10-13 | C sin cambio; re-exportados junto con el resto |

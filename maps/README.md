@@ -1,5 +1,7 @@
 # maps/
 
+> 📖 La documentación vigente está en la wiki: [QGIS](https://github.com/galigaribaldi/Transport-gis-zmvm-mjg/wiki/QGIS) y [Reglas de rutas](https://github.com/galigaribaldi/Transport-gis-zmvm-mjg/wiki/Reglas-de-rutas). Este README conserva el estado de recursos; algunas secciones de flujo son históricas.
+
 Cartografía QGIS de la tesis **"Transportes Anillares y su importancia en la CDMX y ZMVM"**.
 UNAM · FES Acatlán · Maestría en Urbanismo · Semestre 2026-2.
 

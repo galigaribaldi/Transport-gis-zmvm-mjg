@@ -1,5 +1,7 @@
 # tableau/
 
+> 📖 La documentación vigente está en la wiki: [Tableau](https://github.com/galigaribaldi/Transport-gis-zmvm-mjg/wiki/Tableau) y [Reglas de rutas](https://github.com/galigaribaldi/Transport-gis-zmvm-mjg/wiki/Reglas-de-rutas). Este README conserva el estado de recursos; algunas secciones de flujo son históricas.
+
 Módulo de dashboards estadísticos interactivos para la tesis **"Transportes Anillares y su importancia en la CDMX y ZMVM"**.
 
 ---
@@ -20,18 +22,19 @@ La conexión es nativa a través de **Web Data Connectors (WDC)** que llaman dir
 
 ```
 tableau/
-  connectors/         ← WDC: archivos HTML+JS (git-tracked)
-    vftmodel_wdc.html   ← conecta a VFTModel (localhost:8000)
-    apimetro_wdc.html   ← conecta a Apimetro (localhost:8080)
+  connectors/
+    apimetro/apimetro_wdc.html  ← WDC de Apimetro (localhost:8080; escenarios :8083/:8084)
+    VFTModel/vft_wdc.html       ← WDC de VFTModel (histórico: viz04 VFTModel lee CSV)
+    VFTModel/exports/           ← wdc_*.csv y GeoJSON por escenario (fuentes Live de Tableau y QGIS)
   workbooks/          ← .twb (XML, git-tracked)
-  datasources/        ← .tds definiciones de conexión (XML, git-tracked)
-  extracts/           ← .hyper (gitignored, opcionales para performance)
+  templates/          ← plantilla .twb, paleta .tps y guías de diseño
+  geo_proxy/          ← servidor del WDC de Apimetro
   exports/
     pdf/              ← PDFs exportados desde Tableau (git-tracked)
     img/              ← PNGs exportados (git-tracked)
     web/              ← URLs Tableau Public o snippets de embed (git-tracked)
   scripts/
-    export_tabcmd.sh  ← automatización de exports con tabcmd
+    build_demanda_alcaldia.py  ← genera exports/data/demanda_alcaldia.csv
   README.md
 ```
 

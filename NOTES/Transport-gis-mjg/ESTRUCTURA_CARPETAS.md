@@ -95,7 +95,6 @@ Transport-gis-zmvm-mjg/
     │           ├── MB_scenario/                  ← 4 PDF (10-14)
     │           ├── Metro_scenario/               ← 4 PDF (10-14)
     │           └── Comparativo_Base_MB_Metro/    ← PENDIENTE
-    └── extracts/                     ← .hyper (gitignored)
 ```
 
 ## Convenciones de nombre de carpeta por escenario

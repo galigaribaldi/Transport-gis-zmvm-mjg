@@ -32,7 +32,7 @@ GARIBELT_DIR = tableau/exports/data/garibelt
         export-garibelt-csv-all export-layers _export-port-layers export-garibelt-layers export-comparativo \
         export-rutas export-rutas-raw export-rutas-lineas export-tableau-tablas tableau-check \
         export-garibelt-csv-baseline export-garibelt-csv-mb export-garibelt-csv-metro \
-        workbooks serve \
+        workbooks serve check-paths \
         verify verify-step-1 verify-step-2 verify-step-3 verify-step-4 verify-step-5
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -417,7 +417,7 @@ serve:
 	@echo ""
 	@echo "  Conectores disponibles:"
 	@echo "    Apimetro  → http://localhost:5050/connectors/apimetro/apimetro_wdc.html"
-	@echo "    VFTModel  → http://localhost:5050/connectors/VFTModel/vft_wdc.html"
+	@echo "    VFTModel  → http://localhost:5050/connectors/VFTModel/vft_wdc.html  (histórico: viz04 VFTModel lee CSV)"
 	@echo ""
 	@echo "  Detener con Ctrl+C"
 	@echo "──────────────────────────────────────────────────────────"
@@ -447,15 +447,11 @@ verify-step-4:
 	@test -f $(WB_DIR)/dashboard_viz04_red_apimetro_scenario_metro.twb \
 		&& echo "    ✓ dashboard_viz04_red_apimetro_scenario_metro.twb" \
 		|| echo "    ✗ dashboard_viz04_red_apimetro_scenario_metro.twb  FALTA"
-	@echo "  Puertos en TWBs de escenario:"
-	@grep -l "localhost:8001" $(WB_DIR)/*.twb 2>/dev/null | xargs -I{} basename {} | sed 's/^/    :8001  /' || echo "    ✗ Ningún TWB contiene :8001"
-	@grep -l "localhost:8002" $(WB_DIR)/*.twb 2>/dev/null | xargs -I{} basename {} | sed 's/^/    :8002  /' || echo "    ✗ Ningún TWB contiene :8002"
+	@echo "  Puertos Apimetro en TWBs de escenario (WDC; VFTModel ya no usa puertos, lee CSV):"
 	@grep -l "localhost:8083" $(WB_DIR)/*.twb 2>/dev/null | xargs -I{} basename {} | sed 's/^/    :8083  /' || echo "    ✗ Ningún TWB contiene :8083"
 	@grep -l "localhost:8084" $(WB_DIR)/*.twb 2>/dev/null | xargs -I{} basename {} | sed 's/^/    :8084  /' || echo "    ✗ Ningún TWB contiene :8084"
-	@echo "  QGIS (apertura manual en QGIS Desktop):"
-	@ls maps/projects/*.qgz 2>/dev/null | xargs -I{} basename {} | sed 's/^/    /' || echo "    Sin proyectos .qgz en maps/projects/"
-	@echo "  Capas de escenario disponibles para QGIS:"
-	@ls data/processed/scenarios/VFTOutput_*.gpkg 2>/dev/null | xargs -I{} basename {} | sed 's/^/    /' || echo "    ✗ Sin GPKGs en data/processed/scenarios/"
+	@echo "  Rutas de datos de todos los .twb y .qgz:"
+	@python3 utils/check_paths.py | tail -2 | sed 's/^/    /'
 	@echo ""
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -467,8 +463,12 @@ verify-step-5:
 	@echo "══════════════════════════════════════════════════════════"
 	@echo "  PASO 5 — Verificación de integridad global"
 	@echo "══════════════════════════════════════════════════════════"
-	@echo "  T de referencia (CSV indicadores_comparativo.csv):"
-	@python3 -c "import csv; [print(f'    {r[\"escenario_label\"]:12s}  T = {r[\"T_min\"]} min  ({r[\"nodos\"]} nodos, dnodos={r[\"nodos_delta\"]})') for r in csv.DictReader(open('tableau/exports/data/indicadores_comparativo.csv'))]" 2>/dev/null || echo "    ✗ CSV no encontrado"
+	@echo "  T exportado para Tableau (wdc_t_escalar.csv):"
+	@for d in "" scenario_mb/ scenario_metro/; do \
+		python3 -c "import csv,sys; r=next(csv.DictReader(open(sys.argv[1]))); print(f'    {sys.argv[2]:15s} T = {float(r[\"T_minutos\"]):.2f} min  ({r[\"nodos_scc\"]} nodos SCC)')" \
+			"tableau/connectors/VFTModel/exports/$${d}wdc_t_escalar.csv" "$$(n=$${d%/}; echo $${n:-baseline})" 2>/dev/null \
+			|| echo "    ✗ $${d:-baseline}wdc_t_escalar.csv no encontrado"; \
+	done
 	@echo "  T en vivo desde VFTModel (requiere caché activo):"
 	@curl -s --max-time 10 \
 		"http://localhost:8000/api/v1/network/topological/average-travel-time" \
@@ -482,7 +482,7 @@ verify-step-5:
 		"http://localhost:8002/api/v1/network/topological/average-travel-time" \
 		| python3 -c "import sys,json; d=json.load(sys.stdin).get('data',{}); t=d.get('T_average_travel_time_minutes','?'); print('    METRO     :8002  T =', t, 'min')" 2>/dev/null \
 		|| echo "    METRO     :8002  ✗ inactivo o sin caché"
-	@echo "  Mejoras esperadas (vs CSV):"
+	@echo "  Mejoras esperadas (corrida 2026-10-04):"
 	@echo "    MB vs Baseline:    −4.92 min  (108.99 vs 113.91)"
 	@echo "    METRO vs Baseline: −11.99 min (101.92 vs 113.91)"
 	@echo "  Lineas Apimetro (baseline:678, escenarios con anillo:686):"
@@ -492,6 +492,11 @@ verify-step-5:
 	@echo ""
 
 verify: verify-step-1 verify-step-2 verify-step-3 verify-step-4 verify-step-5
+
+# Rutas de los proyectos: lee cada .twb y .qgz y falla si falta un archivo que usan.
+# Correrlo antes y después de mover, renombrar o borrar cualquier cosa del repo.
+check-paths:
+	@python3 utils/check_paths.py
 
 # ══════════════════════════════════════════════════════════════════════════════
 #  AYUDA Y GUÍA
@@ -541,6 +546,7 @@ help:
 	@echo "PASO 5 — Integridad"
 	@echo "  make verify             Verificación completa (todos los pasos)"
 	@echo "  make verify-step-5      Solo integridad global (T, features, CSV)"
+	@echo "  make check-paths        Rutas de todos los .twb y .qgz (sin servidores)"
 	@echo ""
 	@echo "OTROS"
 	@echo "  make guide              Guía descriptiva del flujo de trabajo"
@@ -561,7 +567,7 @@ guide:
 	@echo "  VFTModel baseline       make run                (repo VFTModel, :8000)"
 	@echo "  VFTModel MB             make run-scenario-mb    (:8001)"
 	@echo "  VFTModel METRO          make run-scenario-metro (:8002)"
-	@echo "  WDC server              make serve  ← en esta terminal, dejar corriendo"
+	@echo "  WDC server              make serve  ← solo para refrescar el extracto WDC de Apimetro"
 	@echo ""
 	@echo "────────────────────────────────────────────────────────"
 	@echo "PASO 1 — VERIFICAR CONEXIONES"
@@ -574,7 +580,7 @@ guide:
 	@echo "  Precarga T + B(v) en memoria para los 3 escenarios en paralelo."
 	@echo "  network-profile calcula T y B(v) internamente (~20 min primera vez)."
 	@echo "  Con caché activo todos los endpoints responden en <100 ms, lo que"
-	@echo "  evita timeouts al crear o refrescar extractos .hyper en Tableau."
+	@echo "  evita timeouts al exportar y al refrescar el extracto WDC de Apimetro."
 	@echo "  Para verificar: make verify-step-2"
 	@echo ""
 	@echo "PASO 3 — GENERAR FUENTES DE DATOS  (solo cuando los datos cambian)"
@@ -582,26 +588,28 @@ guide:
 	@echo "  $$ make export-lineas   # lineas.geojson y poligonos.geojson desde Apimetro"
 	@echo "  Los GeoJSONs de escenario van a:"
 	@echo "    tableau/exports/geo/scenario_mb/   y   .../scenario_metro/"
-	@echo "  Los GPKGs de escenario van a:"
-	@echo "    data/processed/scenarios/VFTOutput_scenario_*.gpkg"
+	@echo "  Capas QGIS: data/processed/garibelt/ (Garibelt y comparativo)"
+	@echo "  CSV Tableau: tableau/connectors/VFTModel/exports/ y tableau/exports/data/garibelt/"
+	@echo "  (data/processed/scenarios/VFTOutput_scenario_*.gpkg se conserva como histórico)"
 	@echo "  Para verificar feature counts: make verify-step-3"
 	@echo ""
 	@echo "PASO 4 — GENERAR ARCHIVOS DE TRABAJO"
 	@echo "  $$ make workbooks"
-	@echo "  Copia y adapta los workbooks baseline → escenarios MB y METRO,"
-	@echo "  actualizando puertos WDC y rutas de GeoJSON en cada TWB."
-	@echo "  Abre los TWBs en Tableau Desktop y recrea los extractos .hyper."
+	@echo "  Copia los viz04 baseline (VFTModel y Apimetro) → escenarios MB y METRO,"
+	@echo "  ajustando rutas de CSV/GeoJSON y puertos WDC de Apimetro."
+	@echo "  Los viz05 Garibelt se copian a mano (no usar make para ellos)."
+	@echo "  Abre los TWBs en Tableau Desktop; solo Apimetro requiere refrescar su extracto."
 	@echo ""
 	@echo "  QGIS (paso manual — no automatizable desde CLI):"
-	@echo "    1. Abrir maps/projects/*.qgz en QGIS Desktop"
-	@echo "    2. Refrescar capa: data/processed/scenarios/VFTOutput_scenario_*.gpkg"
-	@echo "    3. Exportar PNG → maps/exports/"
+	@echo "    1. $$ make check-paths   (todas las capas deben existir)"
+	@echo "    2. Abrir maps/projects/*.qgz en QGIS Desktop"
+	@echo "    3. Exportar PDF → maps/exports/pdf/"
 	@echo ""
 	@echo "PASO 5 — VERIFICAR INTEGRIDAD"
 	@echo "  $$ make verify"
-	@echo "  Comprueba: servidores activos, T por escenario vs CSV de referencia,"
-	@echo "  conteo de features en GeoJSONs, existencia de todos los TWBs y"
-	@echo "  puertos correctos en los workbooks de escenario."
+	@echo "  Comprueba: servidores activos, T por escenario (CSV y API),"
+	@echo "  conteo de features en GeoJSONs, existencia de los TWBs, puertos"
+	@echo "  Apimetro de escenario y rutas de todos los .twb y .qgz."
 	@echo ""
 	@echo "────────────────────────────────────────────────────────"
 	@echo "SESIÓN RÁPIDA (grafos ya en caché, solo refrescar datos)"

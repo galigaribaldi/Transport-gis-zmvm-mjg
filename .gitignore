@@ -33,11 +33,15 @@ build/
 # Variables de entorno
 .env
 .env.*
+# La plantilla de variables sí se versiona
+!.env.example
 
 # ── Go (Apimetro) ──────────────────────────────────────────────────────────
-# Binarios compilados (sin extensión en Linux, con .exe en Windows)
-apimetro
-apimetro.exe
+# Binarios compilados (sin extensión en Linux, con .exe en Windows).
+# Anclados a la raíz: sin «/», macOS (sin distinción de mayúsculas) ignoraba también
+# toda carpeta llamada Apimetro/ (PDFs de Tableau, NOTES/Apimetro, conector WDC).
+/apimetro
+/apimetro.exe
 # Caché de build local de Go
 /vendor/
 
