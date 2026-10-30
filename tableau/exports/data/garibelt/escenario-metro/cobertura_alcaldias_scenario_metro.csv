@@ -1,0 +1,142 @@
+escenario,escenario_label,id,nombre,area_total_km2,area_cubierta_km2,cobertura_pct,cobertura_deficit,categoria_cobertura
+scenario_metro,METRO,Benito Juárez,Benito Juárez,26.68,26.68,100.0,0.0,alta
+scenario_metro,METRO,Cuauhtémoc,Cuauhtémoc,32.5,32.5,100.0,0.0,alta
+scenario_metro,METRO,Iztacalco,Iztacalco,23.08,23.08,100.0,0.0,alta
+scenario_metro,METRO,Miguel Hidalgo,Miguel Hidalgo,46.39,46.21,99.62,0.38,alta
+scenario_metro,METRO,Azcapotzalco,Azcapotzalco,33.5,33.34,99.52,0.48,alta
+scenario_metro,METRO,Coyoacán,Coyoacán,53.88,53.07,98.49,1.51,alta
+scenario_metro,METRO,Gustavo A. Madero,Gustavo A. Madero,87.84,82.27,93.66,6.34,alta
+scenario_metro,METRO,Iztapalapa,Iztapalapa,113.07,103.95,91.93,8.07,alta
+scenario_metro,METRO,Venustiano Carranza,Venustiano Carranza,33.84,30.92,91.37,8.63,alta
+scenario_metro,METRO,Álvaro Obregón,Álvaro Obregón,95.82,69.02,72.03,27.97,alta
+scenario_metro,METRO,Xochimilco,Xochimilco,114.03,71.56,62.76,37.24,alta
+scenario_metro,METRO,Tlalnepantla de Baz,Tlalnepantla de Baz,83.7,49.26,58.85,41.15,media
+scenario_metro,METRO,Cuajimalpa de Morelos,Cuajimalpa de Morelos,71.1,37.12,52.2,47.8,media
+scenario_metro,METRO,Tláhuac,Tláhuac,85.78,43.85,51.12,48.88,media
+scenario_metro,METRO,Nezahualcóyotl,Nezahualcóyotl,63.4,30.84,48.64,51.36,media
+scenario_metro,METRO,Ecatepec de Morelos,Ecatepec de Morelos,156.26,71.66,45.86,54.14,media
+scenario_metro,METRO,Tlalpan,Tlalpan,314.25,94.31,30.01,69.99,media
+scenario_metro,METRO,La Magdalena Contreras,La Magdalena Contreras,63.37,16.33,25.76,74.24,baja
+scenario_metro,METRO,Chimalhuacán,Chimalhuacán,55.02,13.53,24.59,75.41,baja
+scenario_metro,METRO,Coacalco de Berriozábal,Coacalco de Berriozábal,34.98,8.25,23.58,76.42,baja
+scenario_metro,METRO,Tultitlán,Tultitlán,70.75,14.81,20.94,79.06,baja
+scenario_metro,METRO,La Paz,La Paz,36.97,6.94,18.77,81.23,baja
+scenario_metro,METRO,Tecámac,Tecámac,154.47,20.97,13.58,86.42,baja
+scenario_metro,METRO,Naucalpan de Juárez,Naucalpan de Juárez,157.04,21.18,13.49,86.51,baja
+scenario_metro,METRO,Milpa Alta,Milpa Alta,298.01,35.0,11.75,88.25,baja
+scenario_metro,METRO,Valle de Chalco Solidaridad,Valle de Chalco Solidaridad,46.86,4.84,10.33,89.67,baja
+scenario_metro,METRO,Chicoloapan,Chicoloapan,41.92,2.0,4.77,95.23,baja
+scenario_metro,METRO,Cuautitlán,Cuautitlán,47.02,2.01,4.27,95.73,baja
+scenario_metro,METRO,Huixquilucan,Huixquilucan,141.69,5.82,4.11,95.89,baja
+scenario_metro,METRO,Metepec,Metepec,67.45,2.28,3.37,96.63,baja
+scenario_metro,METRO,Zumpango,Zumpango,244.75,6.88,2.81,97.19,baja
+scenario_metro,METRO,Cuautitlán Izcalli,Cuautitlán Izcalli,103.89,1.9,1.83,98.17,baja
+scenario_metro,METRO,Lerma,Lerma,230.87,2.0,0.87,99.13,baja
+scenario_metro,METRO,Toluca,Toluca,426.86,3.49,0.82,99.18,baja
+scenario_metro,METRO,Chalco,Chalco,229.64,0.6,0.26,99.74,baja
+scenario_metro,METRO,Texcoco,Texcoco,422.49,0.55,0.13,99.87,baja
+scenario_metro,METRO,San Mateo Atenco,San Mateo Atenco,21.13,0.02,0.11,99.89,baja
+scenario_metro,METRO,Atenco,Atenco,92.35,0.1,0.11,99.89,baja
+scenario_metro,METRO,Zinacantepec,Zinacantepec,313.93,0.24,0.08,99.92,baja
+scenario_metro,METRO,Ixtapaluca,Ixtapaluca,318.27,0.11,0.03,99.97,baja
+scenario_metro,METRO,Tepetlaoxtoc,Tepetlaoxtoc,171.04,0.0,0,100.0,baja
+scenario_metro,METRO,Tequixquiac,Tequixquiac,96.42,0.0,0,100.0,baja
+scenario_metro,METRO,Tenango del Valle,Tenango del Valle,211.08,0.0,0,100.0,baja
+scenario_metro,METRO,Teotihuacán,Teotihuacán,82.98,0.0,0,100.0,baja
+scenario_metro,METRO,Tepotzotlán,Tepotzotlán,209.08,0.0,0,100.0,baja
+scenario_metro,METRO,Teoloyucan,Teoloyucan,31.23,0.0,0,100.0,baja
+scenario_metro,METRO,Tepetlixpa,Tepetlixpa,47.82,0.0,0,100.0,baja
+scenario_metro,METRO,Chiautla,Chiautla,20.07,0.0,0,100.0,baja
+scenario_metro,METRO,Tenango del Aire,Tenango del Aire,38.0,0.0,0,100.0,baja
+scenario_metro,METRO,Tenancingo,Tenancingo,164.27,0.0,0,100.0,baja
+scenario_metro,METRO,Temoaya,Temoaya,191.26,0.0,0,100.0,baja
+scenario_metro,METRO,Temascaltepec,Temascaltepec,559.0,0.0,0,100.0,baja
+scenario_metro,METRO,Temascalcingo,Temascalcingo,349.67,0.0,0,100.0,baja
+scenario_metro,METRO,Temascalapa,Temascalapa,177.31,0.0,0,100.0,baja
+scenario_metro,METRO,Temamatla,Temamatla,29.3,0.0,0,100.0,baja
+scenario_metro,METRO,Tejupilco,Tejupilco,641.95,0.0,0,100.0,baja
+scenario_metro,METRO,Amecameca,Amecameca,172.9,0.0,0,100.0,baja
+scenario_metro,METRO,Sultepec,Sultepec,563.37,0.0,0,100.0,baja
+scenario_metro,METRO,Soyaniquilpan de Juárez,Soyaniquilpan de Juárez,140.41,0.0,0,100.0,baja
+scenario_metro,METRO,Santo Tomás,Santo Tomás,121.2,0.0,0,100.0,baja
+scenario_metro,METRO,Texcaltitlán,Texcaltitlán,143.94,0.0,0,100.0,baja
+scenario_metro,METRO,Tlalmanalco,Tlalmanalco,158.58,0.0,0,100.0,baja
+scenario_metro,METRO,Texcalyacac,Texcalyacac,25.43,0.0,0,100.0,baja
+scenario_metro,METRO,Almoloya de Alquisiras,Almoloya de Alquisiras,165.78,0.0,0,100.0,baja
+scenario_metro,METRO,Zumpahuacán,Zumpahuacán,199.34,0.0,0,100.0,baja
+scenario_metro,METRO,Zacualpan,Zacualpan,304.9,0.0,0,100.0,baja
+scenario_metro,METRO,Zacazonapan,Zacazonapan,66.67,0.0,0,100.0,baja
+scenario_metro,METRO,Xonacatlán,Xonacatlán,33.25,0.0,0,100.0,baja
+scenario_metro,METRO,Aculco,Aculco,464.52,0.0,0,100.0,baja
+scenario_metro,METRO,Xalatlaco,Xalatlaco,110.43,0.0,0,100.0,baja
+scenario_metro,METRO,Villa del Carbón,Villa del Carbón,331.24,0.0,0,100.0,baja
+scenario_metro,METRO,Villa de Allende,Villa de Allende,311.61,0.0,0,100.0,baja
+scenario_metro,METRO,Villa Victoria,Villa Victoria,424.27,0.0,0,100.0,baja
+scenario_metro,METRO,Villa Guerrero,Villa Guerrero,225.94,0.0,0,100.0,baja
+scenario_metro,METRO,Valle de Bravo,Valle de Bravo,421.05,0.0,0,100.0,baja
+scenario_metro,METRO,Tezoyuca,Tezoyuca,11.03,0.0,0,100.0,baja
+scenario_metro,METRO,Almoloya de Juárez,Almoloya de Juárez,478.22,0.0,0,100.0,baja
+scenario_metro,METRO,Tultepec,Tultepec,15.66,0.0,0,100.0,baja
+scenario_metro,METRO,Tonatico,Tonatico,90.69,0.0,0,100.0,baja
+scenario_metro,METRO,Tonanitla,Tonanitla,8.52,0.0,0,100.0,baja
+scenario_metro,METRO,Almoloya del Río,Almoloya del Río,9.46,0.0,0,100.0,baja
+scenario_metro,METRO,Tlatlaya,Tlatlaya,813.09,0.0,0,100.0,baja
+scenario_metro,METRO,Amanalco,Amanalco,219.8,0.0,0,100.0,baja
+scenario_metro,METRO,Amatepec,Amatepec,633.38,0.0,0,100.0,baja
+scenario_metro,METRO,Timilpan,Timilpan,176.96,0.0,0,100.0,baja
+scenario_metro,METRO,Tianguistenco,Tianguistenco,131.83,0.0,0,100.0,baja
+scenario_metro,METRO,San Simón de Guerrero,San Simón de Guerrero,131.93,0.0,0,100.0,baja
+scenario_metro,METRO,Polotitlán,Polotitlán,132.69,0.0,0,100.0,baja
+scenario_metro,METRO,San Martín de las Pirámides,San Martín de las Pirámides,70.4,0.0,0,100.0,baja
+scenario_metro,METRO,Jiquipilco,Jiquipilco,277.29,0.0,0,100.0,baja
+scenario_metro,METRO,Jilotepec,Jilotepec,588.73,0.0,0,100.0,baja
+scenario_metro,METRO,Jaltenco,Jaltenco,4.45,0.0,0,100.0,baja
+scenario_metro,METRO,Atlacomulco,Atlacomulco,257.87,0.0,0,100.0,baja
+scenario_metro,METRO,Atlautla,Atlautla,163.26,0.0,0,100.0,baja
+scenario_metro,METRO,Ixtlahuaca,Ixtlahuaca,334.76,0.0,0,100.0,baja
+scenario_metro,METRO,Ixtapan del Oro,Ixtapan del Oro,84.22,0.0,0,100.0,baja
+scenario_metro,METRO,Ixtapan de la Sal,Ixtapan de la Sal,118.95,0.0,0,100.0,baja
+scenario_metro,METRO,Isidro Fabela,Isidro Fabela,79.68,0.0,0,100.0,baja
+scenario_metro,METRO,Hueypoxtla,Hueypoxtla,246.3,0.0,0,100.0,baja
+scenario_metro,METRO,Huehuetoca,Huehuetoca,161.71,0.0,0,100.0,baja
+scenario_metro,METRO,Axapusco,Axapusco,267.26,0.0,0,100.0,baja
+scenario_metro,METRO,El Oro,El Oro,145.86,0.0,0,100.0,baja
+scenario_metro,METRO,Ecatzingo,Ecatzingo,56.14,0.0,0,100.0,baja
+scenario_metro,METRO,Ayapango,Ayapango,50.83,0.0,0,100.0,baja
+scenario_metro,METRO,Donato Guerra,Donato Guerra,181.36,0.0,0,100.0,baja
+scenario_metro,METRO,Calimaya,Calimaya,104.26,0.0,0,100.0,baja
+scenario_metro,METRO,Capulhuac,Capulhuac,21.5,0.0,0,100.0,baja
+scenario_metro,METRO,Coyotepec,Coyotepec,12.44,0.0,0,100.0,baja
+scenario_metro,METRO,Cocotitlán,Cocotitlán,10.6,0.0,0,100.0,baja
+scenario_metro,METRO,Coatepec Harinas,Coatepec Harinas,286.12,0.0,0,100.0,baja
+scenario_metro,METRO,Chapa de Mota,Chapa de Mota,289.99,0.0,0,100.0,baja
+scenario_metro,METRO,Chapultepec,Chapultepec,11.51,0.0,0,100.0,baja
+scenario_metro,METRO,Chiconcuac,Chiconcuac,6.37,0.0,0,100.0,baja
+scenario_metro,METRO,Jilotzingo,Jilotzingo,116.13,0.0,0,100.0,baja
+scenario_metro,METRO,Jocotitlán,Jocotitlán,277.23,0.0,0,100.0,baja
+scenario_metro,METRO,San José del Rincón,San José del Rincón,487.58,0.0,0,100.0,baja
+scenario_metro,METRO,Joquicingo,Joquicingo,45.04,0.0,0,100.0,baja
+scenario_metro,METRO,San Felipe del Progreso,San Felipe del Progreso,369.01,0.0,0,100.0,baja
+scenario_metro,METRO,San Antonio la Isla,San Antonio la Isla,23.32,0.0,0,100.0,baja
+scenario_metro,METRO,Rayón,Rayón,22.94,0.0,0,100.0,baja
+scenario_metro,METRO,Papalotla,Papalotla,3.15,0.0,0,100.0,baja
+scenario_metro,METRO,Ozumba,Ozumba,48.43,0.0,0,100.0,baja
+scenario_metro,METRO,Otzolotepec,Otzolotepec,129.94,0.0,0,100.0,baja
+scenario_metro,METRO,Otzoloapan,Otzoloapan,153.33,0.0,0,100.0,baja
+scenario_metro,METRO,Otumba,Otumba,143.77,0.0,0,100.0,baja
+scenario_metro,METRO,Ocuilan,Ocuilan,434.34,0.0,0,100.0,baja
+scenario_metro,METRO,Ocoyoacac,Ocoyoacac,138.26,0.0,0,100.0,baja
+scenario_metro,METRO,Nopaltepec,Nopaltepec,87.27,0.0,0,100.0,baja
+scenario_metro,METRO,Nicolás Romero,Nicolás Romero,232.16,0.0,0,100.0,baja
+scenario_metro,METRO,Apaxco,Apaxco,79.91,0.0,0,100.0,baja
+scenario_metro,METRO,Nextlalpan,Nextlalpan,60.87,0.0,0,100.0,baja
+scenario_metro,METRO,Acolman,Acolman,87.08,0.0,0,100.0,baja
+scenario_metro,METRO,Morelos,Morelos,220.06,0.0,0,100.0,baja
+scenario_metro,METRO,Mexicaltzingo,Mexicaltzingo,11.74,0.0,0,100.0,baja
+scenario_metro,METRO,Melchor Ocampo,Melchor Ocampo,13.96,0.0,0,100.0,baja
+scenario_metro,METRO,Malinalco,Malinalco,217.99,0.0,0,100.0,baja
+scenario_metro,METRO,Luvianos,Luvianos,701.63,0.0,0,100.0,baja
+scenario_metro,METRO,Atizapán,Atizapán,8.46,0.0,0,100.0,baja
+scenario_metro,METRO,Atizapán de Zaragoza,Atizapán de Zaragoza,90.18,0.0,0,100.0,baja
+scenario_metro,METRO,Juchitepec,Juchitepec,141.09,0.0,0,100.0,baja
+scenario_metro,METRO,Acambay de Ruiz Castañeda,Acambay de Ruiz Castañeda,492.03,0.0,0,100.0,baja

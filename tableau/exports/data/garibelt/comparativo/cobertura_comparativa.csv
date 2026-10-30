@@ -1,0 +1,142 @@
+nombre,area_total_km2,cob_baseline,categoria_baseline,cob_mb,categoria_mb,cob_metro,categoria_metro,delta_mb,delta_metro,cambia
+Nezahualcóyotl,63.4,39.79,media,48.64,media,48.64,media,8.85,8.85,True
+Tlalnepantla de Baz,83.7,53.94,media,58.85,media,58.85,media,4.91,4.91,True
+Ecatepec de Morelos,156.26,45.46,media,45.86,media,45.86,media,0.4,0.4,True
+Texcoco,422.49,0.0,baja,0.13,baja,0.13,baja,0.13,0.13,True
+Iztapalapa,113.07,91.9,alta,91.93,alta,91.93,alta,0.03,0.03,True
+Naucalpan de Juárez,157.04,13.46,baja,13.49,baja,13.49,baja,0.03,0.03,True
+Xochimilco,114.03,62.75,alta,62.76,alta,62.76,alta,0.01,0.01,True
+Isidro Fabela,79.68,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Atlacomulco,257.87,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Atlautla,163.26,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Ixtlahuaca,334.76,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Ixtapan del Oro,84.22,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Ixtapan de la Sal,118.95,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Benito Juárez,26.68,100.0,alta,100.0,alta,100.0,alta,0.0,0.0,False
+Hueypoxtla,246.3,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Huehuetoca,161.71,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Axapusco,267.26,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+El Oro,145.86,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Ecatzingo,56.14,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Ayapango,50.83,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Donato Guerra,181.36,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Calimaya,104.26,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Jaltenco,4.45,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+San Martín de las Pirámides,70.4,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Jilotepec,588.73,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Jiquipilco,277.29,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Coyotepec,12.44,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Polotitlán,132.69,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+San Simón de Guerrero,131.93,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Tezoyuca,11.03,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Tianguistenco,131.83,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Timilpan,176.96,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Amatepec,633.38,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Amanalco,219.8,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Tlatlaya,813.09,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Almoloya del Río,9.46,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Tonanitla,8.52,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Tonatico,90.69,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Tultepec,15.66,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Capulhuac,21.5,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Chapa de Mota,289.99,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Cocotitlán,10.6,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Ocuilan,434.34,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Juchitepec,141.09,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Atizapán de Zaragoza,90.18,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Atizapán,8.46,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Luvianos,701.63,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Malinalco,217.99,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Melchor Ocampo,13.96,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Mexicaltzingo,11.74,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Morelos,220.06,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Acolman,87.08,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Nextlalpan,60.87,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Apaxco,79.91,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Nicolás Romero,232.16,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Nopaltepec,87.27,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Ocoyoacac,138.26,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Otumba,143.77,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Coatepec Harinas,286.12,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Otzoloapan,153.33,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Otzolotepec,129.94,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Ozumba,48.43,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Papalotla,3.15,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Rayón,22.94,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+San Antonio la Isla,23.32,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+San Felipe del Progreso,369.01,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Joquicingo,45.04,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+San José del Rincón,487.58,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Jocotitlán,277.23,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Jilotzingo,116.13,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Chiconcuac,6.37,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Chapultepec,11.51,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Valle de Bravo,421.05,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Almoloya de Juárez,478.22,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Villa de Allende,311.61,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Almoloya de Alquisiras,165.78,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Tecámac,154.47,13.58,baja,13.58,baja,13.58,baja,0.0,0.0,False
+Zinacantepec,313.93,0.08,baja,0.08,baja,0.08,baja,0.0,0.0,False
+San Mateo Atenco,21.13,0.11,baja,0.11,baja,0.11,baja,0.0,0.0,False
+Atenco,92.35,0.11,baja,0.11,baja,0.11,baja,0.0,0.0,False
+Chalco,229.64,0.26,baja,0.26,baja,0.26,baja,0.0,0.0,False
+Toluca,426.86,0.82,baja,0.82,baja,0.82,baja,0.0,0.0,False
+Lerma,230.87,0.87,baja,0.87,baja,0.87,baja,0.0,0.0,False
+Cuautitlán Izcalli,103.89,1.83,baja,1.83,baja,1.83,baja,0.0,0.0,False
+Zumpango,244.75,2.81,baja,2.81,baja,2.81,baja,0.0,0.0,False
+Metepec,67.45,3.37,baja,3.37,baja,3.37,baja,0.0,0.0,False
+Huixquilucan,141.69,4.11,baja,4.11,baja,4.11,baja,0.0,0.0,False
+Cuautitlán,47.02,4.27,baja,4.27,baja,4.27,baja,0.0,0.0,False
+Chicoloapan,41.92,4.77,baja,4.77,baja,4.77,baja,0.0,0.0,False
+Valle de Chalco Solidaridad,46.86,10.33,baja,10.33,baja,10.33,baja,0.0,0.0,False
+Milpa Alta,298.01,11.75,baja,11.75,baja,11.75,baja,0.0,0.0,False
+La Paz,36.97,18.77,baja,18.77,baja,18.77,baja,0.0,0.0,False
+Villa Guerrero,225.94,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Tultitlán,70.75,20.94,baja,20.94,baja,20.94,baja,0.0,0.0,False
+Coacalco de Berriozábal,34.98,23.58,baja,23.58,baja,23.58,baja,0.0,0.0,False
+Chimalhuacán,55.02,24.59,baja,24.59,baja,24.59,baja,0.0,0.0,False
+La Magdalena Contreras,63.37,25.76,baja,25.76,baja,25.76,baja,0.0,0.0,False
+Tlalpan,314.25,30.01,media,30.01,media,30.01,media,0.0,0.0,False
+Tláhuac,85.78,51.12,media,51.12,media,51.12,media,0.0,0.0,False
+Cuajimalpa de Morelos,71.1,52.2,media,52.2,media,52.2,media,0.0,0.0,False
+Álvaro Obregón,95.82,72.03,alta,72.03,alta,72.03,alta,0.0,0.0,False
+Venustiano Carranza,33.84,91.37,alta,91.37,alta,91.37,alta,0.0,0.0,False
+Gustavo A. Madero,87.84,93.66,alta,93.66,alta,93.66,alta,0.0,0.0,False
+Coyoacán,53.88,98.49,alta,98.49,alta,98.49,alta,0.0,0.0,False
+Azcapotzalco,33.5,99.52,alta,99.52,alta,99.52,alta,0.0,0.0,False
+Miguel Hidalgo,46.39,99.62,alta,99.62,alta,99.62,alta,0.0,0.0,False
+Iztacalco,23.08,100.0,alta,100.0,alta,100.0,alta,0.0,0.0,False
+Ixtapaluca,318.27,0.03,baja,0.03,baja,0.03,baja,0.0,0.0,False
+Tepotzotlán,209.08,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Tepetlaoxtoc,171.04,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Teotihuacán,82.98,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Villa Victoria,424.27,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Cuauhtémoc,32.5,100.0,alta,100.0,alta,100.0,alta,0.0,0.0,False
+Villa del Carbón,331.24,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Xalatlaco,110.43,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Aculco,464.52,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Xonacatlán,33.25,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Zacazonapan,66.67,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Zacualpan,304.9,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Zumpahuacán,199.34,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Texcalyacac,25.43,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Tlalmanalco,158.58,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Texcaltitlán,143.94,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Santo Tomás,121.2,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Soyaniquilpan de Juárez,140.41,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Sultepec,563.37,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Amecameca,172.9,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Tejupilco,641.95,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Temamatla,29.3,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Temascalapa,177.31,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Temascalcingo,349.67,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Temascaltepec,559.0,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Temoaya,191.26,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Tenancingo,164.27,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Tenango del Aire,38.0,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Chiautla,20.07,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Tenango del Valle,211.08,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Tequixquiac,96.42,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Teoloyucan,31.23,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Tepetlixpa,47.82,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False
+Acambay de Ruiz Castañeda,492.03,0.0,baja,0.0,baja,0.0,baja,0.0,0.0,False

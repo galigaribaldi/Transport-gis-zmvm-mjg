@@ -1,0 +1,144 @@
+# Recursos nuevos y cambios — 2026-10-04 / 2026-10-05
+
+## 1. Pipeline (Makefile)
+
+| Target / opción | Qué hace |
+|-----------------|----------|
+| `make warmup-all` | Calienta los 3 servidores VFTModel **en paralelo** (~20 min). Log en `/tmp/vft_warmup/` |
+| `_warmup-port` | 2 pasos: `build-auto` + `network-profile`, que calcula T y B(v) internamente |
+| `SHOW_C=1` | Flag opcional en `warmup-baseline/-mb/-metro`: imprime C₁₄₁ y C₇₆ (`cobertura_dominios`, #26) |
+| `make export-layers` | **Nuevo.** Descarga `cobertura_por_alcaldia`, `cobertura_800m`, `df_por_alcaldia`, `fc_hubs` (Top 20 macro-hubs) y `perfil_nodos` de los 3 escenarios, todos con CDMX + Edomex |
+| `make export-garibelt-layers` | **Nuevo.** Corre `prepare_garibelt_layers.py --all` |
+| `make export-all` | Ahora encadena: GeoJSONs VFTModel → líneas Apimetro → `export-layers` → `export-garibelt-layers` → CSVs Garibelt |
+| `make verify` | Referencias actualizadas: líneas 678/686, T 113.91 / 108.99 / 101.92 |
+
+## 1a. Rutas O-D con geometría — `make export-rutas` (2026-10-13)
+
+La API de VFTModel no devuelve la geometría de las rutas. Antes se exportaba a mano desde `VFTModel/notebooks/04_Detaur_factor.ipynb`, y el archivo quedó con datos previos al fix #22 (DF mín. 0.97). Además, MB y Metro reutilizaban las rutas de la línea base.
+
+| Target / script | Qué hace |
+|-----------------|----------|
+| `utils/export_routes_raw.py` | Construye el grafo con el código de VFTModel (su `.venv`, sin modificarlo) y genera `utils/data/routes_raw_<escenario>.json` (100 rutas, seed 42; gitignored). Usa `APIMETRO_URL` :8080 / :8083 / :8084 |
+| `make export-rutas-raw` | Corre el script para los 3 escenarios (~2 min c/u) |
+| `make export-rutas-lineas` | `generate_exports.py --only-linestrings` → `tableau/exports/geo/{,scenario_mb/,scenario_metro/}df_rutas_lineas.geojson` |
+| `make export-rutas` | Los dos anteriores. `export-all` ya llama a `export-rutas-raw` al inicio |
+| `make export-layers` | Ahora también baja `df_puntos` (misma muestra) a `tableau/connectors/VFTModel/exports/<escenario>/` |
+| `make verify-step-3` | `utils/verify_routes.py`: DF ≥ 1 y 100/100 pares iguales a `df_puntos` por escenario |
+
+`generate_exports.py` usa por defecto `routes_raw_<escenario>.json`; si falta, omite las LineStrings en lugar de copiar las de otro escenario.
+
+Muestras vigentes (2026-10-13): Base DF 1.03–4.42 (media 1.701) · MB 1.01–13.41 (1.765) · Metro 1.01–18.28 (1.877).
+
+⚠ **Las muestras de MB y Metro no comparten pares con la línea base (0/100):** la semilla sortea sobre nodos distintos. Las diferencias de DF entre escenarios mezclan el efecto del anillo con el cambio de muestra. Los atípicos (p. ej. Granjas–Salomón → Tochitli: 2.05 km rectos, 37.4 km en Metro) se deben a que la ruta óptima es la más rápida, no la más corta.
+
+## 1a-bis. Tablas Tableau en disco — `make export-tableau-tablas` (2026-10-13)
+
+Sustituyen las 4 fuentes WDC de `dashboard_viz04_red_vftmodel.twb`. Así, actualizar Tableau es correr `make` y abrir el workbook, sin servidor :5050 ni refresco de extractos. Tableau Desktop no se puede refrescar desde línea de comandos en macOS: los archivos quedan listos y Tableau los lee al abrir.
+
+| Archivo (`tableau/connectors/VFTModel/exports[/<escenario>]/`) | Sustituye a la tabla WDC | Fuente |
+|---|---|---|
+| `wdc_fc_puntos.csv` | Fuerza Capilar — por nodo | `tableau/exports/geo/…/fc_puntos.geojson` |
+| `wdc_fc_hubs.csv` | Fuerza Capilar — macro-hubs | `connectors/…/fc_hubs.geojson` |
+| `wdc_df_puntos.csv` | Factor de Desviación — rutas O-D | `connectors/…/df_puntos.geojson` |
+| `wdc_t_escalar.csv` | Tiempo Promedio de Viaje (T) | API `/average-travel-time` (único que consulta la API) |
+
+- Las columnas son idénticas a `vft_wdc.html` (incluye `lat` y `lon`), así que *Replace Data Source* conserva las hojas.
+- `copy_workbook_scenario.py` ya redirige la carpeta `connectors/VFTModel/exports` a cada escenario.
+- **Migración hecha el 2026-10-13** en `dashboard_viz04_red_vftmodel.twb` (Replace Data Source + Replace References por campo; alias, colores y filtros restaurados). Todas sus fuentes están en Live. Los alias de Nombre Hub incluyen también los 3 hubs que solo existen en MB/Metro. El caption de T es dinámico (`T Promedio` y `Diferencia vs Ref (min)`), así cada copia muestra su propio valor.
+- `make tableau-check` imprime los valores que debe mostrar Tableau: T 113.91 / 108.99 / 101.92 · FC máx. Luis Murillo (41) · 1.er macro-hub Chimalcoyotl (130) · DF por escenario.
+
+## 1b. Datos comparativos — `make export-comparativo`
+
+Script nuevo `utils/compare_garibelt_scenarios.py`. Lee de disco, no llama a la API; corre al final de `export-all`.
+
+| Salida | Filas | Uso |
+|--------|-------|-----|
+| `data/processed/garibelt/comparativo/cambio_banda.geojson` | 22 nodos | QGIS: mapa de nodos que cambian de Banda Dominante (`cambio_mb`, `cambio_metro` = mejora / empeora / igual) |
+| `tableau/exports/data/garibelt/comparativo/kpi_comparativo.csv` | 15 | Perfil Garibelt × escenario (formato largo) |
+| `.../bv_comparativo.csv` | 11,209 | B(v), rango y Δ por nodo; `es_nodo_anillo` marca los 94 nodos nuevos |
+| `.../cobertura_comparativa.csv` | 141 | Cobertura × escenario y Δ; `cambia` marca las 7 demarcaciones |
+| `.../distribucion_bandas.csv` | 36 | Nodos por banda × dimensión (`banda_dominante`, `fc_banda`, `b_banda`) × escenario |
+| `.../transicion_bandas.csv` | 30 | Matriz Baseline → MB / Metro (incluye origen `nuevo`) |
+
+Hallazgos que salen de estos datos:
+- B(v): en Metro, 9 de los 10 y 40 de los 50 nodos con mayor B(v) son del anillo; en MB, 0 de los 50. Tacubaya −29.7 % en Metro.
+- Banda Dominante (nodos existentes): MB 4 crítico→débil y 6 débil→crítico; Metro 11 crítico→débil y 10 débil→crítico.
+- FC: 33 crítico→débil y 6 débil→aceptable, iguales en MB y Metro.
+- 505 nodos de Baseline no tienen B(v) (fuera del componente gigante).
+
+## 2. Scripts corregidos
+
+| Script | Corrección |
+|--------|-----------|
+| `utils/prepare_garibelt_layers.py` | Escribía MB y Metro en la raíz de `data/processed/garibelt/`. Ahora escribe en `scenario-mb/` y `scenario-metro/` |
+| `utils/export_garibelt_csv.py` | Escribía en la raíz de `tableau/exports/data/garibelt/`. Ahora escribe en `escenario-base/`, `escenario-mb/` y `escenario-metro/` |
+
+Pendiente: `export_garibelt_csv.py` todavía no exporta `cobertura_dominios`, así que la C de las 76 demarcaciones no llega a Tableau.
+
+## 3. QGIS — `maps/projects/garibelt_comparativo.qgz`
+
+### Grupos de capas
+| Grupo | Capas | Fuente |
+|-------|-------|--------|
+| Propuesta-Anillar | `anillo_mb` (naranja `#F46700` 1.2 mm + halo blanco 2.2 mm), `anillo_metro` (azul `#0071C1` 2.0 mm + halo 3.5 mm) | `tableau/exports/geo/scenario_*/anillo_*.geojson` |
+| Garibelt - BaseLine | Banda Dominante, Fuerza Capilar, Centralidad B(v), Nivel de Cobertura | `data/processed/garibelt/` |
+| Garibelt-Scenario-MB / -Metro | Centralidad Intermedia, Fuerza Capilar, Nivel de Cobertura | `data/processed/garibelt/scenario-*/` |
+| Base_Territorial | Transporte, LimitesPoliticos | `data/processed/*.gpkg` |
+
+Regla: usar siempre las capas de `data/processed/garibelt/`, que ya traen `fc_banda`, `categoria_cobertura`, `categoria_b`, etc. Las de `tableau/exports/geo/` no tienen esos campos, y unir `poligonos` + CSV obliga a filtrar entidades y a usar el prefijo `cob_`.
+
+Estilos copiados de BaseLine con Copy Style → Paste Style:
+- Cobertura: Rule-based con `categoria_cobertura` (alta / media / baja con `cobertura_pct` > 0 / ELSE)
+- FC: reglas sobre `fc_banda`
+- B(v): Top 5 · Top 6–15 · Top 16–50 (`categoria_b`)
+
+### Map Themes creados
+`Comp_Bv_Base` · `Comp_Bv_MB` · `Comp_Bv_Metro` · `Comp_FC_Base` · `Comp_FC_MB` · `Comp_FC_Metro` · `Comp_Cob_Base` · `Comp_Cob_Anillo` · `Mapa Base`
+
+### Layout comparativo acordado (A3 horizontal, 420 × 297 mm)
+```
+y=10  ┌──────────────────────────────────────────────────────────┐
+      │ Título · subtítulo                                 20 mm │
+y=35  ├──────────────────┬──────────────────┬────────────────────┤
+      │ Red Actual 2025  │ Anillo MB (BRT)  │ Anillo Metro       │ 8 mm
+y=43  │   MAPA 130×194   │   MAPA 130×194   │   MAPA 130×194     │
+y=237 ├──────────────────┴──────────┬───────┴────────────────────┤
+      │ Simbología + norte + escala │ Descripción breve + fuente │ 45 mm
+y=287 └─────────────────────────────┴────────────────────────────┘
+       x=10–140           x=145–275          x=280–410
+```
+- Escala 1:200,000 (B(v) y FC) · 1:250,000 (cobertura)
+- Centro EPSG:32614: X 485884, Y 2145323 · extensión 1:200k: xmin 472884, xmax 498884, ymin 2125923, ymax 2164723
+- Cada mapa: Follow map theme + Lock layers + Lock styles; mismo extent en los 3 paneles
+- Sin tablas en QGIS: las cifras van en Tableau
+
+## 4. Plan de recursos comparativos pendientes
+
+Reparto: **QGIS muestra dónde cambia · Tableau muestra cuánto cambia**.
+
+### QGIS → `maps/exports/pdf/Clasificacion_Garibelt/Comparativo/`
+| Recurso | Descripción | Utilidad | Prioridad |
+|---------|-------------|----------|-----------|
+| Comparativo_Garibelt_Betweenness.pdf ✅ 2026-10-07 | 2×2: Base · MB · Metro · ΔB(v) (`delta_bv`) | La centralidad migra al anillo en Metro | Alta |
+| Comparativo_Garibelt_Cobertura.pdf ✅ 2026-10-08 | 2 paneles Base · Anillo + achurado `cobertura_delta` (≥ 0.4 pts) | Ubica las ganancias de Nezahualcóyotl y Tlalnepantla | Media |
+| Comparativo_Garibelt_Cambio_Banda.pdf ✅ 2026-10-10 | 2 paneles MB · Metro con `cambio_banda` (▲ mejora / ▼ empeora) | Mejoras en el Periférico, retrocesos en el eje de Tlalpan; nota sobre normalización relativa de B(v) (VFTModel #21) | Media |
+| ~~Comparativo_Garibelt_Fuerza_Capilar.pdf~~ ➖ | — | Omitido: la conectividad capilar casi no cambia | — |
+
+Omitido: Banda Dominante en 3 paneles (cambia < 25 de 11 k nodos; los paneles se verían iguales).
+
+### Tableau → `dashboard_viz06_garibelt_comparativo.twb` → `tableau/exports/pdf/Clasificacion_Garibelt/Comparativo_Base_MB_Metro/`
+| Recurso | Descripción | Utilidad |
+|---------|-------------|----------|
+| Dashboard_Comparativo_KPI.pdf | Resumen por escenario: nodos, T, C₁₄₁ / C₇₆, Gini B(v), % crítico | Lectura rápida de la mejora de cada propuesta |
+| Dashboard_Comparativo_Betweenness.pdf | Top 10 B(v) × escenario y ΔB(v) por nodo | Cuantifica la redistribución (Tacubaya −30 % en Metro) |
+| Dashboard_Comparativo_Cobertura.pdf | ΔCobertura por demarcación y dominio 141 vs 76 | Mide la ganancia y la limitación por falta de datos de Edomex |
+| Dashboard_Comparativo_Bandas.pdf | Distribución por banda (FC y Banda Dominante) × escenario + matriz de transición | Cuántos nodos pasan de crítico a débil y viceversa |
+
+### Tableau por escenario (sección C del README de Tableau)
+- `dashboard_viz05_garibelt_mb.twb` y `dashboard_viz05_garibelt_metro.twb`: KPI, Clasificación, Espectro, Betweenness → `MB_scenario/` y `Metro_scenario/`
+
+## 5. Orden sugerido para retomar
+
+1. Volver a exportar los PDFs marcados 🔁 en [ESTADO_RECURSOS.md](ESTADO_RECURSOS.md), con las descripciones actualizadas
+2. Armar y exportar los comparativos QGIS (empezar por B(v))
+3. Tableau: refrescar extractos, re-exportar 🔁, crear viz05 MB/Metro y viz06 comparativo

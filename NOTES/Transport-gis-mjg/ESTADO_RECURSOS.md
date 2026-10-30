@@ -1,0 +1,147 @@
+# Estado de recursos — actualizado 2026-10-18
+
+Las capas y CSV se regeneraron el 2026-10-05 con `make export-all`, después de las correcciones de Apimetro (ACHECK-01…04) y VFTModel (#22 DI < 1, #23 SUB aislado, #26 dominio 76).
+Todo PDF exportado **antes** de esa fecha usa datos anteriores.
+
+**2026-10-18: comparativo de B(v) por nodo.** Exportados `Dashboard_Comparativo_Intermediacion_Bv` y `Unigrafica_Comparativo_Top_10_bv`; el comparativo queda completo (5 PDF).
+
+**2026-10-17: Tableau Garibelt por escenario y comparativo.** MB y Metro exportados (8 PDF, 10-14); comparativo con 3 PDF (10-16) y la unigráfica de Betweenness por nodo con hojas listas (falta dashboard). Pendiente: Top 10 B(v) por nodo en los 3 workbooks Garibelt y re-exportar Betweenness y Clasificación (6 PDF).
+
+**2026-10-13: Tableau VFTModel migrado a CSV en disco.** `dashboard_viz04_red_vftmodel.twb` ya no usa el WDC ni extractos: las 4 fuentes WDC leen `wdc_*.csv` en Live y las fuentes GeoJSON también están en Live. Re-exportados los 10 PDF de `VFTModel/` (Dashboards y UniGrafica). Copias MB/Metro regeneradas con `make workbooks`.
+
+**2026-10-12: QGIS cerrado.** Re-exportadas Red Actual (Mapa_Betweenness, Mapa_DF, Mapa_Fuerza_Capilar, con fuentes apuntando a las capas vigentes), Comparativo B(v) (panel D corregido) y Propuesta Extendida MB/Metro (textos). Pendiente solo Tableau.
+
+**2026-10-11:** re-exportadas las 12 láminas de `Clasificacion_Garibelt/` (Red Actual, MB y Metro) con descripciones corregidas (umbrales FC, 141 ≠ ZMVM, "radio" en lugar de "isócrona", C en dominios 141 y 76).
+
+Leyenda: ✅ vigente · 🔁 volver a exportar (datos cambiaron) · 🔎 revisar (los datos casi no cambian; verificar texto o detalle)
+
+---
+
+## 1. Resumen
+
+| Herramienta | PDFs totales | ✅ Vigentes | 🔎 Revisar | 🔁 Volver a exportar |
+|-------------|-------------|-------------|------------|----------------------|
+| QGIS (sin comparativos) | 23 | 21 | 2 | 0 |
+| QGIS comparativos | 3 | 3 | 0 | 0 |
+| Tableau | 33 | 27 | 0 | 6 |
+| **Total** | **59** | **51** | **2** | **6** |
+
+¿Por qué la cobertura sigue vigente? Los valores de C por demarcación no cambiaron (`cobertura_alcaldias_*.csv` idénticos). Cambiaron B(v), FC, DI, T y la Banda Dominante.
+
+---
+
+## 2. QGIS — `maps/exports/pdf/`
+
+### Scenarios/Red_Actual/
+| PDF | Estado | Motivo |
+|-----|--------|--------|
+| Base_Red_Actual/Mapa_Transporte_Publico.pdf  | ✅ | SUB ahora en 12 tramos; el trazo se ve igual |
+| Base_Red_Actual/Mapa_Red_Esquematica.pdf  | ✅ | Igual que el anterior |
+| Indicadores_Red_Actual/Mapa_Betweenness.pdf  | ✅ | B(v) cambió (Mixcoac 0.173 → 0.192) |
+| Indicadores_Red_Actual/Mapa_Cobertura_Mapa_Calor.pdf  | ✅ | `cobertura_800m` baseline ahora incluye Edomex (antes solo CDMX) |
+| Indicadores_Red_Actual/Mapa_Cobertura_Red_Total.pdf | ✅ | C sin cambio |
+| Indicadores_Red_Actual/Mapa_DF.pdf  | ✅ | DI cambió (#22: ya no hay DI < 1) |
+| Indicadores_Red_Actual/Mapa_Fuerza_Capilar.pdf  | ✅ | FC: 10,537 → 10,543 nodos |
+
+### Clasificacion_Garibelt/ (Red_actual · Scenario_MB · Scenario_Metro)
+| Mapa | Red Actual | MB | Metro |
+|------|-----------|----|-------|
+| Clasificacion_Banda_Dominante | ✅ 10-11 | ✅ 10-11 | ✅ 10-11 |
+| Clasificacion_Garibelt_Betweenness_Centrality | ✅ 10-11 | ✅ 10-11 | ✅ 10-11 |
+| Clasificacion_Garibelt_Fuerza_Capilar | ✅ 10-11 | ✅ 10-11 | ✅ 10-11 |
+| Clasificacion_Garibelt_Mapa_Cobertura | ✅ 10-11 | ✅ 10-11 | ✅ 10-11 |
+
+#### 🔎 Revisar (hallazgos del 2026-10-14)
+- `garibelt_red_actual.qgz`, layout «Cobertura Garibelt»: el texto todavía dice «141 demarcaciones de la ZMVM», «isócronas» y «0.055». Confirmar qué quedó en el PDF exportado.
+- `Mapa_Cobertura_Mapa_Calor` (`tesis-2026-2.qgz`): PDF del 09-14 y capa `Cobertura800m.gpkg` del 09-17, anteriores a los datos del 10-05.
+
+### Clasificacion_Garibelt/Comparativo/
+| PDF | Estado | Pendiente |
+|-----|--------|-----------|
+| Comparativo_Garibelt_Betweenness | ✅ 10-12 | — |
+| Comparativo_Garibelt_Cobertura | ✅ | Escala "1:400, 000" (espacio de más) |
+| Comparativo_Garibelt_Cambio_Banda | ✅ | Igualar tamaño de triángulos entre paneles (cosmético) |
+
+### Scenarios/Propuesta_MB · Propuesta_Metro
+| PDF | Estado | Motivo |
+|-----|--------|--------|
+| Propuesta_Base_Anillar_MB / _Metro  | ✅ | El trazado no cambia; revisar si la descripción cita T |
+| Propuesta_Anillar_Extendido_MB / _Metro  | ✅ | Igual; los ΔT cambiaron (MB −4.92, Metro −11.99 min) |
+
+---
+
+## 3. Tableau — `tableau/exports/pdf/`
+
+| Carpeta | PDF | Estado | Motivo |
+|---------|-----|--------|--------|
+| Apimetro/ (5) | Dashboards y gráficas Apimetro | ✅ 10-13 | Solo cambiaba Calidad de Servicio (INTERURBANO 160 → 70, TROLE L10 25): re-exportada. El resto no cambia |
+| VFTModel/Dashboards/ | Centralidad, Factor desviación, Fuerza Capilar | ✅ 10-13 | Re-exportados con datos vigentes |
+| VFTModel/UniGrafica/ | B(v) nodos, B(v) sistema, Factor desviación, Fuerza capilar, Tiempo promedio | ✅ 10-13 | T baseline 113.91 min; caption de T ahora dinámico |
+| VFTModel/UniGrafica/ | Cobertura alcaldía, Cobertura sistema | ✅ 10-13 | C sin cambio; re-exportados junto con el resto |
+| Clasificacion_Garibelt/Red_Actual/ | KPI, Clasificación, Espectro, Betweenness | ✅ 10-14 | Re-exportados con valores vigentes. Pendiente menor: comilla suelta al final de la nota de multimodales (Betweenness). 🔁 Betweenness y Clasificación: cambiar Top 10 a máximo por nodo y re-exportar |
+| Clasificacion_Garibelt/MB_scenario/ | KPI, Clasificación, Espectro, Betweenness (`_MB`) | ✅ 10-14 | `dashboard_viz05_garibelt_scenario_mb.twb` (copia a mano de la base, CSV `escenario-mb/`). Pendiente menor: título de Clasificación dice «Anillar MB»; comilla suelta en Betweenness. 🔁 Betweenness y Clasificación: cambiar Top 10 a máximo por nodo y re-exportar |
+| Clasificacion_Garibelt/Metro_scenario/ | KPI, Clasificación, Espectro, Betweenness (`_Metro`) | ✅ 10-14 | `dashboard_viz05_garibelt_scenario_metro.twb` (CSV `escenario-metro/`), colores de Banda fijos. Pendiente menor: leyenda «idoneo» sin alias; comilla suelta en Betweenness. El ranking suma por nombre y oculta que 9 de los 10 nodos con mayor B(v) son del anillo. 🔁 Betweenness y Clasificación: cambiar Top 10 a máximo por nodo y re-exportar |
+| Clasificacion_Garibelt/Comparativo_Base_MB_Metro/ | Dashboard_Comparativo_KPI, Unigrafica_Comparativo_Valor_Normalizado, Unigrafica_Comparativo_Extendido (10-16/18); Dashboard_Comparativo_Intermediacion_Bv, Unigrafica_Comparativo_Top_10_bv (10-18) | ✅ | `dashboard_viz05_garibelt_comparativo.twb` (kpi/bv_comparativo.csv). Metro: 9 de 10 y 40 de 50 nodos con mayor B(v) son del anillo; MB 0 |
+
+Antes de exportar: VFTModel ya no necesita refrescar extractos (CSV en Live; basta `make export-all` y abrir el `.twb`). Apimetro y Garibelt: abrir cada `.twb` y refrescar los extractos `.hyper`.
+
+---
+
+## 4. Valores vigentes (para descripciones)
+
+Fuente: `RESULTADOS_RECORRIDA.md` §7/§9.2 y capas regeneradas el 2026-10-05.
+
+### Perfil Garibelt (normalizado — banda)
+| Dimensión | Baseline | MB | Metro |
+|-----------|----------|----|-------|
+| C (141) | 0.0552 Crítico | 0.0557 Crítico | 0.0557 Crítico |
+| C (ZMVM 76) | 0.1661 Crítico | 0.1678 Crítico | 0.1678 Crítico |
+| Cᵢ | 0.25 Débil | 0.25 Débil | 0.25 Débil |
+| DI | 0.6533 Aceptable | 0.66 Aceptable | 0.6133 Aceptable |
+| T | 0.6957 Aceptable | **0.7475 Aceptable** ⚠️ | 0.8219 Idóneo |
+| B(v) (1 − Gini) | 0.1993 Crítico | 0.1988 Crítico | 0.1866 Crítico |
+
+⚠️ T MB pasó de Idóneo a Aceptable y queda a 0.0025 del umbral (0.75).
+
+### Valores brutos
+| Métrica | Baseline | MB | Metro |
+|---------|----------|----|-------|
+| T (min) | 113.91 | 108.99 (−4.92) | 101.92 (−11.99) |
+| DI mediana | 1.52 | 1.51 | 1.58 |
+| Gini B(v) | 0.8007 | 0.8012 | 0.8134 |
+| C 141 / C 76 (%) | 4.4138 / 13.287 | 4.4596 / 13.426 | 4.4596 / 13.426 |
+| Nodos | 11,115 | 11,209 | 11,209 |
+| SCC gigante | 10,610 (95.46 %) | 10,707 (95.52 %) | 10,707 (95.52 %) |
+| Líneas Apimetro | 678 | 686 | 686 |
+
+### Top 5 B(v)
+| # | Baseline | MB | Metro |
+|---|----------|----|-------|
+| 1 | Tacubaya 0.223 | Tacubaya 0.216 | Tacubaya 0.157 |
+| 2 | Mixcoac 0.192 | Mixcoac 0.184 | Periférico Oriente/Tláhuac 0.155 |
+| 3 | Hidalgo 0.152 | Hidalgo 0.146 | Rómulo O'Farril 0.131 |
+| 4 | Balderas 0.143 | Balderas 0.139 | Barranca del Muerto/Periférico 0.128 |
+| 5 | Lázaro Cárdenas 0.136 | Lázaro Cárdenas 0.136 | Constitución de 1917/Periférico 0.127 |
+
+Hallazgo: en Metro, **4 de los 5 nodos con mayor B(v) están sobre el anillo**. Tacubaya baja 30 % frente a Baseline (0.223 → 0.157). En MB la jerarquía del centro histórico se mantiene.
+
+### Fuerza Capilar (nodos por banda)
+| Banda | Baseline | MB | Metro |
+|-------|----------|----|-------|
+| Idóneo | 5 | 5 | 5 |
+| Aceptable | 95 | 98 | 98 |
+| Débil | 1,486 | 1,507 | 1,505 |
+| Crítico | 8,957 (85.0 %) | 9,032 (84.9 %) | 9,034 (84.9 %) |
+| Total | 10,543 | 10,642 | 10,642 |
+
+### Banda Dominante (perfil_nodos)
+| Banda | Baseline | MB | Metro |
+|-------|----------|----|-------|
+| Aceptable | 2 | 2 | 2 |
+| Débil | 68 | 69 | 82 |
+| Crítico | 11,045 | 11,138 | 11,125 |
+
+### Cobertura por demarcación (sin cambio)
+- 102 de 141 demarcaciones con 0 % en la red actual (Texcoco tiene 0.01 km² cubiertos) y 101 en MB y Metro, idénticos entre sí.
+- Dominio ZMVM de 76 demarcaciones: C = 13.29 % (red actual) y 13.43 % (MB y Metro); 42 de los 60 municipios con 0 %. Ver `NOTES/Tesis/Diagnostico/RESPUESTAS_PREGUNTAS_ISSUES.md` P2.
+- Cambios Baseline → Anillo: Nezahualcóyotl 39.79 → 48.64 % (+8.85), Tlalnepantla 53.94 → 58.85 % (+4.91), Ecatepec +0.40, Texcoco 0 → 0.13; Iztapalapa, Xochimilco y Naucalpan +0.01 a +0.03.
