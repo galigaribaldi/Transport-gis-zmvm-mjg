@@ -14,6 +14,7 @@ Cartografía (**QGIS**) y visualización estadística (**Tableau**) de la tesis 
 | [Convenciones de nombres](https://github.com/galigaribaldi/Transport-gis-zmvm-mjg/wiki/Convenciones-de-nombres) | Escenarios, proyectos, workbooks y exports |
 | [Flujo de datos](https://github.com/galigaribaldi/Transport-gis-zmvm-mjg/wiki/Flujo-de-datos) | Regenerar los datos con el Makefile |
 | [Tableau](https://github.com/galigaribaldi/Transport-gis-zmvm-mjg/wiki/Tableau) · [QGIS](https://github.com/galigaribaldi/Transport-gis-zmvm-mjg/wiki/QGIS) | Abrir, editar y exportar |
+| [Descargables](https://github.com/galigaribaldi/Transport-gis-zmvm-mjg/wiki/Descargables) | Mapas, dashboards y gráficas para ver o descargar |
 
 ---
 
